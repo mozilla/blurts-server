@@ -2,36 +2,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { randomBytes } from "crypto";
 import { SubscriberRow } from "knex/types/tables";
 import { captureException } from "@sentry/node";
-import {
-  addUnsubscribeTokenForSubscriber,
-  getEmailPreferenceForSubscriber,
-  updateEmailPreferenceForSubscriber,
-} from "../../../db/tables/subscriber_email_preferences";
+import { getOrCreateUnsubscribeToken } from "../../../db/tables/email_subscriptions";
 import { logger } from "../server/logging";
+import { BREACH_ALERT_LIST_ID } from "../../../constants";
 
 export async function getBreachAlertsUnsubscribeLink(
   subscriber: Pick<SubscriberRow, "id">,
 ) {
   try {
-    const newUnsubToken = randomBytes(64).toString("hex");
-    const getRes = await getEmailPreferenceForSubscriber(subscriber.id);
-    if (getRes.unsubscribe_token) {
-      // if record has been created and the token exists, return the token
-      return `${process.env.SERVER_URL}/unsubscribe/breach-alerts?token=${getRes.unsubscribe_token}`;
-    } else if (!getRes.unsubscribe_token) {
-      // if record in the new table has not been created
-      await addUnsubscribeTokenForSubscriber(subscriber.id, newUnsubToken);
-    } else {
-      // if record already exists, but token doesn't exist, add the token
-      await updateEmailPreferenceForSubscriber(subscriber.id, true, {
-        unsubscribe_token: newUnsubToken,
-      });
-    }
-
-    return `${process.env.SERVER_URL}/unsubscribe/breach-alerts?token=${newUnsubToken}`;
+    const token = await getOrCreateUnsubscribeToken(
+      subscriber.id,
+      BREACH_ALERT_LIST_ID,
+    );
+    return `${process.env.SERVER_URL}/unsubscribe/breach-alerts?token=${token}`;
   } catch (e) {
     logger.error("generate_unsubscribe_link", {
       exception: e,

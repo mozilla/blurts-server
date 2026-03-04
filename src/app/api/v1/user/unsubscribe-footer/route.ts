@@ -5,14 +5,22 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { logger } from "../../../../functions/server/logging";
-import { unsubscribeBreachAlertsForUnsubscribeToken } from "../../../../../db/tables/subscriber_email_preferences";
+import {
+  getEmailSubscriptionByToken,
+  unsubscribeByToken,
+} from "../../../../../db/tables/email_subscriptions";
 import * as Sentry from "@sentry/nextjs";
 
+/**
+ * Used for email footer unsubscribe
+ *
+ * @param req
+ * @returns
+ */
 export async function POST(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const unsubToken = searchParams.get("token");
-
     if (!unsubToken) {
       return NextResponse.json(
         {
@@ -22,9 +30,14 @@ export async function POST(req: NextRequest) {
         { status: 400 },
       );
     }
-
-    await unsubscribeBreachAlertsForUnsubscribeToken(unsubToken);
-    logger.info("unsubscribe_email_success");
+    const subscriptionRecord = await getEmailSubscriptionByToken(unsubToken);
+    if (!subscriptionRecord) {
+      logger.info("No email_subscription associated with token", {
+        token: unsubToken,
+      });
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
+    await unsubscribeByToken(subscriptionRecord, "footer", unsubToken);
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (e) {
     logger.error("unsubscribe_email", {

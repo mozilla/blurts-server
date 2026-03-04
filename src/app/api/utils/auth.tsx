@@ -32,6 +32,8 @@ import { renderEmail } from "../../../emails/renderEmail";
 import { SignupReportEmail } from "../../../emails/templates/signupReport/SignupReportEmail";
 import { config } from "../../../config";
 import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
+import { createEmailSubscription } from "../../../db/tables/email_subscriptions";
+import { BREACH_ALERT_LIST_ID } from "../../../constants";
 
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
@@ -183,6 +185,13 @@ export const authOptions: AuthOptions = {
             // date string when serialised in the token, hence the type assertion:
             token.subscriber =
               sanitizedSubscriber as unknown as SerializedSubscriber;
+            // Record subscription via opt-in (signup)
+            await createEmailSubscription(
+              verifiedSubscriber.id,
+              BREACH_ALERT_LIST_ID,
+              true,
+              "opt-in",
+            );
           }
 
           const allBreaches = await getBreaches();

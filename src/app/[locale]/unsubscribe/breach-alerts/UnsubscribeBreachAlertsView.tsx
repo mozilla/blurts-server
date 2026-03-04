@@ -39,9 +39,12 @@ export const UnsubscribeBreachAlertsView = ({ token }: { token: string }) => {
 
   const handleUnsubscribe = async () => {
     try {
-      const response = await fetch(`/api/v1/user/unsubscribe?token=${token}`, {
-        method: "POST",
-      });
+      const response = await fetch(
+        `/api/v1/user/unsubscribe-footer?token=${token}`,
+        {
+          method: "POST",
+        },
+      );
 
       if (!response.ok) {
         toast.error(l10n.getString("unsubscribe-failed"), toastOptions);
