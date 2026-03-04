@@ -39,7 +39,7 @@ it("registers an orientation change listener on mount and removes it on unmount"
     expect.any(Function),
   );
   // Ensure we removed the exact same number of handlers we added
-  expect(vi.mocked(orientationMock.removeEventListener).mock.calls.length).toBe(
+  expect(vi.mocked(orientationMock.removeEventListener)).toHaveBeenCalledTimes(
     addCallCount,
   );
 });
