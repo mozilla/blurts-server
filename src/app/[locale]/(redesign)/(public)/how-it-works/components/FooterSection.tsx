@@ -27,6 +27,7 @@ export const FooterSection = (props: Props) => {
         placeholder={l10n.getString(
           "how-it-works-page-footersection-input-placeholder",
         )}
+        labelPosition="top"
       />
     </footer>
   );
