@@ -1,4 +1,5 @@
 {
+    "typescript.preferences.importModuleSpecifier": "relative",
     "eslint.enable": true,
     "eslint.format.enable": true,
     "editor.tabSize": 2,

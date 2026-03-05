@@ -18,6 +18,7 @@ export type BreachAlertEmailProps = {
   breachedEmail: string;
   utmCampaignId: string;
   subscriber: Pick<SubscriberRow, "fxa_profile_json" | "fxa_profile_json">;
+  unsubscribeLink: string;
 };
 
 // These components are fully covered by the BreachAlertEmail test,
@@ -151,7 +152,11 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
           </mj-column>
         </mj-section>
 
-        <RedesignedEmailFooter l10n={l10n} utm_campaign={utmCampaignId} />
+        <RedesignedEmailFooter
+          l10n={l10n}
+          utm_campaign={utmCampaignId}
+          unsubscribeLink={props.unsubscribeLink}
+        />
       </mj-body>
     </mjml>
   );

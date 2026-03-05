@@ -16,6 +16,7 @@ import {
 import { getCronjobL10n } from "../../../app/functions/l10n/cronjobs";
 import { renderEmail } from "../../../emails/renderEmail";
 import { BreachAlertEmail } from "../../../emails/templates/breachAlert/BreachAlertEmail";
+import { getBreachAlertsUnsubscribeLink } from "../../../app/functions/cronjobs/unsubscribeLinks";
 import { MessageSummary, SubscriptionHandler } from "./subscriptionHandler";
 import * as grpc from "@grpc/grpc-js";
 import { type BreachDataService } from "../../../services/BreachDataService";
@@ -200,6 +201,9 @@ export async function breachMessageHandler(
 
       const l10n = getCronjobL10n(recipient);
       const subject = l10n.getString("email-breach-alert-all-subject");
+      const unsubscribeLink = await getBreachAlertsUnsubscribeLink({
+        id: recipient.subscriber_id,
+      });
       await sendEmail(
         recipient.notification_email,
         subject,
@@ -210,6 +214,7 @@ export async function breachMessageHandler(
             breachedEmail={recipient.breached_email}
             utmCampaignId={UTM_CAMPAIGN_ID_BREACH_ALERT}
             subscriber={recipient}
+            unsubscribeLink={unsubscribeLink}
           />,
         ),
       );
