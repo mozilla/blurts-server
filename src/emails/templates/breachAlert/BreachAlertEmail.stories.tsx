@@ -45,3 +45,13 @@ export const BreachAlertEmailNonUsStory: Story = {
     } as SubscriberRow,
   },
 };
+
+export const BreachAlertEmailWithUnsubscribeLinkStory: Story = {
+  name: "Breach alert/With unsubscribe link",
+  args: {
+    breach: createRandomHibpListing(),
+    breachedEmail: "example@example.com",
+    unsubscribeLink:
+      "https://example.com/unsubscribe/breach-alerts?token=abc123",
+  },
+};

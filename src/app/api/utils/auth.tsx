@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { NextRequest } from "next/server";
 import {
   AuthOptions,
   Profile as FxaProfile,
@@ -33,6 +32,9 @@ import { renderEmail } from "../../../emails/renderEmail";
 import { SignupReportEmail } from "../../../emails/templates/signupReport/SignupReportEmail";
 import { config } from "../../../config";
 import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
+import { createEmailSubscription } from "../../../db/tables/email_subscriptions";
+import { BREACH_ALERT_LIST_ID } from "../../../constants";
+import { captureException } from "@sentry/core";
 
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
@@ -184,6 +186,21 @@ export const authOptions: AuthOptions = {
             // date string when serialised in the token, hence the type assertion:
             token.subscriber =
               sanitizedSubscriber as unknown as SerializedSubscriber;
+            // Record subscription via opt-in (signup)
+            try {
+              // Don't block signup since it is still captured by
+              // the subscribers.all_email_to_primary value,
+              // and there is a backfill path
+              await createEmailSubscription(
+                verifiedSubscriber.id,
+                BREACH_ALERT_LIST_ID,
+                true,
+                "opt-in",
+              );
+            } catch (error) {
+              logger.error("error_signup_subscription", error);
+              captureException(error);
+            }
           }
 
           const allBreaches = await getBreaches();
@@ -346,27 +363,6 @@ function convertFxaProfile(profile: FxaProfile): User {
     subscriptions: profile.subscriptions ?? [],
   };
 }
-
-export function bearerToken(req: NextRequest) {
-  const requestHeaders = new Headers(req.headers);
-  requestHeaders.get("authorization");
-  const authHeader = requestHeaders.get("authorization");
-
-  // Require an auth header
-  if (!authHeader) {
-    throw new Error("No auth header found");
-  }
-
-  // Extract the first portion which should be 'Bearer'
-  const headerType = authHeader.substring(0, authHeader.indexOf(" "));
-  if (headerType !== "Bearer") {
-    throw new Error("Invalid auth type");
-  }
-
-  // The remaining portion, which should be the token
-  return authHeader.substring(authHeader.indexOf(" ") + 1);
-}
-
 export function isAdmin(email: string) {
   const admins = config.admins.split(",") ?? [];
   return admins.includes(email);

@@ -8,6 +8,8 @@ import createDbConnection from "../connect";
 import { SerializedSubscriber } from "../../next-auth.js";
 import { config } from "../../config";
 import { logger } from "../../app/functions/server/logging";
+import { getSha1 } from "../../utils/fxa";
+import { type Knex } from "knex";
 
 const knex = createDbConnection();
 
@@ -55,52 +57,45 @@ async function getSubscriberByFxaUid(
 /**
  * Update primary email for subscriber
  */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
+
 async function updatePrimaryEmail(
   subscriber: SubscriberRow,
   updatedEmail: string,
 ): Promise<SubscriberRow | null> {
-  const trx = await knex.transaction();
-  let subscriberTableUpdated;
   try {
-    // update subscriber primary email to updated email
-    subscriberTableUpdated = await knex("subscribers")
-      .where("id", "=", subscriber.id)
-      .update({
-        primary_email: updatedEmail,
-        // @ts-ignore knex.fn.now() results in it being set to a date,
-        // even if it's not typed as a JS date object:
-        updated_at: knex.fn.now(),
-      })
-      .returning("*")
-      .transacting(trx);
+    const subscriberTableUpdated = await knex.transaction(async (trx) => {
+      // update subscriber primary email to updated email
+      const subscriberTableUpdated = await trx("subscribers")
+        .where("id", "=", subscriber.id)
+        .update({
+          primary_email: updatedEmail,
+          primary_sha1: getSha1(updatedEmail.toLowerCase()),
+          // @ts-ignore knex.fn.now() results in it being set to a date,
+          // even if it's not typed as a JS date object:
+          updated_at: knex.fn.now(),
+        })
+        .returning("*");
 
-    // if email_addresses table has updatedEmail as a secondary in Monitor
-    // swap it with the current primary
-    // Fixing: MNTOR-1748
-    await knex("email_addresses")
-      .where("email", "=", updatedEmail)
-      .update({
-        email: subscriber.primary_email,
-        // @ts-ignore knex.fn.now() results in it being set to a date,
-        // even if it's not typed as a JS date object:
-        updated_at: knex.fn.now(),
-      })
-      .transacting(trx);
-
-    await trx.commit();
+      // if email_addresses table has updatedEmail as a secondary in Monitor
+      // swap it with the current primary
+      // Fixing: MNTOR-1748
+      await trx("email_addresses")
+        .where("email", "=", updatedEmail)
+        .update({
+          email: subscriber.primary_email,
+          sha1: getSha1(subscriber.primary_email.toLowerCase()),
+          // @ts-ignore knex.fn.now() results in it being set to a date,
+          // even if it's not typed as a JS date object:
+          updated_at: knex.fn.now() as unknown as Date,
+        });
+      return subscriberTableUpdated[0] ?? null;
+    });
+    return subscriberTableUpdated;
   } catch (error) {
-    await trx.rollback();
-    // @ts-ignore Type annotations added later; type unknown:
     logger.error("updatePrimaryEmail", error);
+    return null;
   }
-  const updatedSubscriber = Array.isArray(subscriberTableUpdated)
-    ? subscriberTableUpdated[0]
-    : null;
-  return updatedSubscriber;
 }
-/* c8 ignore stop */
 
 /**
  * Update fxa_refresh_token and fxa_profile_json for subscriber
@@ -208,11 +203,23 @@ async function updateFxAProfileData(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/**
+ * Set email communication preference
+ *
+ * @param subscriber
+ * @param allEmailsToPrimary null for disabling breach alerts, false for
+ * sending each alert to the affected address (default), and true for
+ * sending all alerts to the primary email address
+ * @param trx an optional open transaction object, for grouping updates;
+ * if left undefined will use shared knex connection pool
+ */
 async function setAllEmailsToPrimary(
   subscriber: SubscriberRow,
   allEmailsToPrimary: SubscriberRow["all_emails_to_primary"],
+  trx?: Knex.Transaction,
 ) {
-  const updated = await knex("subscribers")
+  const conn = trx ?? knex;
+  const updated = await conn("subscribers")
     .where("id", subscriber.id)
     .update({
       all_emails_to_primary: allEmailsToPrimary,

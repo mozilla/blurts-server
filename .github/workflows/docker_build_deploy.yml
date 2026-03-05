@@ -24,13 +24,13 @@ jobs:
       GAR_REGISTRY: us-docker.pkg.dev
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           persist-credentials: false
 
       - name: Authenticate to Google Cloud
         id: gcp-auth
-        uses: google-github-actions/auth@v3
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
         with:
           token_format: access_token
           workload_identity_provider: ${{ vars.GCPV2_GITHUB_WORKLOAD_IDENTITY_PROVIDER }}
@@ -38,7 +38,7 @@ jobs:
 
       - name: Login to Artifact Registry
         id: gar-login
-        uses: docker/login-action@v3
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         with:
           registry: ${{ env.GAR_REGISTRY }}
           username: oauth2accesstoken
@@ -46,7 +46,7 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5
         with:
           # Only generate the image name for GAR
           images: ${{ env.GAR_IMAGE_BASE }}
@@ -60,17 +60,17 @@ jobs:
           echo "{\"commit\":\"$GITHUB_SHA\",\"version\":\"$GITHUB_REF_NAME\",\"source\":\"https://github.com/$GITHUB_REPOSITORY\",\"build\":\"$GITHUB_RUN_ID\"}" > version.json
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@c7c53464625b32c7a7e944ae62b3e17d2b600130 # v3
 
       - name: Set up Docker Buildx
         id: buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
 
       - name: Build and push Docker image to GAR
         id: build-and-push
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
         with:
           context: .
           # Push is true to push to GAR after build

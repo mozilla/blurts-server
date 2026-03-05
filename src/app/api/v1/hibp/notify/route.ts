@@ -6,7 +6,7 @@ export const runtime = "nodejs";
 
 import { NextRequest, NextResponse } from "next/server";
 
-import { bearerToken } from "../../../utils/auth";
+import { bearerToken } from "../../../utils/bearerToken";
 import { logger } from "../../../../functions/server/logging";
 
 import { isValidBearer } from "../../../../../utils/hibp";
