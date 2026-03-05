@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import Meta, { PopoverDefault, PopoverClosed } from "./stories/Popover.stories";
 
@@ -38,8 +38,29 @@ it("registers an orientation change listener on mount and removes it on unmount"
     "change",
     expect.any(Function),
   );
-  // Ensure we removed the exact same number of handlers we added
   expect(vi.mocked(orientationMock.removeEventListener)).toHaveBeenCalledTimes(
     addCallCount,
   );
+});
+
+it("closes and removes children from the document on orientation change", async () => {
+  const orientationMock = globalThis.screen.orientation;
+
+  const Popover = composeStory(PopoverDefault, Meta);
+  render(<Popover />);
+
+  expect(screen.getByText("Popover content")).toBeInTheDocument();
+
+  const addCalls = vi.mocked(orientationMock.addEventListener).mock.calls;
+  const changeHandler = addCalls.find(
+    ([eventName]) => eventName === "change",
+  )?.[1] as (() => void) | undefined;
+
+  expect(changeHandler).toBeTruthy();
+
+  changeHandler!();
+
+  await waitFor(() => {
+    expect(screen.queryByText("Popover content")).not.toBeInTheDocument();
+  });
 });
