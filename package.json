@@ -143,7 +143,7 @@
     "@vitest/ui": "^4.0.18",
     "adm-zip": "^0.5.16",
     "esbuild": "0.27.3",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.2",
     "eslint-config-next": "16.1.6",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-check-file": "^3.3.1",
