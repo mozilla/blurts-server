@@ -25,6 +25,7 @@ import { getBreachesForEmail } from "../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../utils/fxa";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
 import { UTM_CAMPAIGN_ID_BREACH_ALERT } from "../../../../../../constants";
+import { getBreachAlertsUnsubscribeLink } from "@/app/functions/cronjobs/unsubscribeLinks";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -126,6 +127,7 @@ export async function triggerBreachAlert(emailAddress: string) {
 
   const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
   const l10n = getL10n(acceptLangHeader);
+  const unsubscribeLink = await getBreachAlertsUnsubscribeLink(subscriber);
 
   await send(
     emailAddress,
@@ -136,6 +138,7 @@ export async function triggerBreachAlert(emailAddress: string) {
       breach={createRandomHibpListing()}
       utmCampaignId={UTM_CAMPAIGN_ID_BREACH_ALERT}
       l10n={l10n}
+      unsubscribeLink={unsubscribeLink}
     />,
   );
 }

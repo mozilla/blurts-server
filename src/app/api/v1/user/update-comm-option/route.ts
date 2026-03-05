@@ -9,6 +9,13 @@ import {
   getSubscriberByFxaUid,
   setAllEmailsToPrimary,
 } from "../../../../../db/tables/subscribers";
+import createDbConnection from "../../../../../db/connect";
+import {
+  getOrBackfillEmailSubscription,
+  updateSubscriptionWithEvent,
+} from "../../../../../db/tables/email_subscriptions";
+import { BREACH_ALERT_LIST_ID } from "../../../../../constants";
+import { captureException } from "@sentry/node";
 
 export type EmailUpdateCommTypeOfOptions = "null" | "affected" | "primary";
 
@@ -45,7 +52,41 @@ export async function POST(req: NextRequest) {
       }
 
       if (typeof instantBreachAlerts !== "undefined") {
-        await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
+        // Patch to handle unsubscribe and resubscribe logic
+        // This variable is currently overloaded and stores
+        // both subscription state and communication preference
+        // Eventually can migrate to use email_subscriptions table
+        // as single source of truth
+        if (
+          // Unsubscribing
+          allEmailsToPrimary === null ||
+          // Resubscribing
+          (allEmailsToPrimary !== null &&
+            subscriber.all_emails_to_primary === null)
+        ) {
+          const subscribed = allEmailsToPrimary !== null;
+          const knex = createDbConnection();
+          await knex.transaction(async (trx) => {
+            await setAllEmailsToPrimary(subscriber, allEmailsToPrimary, trx);
+            // Get subscription and backfill record if this is user existed
+            // prior to subscription_events table
+            const emailSubscription = await getOrBackfillEmailSubscription(
+              subscriber.id,
+              BREACH_ALERT_LIST_ID,
+              // previous subscription state
+              subscriber.all_emails_to_primary !== null,
+              trx,
+            );
+            await updateSubscriptionWithEvent(trx, emailSubscription, {
+              subscribed,
+              source: "settings",
+              timestamp: new Date(),
+            });
+          });
+        } else {
+          // Just toggling email pref without subscribe/unsubscribe
+          await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
+        }
       }
 
       return NextResponse.json({
@@ -53,7 +94,8 @@ export async function POST(req: NextRequest) {
         message: "Communications options updated",
       });
     } catch (e) {
-      logger.error(e);
+      logger.error("error_update_comm_option", { error: e });
+      captureException(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {

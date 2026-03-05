@@ -14,7 +14,7 @@ function mockBreachNotificationSubscriber(
   overrides: Partial<BreachNotificationSubscriber> = {},
 ): BreachNotificationSubscriber {
   return {
-    subscriber_id: faker.number.int({ min: 0 }),
+    subscriber_id: faker.number.int({ min: 0, max: 10000000 }),
     all_emails_to_primary: faker.helpers.arrayElement([true, false, null]),
     primary_email: faker.internet.exampleEmail(),
     breached_email: faker.internet.exampleEmail(),

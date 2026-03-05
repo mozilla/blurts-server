@@ -15,6 +15,7 @@ export type Props = {
   l10n: ExtendedReactLocalization;
   utm_campaign: string;
   isOneTimeEmail?: boolean;
+  unsubscribeLink?: string;
 };
 
 export const EmailFooter = (props: Props) => {
@@ -146,6 +147,25 @@ export const RedesignedEmailFooter = (props: Props) => {
               },
             })}
           </mj-text>
+          {props.unsubscribeLink && (
+            <mj-text
+              font-size="14px"
+              line-height="21px"
+              font-weight="400"
+              align="center"
+            >
+              {l10n.getFragment("email-unsubscribe-link", {
+                elems: {
+                  link_to_unsub: (
+                    <a
+                      href={props.unsubscribeLink}
+                      style={{ color: "#0060DF" }}
+                    />
+                  ),
+                },
+              })}
+            </mj-text>
+          )}
         </mj-column>
       </mj-section>
       <mj-section padding-top="32px">
@@ -229,6 +249,17 @@ ${separator}
 
 ${l10n.getString("email-footer-support-heading")}
 ${l10n.getString("email-footer-support-content-plain", { support_link: supportLinkUrlObject.href })}
+${
+  // We don't have emails yet that send both a plaintext version and an unsubscribe link:
+  /* c8 ignore next 7 */
+  typeof props.unsubscribeLink !== "undefined"
+    ? "\n" +
+      l10n.getString("email-unsubscribe-link-plain", {
+        unsub_link: props.unsubscribeLink,
+      }) +
+      "\n"
+    : ""
+}
 
 ${separator}
 

@@ -4,6 +4,7 @@
 
 import createDbConnection from "../connect";
 import { logger } from "../../app/functions/server/logging";
+import { captureException } from "@sentry/node";
 import {
   SubscriberEmailPreferencesRow,
   SubscriberRow,
@@ -43,7 +44,7 @@ async function getEmailPreferenceForPrimaryEmail(
       message: (e as Error).message,
       stack_trace: (e as Error).stack,
     });
-
+    captureException(e);
     throw e;
   }
   return res?.[0];
