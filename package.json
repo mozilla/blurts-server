@@ -81,7 +81,7 @@
     "@sentry/node": "^10.27.0",
     "@sentry/opentelemetry": "^10.34.0",
     "@stripe/stripe-js": "^8.5.3",
-    "@types/jsdom": "^21.1.7",
+    "@types/jsdom": "^28.0.0",
     "@types/node": "^25.3.3",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
