@@ -23,6 +23,10 @@ email-footer-source-hibp-plain = Podatke o krajah podatkov ponudnika { -brand-HI
 email-footer-source-hibp = Podatke o krajah podatkov posredoval <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Zasebnost
+email-unsubscribe-link = <link_to_unsub>Odjava</link_to_unsub>
+# Variables:
+#   $unsub_link (string) - URL to the unsubscribe page, e.g. "https://monitor.mozilla.org/unsubscribe/...".
+email-unsubscribe-link-plain = Odjava: { $unsub_link }
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
