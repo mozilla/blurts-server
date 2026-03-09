@@ -9,6 +9,10 @@ import createDbConnection from "../connect";
 import { updatePrimaryEmail } from "./subscribers";
 import { getSha1 } from "../../utils/fxa";
 
+vi.mock("../../utils/hibp", () => ({
+  subscribeHash: vi.fn().mockResolvedValue(undefined),
+}));
+
 const conn = createDbConnection();
 
 afterEach(async () => {
@@ -88,6 +92,19 @@ describe("updatePrimaryEmail", () => {
     // Both email and sha should be updated
     expect(updated.primary_email).toBe(newEmail);
     expect(updated.primary_sha1).toBe(getSha1(newEmail));
+  });
+
+  it("calls subscribeHash with the sha1 of the new primary email", async () => {
+    const { subscribeHash } = await import("../../utils/hibp");
+    const newEmail = faker.internet.email().toLowerCase();
+
+    const [subscriber] = await conn("subscribers")
+      .insert(seeds.subscribers())
+      .returning("*");
+
+    await updatePrimaryEmail(subscriber, newEmail);
+
+    expect(subscribeHash).toHaveBeenCalledWith(getSha1(newEmail));
   });
 
   it("logs the error and returns null when the transaction throws", async () => {

@@ -8,6 +8,7 @@ import crypto from "crypto";
 import { SentMessageInfo } from "nodemailer/lib/smtp-transport/index.js";
 import { config } from "../config";
 import { logger } from "../app/functions/server/logging";
+import { captureException } from "@sentry/node";
 
 // The SMTP transport object. This is initialized to a nodemailer transport
 // object while reading SMTP credentials, or to a dummy function in debug mode.
@@ -86,12 +87,16 @@ export async function sendEmail(
   } catch (e) {
     if (e instanceof Error) {
       logger.error("error_sending_email", {
-        message: e.message,
-        stack: e.stack,
+        error: {
+          message: e.message,
+          stack: e.stack,
+        },
       });
+      captureException(e);
       /* c8 ignore next 3 */
     } else {
-      logger.error("error_sending_email", { message: JSON.stringify(e) });
+      logger.error("error_sending_email", { error: JSON.stringify(e) });
+      captureException(e);
     }
     throw e;
   }

@@ -9,6 +9,7 @@ import { SerializedSubscriber } from "../../next-auth.js";
 import { config } from "../../config";
 import { logger } from "../../app/functions/server/logging";
 import { getSha1 } from "../../utils/fxa";
+import { subscribeHash } from "../../utils/hibp";
 import { type Knex } from "knex";
 
 const knex = createDbConnection();
@@ -88,6 +89,10 @@ async function updatePrimaryEmail(
           // even if it's not typed as a JS date object:
           updated_at: knex.fn.now() as unknown as Date,
         });
+
+      // Subscribe the new primary email's hash to HIBP breach notifications
+      await subscribeHash(getSha1(updatedEmail.toLowerCase()));
+
       return subscriberTableUpdated[0] ?? null;
     });
     return subscriberTableUpdated;
