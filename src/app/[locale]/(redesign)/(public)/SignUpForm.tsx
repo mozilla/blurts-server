@@ -22,11 +22,10 @@ export type Props = {
   signUpCallbackUrl: string;
   label?: string;
   experimentData?: ExperimentData["Features"];
-  isHero?: boolean;
   placeholder?: string;
   ctaLabel?: string | ReactNode;
   hasFloatingLabel?: boolean;
-  labelPosition?: "top" | "bottom" | "floating";
+  labelPosition: "top" | "bottom" | "floating";
 };
 
 export const SignUpForm = (props: Props) => {
