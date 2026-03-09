@@ -33,7 +33,7 @@ jobs:
       # (and set an arbitrary coverage threshold for that "true" coverage):
       - run: npm test -- --coverage.thresholds.lines=80 --coverage.thresholds.functions=80 --coverage.thresholds.branches=80 --coverage.thresholds.statements=80
         if: github.event_name == 'schedule'
-      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         if: always()
         with:
           name: coverage-report
