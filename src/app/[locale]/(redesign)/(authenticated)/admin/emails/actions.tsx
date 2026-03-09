@@ -48,7 +48,7 @@ async function send(
   emailAddress: string,
   subject: string,
   template: ReactNode,
-  plaintextVersion?: string,
+  options?: { plaintextVersion?: string; oneClickUrl?: string },
 ) {
   const subscriber = await getAdminSubscriber();
   if (!subscriber) {
@@ -68,7 +68,12 @@ async function send(
     emailAddress,
     "Test email: " + subject,
     await renderEmail(template),
-    plaintextVersion,
+    {
+      plaintext: options?.plaintextVersion,
+      ...(options?.oneClickUrl && {
+        oneClickUnsubscribe: { url: options?.oneClickUrl },
+      }),
+    },
   );
 }
 
@@ -127,7 +132,8 @@ export async function triggerBreachAlert(emailAddress: string) {
 
   const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
   const l10n = getL10n(acceptLangHeader);
-  const unsubscribeLink = await getBreachAlertsUnsubscribeLink(subscriber);
+  const { footer: unsubscribeLink, oneClick: oneClickUrl } =
+    await getBreachAlertsUnsubscribeLink(subscriber);
 
   await send(
     emailAddress,
@@ -140,5 +146,6 @@ export async function triggerBreachAlert(emailAddress: string) {
       l10n={l10n}
       unsubscribeLink={unsubscribeLink}
     />,
+    { oneClickUrl },
   );
 }

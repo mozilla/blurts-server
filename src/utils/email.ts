@@ -39,22 +39,46 @@ export function closeEmailPool() {
   gTransporter.close();
 }
 
+export type SendEmailOptions = {
+  plaintext?: string;
+  /**
+   * When provided, adds RFC 2369 / RFC 8058 headers so that supporting
+   * email clients can show a one-click unsubscribe button.
+   * https://datatracker.ietf.org/doc/html/rfc8058
+   */
+  oneClickUnsubscribe?: {
+    /** HTTPS URL that accepts a POST with body `List-Unsubscribe=One-Click` */
+    url: string;
+  };
+};
+
 /**
  * Send Email
  *
  * @param recipient
  * @param subject
  * @param html
- * @param plaintext
+ * @param options
  */
 export async function sendEmail(
   recipient: string,
   subject: string,
   html: string,
-  plaintext?: string,
+  options?: SendEmailOptions,
 ): Promise<SentMessageInfo> {
   if (!gTransporter) {
     throw new Error("SMTP transport not initialized");
+  }
+
+  const resolvedOptions: SendEmailOptions = options ?? {};
+
+  const extraHeaders: Record<string, string> = {};
+  // Headers for RFC 8058 one-click unsubscribe
+  // https://datatracker.ietf.org/doc/html/rfc8058
+  if (resolvedOptions.oneClickUnsubscribe) {
+    const { url } = resolvedOptions.oneClickUnsubscribe;
+    extraHeaders["List-Unsubscribe"] = `<${url}>`;
+    extraHeaders["List-Unsubscribe-Post"] = "List-Unsubscribe=One-Click";
   }
 
   const mailOptions: SendMailOptions = {
@@ -62,9 +86,10 @@ export async function sendEmail(
     to: recipient,
     subject,
     html,
-    text: plaintext,
+    text: resolvedOptions.plaintext,
     headers: {
       "x-ses-configuration-set": config.sesConfigSet,
+      ...extraHeaders,
     },
   };
 
