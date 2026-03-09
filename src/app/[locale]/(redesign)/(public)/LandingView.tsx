@@ -41,7 +41,6 @@ export const View = (props: Props) => {
             <h1>{props.l10n.getString("landing-all-hero-title")}</h1>
             <p>{props.l10n.getString("landing-all-hero-lead")}</p>
             <SignUpForm
-              isHero
               signUpCallbackUrl={`${config.serverUrl}/user/dashboard`}
               eventId={{
                 cta: "clicked_get_scan_header",
