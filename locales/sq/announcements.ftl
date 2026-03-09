@@ -10,6 +10,7 @@ announcement-dialog-history-tab = Krejt
 announcement-dialog-back = Mbrapsht
 announcement-dialog-clear-all = Vëru shenjë të tërave si të lexuara
 announcement-dialog-empty-state-title = S’ka përditësime
+announcement-dialog-empty-state-description = Kontrolloni rregullisht për përditësime dhe informacion rreth veçorive tona më të reja.
 announcement-dialog-trigger-alt = Hap njoftimet
 announcement-dialog-alt = Listë njoftimesh
 announcement-small-img-alt = Ikonë njoftimesh
@@ -17,4 +18,10 @@ announcement-big-img-alt = Figurë njoftimesh
 
 # between announcement- and -title or -description is the announcement_id.
 
+# Variables:
+# $emailAddressesCount (string) - number of email addresses allowed for data breach monitoring
+announcement-free-data-breach-monitoring-title =
+    { $emailAddressesCount ->
+       *[other] Përfitoni mbikëqyrje falas cenimi të dhënash për deri në { $emailAddressesCount } adresa email.
+    }
 announcement-free-data-breach-monitoring-cta-label = Mësoni më tepër

@@ -23,6 +23,10 @@ email-footer-source-hibp-plain = Data tor-amod wedi'i ddarparu gan { -brand-HIBP
 email-footer-source-hibp = Darparwyd manylion tor-data gan <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Preifatrwydd
+email-unsubscribe-link = <link_to_unsub>Dad-danysgrifio</link_to_unsub>
+# Variables:
+#   $unsub_link (string) - URL to the unsubscribe page, e.g. "https://monitor.mozilla.org/unsubscribe/...".
+email-unsubscribe-link-plain = Dad-danysgrifio: { $unsub_link }
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.

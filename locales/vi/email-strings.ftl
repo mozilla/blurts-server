@@ -25,6 +25,10 @@ email-footer-source-hibp-plain = Dữ liệu bị rò rỉ được cung cấp b
 email-footer-source-hibp = Rò rỉ dữ liệu được cung cấp bởi <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Riêng tư
+email-unsubscribe-link = <link_to_unsub>Huỷ đăng ký</link_to_unsub>
+# Variables:
+#   $unsub_link (string) - URL to the unsubscribe page, e.g. "https://monitor.mozilla.org/unsubscribe/...".
+email-unsubscribe-link-plain = Huỷ đăng ký: { $unsub_link }
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.

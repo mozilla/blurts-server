@@ -21,6 +21,7 @@ settings-alert-preferences-option-two = Dërgoji krejt sinjalizimet mbi cenime t
 settings-email-verification-callout = Lypset verifikim email-i
 settings-remove-email-button-label = Hiqe
 settings-email-addresses-header = Adresa email
+settings-email-addresses-description = { -brand-monitor } do t’ju sinjalizojë, nëse këta email-e shfaqen në cenime të njohura.
 settings-email-addresses-add-email-button = Shtoni adresë email
 # Variables:
 #   $limit (number) - Number of emails that can be added for monitoring.
@@ -31,11 +32,13 @@ input-error-alt = Gabim
 ## Email address dialog
 
 settings-email-addresses-initial-dialog-header = Shtoni një adresë email
+settings-email-addresses-initial-dialog-description = Do t’ju dërgojmë një lidhje verifikimi që të ripohoni se dëshironi të përfshihet në një kontroll të ardhshëm nga { -brand-monitor }.
 settings-email-addresses-initial-dialog-add-email-input-label = Jepni adresë email
 settings-email-addresses-initial-dialog-add-email-button-label = Dërgo lidhje verifikimi
 # Variables:
 #   $email (string) - Email address the confirmation has been sent to.
 settings-email-addresses-confirmation-dialog-header = Lidhja e verifikimit u dërgua te <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Hapeni këtë lidhje që të shtohet te kjo llogari për kontrolle të ardhshëm nga { -brand-monitor }.
 settings-email-addresses-confirmation-dialog-close-button = Mbylle
 
 ## Delete Monitor account
@@ -52,6 +55,8 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = Hidhe tej
 
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Përditësoni të dhëna kontrolli
 settings-tab-label-edit-info = Përpunoni hollësitë tuaja
 settings-tab-label-notifications = Ujdisni njoftime
 settings-tab-label-manage-account = Administroni llogarinë
