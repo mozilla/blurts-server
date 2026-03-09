@@ -10,6 +10,10 @@ import type {
   formatDataClassesArray,
   HibpGetBreachesResponse,
 } from "./utils/hibp";
+import type {
+  SubscriptionEventSource,
+  EmailSubscriptionListId,
+} from "./db/types/EmailSubscriptions";
 
 // See https://knexjs.org/guide/#typescript
 declare module "knex/types/tables" {
@@ -177,6 +181,26 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
+  interface EmailSubscriptionsRow {
+    // Use string because large 64-bit integers may exceed MAX_SAFE_INTEGER
+    id: string; // BIGSERIAL
+    subscriber_id: number;
+    token: string;
+    list_id: EmailSubscriptionListId;
+    subscribed: boolean;
+    updated_at: Date;
+  }
+
+  interface EmailSubscriptionEventsRow {
+    id: string; // BIGSERIAL
+    email_subscriptions_id: string; // BIGSERIAL
+    event_type: "subscribe" | "unsubscribe";
+    source: SubscriptionEventSource;
+    created_at: Date;
+  }
+
+  // TODO: Deprecate in favor of EmailSubscriptions
+  // https://mozilla-hub.atlassian.net/browse/MNTOR-5226
   interface SubscriberEmailPreferencesRow {
     id: number;
     subscriber_id: number;
@@ -378,12 +402,27 @@ declare module "knex/types/tables" {
       >
     >;
 
-    subscriber_email_preferences: Knex.CompositeTableType<
-      SubscriberEmailPreferencesRow,
+    email_subscriptions: Knex.CompositeTableType<
+      EmailSubscriptionsRow,
       // On inserts, auto-generated columns cannot be set, and nullable columns are optional:
-      WritableDateColumns<Omit<SubscriberEmailPreferencesRow, "id">>,
-      // On updates, don't allow updating the ID; all other fields are optional:
-      WritableDateColumns<Partial<Omit<SubscriberEmailPreferencesRow, "id">>>
+      WritableDateColumns<Omit<EmailSubscriptionsRow, "id" | "subscribed">> &
+        Partial<Pick<EmailSubscriptionsRow, "subscribed">>,
+      // On updates, don't allow updating the ID; all other fields are optional
+      // except updated_at
+      WritableDateColumns<
+        Partial<Omit<EmailSubscriptionsRow, "id">> &
+          Pick<EmailSubscriptionsRow, "updated_at">
+      >
+    >;
+
+    email_subscription_events: Knex.CompositeTableType<
+      EmailSubscriptionEventsRow,
+      // On inserts, auto-generated columns cannot be set
+      // and all other columns are required
+      WritableDateColumns<Omit<EmailSubscriptionEventsRow, "id">>,
+      // table is append-only (no updates/upserts)
+      never,
+      never
     >;
 
     email_addresses: Knex.CompositeTableType<

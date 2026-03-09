@@ -9,6 +9,7 @@ import { SerializedSubscriber } from "../../next-auth.js";
 import { config } from "../../config";
 import { logger } from "../../app/functions/server/logging";
 import { getSha1 } from "../../utils/fxa";
+import { type Knex } from "knex";
 
 const knex = createDbConnection();
 
@@ -202,11 +203,23 @@ async function updateFxAProfileData(
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
+/**
+ * Set email communication preference
+ *
+ * @param subscriber
+ * @param allEmailsToPrimary null for disabling breach alerts, false for
+ * sending each alert to the affected address (default), and true for
+ * sending all alerts to the primary email address
+ * @param trx an optional open transaction object, for grouping updates;
+ * if left undefined will use shared knex connection pool
+ */
 async function setAllEmailsToPrimary(
   subscriber: SubscriberRow,
   allEmailsToPrimary: SubscriberRow["all_emails_to_primary"],
+  trx?: Knex.Transaction,
 ) {
-  const updated = await knex("subscribers")
+  const conn = trx ?? knex;
+  const updated = await conn("subscribers")
     .where("id", subscriber.id)
     .update({
       all_emails_to_primary: allEmailsToPrimary,

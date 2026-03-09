@@ -18,6 +18,8 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import { AnnouncementRow } from "knex/types/tables";
 import { truncateDescription } from "../../../../utils/truncate";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../constants";
+import FallbackImageSmall from "../../../../../public/images/announcements/fallback/small.svg";
+import FallbackImageBig from "../../../../../public/images/announcements/fallback/big.svg";
 
 type AnnouncementDialogProps = {
   announcements: UserAnnouncementWithDetails[];
@@ -243,7 +245,7 @@ export const AnnouncementDialog = ({
                         relevantAnnouncement.announcement_id
                       ]
                         ? `/images/announcements/${relevantAnnouncement.announcement_id}/big.svg`
-                        : `/images/announcements/fallback/big.svg`
+                        : FallbackImageBig
                     }
                     /* c8 ignore end */
                     alt={l10n.getString("announcement-big-img-alt")}
@@ -351,7 +353,7 @@ export const AnnouncementDialog = ({
                               announcement.announcement_id
                             ]
                               ? `/images/announcements/${announcement.announcement_id}/small.svg`
-                              : `/images/announcements/fallback/small.svg`
+                              : FallbackImageSmall
                           }
                           /* c8 ignore end */
                           alt={l10n.getString("announcement-small-img-alt")}

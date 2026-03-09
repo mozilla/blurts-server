@@ -45,6 +45,27 @@ if (typeof window !== "undefined") {
   afterEach(() => {
     resetIntersectionMocking();
   });
+
+  // Screen Orientation API mock
+  // JSDOM often doesn't implement `screen.orientation`, but our Popover component attaches listeners to it
+  const existingOrientation = globalThis.screen?.orientation;
+  if (!existingOrientation) {
+    Object.defineProperty(globalThis.screen, "orientation", {
+      value: {
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+      },
+      configurable: true,
+    });
+  } else {
+    // If it exists but is incomplete, patch the needed methods.
+    if (typeof existingOrientation.addEventListener !== "function") {
+      existingOrientation.addEventListener = vi.fn();
+    }
+    if (typeof existingOrientation.removeEventListener !== "function") {
+      existingOrientation.removeEventListener = vi.fn();
+    }
+  }
 }
 
 global.TextEncoder = TextEncoder as typeof global.TextEncoder;
