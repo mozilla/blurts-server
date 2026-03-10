@@ -10,18 +10,20 @@ import { BREACH_ALERT_LIST_ID } from "../../../constants";
 import { config } from "../../../config";
 
 /**
- * Create an unsubscribe link for use in the breach alerts
- * email footer
+ * Create unsubscribe links for use in the breach alerts
+ * email footer, and one-click unsubscribe URL (RFC 8058).
  */
 export async function getBreachAlertsUnsubscribeLink(
   subscriber: Pick<SubscriberRow, "id">,
-) {
+): Promise<{ footer: string; oneClick: string }> {
   try {
     const token = await getOrCreateUnsubscribeToken(
       subscriber.id,
       BREACH_ALERT_LIST_ID,
     );
-    return `${config.serverUrl}/unsubscribe/breach-alerts?token=${token}`;
+    const footer = `${config.serverUrl}/unsubscribe/breach-alerts?token=${token}`;
+    const oneClick = `${config.serverUrl}/api/v1/user/one-click-unsubscribe?token=${token}`;
+    return { footer, oneClick };
   } catch (e) {
     logger.error("generate_unsubscribe_link", {
       exception: e,

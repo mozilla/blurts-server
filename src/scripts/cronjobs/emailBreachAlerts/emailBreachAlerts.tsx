@@ -201,9 +201,8 @@ export async function breachMessageHandler(
 
       const l10n = getCronjobL10n(recipient);
       const subject = l10n.getString("email-breach-alert-all-subject");
-      const unsubscribeLink = await getBreachAlertsUnsubscribeLink({
-        id: recipient.subscriber_id,
-      });
+      const { footer: unsubscribeLink, oneClick: oneClickUnsubscribeUrl } =
+        await getBreachAlertsUnsubscribeLink({ id: recipient.subscriber_id });
       await sendEmail(
         recipient.notification_email,
         subject,
@@ -217,6 +216,7 @@ export async function breachMessageHandler(
             unsubscribeLink={unsubscribeLink}
           />,
         ),
+        { oneClickUnsubscribe: { url: oneClickUnsubscribeUrl } },
       );
       await notifications.markEmailAsNotified(
         recipient.subscriber_id,
