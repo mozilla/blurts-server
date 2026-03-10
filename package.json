@@ -69,7 +69,7 @@
     "@mozilla/glean": "^5.0.7",
     "@next/env": "16.1.6",
     "@next/third-parties": "16.1.6",
-    "@opentelemetry/auto-instrumentations-node": "^0.70.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.70.1",
     "@opentelemetry/exporter-trace-otlp-http": "^0.212.0",
     "@opentelemetry/resource-detector-gcp": "^0.47.0",
     "@opentelemetry/resources": "^2.2.0",
