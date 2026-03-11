@@ -52,6 +52,7 @@ export async function uploadToS3(
       fileName,
       bucket,
     });
+    throw err;
   }
 }
 

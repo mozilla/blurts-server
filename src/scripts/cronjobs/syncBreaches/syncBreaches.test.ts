@@ -2,28 +2,42 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/**
+ * @vitest-environment node
+ */
+
+import {
+  vi,
+  describe,
+  it,
+  expect,
+  beforeEach,
+  afterEach,
+  afterAll,
+  type MockInstance,
+} from "vitest";
 import hibpBreachMock from "../../../test/seeds/hibpBreachResponse.json";
 import { getBreachIcons } from "./syncBreaches";
 import { HibpGetBreachesResponse } from "../../../utils/hibp";
+import { uploadToS3, checkS3ObjectExists } from "../../../utils/s3";
+import {
+  getBreachFaviconUrl,
+  updateBreachFaviconUrl,
+} from "../../../db/tables/breaches";
 
-const fetchSpy = jest.spyOn(global, "fetch");
-
-jest.mock("../../../utils/s3", () => ({
-  __esModule: true,
-  uploadToS3: jest.fn().mockResolvedValue(undefined),
-  checkS3ObjectExists: jest.fn().mockResolvedValue(false),
+vi.mock("../../../utils/s3", () => ({
+  uploadToS3: vi.fn().mockResolvedValue(undefined),
+  checkS3ObjectExists: vi.fn().mockResolvedValue(false),
 }));
 
-jest.mock("../../../db/tables/breaches", () => ({
-  __esModule: true,
-  updateBreachFaviconUrl: jest.fn().mockResolvedValue(undefined),
-  getBreachFaviconUrl: jest.fn(),
+vi.mock("../../../db/tables/breaches", () => ({
+  updateBreachFaviconUrl: vi.fn().mockResolvedValue(undefined),
+  getBreachFaviconUrl: vi.fn(),
 }));
 
-jest.mock("../../../app/functions/server/logging", () => {
-  const { mockLogger } = require("../../../test/helpers/mockLogger");
+vi.mock("../../../app/functions/server/logging", async () => {
+  const { mockLogger } = await import("../../../test/helpers/mockLogger");
   return {
-    __esModule: true,
     logger: mockLogger(),
   };
 });
@@ -31,41 +45,40 @@ jest.mock("../../../app/functions/server/logging", () => {
 const mockGetBreachFaviconUrls = (
   favicons: Array<string | null | undefined>,
 ) => {
-  (getBreachFaviconUrl as jest.Mock).mockRestore();
+  vi.mocked(getBreachFaviconUrl).mockReset();
   favicons.forEach((favicon) =>
-    (getBreachFaviconUrl as jest.Mock).mockResolvedValueOnce(favicon),
+    vi.mocked(getBreachFaviconUrl).mockResolvedValueOnce(favicon),
   );
 };
 
 const buildBreachFavicon = (breachDomain: string) =>
   `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${breachDomain.toLowerCase()}.ico`;
 
-import { uploadToS3, checkS3ObjectExists } from "../../../utils/s3";
-import {
-  getBreachFaviconUrl,
-  updateBreachFaviconUrl,
-} from "../../../db/tables/breaches";
-
 describe("syncBreaches", () => {
   describe("getBreachIcons", () => {
+    const breaches = hibpBreachMock.slice(0, 2) as HibpGetBreachesResponse;
+    let fetchSpy: MockInstance;
+
     beforeEach(() => {
+      fetchSpy = vi.spyOn(global, "fetch");
       // Set up default mocks which return a synced
       // favicon record (only checked if s3 object exists)
       mockGetBreachFaviconUrls(
         breaches.map((breach) => buildBreachFavicon(breach.Domain)),
       );
     });
-    const breaches = hibpBreachMock.slice(0, 2) as HibpGetBreachesResponse;
+
     afterEach(() => {
-      jest.resetAllMocks();
+      vi.resetAllMocks();
     });
-    afterAll(() => jest.restoreAllMocks());
+    afterAll(() => vi.restoreAllMocks());
+
     it("only fetches and uploads icons not already in s3", async () => {
       fetchSpy.mockResolvedValue({
         status: 200,
         arrayBuffer: async () => Buffer.from("abc"),
       } as unknown as Response);
-      (checkS3ObjectExists as jest.Mock)
+      vi.mocked(checkS3ObjectExists)
         .mockResolvedValueOnce(true)
         .mockResolvedValue(false);
       await getBreachIcons(breaches);
@@ -83,7 +96,7 @@ describe("syncBreaches", () => {
         "not-a-match",
         buildBreachFavicon(breaches[0].Domain),
       ];
-      (checkS3ObjectExists as jest.Mock).mockResolvedValue(true);
+      vi.mocked(checkS3ObjectExists).mockResolvedValue(true);
       mockGetBreachFaviconUrls(favicons);
       await getBreachIcons([breaches[0], breaches[1], breaches[0]]);
       expect(updateBreachFaviconUrl).toHaveBeenCalledTimes(2);
@@ -125,7 +138,7 @@ describe("syncBreaches", () => {
         status: 200,
         arrayBuffer: async () => Buffer.from("abc"),
       } as unknown as Response);
-      (checkS3ObjectExists as jest.Mock)
+      vi.mocked(checkS3ObjectExists)
         .mockRejectedValueOnce(new Error("nope"))
         .mockResolvedValue(false);
       await getBreachIcons(breaches);
@@ -137,7 +150,7 @@ describe("syncBreaches", () => {
         status: 200,
         arrayBuffer: async () => Buffer.from("abc"),
       } as unknown as Response);
-      (updateBreachFaviconUrl as jest.Mock)
+      vi.mocked(updateBreachFaviconUrl)
         .mockRejectedValueOnce(new Error("nope"))
         .mockResolvedValue(undefined);
       await getBreachIcons(breaches);
@@ -151,7 +164,7 @@ describe("syncBreaches", () => {
         status: 200,
         arrayBuffer: async () => Buffer.from("abc"),
       } as unknown as Response);
-      (uploadToS3 as jest.Mock)
+      vi.mocked(uploadToS3)
         .mockRejectedValueOnce(new Error("nope"))
         .mockResolvedValue(undefined);
       await getBreachIcons(breaches);

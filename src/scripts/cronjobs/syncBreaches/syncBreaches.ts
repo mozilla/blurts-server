@@ -27,6 +27,7 @@ import {
 import { uploadToS3, checkS3ObjectExists } from "../../../utils/s3";
 import { config } from "../../../config";
 import { logger as baseLogger } from "../../../app/functions/server/logging";
+import { captureException } from "@sentry/node";
 
 const logger = baseLogger.child({ module: "syncBreaches" });
 
@@ -95,6 +96,9 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
         breachDomain,
         logoFilename,
       });
+      captureException(error, {
+        data: { breachName, breachDomain, logoFilename },
+      });
       continue;
     }
   }
@@ -133,7 +137,6 @@ export async function run() {
   } else {
     await upsertBreaches(breachesResponse);
 
-    // get
     const result = await getAllBreaches();
     logger.info(
       "Number of breaches in the database after upsert:",
@@ -151,6 +154,7 @@ export async function run() {
       );
     } catch (e) {
       logger.error("Update Redis failed for syncBreaches.ts", { error: e });
+      captureException(e);
     }
   }
   logger.info("Starting breach icon sync");
