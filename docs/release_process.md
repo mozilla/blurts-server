@@ -92,26 +92,18 @@ Once a PR is successfully merged:
 
 ## Release to Production
 
-### Daily pre-releases
-
-Github pre-releases are generated daily via a [daily-pre-release](daily-pre-release) GHA workflow.
-The pre-release will include all the PRs that got merged into main (stage) that day.
-The cron job will only execute Monday to Friday.
-As a base load engineer, you can get into a habit of checking pre-releases every morning to see what's been pushed and what's been checked by the QAs. Once everything is checked off in a pre-release, we can proceed to deploying that pre-release to production and mark it as the latest
-
 ### Deploy to Production
 
 Before deploying to production, we need to assess the current state of our work on stage. We need to cross-reference what's already on stage and what's been greenlit by QA. To do this, we need to find the difference between what was released last time in production and what we currently have on stage.
 
 ### Mark pre-release as latest, check the diff in Release Notes, and notify the team
 
-1. Find the pre-release/tag you want to use for the deploy (e.g., `2024.09.01`)
-2. Edit the release
-3. Check the checkbox `Set as the latest release`
-4. Copy and Paste the release notes in the engineering slack channel so the team is aware
-5. Go through the PRs, cross-reference the tickets in the PRs with the [Jira][jira] board to see if QA has approved the tickets. If anything is unclear, make sure to tag the author of the PR.
-6. If anything has not been properly tested, make a note, and again, double check with the person
-7. If everything looks good, proceed to release, otherwise refer to the section `Stage-fixes` below.
+1. Create a new release on GitHub from `main`, tagged with today's date (e.g., `2024.09.01`)
+2. Check the checkbox `Set as the latest release`
+3. Copy and Paste the release notes in the engineering slack channel so the team is aware
+4. Go through the PRs, cross-reference the tickets in the PRs with the [Jira][jira] board to see if QA has approved the tickets. If anything is unclear, make sure to tag the author of the PR.
+5. If anything has not been properly tested, make a note, and again, double check with the person
+6. If everything looks good, proceed to release, otherwise refer to the section `Stage-fixes` below.
 
 ### Update Production Environment Variables
 
@@ -179,7 +171,7 @@ If you're unsure whether a ticket was included in the release, ask the assigned 
 
 ### Deploying hotfixes
 
-In the case of time-sensitive hotfixes or dependency updates, you may need to deploy before the daily cron job creates a pre-release.
+In the case of time-sensitive hotfixes or dependency updates, you may need to deploy a hotfix.
 
 - Find a pairing partner to assist you with review and approval
 - Via PR, revert changes which have not yet been QA-verified on main (if applicable)
@@ -187,7 +179,7 @@ In the case of time-sensitive hotfixes or dependency updates, you may need to de
 - Test hotfix on staging environment with your pairing partner
 - Notify the team that you are deploying a hotfix in the `#monitor-core-team` slack channel
 - With your pairing partner, create a new tag from the hotfix commit and mark it as the latest release
-  - Use the date-formatted tag with an additional numeric suffix (e.g. `2024.02.27.1`) to differentiate this manual patch from the automatically generated cron prereleases
+  - Use the date-formatted tag with an additional numeric suffix (e.g. `2024.02.27.1`)
 - Follow instructions in [Release to Production](#release-to-production) to deploy the tag you created to prodution using the 1-click release workflow
 - Make a PR to re-revert the reverted changes (putting them back in main branch) and merge it in after approval
   - Complete this step as soon as possible to avoid merge conflicts
