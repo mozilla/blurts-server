@@ -12,9 +12,21 @@ email-header-button-sign-in = Eñemboheraguapy
 email-footer-support-heading = ¿Eporanduse { -brand-mozilla-monitor } rehegua?
 email-footer-support-content = Eike ore <support-link>Ñepytyvõha rendápe</support-link> eñepytyvõkuaa hag̃ua
 email-footer-trigger-transactional = Og̃uahẽ ko ñanduti veve eñemboheraguapýre { -brand-mozilla-monitor } ndive.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Eike ore Aty pytyvõhápe ejeykeko hag̃ua:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Mba’ekuaarã ñemboguáva ome’ẽva { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Mba’ekuaarã ñembyai ome’ẽva <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Ñemigua
+email-unsubscribe-link = <link_to_unsub>Eipe’a mboheraguapy</link_to_unsub>
+# Variables:
+#   $unsub_link (string) - URL to the unsubscribe page, e.g. "https://monitor.mozilla.org/unsubscribe/...".
+email-unsubscribe-link-plain = Mboheraguapy: { $unsub_link }
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
