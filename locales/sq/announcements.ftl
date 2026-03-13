@@ -24,4 +24,5 @@ announcement-free-data-breach-monitoring-title =
     { $emailAddressesCount ->
        *[other] Përfitoni mbikëqyrje falas cenimi të dhënash për deri në { $emailAddressesCount } adresa email.
     }
+announcement-free-data-breach-monitoring-description = Ndihmoni të mbahen të parrezik informacionet tuaja, përmes mbikëqyrjeje cenimesh të dhënash. { -brand-monitor } do t’ju sinjalizojë, nëse hollësi tuajat shfaqen në një cenim të dhënash.
 announcement-free-data-breach-monitoring-cta-label = Mësoni më tepër
