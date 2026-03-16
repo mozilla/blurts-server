@@ -114,7 +114,7 @@
     "winston-transport": "^4.9.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/eslintrc": "^3.3.5",
     "@faker-js/faker": "^10.3.0",
     "@playwright/test": "^1.58.2",
     "@storybook/addon-a11y": "^10.2.8",
