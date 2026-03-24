@@ -39,6 +39,7 @@ user-verify-token-error = Token-i i verifikimit është i domosdoshëm.
 compromised-data = Të dhëna të komprometuara
 # Link title
 more-about-this-breach = Më tepër rreth këtij cenimi
+sensitive-sites = Si i trajton { -product-name } sajtet me të dhëna rezervat?
 sensitive-sites-copy =
     { -product-name } vë në dukje llogaritë me këto
     lloje shkeljesh vetëm pasi të jetë verifikuar një adresë email. Kjo do thotë se jeni

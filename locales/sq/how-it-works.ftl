@@ -10,6 +10,8 @@ how-it-works-banner-title = Si funksionon
 ## Intro
 
 how-it-works-page-data-breaches-intro-title = Ne ofrojmë hapa për të zgjidhur <data_breaches>cenime të dhënash</data_breaches>
+how-it-works-page-data-breaches-intro-text-1 = Cenimet e të dhënave janë shkelje të sigurisë ku informacioni juaj personal ose ekspozohet aksidentalisht, ose vidhet ilegalisht nga hacker-a — përfshi fjalëkalime, hollësi kontakti, informacion financiar e plot të tjera. Cilado llogari, ose kudo ku ruhet informacion i juaji në internet mund të përbënte një objektiv.
+how-it-works-page-data-breaches-intro-text-2 = Zgjidhja e cenimeve të të dhënave ndihmon t’u pengohet hackera-ve hyrja në llogaritë tuaja, shkaktimi i dëmeve financiare, ose vjedhja e identitetit tuaj.
 how-it-works-page-data-breaches-intro-cta-button = Përfitoni kontroll falas
 
 ## Step 1
@@ -22,6 +24,8 @@ how-it-works-page-data-breaches-step-1-text = Duke përdorur adresën tuaj email
 
 how-it-works-page-data-breaches-step-2-title = Hapi 2
 how-it-works-page-data-breaches-step-2-subtitle = Ju ndihmojmë të zgjidhni cenimet
+how-it-works-page-data-breaches-step-2-text-1 = Ngaqë zgjidhja e cenimeve të të dhënave zakonisht lyp hapa dorazi, b.f., ndryshim të fjalëkalimeve tuaj, ose vendosja e një sinjalizimi mashtrimi në vlerësimin e kreditit tuaj, s’mund t’i zgjidhim ne për ju. Por do t’ju udhëheqim nëpër hapat për zgjidhjen e informacionit tuaj që ka rrjedhur.
+how-it-works-page-data-breaches-step-2-text-2 = Dhe nëse informacion i juaji bie në duart ku s’’duhet, do t’ju japin rekomandime sigurie rreth se ç’mund të bëni për të mbrojtur veten tani dhe në të ardhmen.
 
 ## Step 3
 

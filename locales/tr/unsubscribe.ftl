@@ -6,6 +6,7 @@
 # Confirm Unsubscription State
 
 unsubscribe-from-breach-alerts-header = İhlal uyarısı e-postaları aboneliğinden çıkılsın mı?
+unsubscribe-from-breach-alerts-body = Artık { -brand-mozilla-monitor }’den anında ihlal uyarı e-postaları almayacaksınız.
 unsubscribe-link-cta = Abonelikten çık
 
 # Success Unsubscription State
