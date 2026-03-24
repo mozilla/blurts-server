@@ -5,6 +5,8 @@
 
 # Confirm Unsubscription State
 
+unsubscribe-from-breach-alerts-header = ¿Eipe’a nde reraguapy ñanduti veve ñemboguarãgui?
+unsubscribe-from-breach-alerts-body = Nog̃uahẽmo’ãvéima ñanduti veve kyhyjerã ñemboguarã { -brand-mozilla-monitor } rehegua.
 unsubscribe-link-cta = Eheja mboheraguapy
 
 # Success Unsubscription State

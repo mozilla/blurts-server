@@ -12,8 +12,8 @@ email-header-button-sign-in = Přihlásit se
 email-footer-support-heading = Máte otázky k { -brand-mozilla-monitor(case: "dat") }?
 email-footer-support-content = Pro pomoc navštivte naše <support-link>centrum podpory</support-link>
 email-footer-trigger-transactional = Tento e-mail dostáváte jako předplatitel { -brand-mozilla-monitor(case: "gen") }.
-email-footer-reason-subscriber = Tento automatický e-mail dostáváte jako odběratel { -brand-mozilla-monitor }. Pokud jste zprávu obdrželi omylem, není vyžadována žádná akce. Pro více informací prosím navštivte <support-link>podporu aplikace { -brand-mozilla }</support-link>.
-email-footer-reason-subscriber-one-time = Tento jednorázový automatický e-mail jste dostali, protože jste přihlášeni k odběru { -brand-monitor-plus }. Žádné další podobné e-maily vám již chodit nebudou. Pro více informací prosím navštivte <support-link>podporu aplikace { -brand-mozilla }</support-link>.
+email-footer-reason-subscriber = Tento automatický e-mail jste obdrželi jako odběratel služby { -brand-mozilla-monitor }. Pokud vám byl doručen omylem, není třeba nic podnikat. Další informace najdete na stránkách podpory <support-link>{ -brand-mozilla }</support-link>.
+email-footer-reason-subscriber-one-time = Tento jednorázový automatický e-mail jste obdrželi, protože jste přihlášeni k odběru služby { -brand-monitor-plus }. Žádné další e-maily tohoto typu již nebudete dostávat. Další informace najdete na stránce <support-link>podpory { -brand-mozilla }</support-link>.
 # Variables:
 #    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
 email-footer-support-content-plain =
