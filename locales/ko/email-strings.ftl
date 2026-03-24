@@ -12,9 +12,23 @@ email-header-button-sign-in = 로그인
 email-footer-support-heading = { -brand-mozilla-monitor }에 관한 질문이 있으신가요?
 email-footer-support-content = 도움을 받으시려면 <support-link>지원 센터</support-link>를 방문하세요.
 email-footer-trigger-transactional = { -brand-mozilla-monitor } 구독자로서 이 메일을 수신하고 계십니다.
+email-footer-reason-subscriber = { -brand-mozilla-monitor }의 구독자에게 발송하는 자동 이메일입니다. 잘 못 받은 경우 별도의 조치가 필요하지 않습니다. 자세한 내용은 <support-link>{ -brand-mozilla } 지원</support-link>을 참조하세요.
+email-footer-reason-subscriber-one-time = { -brand-monitor-plus }를 구독하고 있어서 1회성 이메일이 자동 발송 되었습니다. 같은 이메일은 더 이상 받지 않을 것입니다. 자세한 내용은 <support-link>{ -brand-mozilla } 지원</support-link>을 참조하세요.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    도움이 필요하면 지원 센터를 방문하세요:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = { -brand-HIBP }에서 제공한 유출 데이터: { $hibp_link }
 email-footer-source-hibp = <hibp-link>{ -brand-HIBP }</hibp-link>에서 제공된 유출 데이터
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = 개인 정보
+email-unsubscribe-link = <link_to_unsub>구독 취소</link_to_unsub>
+# Variables:
+#   $unsub_link (string) - URL to the unsubscribe page, e.g. "https://monitor.mozilla.org/unsubscribe/...".
+email-unsubscribe-link-plain = 구독 취소: { $unsub_link }
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.

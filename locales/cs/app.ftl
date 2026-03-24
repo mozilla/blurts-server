@@ -128,7 +128,11 @@ compromised-data = Kompromitovaná data:
 # Link title
 more-about-this-breach = Další informace o tomto úniku
 sensitive-sites = Jak { -product-name } zachází s úniky citlivých dat?
-sensitive-sites-copy = { -product-name } zobrazí účty spojené s těmito typy úniků pouze pokud byla e-mailová adresa ověřena. To znamená, že jste jedinou osobou, která může vidět, zda byly vaše údaje součástí tohoto úniku (pokud k vašemu e-mailovému účtu nemá přístup někdo jiný).
+sensitive-sites-copy =
+    { -product-name } zobrazí účty spojené s těmito
+    typy úniků dat až po ověření e-mailové adresy. To znamená, že jste
+    jediná osoba, která může zjistit, zda se vaše údaje v tomto úniku dat nacházely (pokud někdo
+    jiný nemá přístup k vašemu e-mailovému účtu).
 what-data = Jaké údaje byly vyzrazeny:
 delayed-reporting-headline = Proč nahlášení tohoto úniku trvalo tak dlouho?
 delayed-reporting-copy = Občas to může trvat měsíce či roky, než se přihlašovací údaje vyzrazené v úniku dat objeví na temném Webu. Úniky jsou přidány do naší databáze, jakmile byly odhaleny a potvrzeny.

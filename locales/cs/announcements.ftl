@@ -22,8 +22,8 @@ announcement-big-img-alt = Obrázek oznámení
 # $emailAddressesCount (string) - number of email addresses allowed for data breach monitoring
 announcement-free-data-breach-monitoring-title =
     { $emailAddressesCount ->
-        [one] Získejte bezplatné sledování narušení dat až pro { $emailAddressesCount } e-mailových adres.
-        [few] Získejte bezplatné sledování narušení dat až pro { $emailAddressesCount } e-mailových adres.
+        [one] Získejte bezplatné sledování narušení dat až pro { $emailAddressesCount } e-mailovou adresu.
+        [few] Získejte bezplatné sledování narušení dat až pro { $emailAddressesCount } e-mailové adresy.
        *[other] Získejte bezplatné sledování narušení dat až pro { $emailAddressesCount } e-mailových adres.
     }
 announcement-free-data-breach-monitoring-description = Pomozte udržet své informace v bezpečí díky sledování úniků dat. { -brand-monitor } vás upozorní, jestliže se vaše údaje objeví v úniku dat.

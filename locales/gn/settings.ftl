@@ -21,6 +21,7 @@ settings-alert-preferences-option-two = Emondopaite kyhyjerã ñembogua ñanduti
 settings-email-verification-callout = Ñanduti veve jehechajey jerurepyre
 settings-remove-email-button-label = Mboguete
 settings-email-addresses-header = Ñanduti veve kundaharape
+settings-email-addresses-description = { -brand-monitor } he’íta ko’ã ñanduti veve osẽpa ñembogua ojekuaávape.
 settings-email-addresses-add-email-button = Embojuaju ñanduti veve kundaharape
 # Variables:
 #   $limit (number) - Number of emails that can be added for monitoring.
@@ -31,8 +32,13 @@ input-error-alt = Javy
 ## Email address dialog
 
 settings-email-addresses-initial-dialog-header = Embojuaju ñanduti veve kundaharape
+settings-email-addresses-initial-dialog-description = Romondóta ndéve peteĩ juajuha hechajeyha emoneĩkuaa hag̃ua emoingeseha { -brand-monitor } ñemoha’ãnga oútavape.
 settings-email-addresses-initial-dialog-add-email-input-label = Ehai ñandutiveve kundaharape
 settings-email-addresses-initial-dialog-add-email-button-label = Emondo juajuha jehechajeyrã
+# Variables:
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Juajuha hechajeyha ohóva <b>{ $email }</b>-pe
+settings-email-addresses-confirmation-dialog-description = Emboruja juajuha embojuaju hag̃ua ko mba’ete { -brand-monitor } ñemoha’ãnga oútavape.
 settings-email-addresses-confirmation-dialog-close-button = Mboty
 
 ## Delete Monitor account
