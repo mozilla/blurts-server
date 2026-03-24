@@ -19,7 +19,9 @@ settings-alert-preferences-option-two = 모든 유출 알림을 기본 이메일
 ## Monitored email addresses
 
 settings-email-verification-callout = 이메일 인증 필요
+settings-remove-email-button-label = 삭제
 settings-email-addresses-header = 이메일 주소
+settings-email-addresses-description = 알려진 유출 사례에 이러한 이메일이 있으면 { -brand-monitor }에서 알려 줍니다.
 settings-email-addresses-add-email-button = 이메일 주소 추가
 # Variables:
 #   $limit (number) - Number of emails that can be added for monitoring.
@@ -30,6 +32,14 @@ input-error-alt = 오류
 ## Email address dialog
 
 settings-email-addresses-initial-dialog-header = 이메일 주소 추가
+settings-email-addresses-initial-dialog-description = 향후 { -brand-monitor } 검사에 포함할 확인 링크를 보냅니다.
+settings-email-addresses-initial-dialog-add-email-input-label = 이메일 주소 입력
+settings-email-addresses-initial-dialog-add-email-button-label = 확인 링크 보내기
+# Variables:
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = <b>{ $email }</b>으로 인증 링크를 보냄
+settings-email-addresses-confirmation-dialog-description = 향후 { -brand-monitor } 검사를 위해 이 계정에 추가하려면 링크를 여세요.
+settings-email-addresses-confirmation-dialog-close-button = 닫기
 
 ## Delete Monitor account
 
@@ -45,6 +55,8 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = 닫기
 
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = 스캔 정보 업데이트
 settings-tab-label-edit-info = 정보 수정
 settings-tab-label-notifications = 알림 설정
 settings-tab-label-manage-account = 계정 관리

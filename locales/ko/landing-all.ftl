@@ -14,6 +14,10 @@ landing-all-hero-image-chart-label = 노출
 
 ## Top navbar
 
+landing-all-hero-navbar-link-how-it-works = 작동 방식
+landing-all-hero-navbar-link-pricing = 가격 책정
+landing-all-hero-navbar-link-faqs = 자주 묻는 질문
+landing-all-hero-navbar-link-recent-breaches = 최근 데이터 유출
 
 # Value Proposition
 
