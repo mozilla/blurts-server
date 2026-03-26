@@ -52,7 +52,7 @@
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
   "volta": {
-    "node": "20.20.0",
+    "node": "20.20.2",
     "npm": "10.8.3"
   },
   "dependencies": {
