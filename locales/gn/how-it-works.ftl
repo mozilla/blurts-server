@@ -26,6 +26,7 @@ how-it-works-page-data-breaches-step-2-subtitle = Roipytyvõta ñembogua ñemboy
 
 how-it-works-page-data-breaches-step-3-title = Jeku’e 3
 how-it-works-page-data-breaches-step-3-subtitle = Rohechameme ñembogua pyahu
+how-it-works-page-data-breaches-step-3-text = Rohechakuaávo peteĩ ñembogua pyahu, Rohechacheýta ndepara’e upéa ha romomarandúta oikóramo upéicha.
 
 ## CTA button
 
