@@ -10,22 +10,22 @@ how-it-works-banner-title = Jak to funguje
 ## Intro
 
 how-it-works-page-data-breaches-intro-title = Přinášíme postup, jak vyřešit <data_breaches>úniky dat</data_breaches>
-how-it-works-page-data-breaches-intro-text-1 = Únik dat je porušení zabezpečení, při kterém jsou vaše osobní údaje buď náhodně vyzrazeny, nebo nelegálně ukradeny hackery - včetně hesel, kontaktních údajů, financí a mnoha dalších. Cílem může být jakýkoli účet nebo místo, kde jsou online uloženy vaše informace.
-how-it-works-page-data-breaches-intro-text-2 = Řešení úniků dat pomozte zabránit hackerům v přístupu k vašim účtům a způsobení finanční škody nebo krádeži vaší identity.
+how-it-works-page-data-breaches-intro-text-1 = Úniky dat představují narušení bezpečnosti, při kterém dojde k náhodnému vyzrazení nebo nezákonnému odcizení vašich osobních údajů hackery — včetně hesel, kontaktních údajů, finančních informací a mnoha dalších. Cílem útoku se může stát jakýkoli účet nebo jakékoli místo, kde jsou vaše údaje uloženy online.
+how-it-works-page-data-breaches-intro-text-2 = Řešení případů úniku dat pomáhá zabránit hackerům v přístupu k vašim účtům, způsobení finanční škody nebo zneužití vaší identity.
 how-it-works-page-data-breaches-intro-cta-button = Získat bezplatné skenování
 
 ## Step 1
 
 how-it-works-page-data-breaches-step-1-title = Krok 1
 how-it-works-page-data-breaches-step-1-subtitle = Kontrolujeme úniky
-how-it-works-page-data-breaches-step-1-text = Používáme vaši e-mailovou adresu a hledáme vás ve všech známých únicích dat. Všichni předplatitelé mohou zdarma monitorovat 5 e-mailových adres.
+how-it-works-page-data-breaches-step-1-text = Na základě vaší e-mailové adresy prohledáme všechny známé případy úniku dat. Všichni předplatitelé mohou zdarma sledovat 5 e-mailových adres.
 
 ## Step 2
 
 how-it-works-page-data-breaches-step-2-title = Krok 2
 how-it-works-page-data-breaches-step-2-subtitle = Pomůžeme vám vyřešit úniky dat
-how-it-works-page-data-breaches-step-2-text-1 = Protože řešení úniků dat obvykle zahrnuje ruční kroky, jako je změna hesel nebo přidání upozornění na podvodné skóre, nemůžeme je za vás vyřešit. Provedeme vás však kroky, jak vyřešit vaše uniklé informace.
-how-it-works-page-data-breaches-step-2-text-2 = A pokud se vaše údaje přece jen dostanou do nesprávných rukou, dáme vám bezpečnostní doporučení, co můžete udělat pro svou nyní i budoucí ochranu.
+how-it-works-page-data-breaches-step-2-text-1 = Vzhledem k tomu, že řešení případů úniku dat obvykle vyžaduje ruční zásahy, jako je změna hesel nebo nastavení upozornění na podvod u vaší úvěrové historie, nemůžeme tyto záležitosti vyřešit za vás. Pomůžeme vám však projít jednotlivými kroky, které jsou nutné k vyřešení úniku vašich osobních údajů.
+how-it-works-page-data-breaches-step-2-text-2 = A pokud se vaše údaje přesto dostanou do nesprávných rukou, poskytneme vám bezpečnostní doporučení, jak se můžete chránit nyní i v budoucnu.
 
 ## Step 3
 

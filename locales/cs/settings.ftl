@@ -38,7 +38,7 @@ settings-email-addresses-initial-dialog-add-email-button-label = Odeslat ověřo
 # Variables:
 #   $email (string) - Email address the confirmation has been sent to.
 settings-email-addresses-confirmation-dialog-header = Odkaz pro ověření byl odeslán na <b>{ $email }</b>
-settings-email-addresses-confirmation-dialog-description = Otevře odkaz pro jeho přidání do tohoto účtu pro budoucí kontroly za { -brand-monitor }.
+settings-email-addresses-confirmation-dialog-description = Klepněte na odkaz a přidejte jej k tomuto účtu pro budoucí skenování pomocí služby { -brand-monitor }.
 settings-email-addresses-confirmation-dialog-close-button = Zavřít
 
 ## Delete Monitor account
