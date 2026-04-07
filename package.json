@@ -25,7 +25,7 @@
     "functional-tests:debug": "playwright test functional-tests/ --config=functional-tests/playwright.config.ts --ui",
     "cron:breach-alerts": "node dist/scripts/cronjobs/emailBreachAlerts/index.js",
     "cron:db-delete-unverified-subscribers": "node dist/scripts/cronjobs/deleteUnverifiedSubscribers.js",
-    "cron:db-pull-breaches": "node dist/scripts/cronjobs/syncBreaches.js",
+    "cron:db-pull-breaches": "node dist/scripts/cronjobs/syncBreaches/index.js",
     "cron:remote-settings-pull-breaches": "node dist/scripts/cronjobs/updateBreachesInRemoteSettings/index.js",
     "db:migrate": "tsx node_modules/knex/bin/cli.js migrate:latest --knexfile src/db/knexfile.js",
     "db:rollback": "tsx node_modules/knex/bin/cli.js migrate:rollback --knexfile src/db/knexfile.js",
