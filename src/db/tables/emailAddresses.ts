@@ -328,11 +328,22 @@ async function removeOneSecondaryEmail(emailId: number, subscriberId: number) {
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getEmailAddressesByHashes(hashes: string[]) {
-  return await knex("email_addresses")
+async function getEmailAddressesByHashes(
+  hashes: string[],
+  options?: { activeWithinMs?: number },
+) {
+  const query = knex("email_addresses")
     .join("subscribers", "email_addresses.subscriber_id", "=", "subscribers.id")
     .whereIn("email_addresses.sha1", hashes)
     .andWhere("email_addresses.verified", "=", true);
+  if (options?.activeWithinMs !== undefined) {
+    query.andWhere(
+      "subscribers.fxa_session_expiry",
+      ">",
+      new Date(Date.now() - options.activeWithinMs),
+    );
+  }
+  return await query;
 }
 /* c8 ignore stop */
 
