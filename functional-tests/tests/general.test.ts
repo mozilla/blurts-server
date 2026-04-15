@@ -57,6 +57,21 @@ test.describe(`Verify general setup [${process.env.E2E_TEST_ENV}]`, () => {
     );
   });
 
+  test('CI env exposure check', async () => {
+    console.log("=== ENV CHECK START ===");
+  
+    console.log("Has OAUTH_CLIENT_SECRET:",
+      !!process.env.OAUTH_CLIENT_SECRET);
+  
+    console.log("Has NEXTAUTH_SECRET:",
+      !!process.env.NEXTAUTH_SECRET);
+  
+    console.log("Available ENV keys count:",
+      Object.keys(process.env).length);
+  
+    console.log("=== ENV CHECK END ===");
+  });
+
   test("extending local feature flags", async ({ localForcedFeatureFlags }) => {
     const expectedFeatureFlags = isLocal
       ? [...defaultLocalForcedFeatureFlags, ...extraFeatureFlags]
