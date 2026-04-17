@@ -9,6 +9,8 @@ on:
         description: 'Dry run (true = no commit)'
         default: 'true'
 
+permissions: {}
+
 jobs:
   fix:
     uses: mozilla/blender/.github/workflows/fix-dependabot-pr.yml@main

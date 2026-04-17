@@ -6,6 +6,8 @@ on:
         description: 'Dry run (true = no merge)'
         default: 'true'
 
+permissions: {}
+
 jobs:
   automerge:
     uses: mozilla/blender/.github/workflows/automerge-dependabot.yml@main
