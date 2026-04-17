@@ -1,0 +1,22 @@
+name: BLEnder Fix Dependabot CI
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to fix'
+        required: true
+      dry_run:
+        description: 'Dry run (true = no commit)'
+        default: 'true'
+
+jobs:
+  fix:
+    uses: mozilla/blender/.github/workflows/fix-dependabot-pr.yml@main
+    with:
+      pr_number: ${{ inputs.pr_number }}
+      dry_run: ${{ inputs.dry_run }}
+      node_version: '20.20.x'
+      install_command: 'npm ci && npm run build-glean && npm run build-nimbus'
+      repo_name: 'Mozilla Monitor'
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
