@@ -49,7 +49,7 @@ jobs:
 
       - name: Cache Playwright Browsers for Playwright's Version
         id: cache-playwright-browsers
-        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5
+        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
         with:
           path: ~/.cache/ms-playwright
           key: playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
@@ -67,13 +67,13 @@ jobs:
           E2E_TEST_SECRET: ${{ secrets.E2E_TEST_SECRET }}
           E2E_TEST_ACCOUNT_BASE_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_BASE_EMAIL }}
           E2E_TEST_ACCOUNT_BASE_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_BASE_PASSWORD }}
-      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: playwright-report-${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
           path: playwright-report/
           retention-days: 30
-      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always()
         with:
           name: test-results-${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
@@ -82,7 +82,7 @@ jobs:
 
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
-        uses: slackapi/slack-github-action@91efab103c0de0a537f72a35f6b8cda0ee76bf0a # v2.1.1
+        uses: slackapi/slack-github-action@af78098f536edbc4de71162a307590698245be95 # v3.0.1
         if: failure() && github.ref == 'refs/heads/main'
         with:
           webhook: ${{ secrets.SLACK_GHA_FAILURES_WEBHOOK }}
