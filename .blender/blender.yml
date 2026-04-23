@@ -1,0 +1,3 @@
+repo_name: "Firefox Monitor (Blurts Server)"
+node_version: "20"
+install_command: "npm ci"
