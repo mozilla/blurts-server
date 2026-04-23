@@ -23,6 +23,7 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
+-brand-solo-ai = Solo AI
 
 ##
 
@@ -38,6 +39,12 @@ user-verify-token-error = จำเป็นต้องใช้โทเค็
 compromised-data = ข้อมูลที่ถูกบุกรุก:
 # Link title
 more-about-this-breach = เพิ่มเติมเกี่ยวกับการละเมิดนี้
+sensitive-sites = { -product-name } จัดการกับไซต์ที่ละเอียดอ่อนอย่างไร?
+sensitive-sites-copy =
+    { -product-name } จะเปิดเผยเฉพาะบัญชีที่เกี่ยวข้องกับการละเมิดชนิดเหล่านี้
+    หลังจากที่ได้ยืนยันที่อยู่อีเมลแล้วเท่านั้น ซึ่งหมายความว่าคุณจะเป็นเพียงคนเดียวเท่านั้น
+    ที่สามารถดูได้ว่าข้อมูลของคุณอยู่ในการละเมิดนี้หรือเปล่า (นอกจากว่าจะมีใครอื่น
+    สามารถเข้าถึงบัญชีอีเมลของคุณได้)
 what-data = ชนิดข้อมูลที่ถูกบุกรุก:
 delayed-reporting-headline = ทำไมจึงใช้เวลานานในการรายงานการละเมิดนี้?
 delayed-reporting-copy =
@@ -47,6 +54,8 @@ delayed-reporting-copy =
 
 ##
 
+what-is-a-website-breach = การละเมิดเว็บไซต์คืออะไร?
+website-breach-blurb = การละเมิดข้อมูลบนเว็บไซต์เกิดขึ้นเมื่ออาชญากรไซเบอร์ขโมย คัดลอก หรือเปิดเผยข้อมูลส่วนตัวจากบัญชีออนไลน์ต่างๆ ซึ่งมักเป็นผลจากการที่แฮกเกอร์พบจุดอ่อนในความปลอดภัยของเว็บไซต์ การละเมิดยังสามารถเกิดขึ้นได้เมื่อข้อมูลบัญชีรั่วไหลโดยไม่ได้ตั้งใจ
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = ภาพรวม
