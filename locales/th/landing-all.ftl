@@ -14,6 +14,7 @@ landing-all-hero-image-chart-label = การเปิดเผย
 
 ## Top navbar
 
+landing-all-hero-navbar-link-faqs = คำถามที่พบบ่อย
 
 # Value Proposition
 

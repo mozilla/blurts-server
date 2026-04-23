@@ -171,7 +171,7 @@ security-recommendation-ip-summary =
         [few] Vaše IP adresa byla vyzrazena v { $num_breaches } únicích údajů:
        *[other] Vaše IP adresa byla vyzrazena v { $num_breaches } únicích údajů:
     }
-security-recommendation-ip-description = Vaše IP adresa určuje vaši polohu a poskytovatele internetových služeb. Hackeři mohou tyto informace použít k nalezení vaší polohy nebo k pokusu o připojení k vašim zařízením.
+security-recommendation-ip-description = Vaše IP adresa identifikuje vaši polohu a poskytovatele internetových služeb. Hackeři mohou tyto informace použít ke zjištění vaší polohy nebo k pokusu o připojení k vašim zařízením.
 security-recommendation-ip-step-one = Použijte VPN (například <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) ke skrytí své skutečné IP adresy a používejte internet soukromě.
 
 # Leaked Passwords

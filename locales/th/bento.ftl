@@ -7,6 +7,7 @@ toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } สำหรับเดสก์ท็อป
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } สำหรับมือถือ
+toolbar-app-picker-product-solo = { -brand-solo-ai }
 toolbar-app-picker-by-mozilla = สร้างโดย { -brand-mozilla }
 # Bento headline
 fx-makes-tech = { -brand-name } เป็นเทคโนโลยีที่ต่อสู้เพื่อความเป็นส่วนตัวออนไลน์ของคุณ

@@ -25,4 +25,5 @@ announcement-free-data-breach-monitoring-title =
         [one] Eñeha’ã ereko mba’ekuaarã ñembogua mongu’eha reigua { $emailAddressesCount }-pe g̃uarã ñanduti veve.
        *[other] Eñeha’ã ereko mba’ekuaarã ñembogua mongu’eha reigua { $emailAddressesCount }-pe g̃uarã ñanduti veveita.
     }
+announcement-free-data-breach-monitoring-description = Eipytyvõ ereko hag̃ua marandu tekorosãme mba’ekuaarã ñembogua ma’ẽme. { -brand-monitor } neatõita ne marandu oĩrõ mba’ekuaarã ñemboguápe.
 announcement-free-data-breach-monitoring-cta-label = Eikuaave
