@@ -92,7 +92,7 @@ export const EmailFooter = (props: Props) => {
             align="center"
           />
           <mj-text font-size="14px" font-weight="400" align="center">
-            149 New Montgomery St, 4th Floor, San Francisco, CA 94105
+            235 Pine St, 7th Floor, San Francisco, CA 94104
           </mj-text>
           <mj-text font-size="14px" font-weight="600" align="center">
             <a href={CONST_URL_TERMS} style={{ color: "black" }}>
@@ -183,9 +183,9 @@ export const RedesignedEmailFooter = (props: Props) => {
             font-weight="400"
             align="center"
           >
-            149 New Montgomery St, 4th Floor
+            235 Pine St, 7th Floor
             <br />
-            San Francisco, CA 94105
+            San Francisco, CA 94104
           </mj-text>
           <mj-text
             font-size="14px"
@@ -264,7 +264,7 @@ ${
 ${separator}
 
 Mozilla Corporation
-149 New Montgomery St, 4th Floor, San Francisco, CA 94105
+235 Pine St, 7th Floor, San Francisco, CA 94104
 
 ${l10n.getString("email-footer-trigger-transactional")}
 
