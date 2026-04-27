@@ -74,7 +74,7 @@ npm run build-glean
 npm test
 ```
 
-CI runs `npm test` which calls `npm run build-glean && vitest run`.
+CI runs `npm run build-glean` before `npm test`; `npm test` calls `npm run build-nimbus && vitest run`.
 
 ### Code generation (Glean telemetry)
 
