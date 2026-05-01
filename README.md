@@ -314,6 +314,16 @@ You can check translation status via the [Pontoon site](https://pontoon.mozilla.
 
 To use the strings in code, you need to obtain a `ReactLocalization` instance, which selects the right version of your desired string for the user. How to do that depends on where your code runs: in tests, in a cron job, in a server component, or on the client-side. Generally, you will import a `getL10n` function from one of the modules in `/src/app/functions/l10n/`, except for [Client Components](https://nextjs.org/docs/app/building-your-application/rendering/client-components), which use [the `useL10n` hook](./src/app/hooks/l10n.ts). Look at existing code for inspiration.
 
+### Updating Breach Data Classes
+
+The localization breach data classes in `locales/en/data-classes.ftl` are synced from the [Have I Been Pwned API](https://haveibeenpwned.com/api/v3/dataClasses). To update this file with any new or changed data classes from HIBP:
+
+```sh
+npm run update-data-classes
+```
+
+After running the script, review the changes with `git diff`. If everything looks satisfactory, commit and push up a PR them. After its merged, the English strings will then be available for localization via Pontoon.
+
 ## Preview Deployment
 
 We use GCP Cloudrun for dev review – official stage and production apps are built by the Dockerfile and Github Actions. Everything that is merged into `main` will deploy automatically to stage. The ADR for preview deployment can be found [here](https://github.com/mozilla/blurts-server/blob/main/docs/adr/0008-preview-deployment.md)
