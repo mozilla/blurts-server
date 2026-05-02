@@ -10,6 +10,7 @@ how-it-works-banner-title = Mba’éichapa omba’apo
 ## Intro
 
 how-it-works-page-data-breaches-intro-title = Ro’e mba’éicha roipytyvõta <data_breaches>mba’ekuaarã ñembogua</data_breaches> moĩporã
+how-it-works-page-data-breaches-intro-text-1 = Mba’ekuaarãita ñemboguakue ha’e tekorosã ñembyaikue nde reheguaite marandu, oĩhápe ñe’ẽñemi, marandu pumbyry papapy, viruatygua ha hetave mba’e, ojehecháramo peichahágui térã omonda umi hacker. Oimeraẽva mba’ete térã tenda oñeñongatuha ne marandu ñandutigua ha’ekuaa hupytyrã.
 how-it-works-page-data-breaches-intro-text-2 = Emoĩporãvo mba’ekuaarã ñembogua oipytyvõ ani hag̃ua hacker oike nemba’etépe, ojapo mba’evai viru rehegua térã omonda nde reheguaite.
 how-it-works-page-data-breaches-intro-cta-button = Emoha’ãnga reiete
 
@@ -23,6 +24,7 @@ how-it-works-page-data-breaches-step-1-text = Eiporúvo ne ñeẽ veve año, roh
 
 how-it-works-page-data-breaches-step-2-title = Jeku’e 2
 how-it-works-page-data-breaches-step-2-subtitle = Roipytyvõta ñembogua ñemboykerã
+how-it-works-page-data-breaches-step-2-text-1 = Mba’ekuaarã ñemboguakue ñemoĩporã hetave jey ejapova’erã nde po rupiete, ikatúva ñe’ẽñemi moambue térã emyandy kyhyjerã ne deveha rembiasakueregua, norosolucionamo’ãi nde rérape. Upéicharamo, rombohapéta emoĩporã hag̃ua ne marandu rehegua.
 how-it-works-page-data-breaches-step-2-text-2 = Ha ne marandu ho’áramo hekovaíva pópe, roñemoñe’ẽta ndéve  tekorosãverã rehegua mba’etépa ikatu rejapo emohekorosãve hag̃ua ko’ág̃a ha tenonderãme.
 
 ## Step 3
