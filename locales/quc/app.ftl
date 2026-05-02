@@ -97,7 +97,52 @@ main-nav-button-expand-label = Cholokib'al rech nimarisab'al
 main-nav-button-expand-tooltip = Cholokib'al rech nimarisab'al
 main-nav-label = Nik'onem
 main-nav-link-home-label = Majib'al
+main-nav-link-dashboard-label = k'olwokaj
+main-nav-link-settings-label = Taq wiqitajem
+main-nav-link-faq-label = FAQs
+main-nav-link-faq-tooltip = K'otb'al chi'aj qas kb'anik
+
+## User menu
+
+user-menu-trigger-label = Ujaqil cholokib'al rech kojonel
+user-menu-trigger-tooltip = Cholk'aslemal
+user-menu-manage-fxa-label = Chawilawachij le a{ -brand-mozilla-account }
+user-menu-settings-label = Taq wiqitajem
+user-menu-settings-tooltip = Ujeqeb'axik { -brand-mozilla-monitor }
+user-menu-help-label = Tob'anik xuquje' qoq'anem
+user-menu-help-tooltip = Chariqa' tob'anik ruk' ukojik { -brand-mozilla-monitor }
+user-menu-signout-label = Chatz'apij kemchak
+user-menu-signout-tooltip = Chatz'apij kemchak pa { -brand-mozilla-monitor }
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-of-service = Taqanem rech pataninem
+privacy-notice = Ub'ixikil rech echeb'alil
+github = { -brand-github }
+footer-nav-recent-breaches = Maja naj taq retztan
+footer-external-link-faq-label = FAQs
+footer-external-link-faq-tooltip = k'otb'al chi'aj qas kb'anik
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } man xriqitaj ta uxaq wuj
+error-page-error-404-copy = Chakuyu' le uxaq wuj ktajin katzukuj man k'o ta chik.
+error-page-error-404-cta-button = B'enam chi rij
 
 ## Breach overview page
 
+all-breaches-headline-3 = Mulib'al juq'attzij rech taq chayub'al juq'attzij
+all-breaches-lead = Kqilawachij ronojel le retztaqan le eta'matalik are chi kqilo we k'o k'axk'olil chi rij le qalajisanem rech awinaqilal. Waral k'o juj tz'aqat cholalj rech ronojel taq retztaqan le qariqom, xumajij loq pa ri 2007.
 search-breaches = Taq retztaqan rech tzukunem
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Taq juq'attzij k'o chi uwach uk'axal
+
+## Public breach detail page
+
+find-out-if-2 = Chawila' we k'o k'axk'olil ariqom
+find-out-if-description = Aninaq katqato' chech rilik we k'o le ataqoqxa'nib'al pa uk'axk'olil, chil jas rajawaxik kab'analo'xix
+breach-detail-cta-signup = Chaq'atuj we k'o retz'taqan
+loading-accessibility = Ktajin uya'ik uchuq'ab'

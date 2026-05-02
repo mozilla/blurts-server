@@ -14,7 +14,10 @@ landing-all-hero-image-chart-label = การเปิดเผย
 
 ## Top navbar
 
+landing-all-hero-navbar-link-how-it-works = วิธีการทำงาน
+landing-all-hero-navbar-link-pricing = ราคา
 landing-all-hero-navbar-link-faqs = คำถามที่พบบ่อย
+landing-all-hero-navbar-link-recent-breaches = การรั่วไหลของข้อมูลล่าสุด
 
 # Value Proposition
 
