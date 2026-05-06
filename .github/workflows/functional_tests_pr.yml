@@ -85,15 +85,3 @@ jobs:
           SENTRY_DSN: "Unused for the test run, but required to be present when loading env vars"
           EMAIL_FROM: "Unused for the test run, but required to be present when loading env vars"
           S3_BUCKET: "Unused for the test run, but required to be present when loading env vars"
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        if: always()
-        with:
-          name: test-results
-          path: src/functional-tests/test-results/
-          retention-days: 30

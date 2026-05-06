@@ -68,19 +68,6 @@ jobs:
           E2E_TEST_ACCOUNT_BASE_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_BASE_EMAIL }}
           E2E_TEST_ACCOUNT_BASE_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_BASE_PASSWORD }}
           FXA_CI_SECRET: ${{ secrets.FXA_CI_SECRET }}
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        if: always()
-        with:
-          name: playwright-report-${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
-          path: playwright-report/
-          retention-days: 30
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        if: always()
-        with:
-          name: test-results-${{ github.event_name == 'workflow_dispatch' && inputs.test_env || matrix.test_env }}
-          path: src/functional-tests/test-results/
-          retention-days: 30
-
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@03ea5433c137af7c0495bc0cad1af10403fc800c # v3.0.2
