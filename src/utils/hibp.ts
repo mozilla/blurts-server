@@ -174,6 +174,28 @@ async function kAnonReq(path: string, options = {}) {
 /* c8 ignore stop */
 
 /**
+ * Sanitize a single data class string
+ * ie. "Email Addresses" -> "email-addresses"
+ *
+ * @returns Sanitized data class string
+ */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
+export function formatDataClass(dataClass: string): string {
+  return (
+    dataClass
+      .toLowerCase()
+      // Replace non-alphanumeric characters, except for dashes, by dashes:
+      .replace(/[^-a-z0-9]/g, "-")
+      // Replace 2 or more consecutive dashes by a single dash:
+      .replace(/-{2,}/g, "-")
+      // Remove dashes at the start or end of the data class:
+      .replace(/(^-|-$)/g, "")
+  );
+}
+/* c8 ignore stop */
+
+/**
  * Sanitize data classes
  * ie. "Email Addresses" -> "email-addresses"
  *
@@ -182,16 +204,9 @@ async function kAnonReq(path: string, options = {}) {
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
 function formatDataClassesArray(dataClasses: Array<keyof HibpBreachDataTypes>) {
-  return dataClasses.map((dataClass) =>
-    dataClass
-      .toLowerCase()
-      // Replace non-alphanumeric characters, except for dashes, by dashes:
-      .replace(/[^-a-z0-9]/g, "-")
-      // Replace 2 or more consecutive dashes by a single dash:
-      .replace(/-{2,}/g, "-")
-      // Remove dashes at the start or end of the data class:
-      .replace(/(^-|-$)/g, ""),
-  ) as Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>;
+  return dataClasses.map((dataClass) => formatDataClass(dataClass)) as Array<
+    HibpBreachDataTypes[keyof HibpBreachDataTypes]
+  >;
 }
 /* c8 ignore stop */
 
@@ -259,8 +274,6 @@ function dbToHibp(breach: BreachRow): HibpLikeDbBreach {
  * Get all breaches from the database table "breaches",
  * sanitize it, and return a javascript array
  */
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
 async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
   let dbBreaches: BreachRow[] = [];
   const rClient = redisClient();
@@ -308,7 +321,6 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
   // TODO: change field names to camel case
   return dbBreaches.map(dbToHibp);
 }
-/* c8 ignore stop */
 
 /**
  * Filter breaches that we would not like to show.
