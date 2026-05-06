@@ -137,6 +137,16 @@ export async function run() {
   } else {
     await upsertBreaches(breachesResponse);
 
+    // Try to sync icons, but don't fail the job from it
+    try {
+      logger.info("Starting breach icon sync");
+      await getBreachIcons(breachesResponse);
+      logger.info("Completed breach icon sync");
+    } catch (e) {
+      logger.error("getBreachIcons failed for syncBreaches.ts", { error: e });
+      captureException(e);
+    }
+
     const result = await getAllBreaches();
     logger.info(
       "Number of breaches in the database after upsert:",
@@ -157,9 +167,6 @@ export async function run() {
       captureException(e);
     }
   }
-  logger.info("Starting breach icon sync");
-  await getBreachIcons(breachesResponse);
-  logger.info("Completed breach icon sync");
 }
 
 /**
