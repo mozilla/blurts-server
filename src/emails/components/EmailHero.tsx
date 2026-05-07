@@ -24,11 +24,11 @@ export const EmailHero = (props: Props) => {
       <mj-section
         padding="10px 12px"
         border-radius="16px 16px 0 0"
-        background-color="#E7DFFF"
+        background-color="#F5EAFF"
       >
         <mj-group>
           <mj-column
-            width="70%"
+            width="100%"
             padding-left="0"
             padding-right="0"
             vertical-align="middle"
@@ -38,12 +38,12 @@ export const EmailHero = (props: Props) => {
               src={`${config.serverUrl}/images/email/monitor-logo-transparent.png`}
               href={`${config.serverUrl}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo${utmContentSuffix}`}
               align="center"
-              width="200px"
+              width="150px"
             />
           </mj-column>
         </mj-group>
       </mj-section>
-      <mj-section background-color="#E7DFFF" border-radius="0 0 16px 16px">
+      <mj-section background-color="#F5EAFF" border-radius="0 0 16px 16px">
         <mj-column>
           <mj-text font-size="20px">
             <h2>{props.heading}</h2>

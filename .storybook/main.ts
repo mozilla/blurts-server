@@ -20,6 +20,7 @@ const config: StorybookConfig = {
   docs: {},
 
   staticDirs: [
+    "../public",
     // See https://github.com/storybookjs/storybook/tree/4f0c895bc53116272ef598f19e8d869213be49a9/code/frameworks/nextjs#nextfontlocal
     {
       from: "../src/app/fonts",
