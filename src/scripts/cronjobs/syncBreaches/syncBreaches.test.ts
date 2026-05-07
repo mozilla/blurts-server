@@ -16,14 +16,22 @@ import {
   afterAll,
   type MockInstance,
 } from "vitest";
+import type { BreachRow } from "knex/types/tables";
+import type { Redis } from "ioredis";
 import hibpBreachMock from "../../../test/seeds/hibpBreachResponse.json";
-import { getBreachIcons } from "./syncBreaches";
-import { HibpGetBreachesResponse } from "../../../utils/hibp";
+import { getBreachIcons, run } from "./syncBreaches";
+import {
+  HibpGetBreachesResponse,
+  fetchHibpBreaches,
+} from "../../../utils/hibp";
 import { uploadToS3, checkS3ObjectExists } from "../../../utils/s3";
 import {
   getBreachFaviconUrl,
   updateBreachFaviconUrl,
+  upsertBreaches,
+  getAllBreaches,
 } from "../../../db/tables/breaches";
+import { redisClient } from "../../../db/redis/client";
 
 vi.mock("../../../utils/s3", () => ({
   uploadToS3: vi.fn().mockResolvedValue(undefined),
@@ -33,6 +41,19 @@ vi.mock("../../../utils/s3", () => ({
 vi.mock("../../../db/tables/breaches", () => ({
   updateBreachFaviconUrl: vi.fn().mockResolvedValue(undefined),
   getBreachFaviconUrl: vi.fn(),
+  upsertBreaches: vi.fn().mockResolvedValue(undefined),
+  getAllBreaches: vi.fn().mockResolvedValue([]),
+}));
+
+vi.mock("../../../utils/hibp", () => ({
+  fetchHibpBreaches: vi.fn().mockResolvedValue([]),
+  formatDataClassesArray: vi.fn((arr) => arr),
+}));
+
+vi.mock("../../../db/redis/client", () => ({
+  redisClient: vi.fn(),
+  REDIS_ALL_BREACHES_KEY: "breaches",
+  BREACHES_EXPIRY_SECONDS: 43200,
 }));
 
 vi.mock("../../../app/functions/server/logging", async () => {
@@ -41,6 +62,10 @@ vi.mock("../../../app/functions/server/logging", async () => {
     logger: mockLogger(),
   };
 });
+
+vi.mock("@sentry/node", () => ({
+  captureException: vi.fn(),
+}));
 
 const mockGetBreachFaviconUrls = (
   favicons: Array<string | null | undefined>,
@@ -170,6 +195,123 @@ describe("syncBreaches", () => {
       await getBreachIcons(breaches);
       expect(uploadToS3).toHaveBeenCalledTimes(breaches.length);
       expect(updateBreachFaviconUrl).toHaveBeenCalledTimes(breaches.length - 1);
+    });
+  });
+
+  describe("run", () => {
+    const breaches = hibpBreachMock.slice(0, 2) as HibpGetBreachesResponse;
+    const mockRedisClient = {
+      set: vi.fn().mockResolvedValue("OK"),
+    };
+
+    beforeEach(() => {
+      vi.mocked(fetchHibpBreaches).mockResolvedValue(breaches);
+      vi.mocked(getAllBreaches).mockResolvedValue(
+        breaches as unknown as BreachRow[],
+      );
+      vi.mocked(redisClient).mockReturnValue(
+        mockRedisClient as unknown as Redis,
+      );
+      vi.spyOn(global, "fetch").mockResolvedValue({
+        status: 200,
+        arrayBuffer: async () => Buffer.from("abc"),
+      } as unknown as Response);
+      mockGetBreachFaviconUrls(
+        breaches.map((breach) => buildBreachFavicon(breach.Domain)),
+      );
+    });
+
+    afterEach(() => {
+      vi.resetAllMocks();
+    });
+
+    it("executes all steps in correct order", async () => {
+      const callOrder: string[] = [];
+      vi.mocked(upsertBreaches).mockImplementation(async () => {
+        callOrder.push("upsertBreaches");
+      });
+      vi.mocked(checkS3ObjectExists).mockImplementation(async () => {
+        callOrder.push("getBreachIcons");
+        return true;
+      });
+      vi.mocked(getAllBreaches).mockImplementation(async () => {
+        callOrder.push("getAllBreaches");
+        return breaches as unknown as BreachRow[];
+      });
+      mockRedisClient.set.mockImplementation(async () => {
+        callOrder.push("redisSet");
+        return "OK";
+      });
+
+      await run();
+
+      expect(callOrder).toEqual([
+        "upsertBreaches",
+        "getBreachIcons",
+        "getBreachIcons",
+        "getAllBreaches",
+        "redisSet",
+      ]);
+    });
+
+    it("sets Redis cache with data from getAllBreaches, not original HIBP response", async () => {
+      const breachesWithFavicons = breaches.map((b) => ({
+        ...b,
+        favicon_url: buildBreachFavicon(b.Domain),
+      }));
+      vi.mocked(getAllBreaches).mockResolvedValue(
+        breachesWithFavicons as unknown as BreachRow[],
+      );
+
+      await run();
+
+      expect(mockRedisClient.set).toHaveBeenCalledWith(
+        "breaches",
+        JSON.stringify(breachesWithFavicons),
+        "EX",
+        43200,
+      );
+    });
+
+    it("continues even if getBreachIcons fails", async () => {
+      vi.mocked(checkS3ObjectExists).mockRejectedValue(new Error("S3 error"));
+
+      await run();
+
+      expect(upsertBreaches).toHaveBeenCalled();
+      expect(getAllBreaches).toHaveBeenCalled();
+      expect(mockRedisClient.set).toHaveBeenCalled();
+    });
+
+    it("continues even if Redis cache update fails", async () => {
+      mockRedisClient.set.mockRejectedValue(new Error("Redis error"));
+
+      await expect(run()).resolves.not.toThrow();
+
+      expect(upsertBreaches).toHaveBeenCalled();
+      expect(getAllBreaches).toHaveBeenCalled();
+    });
+
+    it("throws error if breaches contain duplicates", async () => {
+      const duplicateBreaches = [breaches[0], breaches[0]];
+      vi.mocked(fetchHibpBreaches).mockResolvedValue(duplicateBreaches);
+
+      await expect(run()).rejects.toThrow(
+        "Breaches contain duplicates. Stopping script...",
+      );
+
+      expect(upsertBreaches).not.toHaveBeenCalled();
+    });
+
+    it("throws error if breach data is invalid", async () => {
+      const invalidBreach = { ...breaches[0], Name: undefined };
+      vi.mocked(fetchHibpBreaches).mockResolvedValue([
+        invalidBreach,
+      ] as unknown as HibpGetBreachesResponse);
+
+      await expect(run()).rejects.toThrow("Breach data structure is not valid");
+
+      expect(upsertBreaches).not.toHaveBeenCalled();
     });
   });
 });
