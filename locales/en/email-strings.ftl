@@ -79,10 +79,29 @@ email-dashboard-cta = Go to Dashboard
 email-breach-alert-all-subject = New data breach detected
 email-breach-alert-all-preview = We’ll guide you through the steps to resolve it.
 email-breach-alert-all-hero-heading = You’ve been in a new data breach
-email-breach-alert-all-hero-subheading = Don’t worry, we can help you resolve this exposure
+email-breach-alert-all-hero-heading-1 = A { $company-name } data breach needs your review
 email-breach-alert-all-lead = { -brand-mozilla-monitor } discovered the following data breach that includes your personal information:
 email-breach-alert-all-source-title = Breach source:
 email-breach-alert-all-data-points-title = Your exposed data:
 email-breach-alert-all-next-steps-lead = We’ll guide you step-by-step on how to resolve this data breach.
 email-breach-alert-all-next-steps-cta-label = Let’s get started
 email-breach-alert-all-next-steps-button-dashboard = Go to Dashboard
+
+## Breach alert redesigned strings
+
+email-breach-alert-all-hero-heading-1 = A { $company-name } data breach needs your review
+email-breach-alert-all-lead-1 = We got an alert that your data was found in a <link_to_data_breach>data breach</link_to_data_breach>.
+email-breach-alert-all-source-title-1 = Breach details
+email-breach-alert-company = Company
+email-breach-alert-date-of-breach = Date of breach
+email-breach-alert-info-exposed = Info exposed
+email-breach-alert-next-steps = Next steps
+email-breach-alert-next-steps-description = Sign in to your { -brand-mozilla-monitor } dashboard. We’ll guide you through the steps needed to resolve it.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Resolve breach on dashboard
+email-breach-alert-faqs-title = FAQs
+email-breach-alert-faq-qn-1 = Why am I receiving this?
+email-breach-alert-faq-ans-1 = You’ve signed up for data breach alerts. <link_to_settings>Update your preferences</link_to_settings> anytime in settings.
+email-breach-alert-faq-qn-2 = What's a breach alert?
+email-breach-alert-faq-ans-2 = A notification when personal information you’re monitoring gets exposed, stolen or copied without permission.
+email-breach-alert-faq-qn-3 = What’s { -brand-mozilla-monitor }?
+email-breach-alert-faq-ans-3 = A data breach notification service offered that warns you if your online accounts have been involved in a data breach.
