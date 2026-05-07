@@ -164,8 +164,8 @@ export default defineConfig({
         : "only-on-failure",
     /* Video and trace disabled in CI to prevent secret leakage in artifacts */
     video: process.env.CI ? "off" : "retain-on-failure",
-    /* Collect trace when retrying. See https://playwright.dev/docs/trace-viewer */
-    trace: process.env.CI ? "off" : "on-first-retry",
+    /* Collect trace when tests fail. See https://playwright.dev/docs/trace-viewer */
+    trace: process.env.CI ? "off" : "retain-on-failure",
   },
   /* Configure projects for major browsers */
   projects: [
