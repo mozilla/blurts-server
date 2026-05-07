@@ -27,7 +27,7 @@ it("shows the 'Go to Dashboard' button for non-US users", () => {
   render(<ComposedEmail />);
 
   const goToDashboardButton = screen.getByRole("link", {
-    name: "Go to Dashboard",
+    name: "Resolve breach on dashboard",
   });
   expect(goToDashboardButton).toBeInTheDocument();
 });

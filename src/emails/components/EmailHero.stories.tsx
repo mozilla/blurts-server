@@ -32,6 +32,5 @@ export const EmailHeroStory: Story = {
   name: "Hero",
   args: {
     heading: "Email heading",
-    subheading: "Email subheading",
   },
 };

@@ -89,6 +89,7 @@ email-breach-alert-all-next-steps-button-dashboard = Go to Dashboard
 
 ## Breach alert redesigned strings
 
+# $company-name is the name of the company/site that was breached.
 email-breach-alert-all-hero-heading-1 = A { $company-name } data breach needs your review
 email-breach-alert-all-lead-1 = We got an alert that your data was found in a <link_to_data_breach>data breach</link_to_data_breach>.
 email-breach-alert-all-source-title-1 = Breach details
