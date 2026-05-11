@@ -2,7 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-## Breach Data Classes
+
+# Breach Data Classes
 
 account-balances = Rukolob'al rub'i' taqoya'l
 address-book-contacts = Kib'i' achib'il pa kitz'ib'awuj ochochib'äl
@@ -16,7 +17,7 @@ avatars = Taq Awatar
 bank-account-numbers = Kajilab'al kib'i' kitaqoya'l pwaqb'äl
 beauty-ratings = Chawon taq cha'onem
 biometric-data = Yometrik tzij
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Kimujalil winäq
 browser-user-agent-details = Kib'anikil kib'anel rokisanel okik'amaya'l
