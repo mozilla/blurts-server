@@ -93,7 +93,7 @@ email-breach-alert-all-next-steps-button-dashboard = Go to Dashboard
 email-breach-alert-all-hero-heading-1 = { $company-name } data breach details
 # $company-name is the name of the company/site that was breached.
 # $breach-date is the date of the breach.
-email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } found your info in a { $company-name } data breach on { $breach-date }. You're getting this alert because you signed up for <link_to_settings>breach notifications</link_to_settings>.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } found your info in a { $company-name } data breach on { $breach-date }. You’re getting this alert because you signed up for <link_to_settings>breach notifications</link_to_settings>.
 email-breach-alert-all-source-title-1 = Breach details
 email-breach-alert-company = Company
 email-breach-alert-date-of-breach = Date of breach
