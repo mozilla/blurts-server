@@ -77,7 +77,7 @@ email-dashboard-cta = Go to Dashboard
 ## Breach alert email
 
 email-breach-alert-all-subject = New data breach detected
-email-breach-alert-all-preview = We’ll guide you through the steps to resolve it.
+email-breach-alert-all-preview = We’ll guide you on the steps to resolve it.
 email-breach-alert-all-hero-heading = You’ve been in a new data breach
 email-breach-alert-all-hero-subheading = Don’t worry, we can help you resolve this exposure
 email-breach-alert-all-lead = { -brand-mozilla-monitor } discovered the following data breach that includes your personal information:
@@ -103,7 +103,7 @@ email-breach-alert-next-steps-description = <sign_in_link>Sign in</sign_in_link>
 email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Resolve breach on dashboard
 email-breach-alert-faqs-title = FAQs
 email-breach-alert-faq-qn-1 = Why am I receiving this?
-email-breach-alert-faq-ans-1 = You’ve signed up for data breach alerts. <link_to_settings>Update your preferences</link_to_settings> anytime in settings.
+email-breach-alert-faq-ans-1 = You signed up for data breach alerts. <link_to_settings>Update your preferences</link_to_settings> anytime in settings.
 email-breach-alert-faq-qn-2 = Why don’t I recognize this company or site?
 email-breach-alert-faq-ans-2 = It may have changed ownership or name, involve an old or automatically created account, or data exposed through a combolist or aggregator.
 email-breach-alert-faq-qn-3 = What’s a breach alert?
