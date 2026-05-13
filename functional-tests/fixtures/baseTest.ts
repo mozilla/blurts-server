@@ -6,6 +6,7 @@ import { test as baseTest, expect } from "@playwright/test";
 import { FeatureFlagName } from "../../src/db/tables/featureFlags";
 import { createTestClientRegionToken } from "../../src/app/functions/server/testCountryCodeToken";
 import { getBaseTestEnvUrl } from "../utils/environment";
+import { setupFxaCiRoutes } from "../utils/fxa";
 
 // Feature flags that are enabled by default locally
 export const defaultLocalForcedFeatureFlags: FeatureFlagName[] = [
@@ -40,7 +41,8 @@ const test = baseTest.extend<{
     await use(mergedFlags);
   },
   sharedBeforeEach: [
-    async ({ context, localForcedFeatureFlags }, use, testInfo) => {
+    async ({ context, page, localForcedFeatureFlags }, use, testInfo) => {
+      await setupFxaCiRoutes(page);
       await context.route("**/*", async (route) => {
         const request = route.request();
         const requestUrl = request.url();

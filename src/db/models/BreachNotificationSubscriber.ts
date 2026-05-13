@@ -6,6 +6,8 @@ import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { getEmailAddressesByHashes } from "../tables/emailAddresses";
 import { getSubscribersByHashes } from "../tables/subscribers";
 
+const ACTIVE_USER_MAX_AGE_MS = 365.25 * 24 * 60 * 60 * 1000; // 1 year
+
 // Covered by integration tests but report is not combined
 // TODO: MNTOR-5117
 /* c8 ignore start */
@@ -23,32 +25,37 @@ export type BreachNotificationSubscriber = {
 export async function getBreachNotificationSubscribersByHashes(
   hashes: string[],
 ): Promise<BreachNotificationSubscriber[]> {
+  const activeFilter = { activeWithinMs: ACTIVE_USER_MAX_AGE_MS };
   // 2 sources of email address - the subscribers table and
   // email address table (containing additional emails)
   // First query if the primary email has been breached
-  const primary = (await getSubscribersByHashes(hashes)).map((row) => ({
-    subscriber_id: row.id,
-    all_emails_to_primary: row.all_emails_to_primary,
-    primary_email: row.primary_email,
-    breached_email: row.primary_email,
-    notification_email: row.primary_email,
-    signup_language: row.signup_language,
-    fxa_profile_json: row.fxa_profile_json,
-    fxa_uid: row.fxa_uid,
-  }));
+  const primary = (await getSubscribersByHashes(hashes, activeFilter)).map(
+    (row) => ({
+      subscriber_id: row.id,
+      all_emails_to_primary: row.all_emails_to_primary,
+      primary_email: row.primary_email,
+      breached_email: row.primary_email,
+      notification_email: row.primary_email,
+      signup_language: row.signup_language,
+      fxa_profile_json: row.fxa_profile_json,
+      fxa_uid: row.fxa_uid,
+    }),
+  );
   // Second for secondary emails (joined to subscriber record)
-  const secondary = (await getEmailAddressesByHashes(hashes)).map((row) => ({
-    subscriber_id: row.subscriber_id,
-    all_emails_to_primary: row.all_emails_to_primary,
-    primary_email: row.primary_email,
-    breached_email: row.email,
-    notification_email: row.all_emails_to_primary
-      ? row.primary_email
-      : row.email,
-    signup_language: row.signup_language,
-    fxa_profile_json: row.fxa_profile_json,
-    fxa_uid: row.fxa_uid,
-  }));
+  const secondary = (await getEmailAddressesByHashes(hashes, activeFilter)).map(
+    (row) => ({
+      subscriber_id: row.subscriber_id,
+      all_emails_to_primary: row.all_emails_to_primary,
+      primary_email: row.primary_email,
+      breached_email: row.email,
+      notification_email: row.all_emails_to_primary
+        ? row.primary_email
+        : row.email,
+      signup_language: row.signup_language,
+      fxa_profile_json: row.fxa_profile_json,
+      fxa_uid: row.fxa_uid,
+    }),
+  );
   return primary.concat(secondary);
 }
 /* c8 ignore stop */

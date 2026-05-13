@@ -10,7 +10,12 @@ import {
   type E2E_TEST_ENV_VALUE,
   getBaseTestEnvUrl,
 } from "../utils/environment";
-import { goToFxA, signUpUser } from "../utils/fxa";
+import {
+  getFxaCiHeaders,
+  goToFxA,
+  setupFxaCiRoutes,
+  signUpUser,
+} from "../utils/fxa";
 import { getTestUserSessionFilePath } from "../utils/user";
 import { projects } from "../playwright.config";
 
@@ -48,8 +53,10 @@ async function setupUserAccount(browser: Browser) {
       geolocation: project.use.geolocation,
       locale: project.use.locale,
       permissions: ["geolocation"],
+      extraHTTPHeaders: getFxaCiHeaders(),
     });
     const page = await context.newPage();
+    await setupFxaCiRoutes(page);
 
     // Sign up flow
     const timestamp = Date.now();

@@ -2,13 +2,45 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Page } from "@playwright/test";
+import { Page, Route } from "@playwright/test";
 import { getBaseTestEnvUrl } from "./environment";
 import { fetchRestmailVerificationCode } from "./user";
 
+// Strip fxa-ci from third-party domains to avoid CORS preflight failures.
+// extraHTTPHeaders sends fxa-ci on ALL requests (needed because page.route()
+// can't intercept navigation requests after server-side redirects).
+// FxA domains (accounts, api-accounts, oauth, profile on *.mozaws.net)
+// are NOT listed — they need the header to bypass Fastly's CAPTCHA.
+const STRIP_FXA_CI_PATTERNS = [
+  "**/accounts-cdn*/**",
+  "**/*.sentry.io/**",
+  "**/*.stripe.com/**",
+  "**/*.stripe.network/**",
+  "**/www.google-analytics.com/**",
+  "**/www.googletagmanager.com/**",
+];
+
+export async function setupFxaCiRoutes(page: Page) {
+  if (!process.env.FXA_CI_SECRET) return;
+  const stripFxaCi = (route: Route) => {
+    const headers = { ...route.request().headers() };
+    delete headers["fxa-ci"];
+    return route.continue({ headers });
+  };
+  for (const pattern of STRIP_FXA_CI_PATTERNS) {
+    await page.route(pattern, stripFxaCi);
+  }
+}
+
+export function getFxaCiHeaders(): Record<string, string> {
+  return process.env.FXA_CI_SECRET
+    ? { "fxa-ci": process.env.FXA_CI_SECRET }
+    : {};
+}
+
 async function waitForFxa(page: Page) {
-  // Loading FxA can take a while
-  await page.waitForURL("**/oauth**", { timeout: 60_000 });
+  // Loading FxA can take a while. FxA uses /authorization for the OAuth flow.
+  await page.waitForURL("**/authorization**", { timeout: 60_000 });
 }
 
 async function goToFxA(

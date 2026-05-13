@@ -10,7 +10,11 @@ import { getBreachNotificationSubscribersByHashes } from "./BreachNotificationSu
 import type { SubscriberRow } from "knex/types/tables";
 
 describe("BreachNotificationSubscriber", () => {
-  const subscriber = seeds.subscribers({ primary_verified: true });
+  const recentSession = new Date();
+  const subscriber = seeds.subscribers({
+    primary_verified: true,
+    fxa_session_expiry: recentSession,
+  });
   const chaffSubs = Array.from(Array(10).keys()).map((_) =>
     seeds.subscribers(),
   );
@@ -111,6 +115,7 @@ describe("BreachNotificationSubscriber", () => {
           seeds.subscribers({
             primary_verified: true,
             all_emails_to_primary: true,
+            fxa_session_expiry: recentSession,
           }),
         )
         .returning("*")
@@ -142,6 +147,7 @@ describe("BreachNotificationSubscriber", () => {
           seeds.subscribers({
             primary_verified: true,
             all_emails_to_primary: false,
+            fxa_session_expiry: recentSession,
           }),
         )
         .returning("*")
@@ -164,6 +170,115 @@ describe("BreachNotificationSubscriber", () => {
           notification_email: insertedEmails[0].email,
         }),
       ]),
+    );
+  });
+
+  it("excludes subscribers with null fxa_session_expiry", async () => {
+    const inactiveSub = (
+      await conn("subscribers")
+        .insert(
+          seeds.subscribers({
+            primary_verified: true,
+            fxa_session_expiry: null,
+          }),
+        )
+        .returning("*")
+    )[0];
+    const hashes = [inactiveSub.primary_sha1];
+    const actual = await getBreachNotificationSubscribersByHashes(hashes);
+    expect(actual.length).toEqual(0);
+  });
+
+  it("excludes subscribers with fxa_session_expiry older than 1 year", async () => {
+    const twoYearsAgo = new Date(Date.now() - 2 * 365.25 * 24 * 60 * 60 * 1000);
+    const expiredSub = (
+      await conn("subscribers")
+        .insert(
+          seeds.subscribers({
+            primary_verified: true,
+            fxa_session_expiry: twoYearsAgo,
+          }),
+        )
+        .returning("*")
+    )[0];
+    const hashes = [expiredSub.primary_sha1];
+    const actual = await getBreachNotificationSubscribersByHashes(hashes);
+    expect(actual.length).toEqual(0);
+  });
+
+  it("includes subscribers with fxa_session_expiry within the last year", async () => {
+    const sixMonthsAgo = new Date(
+      Date.now() - 0.5 * 365.25 * 24 * 60 * 60 * 1000,
+    );
+    const activeSub = (
+      await conn("subscribers")
+        .insert(
+          seeds.subscribers({
+            primary_verified: true,
+            fxa_session_expiry: sixMonthsAgo,
+          }),
+        )
+        .returning("*")
+    )[0];
+    const hashes = [activeSub.primary_sha1];
+    const actual = await getBreachNotificationSubscribersByHashes(hashes);
+    expect(actual.length).toEqual(1);
+    expect(actual[0]).toEqual(
+      expect.objectContaining({
+        subscriber_id: activeSub.id,
+        breached_email: activeSub.primary_email,
+      }),
+    );
+  });
+
+  it("excludes inactive subscribers via secondary email path", async () => {
+    const inactiveSub = (
+      await conn("subscribers")
+        .insert(
+          seeds.subscribers({
+            primary_verified: true,
+            fxa_session_expiry: null,
+          }),
+        )
+        .returning("*")
+    )[0];
+    const insertedEmails = await conn("email_addresses")
+      .insert([seeds.emails(inactiveSub.id, { verified: true })])
+      .returning("*");
+    const hashes = [insertedEmails[0].sha1];
+    const actual = await getBreachNotificationSubscribersByHashes(hashes);
+    expect(actual.length).toEqual(0);
+  });
+
+  it("returns only active subscribers when mixed with inactive ones", async () => {
+    const activeSub = (
+      await conn("subscribers")
+        .insert(
+          seeds.subscribers({
+            primary_verified: true,
+            fxa_session_expiry: recentSession,
+          }),
+        )
+        .returning("*")
+    )[0];
+    const inactiveSub = (
+      await conn("subscribers")
+        .insert(
+          seeds.subscribers({
+            primary_verified: true,
+            fxa_session_expiry: null,
+          }),
+        )
+        .returning("*")
+    )[0];
+    const hashes = [activeSub.primary_sha1, inactiveSub.primary_sha1];
+    const actual = await getBreachNotificationSubscribersByHashes(hashes);
+    expect(actual.length).toEqual(1);
+    expect(actual[0]).toEqual(
+      expect.objectContaining({
+        subscriber_id: activeSub.id,
+        breached_email: activeSub.primary_email,
+      }),
     );
   });
 });

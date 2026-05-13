@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           persist-credentials: false
-      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: 20.20.x
 
@@ -54,7 +54,7 @@ jobs:
           echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
       - name: Cache Playwright Browsers for Playwright's Version
         id: cache-playwright-browsers
-        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
         with:
           path: ~/.cache/ms-playwright
           key: playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
@@ -74,6 +74,7 @@ jobs:
           E2E_TEST_ACCOUNT_BASE_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_BASE_EMAIL }}
           E2E_TEST_ACCOUNT_BASE_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_BASE_PASSWORD }}
           E2E_TEST_ENV: local
+          FXA_CI_SECRET: ${{ secrets.FXA_CI_SECRET }}
           HIBP_API_TOKEN: ${{ secrets.HIBP_API_TOKEN }}
           HIBP_KANON_API_ROOT: "http://localhost:6060/api/mock/hibp"
           HIBP_KANON_API_TOKEN: ${{ secrets.HIBP_KANON_API_TOKEN }}
@@ -85,15 +86,3 @@ jobs:
           SENTRY_DSN: "Unused for the test run, but required to be present when loading env vars"
           EMAIL_FROM: "Unused for the test run, but required to be present when loading env vars"
           S3_BUCKET: "Unused for the test run, but required to be present when loading env vars"
-      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
-      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
-        if: always()
-        with:
-          name: test-results
-          path: src/functional-tests/test-results/
-          retention-days: 30

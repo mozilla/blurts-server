@@ -12,9 +12,23 @@ email-header-button-sign-in = เข้าสู่ระบบ
 email-footer-support-heading = มีคำถามเกี่ยวกับ { -brand-mozilla-monitor }
 email-footer-support-content = เข้าดู<support-link>ศูนย์สนับสนุน</support-link>ของเราเพื่อขอความช่วยเหลือ
 email-footer-trigger-transactional = คุณได้รับอีเมลนี้ในฐานะสมาชิกของ { -brand-mozilla-monitor }
+email-footer-reason-subscriber = คุณได้รับอีเมลอัตโนมัตินี้เพราะคุณเป็นสมาชิกของ { -brand-mozilla-monitor } หากคุณได้รับอีเมลนี้โดยข้อผิดพลาด คุณไม่จำเป็นต้องดำเนินการใดๆ สำหรับข้อมูลเพิ่มเติม โปรดไปที่<support-link>ฝ่ายสนับสนุน { -brand-mozilla }</support-link>
+email-footer-reason-subscriber-one-time = คุณได้รับอีเมลอัตโนมัติครั้งเดียวนี้เพราะคุณเป็นสมาชิกของ { -brand-monitor-plus } คุณจะไม่ได้รับอีเมลแบบนี้เพิ่มอีก สำหรับข้อมูลเพิ่มเติม โปรดไปที่<support-link>ฝ่ายสนับสนุน { -brand-mozilla }</support-link>
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    ไปที่ศูนย์สนับสนุนของเราเพื่อขอความช่วยเหลือ:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = ข้อมูลการรั่วไหลจัดทำโดย { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = ข้อมูลการละเมิดจัดทำโดย <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = ความเป็นส่วนตัว
+email-unsubscribe-link = <link_to_unsub>ยกเลิกการบอกรับ</link_to_unsub>
+# Variables:
+#   $unsub_link (string) - URL to the unsubscribe page, e.g. "https://monitor.mozilla.org/unsubscribe/...".
+email-unsubscribe-link-plain = ยกเลิกการบอกรับ: { $unsub_link }
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.

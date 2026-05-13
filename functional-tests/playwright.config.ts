@@ -117,6 +117,9 @@ export const projects = locations.flatMap((geo) =>
             "x-forced-client-region-token": createTestClientRegionToken(
               geo.name.toLowerCase(),
             ),
+            ...(process.env.FXA_CI_SECRET
+              ? { "fxa-ci": process.env.FXA_CI_SECRET }
+              : {}),
           },
         },
       }) as const satisfies Project,
@@ -147,7 +150,7 @@ export default defineConfig({
   /* Use a custom percentage of available workers in CI and default locally */
   workers: process.env.CI ? "75%" : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI ? [["github"], ["html"]] : "html",
+  reporter: process.env.CI ? [["github"]] : "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
@@ -159,13 +162,10 @@ export default defineConfig({
       process.env.GITHUB_EVENT_NAME === "workflow_dispatch"
         ? "on"
         : "only-on-failure",
-    /* Automatically record video when tests fail */
-    video: "retain-on-failure",
-    /* Collect trace when tests fail, or if it's a manually-triggered run. See https://playwright.dev/docs/trace-viewer */
-    trace:
-      process.env.GITHUB_EVENT_NAME === "workflow_dispatch"
-        ? "on"
-        : "retain-on-failure",
+    /* Video and trace disabled in CI to prevent secret leakage in artifacts */
+    video: process.env.CI ? "off" : "retain-on-failure",
+    /* Collect trace when tests fail. See https://playwright.dev/docs/trace-viewer */
+    trace: process.env.CI ? "off" : "retain-on-failure",
   },
   /* Configure projects for major browsers */
   projects: [

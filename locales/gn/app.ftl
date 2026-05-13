@@ -40,6 +40,11 @@ compromised-data = Mba’ekuaarã ivaikuaáva:
 # Link title
 more-about-this-breach = Eikuaave ñembyai rehegua
 sensitive-sites = ¿Mba’e ojapo { -product-name } umi tenda ikangývare?
+sensitive-sites-copy =
+    { -product-name } ohechauka umi mba’ete ojokupytýva ko’ã
+    ñembogua rehegua ojehechajey vove ñanduti veve kundaharape. Kóva he’ise nde ha’eha
+    neañomi ehechataha ne marandúpa oñembyaikuaápara’e (peteĩva noiméiramo
+    oikekuaa ne mba’ete ñanduti veve reheguápe).
 what-data = Mba’ete mba’ekuaarã ivaikuaa:
 delayed-reporting-headline = Mba’ére eha’ãrõiterei ñembyai ñemomarandu
 delayed-reporting-copy = Ikatu oraha heta jasy térã ary umi credencial ojehechakuaáva rehegua mba’ekuaarã ñembyaíva osẽkuaáva ñanduti ypytũme. Umi ñembyai ojuajúta ñane mba’ekuaarã rendápe pya’ete ojejuhu térã ojehechajey rire.

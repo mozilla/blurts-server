@@ -7,7 +7,7 @@
 
 unsubscribe-from-breach-alerts-header = Se odjavite od e-pošte z opozorilom o krajah podatkov?
 unsubscribe-from-breach-alerts-body = Od { -brand-mozilla-monitor } ne boste več prejemali takojšnjih opozoril o krajah podatkov.
-unsubscribe-link-cta = Odjava
+unsubscribe-link-cta = Odjavi se
 
 # Success Unsubscription State
 

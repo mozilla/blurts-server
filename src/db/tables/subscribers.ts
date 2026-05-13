@@ -16,10 +16,21 @@ const knex = createDbConnection();
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getSubscribersByHashes(hashes: string[]) {
-  return await knex("subscribers")
+async function getSubscribersByHashes(
+  hashes: string[],
+  options?: { activeWithinMs?: number },
+) {
+  const query = knex("subscribers")
     .whereIn("primary_sha1", hashes)
     .andWhere("primary_verified", "=", true);
+  if (options?.activeWithinMs !== undefined) {
+    query.andWhere(
+      "fxa_session_expiry",
+      ">",
+      new Date(Date.now() - options.activeWithinMs),
+    );
+  }
+  return await query;
 }
 /* c8 ignore stop */
 

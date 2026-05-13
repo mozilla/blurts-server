@@ -9,6 +9,7 @@ import { fileURLToPath } from "url";
 import { test as teardown } from "../fixtures/authenticatedTest";
 import { getTestUserSessionFilePath } from "../utils/user";
 import { getBaseTestEnvUrl } from "../utils/environment";
+import { getFxaCiHeaders, setupFxaCiRoutes } from "../utils/fxa";
 import { projects } from "../playwright.config";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -25,8 +26,12 @@ function removeTestStorage() {
 async function deleteTestUserAccounts(browser: Browser) {
   for (const project of projects) {
     const storageState = getTestUserSessionFilePath(project.name);
-    const context = await browser.newContext({ storageState });
+    const context = await browser.newContext({
+      storageState,
+      extraHTTPHeaders: getFxaCiHeaders(),
+    });
     const page = await context.newPage();
+    await setupFxaCiRoutes(page);
 
     await page.goto(`${getBaseTestEnvUrl()}/user/settings/manage-account`);
 

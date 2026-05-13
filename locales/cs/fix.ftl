@@ -171,7 +171,7 @@ security-recommendation-ip-summary =
         [few] Vaše IP adresa byla vyzrazena v { $num_breaches } únicích údajů:
        *[other] Vaše IP adresa byla vyzrazena v { $num_breaches } únicích údajů:
     }
-security-recommendation-ip-description = Vaše IP adresa určuje vaši polohu a poskytovatele internetových služeb. Hackeři mohou tyto informace použít k nalezení vaší polohy nebo k pokusu o připojení k vašim zařízením.
+security-recommendation-ip-description = Vaše IP adresa identifikuje vaši polohu a poskytovatele internetových služeb. Hackeři mohou tyto informace použít ke zjištění vaší polohy nebo k pokusu o připojení k vašim zařízením.
 security-recommendation-ip-step-one = Použijte VPN (například <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) ke skrytí své skutečné IP adresy a používejte internet soukromě.
 
 # Leaked Passwords
@@ -182,7 +182,7 @@ leaked-passwords-title = Vaše heslo pro { $breach_name } bylo odhaleno
 # Variables
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = Objevilo se při úniku údajů dne { $breach_date }.
-leaked-passwords-description = Podvodníci mohou získat přístup k vašemu účtu a pravděpodobně se ho pokusí použít na jiných účtech, aby zjistili, zda jste použili stejné heslo. Změňte si ho všude, kde jste ho použili, abyste se ochránili.
+leaked-passwords-description = Podvodníci mohou získat přístup do vašeho účtu a pravděpodobně se ho pokusí použít na jiných účtech, aby zjistili, zda jste použili stejné heslo. Změňte si ho všude, kde jste ho použili, abyste se ochránili.
 leaked-passwords-steps-title = Toto je potřeba udělat
 leaked-passwords-steps-subtitle = To vyžaduje přístup k vašemu účtu, takže to budete muset vyřešit ručně.
 # Variables
@@ -211,7 +211,7 @@ leaked-security-questions-title = Vaše bezpečnostní otázky byly odhaleny
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
 leaked-security-questions-summary = Objevily se v úniku údajů ze stránky { $breach_name } dne { $breach_date }.
-leaked-security-questions-description = Podvodníci je mohou použít k přístupu k vašim účtům a k jakémukoli jinému webu, kde jste použili stejné bezpečnostní otázky. Aktualizujte je nyní, abyste ochránili své účty.
+leaked-security-questions-description = Podvodníci je mohou použít k přístupu do vašich účtů a do jakéhokoli jiného webu, u něhož jste použili stejné bezpečnostní otázky. Aktualizujte je nyní, abyste ochránili své účty.
 leaked-security-questions-steps-title = Zde je návod, jak postupovat
 leaked-security-questions-steps-subtitle = To vyžaduje přístup k vašemu účtu, takže to budete muset vyřešit ručně.
 # Variables

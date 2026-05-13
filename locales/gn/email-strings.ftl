@@ -12,6 +12,8 @@ email-header-button-sign-in = Eñemboheraguapy
 email-footer-support-heading = ¿Eporanduse { -brand-mozilla-monitor } rehegua?
 email-footer-support-content = Eike ore <support-link>Ñepytyvõha rendápe</support-link> eñepytyvõkuaa hag̃ua
 email-footer-trigger-transactional = Og̃uahẽ ko ñanduti veve eñemboheraguapýre { -brand-mozilla-monitor } ndive.
+email-footer-reason-subscriber = Og̃uahẽ ndéve ko ñe’ẽmondo ijehegui eñemboheraguapýre { -brand-mozilla-monitor } ndive. Og̃uahẽrõ ndéve jejavykuérõ, natekotevẽi ejapo mbaʼeve. Eikuaave hag̃ua, eike <support-link> { -brand-mozilla } Ñepytyvõ </support-link> rupi.
+email-footer-reason-subscriber-one-time = Og̃uahẽramo ndéve ko ñe’ẽmondo ijeheguietéva eñemboheraguapy rupi { -brand-monitor-plus } ndive. Nog̃uahẽmo’ãvéima ndéve ñe’ẽmondo koichagua. Eikuaave hag̃ua hesegua, eike <support-link> { -brand-mozilla } ñepytyvõ </support-link>-pe.
 # Variables:
 #    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
 email-footer-support-content-plain =

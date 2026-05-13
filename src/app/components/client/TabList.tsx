@@ -11,7 +11,7 @@ import {
 } from "react-aria";
 import { Item, useTabListState } from "react-stately";
 import styles from "./TabList.module.scss";
-import { TabListState, TabListStateOptions } from "@react-stately/tabs";
+import { TabListState, TabListStateOptions } from "react-stately";
 
 export type TabsProps = (
   | TabListStateOptions<object>
