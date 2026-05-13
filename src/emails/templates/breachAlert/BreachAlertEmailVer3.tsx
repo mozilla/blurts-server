@@ -123,11 +123,15 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               {props.breach.Title}
             </mj-text>
             <mj-text font-size="15px" line-height="22px" padding="0 0 6px 0">
-              <strong>{`${l10n.getString("email-breach-alert-date-of-breach")}: `}</strong>
+              <strong>
+                {l10n.getString("email-breach-alert-date-of-breach")}
+              </strong>{" "}
               {props.breach.BreachDate.toLocaleDateString()}
             </mj-text>
             <mj-text font-size="15px" line-height="22px" padding="0">
-              <strong>{`${l10n.getString("email-breach-alert-info-exposed")}: `}</strong>
+              <strong>
+                {l10n.getString("email-breach-alert-info-exposed")}
+              </strong>{" "}
               {listFormatter.format(
                 (props.breach.DataClasses ?? [])
                   .filter((datatype) =>
