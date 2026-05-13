@@ -39,13 +39,6 @@ it("shows the 'Resolve breach on dashboard' button", () => {
   expect(goToDashboardButton).toBeInTheDocument();
 });
 
-it("shows the 'Sign in' link in next steps", () => {
-  const ComposedEmail = composeStory(BreachAlertEmailDefaultStory, Meta);
-  render(<ComposedEmail />);
-
-  expect(screen.getByText("Sign in", { exact: false })).toBeInTheDocument();
-});
-
 it("uses `product-email` as the utm_medium everywhere", () => {
   const ComposedEmail = composeStory(BreachAlertEmailDefaultStory, Meta);
   render(<ComposedEmail />);

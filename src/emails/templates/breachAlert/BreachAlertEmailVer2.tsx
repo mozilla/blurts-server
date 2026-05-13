@@ -60,6 +60,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               align="left"
               width="160px"
               padding="0px"
+              alt=""
               src={`${config.serverUrl}/images/email/monitor-logo-transparent.png`}
             />
             <mj-spacer height="24px" />
@@ -141,7 +142,6 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               border-radius="8px"
               font-size="16px"
               line-height="24px"
-              inner-padding="12px 24px"
               align="center"
             >
               {l10n.getString(
@@ -227,8 +227,28 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
             >
               {l10n.getString("email-breach-alert-faq-qn-3")}
             </mj-text>
-            <mj-text font-size="15px" line-height="22px" padding-bottom="24px">
+            <mj-text font-size="15px" line-height="22px" padding-bottom="16px">
               {l10n.getString("email-breach-alert-faq-ans-3")}
+            </mj-text>
+
+            {/* FAQ 4 */}
+            <mj-divider
+              padding="0"
+              border-width="1px"
+              border-style="solid"
+              border-color="lightgrey"
+            />
+            <mj-text
+              font-size="15px"
+              line-height="22px"
+              font-weight="bold"
+              padding-top="16px"
+              padding-bottom="4px"
+            >
+              {l10n.getString("email-breach-alert-faq-qn-4")}
+            </mj-text>
+            <mj-text font-size="15px" line-height="22px" padding-bottom="24px">
+              {l10n.getString("email-breach-alert-faq-ans-4")}
             </mj-text>
           </mj-column>
         </mj-section>

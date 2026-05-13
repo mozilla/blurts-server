@@ -51,7 +51,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
             "company-name": props.breach.Title,
           })}
         />
-        <mj-section padding="24px">
+        <mj-section padding="24px 24px 8px 24px">
           <mj-column>
             <mj-text font-size="16px" line-height="24px" padding-bottom="28px">
               <p>
@@ -179,6 +179,13 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               <strong>{l10n.getString("email-breach-alert-faq-qn-3")}</strong>
               <br />
               {l10n.getString("email-breach-alert-faq-ans-3")}
+            </mj-text>
+
+            {/* FAQ 4 */}
+            <mj-text font-size="16px" line-height="24px" padding-top="0">
+              <strong>{l10n.getString("email-breach-alert-faq-qn-4")}</strong>
+              <br />
+              {l10n.getString("email-breach-alert-faq-ans-4")}
             </mj-text>
           </mj-column>
         </mj-section>
