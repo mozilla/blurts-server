@@ -45,7 +45,7 @@ export const EmailHero = (props: Props) => {
       </mj-section>
       <mj-section background-color="#F5EAFF" border-radius="0 0 16px 16px">
         <mj-column>
-          <mj-text font-size="20px">
+          <mj-text font-size="20px" line-height="38px">
             <h2>{props.heading}</h2>
           </mj-text>
         </mj-column>

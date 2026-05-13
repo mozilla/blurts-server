@@ -40,10 +40,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
         </mj-preview>
         <MetaTags />
         <HeaderStyles />
-        <mj-style>
-          {`
-          `}
-        </mj-style>
+        <mj-style>{`p { margin: 0 0 4px 0; }`}</mj-style>
       </mj-head>
       <mj-body>
         <EmailHero
@@ -56,13 +53,17 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
         />
         <mj-section padding="24px">
           <mj-column>
-            <mj-text font-size="16px" line-height="24px" padding-bottom="12px">
+            <mj-text font-size="16px" line-height="24px" padding-bottom="28px">
               <p>
                 {l10n.getFragment("email-breach-alert-all-lead-1", {
+                  vars: {
+                    "company-name": props.breach.Title,
+                    "breach-date": props.breach.BreachDate.toLocaleDateString(),
+                  },
                   elems: {
-                    link_to_data_breach: (
+                    link_to_settings: (
                       <a
-                        href={`${config.serverUrl}/user/dashboard/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=dashboard${utmContentSuffix}`}
+                        href={`${config.serverUrl}/user/settings/notifications`}
                       />
                     ),
                   },
@@ -70,46 +71,58 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               </p>
             </mj-text>
 
-            <mj-text font-size="16px" line-height="24px" padding-top="0">
-              <strong>
-                {l10n.getString("email-breach-alert-all-source-title-1")}
-              </strong>
+            <mj-text
+              font-size="16px"
+              line-height="24px"
+              font-weight="700"
+              padding-top="0"
+              padding-bottom="16px"
+            >
+              {l10n.getString("email-breach-alert-all-source-title-1")}
             </mj-text>
 
             <mj-text font-size="16px" line-height="24px" padding-top="0">
-              <strong>{`${l10n.getString("email-breach-alert-company")}: `}</strong>
-              {props.breach.Title}
-            </mj-text>
-
-            <mj-text font-size="16px" line-height="24px" padding-top="0">
-              <strong>{`${l10n.getString("email-breach-alert-date-of-breach")}: `}</strong>
-              {props.breach.BreachDate.toLocaleDateString()}
-            </mj-text>
-
-            <mj-text font-size="16px" line-height="24px" padding-top="0">
-              <strong>{`${l10n.getString("email-breach-alert-info-exposed")}: `}</strong>
-              {listFormatter.format(
-                (props.breach.DataClasses ?? [])
-                  .filter((datatype) =>
-                    (
-                      Object.values(
-                        ResolutionRelevantBreachDataTypes,
-                      ) as string[]
-                    ).includes(datatype),
-                  )
-                  .map((classKey) => props.l10n.getString(classKey)),
-              )}
+              <p>
+                <strong>{`${l10n.getString("email-breach-alert-company")}: `}</strong>
+                {props.breach.Title}
+              </p>
+              <p>
+                <strong>{`${l10n.getString("email-breach-alert-date-of-breach")}: `}</strong>
+                {props.breach.BreachDate.toLocaleDateString()}
+              </p>
+              <p>
+                <strong>{`${l10n.getString("email-breach-alert-info-exposed")}: `}</strong>
+                {listFormatter.format(
+                  (props.breach.DataClasses ?? [])
+                    .filter((datatype) =>
+                      (
+                        Object.values(
+                          ResolutionRelevantBreachDataTypes,
+                        ) as string[]
+                      ).includes(datatype),
+                    )
+                    .map((classKey) => props.l10n.getString(classKey)),
+                )}
+              </p>
             </mj-text>
           </mj-column>
         </mj-section>
 
-        <mj-section padding="12px 24px">
+        <mj-section padding="0 24px 12px">
           <mj-column>
             <mj-text font-size="16px">
               <strong>{l10n.getString("email-breach-alert-next-steps")}</strong>
             </mj-text>
             <mj-text font-size="16px" line-height="24px" padding-top="0">
-              {l10n.getString("email-breach-alert-next-steps-description")}
+              {l10n.getFragment("email-breach-alert-next-steps-description", {
+                elems: {
+                  sign_in_link: (
+                    <a
+                      href={`${config.serverUrl}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=sign-in${utmContentSuffix}`}
+                    />
+                  ),
+                },
+              })}
             </mj-text>
           </mj-column>
         </mj-section>

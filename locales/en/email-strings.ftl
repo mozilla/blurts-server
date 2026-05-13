@@ -90,14 +90,16 @@ email-breach-alert-all-next-steps-button-dashboard = Go to Dashboard
 ## Breach alert redesigned strings
 
 # $company-name is the name of the company/site that was breached.
-email-breach-alert-all-hero-heading-1 = A { $company-name } data breach needs your review
-email-breach-alert-all-lead-1 = We got an alert that your data was found in a <link_to_data_breach>data breach</link_to_data_breach>.
+email-breach-alert-all-hero-heading-1 = { $company-name } data breach details
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } found your info in a { $company-name } data breach on { $breach-date }. You're getting this alert because you signed up for <link_to_settings>breach notifications</link_to_settings>.
 email-breach-alert-all-source-title-1 = Breach details
 email-breach-alert-company = Company
 email-breach-alert-date-of-breach = Date of breach
-email-breach-alert-info-exposed = Info exposed
+email-breach-alert-info-exposed = Your exposed info
 email-breach-alert-next-steps = Next steps
-email-breach-alert-next-steps-description = Sign in to your { -brand-mozilla-monitor } dashboard. We’ll guide you through the steps needed to resolve it.
+email-breach-alert-next-steps-description = <sign_in_link>Sign in</sign_in_link> to your { -brand-mozilla-monitor } dashboard. We’ll guide you through the steps needed to resolve it.
 email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Resolve breach on dashboard
 email-breach-alert-faqs-title = FAQs
 email-breach-alert-faq-qn-1 = Why am I receiving this?

@@ -22,7 +22,14 @@ it("lists compromised data", () => {
   expect(datapointListing).toBeInTheDocument();
 });
 
-it("shows the 'Go to Dashboard' button for non-US users", () => {
+it("shows the 'Breach details' section title", () => {
+  const ComposedEmail = composeStory(BreachAlertEmailDefaultStory, Meta);
+  render(<ComposedEmail breach={createRandomHibpListing()} />);
+
+  expect(screen.getByText("Breach details")).toBeInTheDocument();
+});
+
+it("shows the 'Resolve breach on dashboard' button", () => {
   const ComposedEmail = composeStory(BreachAlertEmailDefaultStory, Meta);
   render(<ComposedEmail />);
 
@@ -30,6 +37,13 @@ it("shows the 'Go to Dashboard' button for non-US users", () => {
     name: "Resolve breach on dashboard",
   });
   expect(goToDashboardButton).toBeInTheDocument();
+});
+
+it("shows the 'Sign in' link in next steps", () => {
+  const ComposedEmail = composeStory(BreachAlertEmailDefaultStory, Meta);
+  render(<ComposedEmail />);
+
+  expect(screen.getByText("Sign in", { exact: false })).toBeInTheDocument();
 });
 
 it("uses `product-email` as the utm_medium everywhere", () => {

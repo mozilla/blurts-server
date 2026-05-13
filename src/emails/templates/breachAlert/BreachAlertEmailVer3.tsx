@@ -86,10 +86,14 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
           <mj-column>
             <mj-text font-size="16px" line-height="24px" padding="0">
               {l10n.getFragment("email-breach-alert-all-lead-1", {
+                vars: {
+                  "company-name": props.breach.Title,
+                  "breach-date": props.breach.BreachDate.toLocaleDateString(),
+                },
                 elems: {
-                  link_to_data_breach: (
+                  link_to_settings: (
                     <a
-                      href={`${config.serverUrl}/user/dashboard/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=dashboard${utmContentSuffix}`}
+                      href={`${config.serverUrl}/user/settings/notifications`}
                     />
                   ),
                 },
@@ -145,7 +149,15 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               {l10n.getString("email-breach-alert-next-steps")}
             </mj-text>
             <mj-text font-size="16px" line-height="24px" padding="0">
-              {l10n.getString("email-breach-alert-next-steps-description")}
+              {l10n.getFragment("email-breach-alert-next-steps-description", {
+                elems: {
+                  sign_in_link: (
+                    <a
+                      href={`${config.serverUrl}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=sign-in${utmContentSuffix}`}
+                    />
+                  ),
+                },
+              })}
             </mj-text>
           </mj-column>
         </mj-section>

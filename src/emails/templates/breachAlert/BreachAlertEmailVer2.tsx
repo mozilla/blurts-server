@@ -49,15 +49,9 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
         </mj-style>
       </mj-head>
       <mj-body background-color="#fff">
-        {/* <!-- Top Spacing --> */}
-        <mj-section padding="0px">
-          <mj-column>
-            <mj-spacer height="20px"></mj-spacer>
-          </mj-column>
-        </mj-section>
         {/* <!-- Hero --> */}
         <mj-section
-          padding="60px 30px"
+          padding="32px 24px"
           background-color="#F5EAFF"
           border-radius="20px 20px 0px 0px"
         >
@@ -68,22 +62,26 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               padding="0px"
               src={`${config.serverUrl}/images/email/monitor-logo-transparent.png`}
             />
-            <mj-spacer height="40px"></mj-spacer>
-            <mj-text font-size="20px">
+            <mj-spacer height="24px" />
+            <mj-text font-size="20px" padding="0" line-height="38px">
               <h2>
                 {l10n.getString("email-breach-alert-all-hero-heading-1", {
                   "company-name": props.breach.Title,
                 })}
               </h2>
             </mj-text>
-            <mj-spacer height="20px"></mj-spacer>
-            <mj-text font-size="16px" line-height="24px" padding-bottom="12px">
+            <mj-spacer height="12px" />
+            <mj-text font-size="16px" line-height="24px" padding="0">
               <p>
                 {l10n.getFragment("email-breach-alert-all-lead-1", {
+                  vars: {
+                    "company-name": props.breach.Title,
+                    "breach-date": props.breach.BreachDate.toLocaleDateString(),
+                  },
                   elems: {
-                    link_to_data_breach: (
+                    link_to_settings: (
                       <a
-                        href={`${config.serverUrl}/user/dashboard/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=dashboard${utmContentSuffix}`}
+                        href={`${config.serverUrl}/user/settings/notifications`}
                       />
                     ),
                   },
@@ -92,12 +90,13 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
             </mj-text>
           </mj-column>
         </mj-section>
-        {/* <!-- Top Article --> */}
-        <mj-section padding="40px 30px 0px 30px">
+
+        {/* <!-- Breach details --> */}
+        <mj-section padding="24px 24px 0 24px">
           <mj-column>
             <mj-text
               container-background-color="#592ACB"
-              font-size="14px"
+              font-size="12px"
               align="right"
               color="#ffffff"
               padding="4px 8px"
@@ -107,20 +106,18 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               {l10n.getString("email-breach-alert-all-source-title-1")}
             </mj-text>
             <mj-text
-              font-size="16px"
-              line-height="24px"
-              font-weight="bold"
-              padding-bottom="14px"
-              padding-top="28px"
+              font-size="15px"
+              line-height="22px"
+              padding-top="16px"
+              padding-bottom="20px"
             >
-              {props.breach.Title}
-            </mj-text>
-            <mj-text font-size="16px" line-height="24px" padding-bottom="28px">
+              <p>
+                <strong>{props.breach.Title}</strong>
+              </p>
               <p>
                 <strong>{`${l10n.getString("email-breach-alert-date-of-breach")}: `}</strong>
                 {props.breach.BreachDate.toLocaleDateString()}
               </p>
-              <br />
               <p>
                 <strong>{`${l10n.getString("email-breach-alert-info-exposed")}: `}</strong>
                 {listFormatter.format(
@@ -139,11 +136,12 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
             <mj-button
               href={`${config.serverUrl}/user/dashboard/action-needed/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${utmCampaignId}&utm_content=lets-get-started${utmContentSuffix}`}
               background-color="#592ACB"
-              font-weight={600}
+              font-weight="600"
               padding="0 0 8px 0"
               border-radius="8px"
               font-size="16px"
               line-height="24px"
+              inner-padding="12px 24px"
               align="center"
             >
               {l10n.getString(
@@ -153,53 +151,83 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
           </mj-column>
         </mj-section>
 
-        {/* <!-- Secondary Articles --> */}
-        <mj-section padding="40px 30px 20px 30px">
+        {/* <!-- FAQs --> */}
+        <mj-section padding="20px 24px 0 24px">
           <mj-column>
             <mj-text
               font-size="16px"
               line-height="24px"
               font-weight="bold"
-              padding-bottom="34px"
+              padding-bottom="16px"
             >
               {l10n.getString("email-breach-alert-faqs-title")}
             </mj-text>
-            {/* <!-- 1 --> */}
+
+            {/* FAQ 1 */}
             <mj-divider
-              padding="0px"
-              border-width="2px"
+              padding="0"
+              border-width="1px"
               border-style="solid"
               border-color="lightgrey"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="15px"
+              line-height="22px"
               font-weight="bold"
-              padding-bottom="14px"
-              padding-top="28px"
+              padding-top="16px"
+              padding-bottom="4px"
+            >
+              {l10n.getString("email-breach-alert-faq-qn-1")}
+            </mj-text>
+            <mj-text font-size="15px" line-height="22px" padding-bottom="16px">
+              {l10n.getFragment("email-breach-alert-faq-ans-1", {
+                elems: {
+                  link_to_settings: (
+                    <a
+                      href={`${config.serverUrl}/user/settings/notifications`}
+                    />
+                  ),
+                },
+              })}
+            </mj-text>
+
+            {/* FAQ 2 */}
+            <mj-divider
+              padding="0"
+              border-width="1px"
+              border-style="solid"
+              border-color="lightgrey"
+            />
+            <mj-text
+              font-size="15px"
+              line-height="22px"
+              font-weight="bold"
+              padding-top="16px"
+              padding-bottom="4px"
             >
               {l10n.getString("email-breach-alert-faq-qn-2")}
             </mj-text>
-            <mj-text font-size="16px" line-height="24px" padding-bottom="28px">
+            <mj-text font-size="15px" line-height="22px" padding-bottom="16px">
               {l10n.getString("email-breach-alert-faq-ans-2")}
             </mj-text>
-            {/* <!-- 2 --> */}
+
+            {/* FAQ 3 */}
             <mj-divider
-              padding="0px"
-              border-width="2px"
+              padding="0"
+              border-width="1px"
               border-style="solid"
               border-color="lightgrey"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="15px"
+              line-height="22px"
               font-weight="bold"
-              padding-bottom="14px"
-              padding-top="28px"
+              padding-top="16px"
+              padding-bottom="4px"
             >
               {l10n.getString("email-breach-alert-faq-qn-3")}
             </mj-text>
-            <mj-text font-size="16px" line-height="24px" padding-bottom="28px">
+            <mj-text font-size="15px" line-height="22px" padding-bottom="24px">
               {l10n.getString("email-breach-alert-faq-ans-3")}
             </mj-text>
           </mj-column>
