@@ -19,6 +19,19 @@ settings-alert-preferences-option-two = Enviar todas las alertas de filtraciones
 ## Monitored email addresses
 
 settings-email-verification-callout = Se requiere verificación de correo electrónico
+settings-remove-email-button-label = Eliminar
+settings-email-addresses-header = Direcciones de correo electrónico
+settings-email-addresses-description = { -brand-monitor } te alertará si estos correos electrónicos aparecen en filtraciones conocidas.
+settings-email-addresses-add-email-button = Agregar dirección de correo electrónico
+# Variables:
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Agregar hasta { $limit }
+settings-email-addresses-add-email-resend-button-label = Reenviar enlace de verificación
+input-error-alt = Error
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Agregar una dirección de correo electrónico
 
 ## Delete Monitor account
 
@@ -26,6 +39,7 @@ settings-delete-monitor-free-account-title = Eliminar cuenta { -brand-monitor }
 settings-delete-monitor-free-account-description = Esto eliminará permanentemente tu cuenta { -brand-monitor } y desactivará todas las notificaciones.
 settings-delete-monitor-free-account-cta-label = Eliminar cuenta
 settings-delete-monitor-free-account-dialog-title = Su cuenta { -brand-monitor } se eliminará permanentemente
+settings-delete-monitor-free-account-dialog-lead-v2 = Toda la información de tu cuenta de { -brand-monitor } se eliminará y ya no se realizará el monitoreo de nuevas filtraciones de datos. Esto no eliminará tu { -brand-mozilla-account }.
 settings-delete-monitor-free-account-dialog-cta-label = Eliminar cuenta
 settings-delete-monitor-free-account-dialog-cancel-button-label = No importa, llévame de vuelta
 settings-delete-monitor-account-confirmation-toast-label-2 = Tu cuenta { -brand-monitor } ahora esta eliminada.
