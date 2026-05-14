@@ -3,25 +3,29 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: tokens.$spacing-2xl;
+  gap: tokens.$spacing-xl;
   background-color: tokens.$color-grey-05;
-  height: 100%;
+  min-height: 100%;
   padding: tokens.$layout-lg tokens.$layout-2xl;
 
   @media screen and (max-width: tokens.$screen-lg) {
     padding: tokens.$spacing-lg;
+  }
+
+  h1 {
+    font: tokens.$text-title-md;
   }
 }
 
 .addressSection {
   display: flex;
   flex-direction: column;
-  gap: tokens.$spacing-sm;
+  gap: tokens.$spacing-xs;
 
   .addressPicker {
     display: flex;
     align-items: center;
-    gap: tokens.$spacing-md;
+    gap: tokens.$spacing-sm;
 
     label {
       font: tokens.$text-body-lg;
@@ -29,13 +33,84 @@
     }
 
     select {
-      padding: tokens.$spacing-sm;
+      padding: tokens.$spacing-xs tokens.$spacing-sm;
+      border: 1px solid tokens.$color-grey-20;
+      border-radius: tokens.$border-radius-sm;
+      font: tokens.$text-body-md;
     }
   }
 }
 
-.triggers {
+// Sections
+
+.section {
   display: flex;
-  flex-wrap: wrap;
-  gap: tokens.$spacing-lg;
+  flex-direction: column;
+  gap: tokens.$spacing-md;
+}
+
+.sectionLabel {
+  font: tokens.$text-body-sm;
+  font-weight: 700;
+  color: tokens.$color-grey-40;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: tokens.$spacing-md;
+}
+
+// Cards
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: tokens.$spacing-md;
+  padding: tokens.$spacing-md;
+  background-color: tokens.$color-white;
+  border: 1px solid tokens.$color-grey-20;
+  border-radius: tokens.$border-radius-md;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: tokens.$spacing-xs;
+}
+
+.cardTitle {
+  font: tokens.$text-body-md;
+  font-weight: 700;
+  margin: 0;
+  color: tokens.$color-grey-60;
+}
+
+.cardDescription {
+  font: tokens.$text-body-sm;
+  color: tokens.$color-grey-40;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.cardFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: tokens.$spacing-sm;
+}
+
+.storybookLink {
+  font: tokens.$text-body-sm;
+  color: tokens.$color-grey-40;
+  text-decoration: none;
+
+  &:hover {
+    color: tokens.$color-grey-60;
+    text-decoration: underline;
+  }
 }
