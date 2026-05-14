@@ -16,7 +16,7 @@ const configProxyHandler: ProxyHandler<typeof originalConfig> = {
       return "production";
     }
     if (prop === "serverUrl") {
-      return "http://localhost:8000";
+      return "";
     }
     return "mock-config-value";
   },

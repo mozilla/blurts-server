@@ -5,7 +5,10 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { FC } from "react";
 import type { SubscriberRow } from "knex/types/tables";
-import { BreachAlertEmailProps, BreachAlertEmail } from "./BreachAlertEmail";
+import {
+  BreachAlertEmailProps,
+  BreachAlertEmail as BreachAlertEmailVer4,
+} from "./BreachAlertEmailVer4";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { getL10n } from "../../../app/functions/l10n/storybookAndTests";
 import { createRandomHibpListing } from "../../../apiMocks/mockData";
@@ -14,7 +17,7 @@ const meta: Meta<FC<BreachAlertEmailProps>> = {
   title: "Emails/Breach alert",
   component: (props: BreachAlertEmailProps) => (
     <StorybookEmailRenderer plainTextVersion={null}>
-      <BreachAlertEmail {...props} />
+      <BreachAlertEmailVer4 {...props} />
     </StorybookEmailRenderer>
   ),
   args: {
@@ -34,9 +37,9 @@ const meta: Meta<FC<BreachAlertEmailProps>> = {
 export default meta;
 type Story = StoryObj<FC<BreachAlertEmailProps>>;
 
-/** Light purple hero banner, breach details as plain text, inline Q&A FAQs. */
-export const BreachAlertEmailDefaultStory: Story = {
-  name: "Breach alert (Default)",
+/** Thin purple top bar, centered heading, breach details in a bordered card, numbered FAQs. */
+export const BreachAlertEmailVersion4Story: Story = {
+  name: "Breach alert (Version 4)",
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",

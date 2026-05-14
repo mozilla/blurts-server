@@ -5,11 +5,11 @@
 import { it, expect } from "vitest";
 import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
-import Meta, { BreachAlertEmailNonUsStory } from "./BreachAlertEmail.stories";
+import Meta, { BreachAlertEmailDefaultStory } from "./BreachAlertEmail.stories";
 import { createRandomHibpListing } from "../../../apiMocks/mockData";
 
 it("lists compromised data", () => {
-  const ComposedEmail = composeStory(BreachAlertEmailNonUsStory, Meta);
+  const ComposedEmail = composeStory(BreachAlertEmailDefaultStory, Meta);
   render(
     <ComposedEmail
       breach={createRandomHibpListing({
@@ -22,18 +22,25 @@ it("lists compromised data", () => {
   expect(datapointListing).toBeInTheDocument();
 });
 
-it("shows the 'Go to Dashboard' button for non-US users", () => {
-  const ComposedEmail = composeStory(BreachAlertEmailNonUsStory, Meta);
+it("shows the 'Breach details' section title", () => {
+  const ComposedEmail = composeStory(BreachAlertEmailDefaultStory, Meta);
+  render(<ComposedEmail breach={createRandomHibpListing()} />);
+
+  expect(screen.getByText("Breach details")).toBeInTheDocument();
+});
+
+it("shows the 'Resolve breach on dashboard' button", () => {
+  const ComposedEmail = composeStory(BreachAlertEmailDefaultStory, Meta);
   render(<ComposedEmail />);
 
   const goToDashboardButton = screen.getByRole("link", {
-    name: "Go to Dashboard",
+    name: "Resolve breach on dashboard",
   });
   expect(goToDashboardButton).toBeInTheDocument();
 });
 
 it("uses `product-email` as the utm_medium everywhere", () => {
-  const ComposedEmail = composeStory(BreachAlertEmailNonUsStory, Meta);
+  const ComposedEmail = composeStory(BreachAlertEmailDefaultStory, Meta);
   render(<ComposedEmail />);
 
   const links = screen.getAllByRole("link");
