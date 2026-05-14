@@ -89,23 +89,21 @@ export const EmailTrigger = (props: Props) => {
 
   function triggerCard(card: EmailCard) {
     setSendingCard(card.title);
-    const toastId = toast.loading(`Sending ${card.title}…`);
+    const toastLoading = toast.loading(`Sending ${card.title}…`);
     void card
       .action(selectedEmailAddress)
       .then(() => {
         setSendingCard(null);
-        toast.update(toastId, {
-          render: `${card.title} sent!`,
-          type: "success",
+        toast.dismiss(toastLoading);
+        toast.success(`${card.title} sent!`, {
           isLoading: false,
           autoClose: 3000,
         });
       })
       .catch(() => {
         setSendingCard(null);
-        toast.update(toastId, {
-          render: `Failed to send ${card.title}`,
-          type: "error",
+        toast.dismiss(toastLoading);
+        toast.error(`Failed to send ${card.title}`, {
           isLoading: false,
           autoClose: 5000,
         });
@@ -176,7 +174,7 @@ export const EmailTrigger = (props: Props) => {
         <p className={styles.sectionLabel}>Breach alert variants</p>
         <div className={styles.grid}>{breachAlertVariants.map(renderCard)}</div>
       </div>
-      <ToastContainer position="bottom-right" />
+      <ToastContainer position="top-center" />
     </main>
   );
 };
