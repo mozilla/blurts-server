@@ -20,6 +20,9 @@ import { SubscriberRow } from "knex/types/tables";
 import { getUserEmails } from "../../../../../../db/tables/emailAddresses";
 import { createRandomHibpListing } from "../../../../../../apiMocks/mockData";
 import { BreachAlertEmail } from "../../../../../../emails/templates/breachAlert/BreachAlertEmail";
+import { BreachAlertEmail as BreachAlertEmailVer2 } from "../../../../../../emails/templates/breachAlert/BreachAlertEmailVer2";
+import { BreachAlertEmail as BreachAlertEmailVer3 } from "../../../../../../emails/templates/breachAlert/BreachAlertEmailVer3";
+import { BreachAlertEmail as BreachAlertEmailVer4 } from "../../../../../../emails/templates/breachAlert/BreachAlertEmailVer4";
 import { SignupReportEmail } from "../../../../../../emails/templates/signupReport/SignupReportEmail";
 import { getBreachesForEmail } from "../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../utils/fxa";
@@ -139,6 +142,87 @@ export async function triggerBreachAlert(emailAddress: string) {
     emailAddress,
     l10n.getString("email-breach-alert-all-subject"),
     <BreachAlertEmail
+      subscriber={subscriber}
+      breachedEmail={emailAddress}
+      breach={createRandomHibpListing()}
+      utmCampaignId={UTM_CAMPAIGN_ID_BREACH_ALERT}
+      l10n={l10n}
+      unsubscribeLink={unsubscribeLink}
+    />,
+    { oneClickUrl },
+  );
+}
+
+export async function triggerBreachAlertVer2(emailAddress: string) {
+  const session = await getServerSession();
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber || !session?.user) {
+    return false;
+  }
+
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
+  const { footer: unsubscribeLink, oneClick: oneClickUrl } =
+    await getBreachAlertsUnsubscribeLink(subscriber);
+
+  await send(
+    emailAddress,
+    l10n.getString("email-breach-alert-all-subject"),
+    <BreachAlertEmailVer2
+      subscriber={subscriber}
+      breachedEmail={emailAddress}
+      breach={createRandomHibpListing()}
+      utmCampaignId={UTM_CAMPAIGN_ID_BREACH_ALERT}
+      l10n={l10n}
+      unsubscribeLink={unsubscribeLink}
+    />,
+    { oneClickUrl },
+  );
+}
+
+export async function triggerBreachAlertVer3(emailAddress: string) {
+  const session = await getServerSession();
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber || !session?.user) {
+    return false;
+  }
+
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
+  const { footer: unsubscribeLink, oneClick: oneClickUrl } =
+    await getBreachAlertsUnsubscribeLink(subscriber);
+
+  await send(
+    emailAddress,
+    l10n.getString("email-breach-alert-all-subject"),
+    <BreachAlertEmailVer3
+      subscriber={subscriber}
+      breachedEmail={emailAddress}
+      breach={createRandomHibpListing()}
+      utmCampaignId={UTM_CAMPAIGN_ID_BREACH_ALERT}
+      l10n={l10n}
+      unsubscribeLink={unsubscribeLink}
+    />,
+    { oneClickUrl },
+  );
+}
+
+export async function triggerBreachAlertVer4(emailAddress: string) {
+  const session = await getServerSession();
+  const subscriber = await getAdminSubscriber();
+  if (!subscriber || !session?.user) {
+    return false;
+  }
+
+  const acceptLangHeader = await getAcceptLangHeaderInServerComponents();
+  const l10n = getL10n(acceptLangHeader);
+  const { footer: unsubscribeLink, oneClick: oneClickUrl } =
+    await getBreachAlertsUnsubscribeLink(subscriber);
+
+  await send(
+    emailAddress,
+    l10n.getString("email-breach-alert-all-subject"),
+    <BreachAlertEmailVer4
       subscriber={subscriber}
       breachedEmail={emailAddress}
       breach={createRandomHibpListing()}

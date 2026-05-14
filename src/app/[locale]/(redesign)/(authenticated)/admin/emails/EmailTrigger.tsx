@@ -6,9 +6,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./EmailTrigger.module.scss";
 import {
   triggerBreachAlert,
+  triggerBreachAlertVer2,
+  triggerBreachAlertVer3,
+  triggerBreachAlertVer4,
   triggerSignupReportEmail,
   triggerVerificationEmail,
 } from "./actions";
@@ -18,13 +23,121 @@ export type Props = {
   emailAddresses: string[];
 };
 
+const STORYBOOK_BASE = "http://localhost:6006/?path=/story";
+
+type EmailCard = {
+  title: string;
+  description: string;
+  storybookId: string;
+  action: (email: string) => Promise<unknown>;
+};
+
+const otherEmails: EmailCard[] = [
+  {
+    title: "Signup report",
+    description:
+      "Summary email listing all known breaches for a monitored address.",
+    storybookId: "emails-signup-report--signup-report-email-no-breaches-story",
+    action: triggerSignupReportEmail,
+  },
+  {
+    title: "Verify email address",
+    description:
+      "Confirmation email sent when adding a new address to monitor.",
+    storybookId:
+      "emails-verify-email-address--verify-email-address-email-story",
+    action: triggerVerificationEmail,
+  },
+];
+
+const breachAlertVariants: EmailCard[] = [
+  {
+    title: "Default",
+    description:
+      "Light purple hero banner, plain-text breach details, inline Q&A FAQs.",
+    storybookId: "emails-breach-alert--breach-alert-email-default-story",
+    action: triggerBreachAlert,
+  },
+  {
+    title: "Version 2",
+    description:
+      "Rounded purple hero, source label badge on breach details, FAQs separated by dividers.",
+    storybookId: "emails-breach-alert--breach-alert-email-version-2-story",
+    action: triggerBreachAlertVer2,
+  },
+  {
+    title: "Version 3",
+    description:
+      "No hero, logo with a thin divider, breach details in a grey card, stacked Q&A FAQs.",
+    storybookId: "emails-breach-alert--breach-alert-email-version-3-story",
+    action: triggerBreachAlertVer3,
+  },
+  {
+    title: "Version 4",
+    description:
+      "Thin purple accent bar at top, centered heading, breach details in a bordered card, numbered FAQs.",
+    storybookId: "emails-breach-alert--breach-alert-email-version-4-story",
+    action: triggerBreachAlertVer4,
+  },
+];
+
 export const EmailTrigger = (props: Props) => {
   const [selectedEmailAddress, setSelectedEmailAddress] = useState(
     props.emailAddresses[0],
   );
-  const [isSendingSignupReport, setIsSendingSignupReport] = useState(false);
-  const [isSendingVerification, setIsSendingVerification] = useState(false);
-  const [isSendingBreachAlert, setIsSendingBreachAlert] = useState(false);
+  const [sendingCard, setSendingCard] = useState<string | null>(null);
+
+  function triggerCard(card: EmailCard) {
+    setSendingCard(card.title);
+    const toastLoading = toast.loading(`Sending ${card.title}…`);
+    void card
+      .action(selectedEmailAddress)
+      .then(() => {
+        setSendingCard(null);
+        toast.dismiss(toastLoading);
+        toast.success(`${card.title} sent!`, {
+          isLoading: false,
+          autoClose: 3000,
+        });
+      })
+      .catch(() => {
+        setSendingCard(null);
+        toast.dismiss(toastLoading);
+        toast.error(`Failed to send ${card.title}`, {
+          isLoading: false,
+          autoClose: 5000,
+        });
+      });
+  }
+
+  function renderCard(card: EmailCard) {
+    return (
+      <div key={card.title} className={styles.card}>
+        <div className={styles.cardBody}>
+          <p className={styles.cardTitle}>{card.title}</p>
+          <p className={styles.cardDescription}>{card.description}</p>
+        </div>
+        <div className={styles.cardFooter}>
+          <Button
+            variant="primary"
+            small
+            isLoading={sendingCard === card.title}
+            onPress={() => triggerCard(card)}
+          >
+            Send
+          </Button>
+          <a
+            href={`${STORYBOOK_BASE}/${card.storybookId}`}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.storybookLink}
+          >
+            View in Storybook ↗
+          </a>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <main className={styles.wrapper}>
@@ -51,44 +164,17 @@ export const EmailTrigger = (props: Props) => {
           </Link>
         </small>
       </div>
-      <div className={styles.triggers}>
-        <Button
-          variant="primary"
-          isLoading={isSendingSignupReport}
-          onPress={() => {
-            setIsSendingSignupReport(true);
-            void triggerSignupReportEmail(selectedEmailAddress).then(() => {
-              setIsSendingSignupReport(false);
-            });
-          }}
-        >
-          Signup report
-        </Button>
-        <Button
-          variant="primary"
-          isLoading={isSendingVerification}
-          onPress={() => {
-            setIsSendingVerification(true);
-            void triggerVerificationEmail(selectedEmailAddress).then(() => {
-              setIsSendingVerification(false);
-            });
-          }}
-        >
-          Verify email address
-        </Button>
-        <Button
-          variant="primary"
-          isLoading={isSendingBreachAlert}
-          onPress={() => {
-            setIsSendingBreachAlert(true);
-            void triggerBreachAlert(selectedEmailAddress).then(() => {
-              setIsSendingBreachAlert(false);
-            });
-          }}
-        >
-          Breach alert
-        </Button>
+
+      <div className={styles.section}>
+        <p className={styles.sectionLabel}>Other emails</p>
+        <div className={styles.grid}>{otherEmails.map(renderCard)}</div>
       </div>
+
+      <div className={styles.section}>
+        <p className={styles.sectionLabel}>Breach alert variants</p>
+        <div className={styles.grid}>{breachAlertVariants.map(renderCard)}</div>
+      </div>
+      <ToastContainer position="top-center" />
     </main>
   );
 };
