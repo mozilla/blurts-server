@@ -36,7 +36,7 @@ type Story = StoryObj<FC<BreachAlertEmailProps>>;
 
 /** Light purple hero banner, breach details as plain text, inline Q&A FAQs. */
 export const BreachAlertEmailDefaultStory: Story = {
-  name: "Breach alert (default)",
+  name: "Breach alert (Default)",
   args: {
     breach: createRandomHibpListing(),
     breachedEmail: "example@example.com",
