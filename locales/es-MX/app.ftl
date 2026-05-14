@@ -54,6 +54,7 @@ delayed-reporting-copy =
 ##
 
 what-is-a-website-breach = ¿Qué es una filtración web?
+website-breach-blurb = Una filtración de datos ocurre cuando el cibercrimen roba, copia o expone información personal de cuentas en línea. Por lo general, es el resultado de encontrar una vulnerabilidad en la seguridad del sitio web. Las filtraciones también pueden ocurrir cuando la información de la cuenta se filtra por accidente.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Vista general
