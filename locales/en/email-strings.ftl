@@ -77,7 +77,7 @@ email-dashboard-cta = Go to Dashboard
 ## Breach alert email
 
 email-breach-alert-all-subject = New data breach detected
-email-breach-alert-all-preview = We’ll guide you on the steps to resolve it.
+email-breach-alert-all-preview = We’ll guide you through the steps to resolve it.
 email-breach-alert-all-hero-heading = You’ve been in a new data breach
 email-breach-alert-all-hero-subheading = Don’t worry, we can help you resolve this exposure
 email-breach-alert-all-lead = { -brand-mozilla-monitor } discovered the following data breach that includes your personal information:
@@ -107,6 +107,6 @@ email-breach-alert-faq-ans-1 = You signed up for data breach alerts. <link_to_se
 email-breach-alert-faq-qn-2 = Why don’t I recognize this company or site?
 email-breach-alert-faq-ans-2 = It may have changed ownership or name, involve an old account or one that was created for you, or come from a purchased list of exposed personal info.
 email-breach-alert-faq-qn-3 = What’s a data breach alert?
-email-breach-alert-faq-ans-3 = A notification when personal information you’re monitoring gets exposed, stolen or copied without permission.
+email-breach-alert-faq-ans-3 = A notification { -brand-mozilla-monitor } sends when personal info you’re monitoring gets exposed, stolen, or copied without permission.
 email-breach-alert-faq-qn-4 = What’s { -brand-mozilla-monitor }?
 email-breach-alert-faq-ans-4 = A free data breach notification service that warns you if your online accounts have been involved in a data breach.
