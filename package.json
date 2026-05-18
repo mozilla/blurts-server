@@ -72,7 +72,7 @@
     "@next/third-parties": "16.2.4",
     "@opentelemetry/auto-instrumentations-node": "^0.76.0",
     "@opentelemetry/exporter-trace-otlp-http": "^0.218.0",
-    "@opentelemetry/resource-detector-gcp": "^0.51.0",
+    "@opentelemetry/resource-detector-gcp": "^0.52.0",
     "@opentelemetry/resources": "^2.7.1",
     "@opentelemetry/sdk-node": "^0.218.0",
     "@opentelemetry/sdk-trace-node": "^2.2.0",
