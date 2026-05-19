@@ -18,6 +18,7 @@ export const EmailHero = (props: Props) => {
   // which sets a utmContentSuffix:
   /* c8 ignore next */
   const utmContentSuffix = props.utmContentSuffix ?? "";
+  const logoHref = `${config.serverUrl}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo${utmContentSuffix}`;
 
   return (
     <mj-wrapper padding="12px 16px">
@@ -36,9 +37,18 @@ export const EmailHero = (props: Props) => {
             <mj-image
               alt={l10n.getString("public-nav-name")}
               src={`${config.serverUrl}/images/email/monitor-logo-transparent.png`}
-              href={`${config.serverUrl}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo${utmContentSuffix}`}
+              href={logoHref}
               align="center"
               width="150px"
+              css-class="dm-img-light"
+            />
+            <mj-image
+              alt={l10n.getString("public-nav-name")}
+              src={`${config.serverUrl}/images/email/monitor-logo-transparent-dark-mode.svg`}
+              href={logoHref}
+              align="center"
+              width="150px"
+              css-class="dm-img-dark"
             />
           </mj-column>
         </mj-group>

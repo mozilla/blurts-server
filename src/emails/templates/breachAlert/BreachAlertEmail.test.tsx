@@ -39,6 +39,63 @@ it("shows the 'Resolve breach on dashboard' button", () => {
   expect(goToDashboardButton).toBeInTheDocument();
 });
 
+it("hides exactly one of the light/dark logos in each color scheme", () => {
+  const ComposedEmail = composeStory(BreachAlertEmailDefaultStory, Meta);
+  render(<ComposedEmail />);
+
+  const lightImages = document.getElementsByClassName("dm-img-light");
+  const darkImages = document.getElementsByClassName("dm-img-dark");
+  expect(lightImages.length).toBeGreaterThan(0);
+  expect(darkImages.length).toBe(lightImages.length);
+
+  expect(computeDisplay("dm-img-light", false)).not.toBe("none");
+  expect(computeDisplay("dm-img-dark", false)).toBe("none");
+  expect(computeDisplay("dm-img-light", true)).toBe("none");
+  expect(computeDisplay("dm-img-dark", true)).not.toBe("none");
+});
+
+function computeDisplay(className: string, prefersDark: boolean): string {
+  const target = `.${className}`;
+  let display = "";
+
+  const selectorMatches = (selector: string) =>
+    selector.split(",").some((part) => part.trim() === target);
+
+  for (const sheet of Array.from(document.styleSheets)) {
+    let rules: CSSRuleList;
+    try {
+      rules = sheet.cssRules;
+    } catch {
+      continue;
+    }
+    for (const rule of Array.from(rules)) {
+      if (rule instanceof CSSMediaRule) {
+        const isDarkMedia = rule.conditionText.includes(
+          "prefers-color-scheme: dark",
+        );
+        if (!prefersDark || !isDarkMedia) continue;
+        for (const inner of Array.from(rule.cssRules)) {
+          if (
+            inner instanceof CSSStyleRule &&
+            selectorMatches(inner.selectorText) &&
+            inner.style.display
+          ) {
+            display = inner.style.display;
+          }
+        }
+      } else if (
+        rule instanceof CSSStyleRule &&
+        selectorMatches(rule.selectorText) &&
+        rule.style.display
+      ) {
+        display = rule.style.display;
+      }
+    }
+  }
+
+  return display;
+}
+
 it("uses `product-email` as the utm_medium everywhere", () => {
   const ComposedEmail = composeStory(BreachAlertEmailDefaultStory, Meta);
   render(<ComposedEmail />);
