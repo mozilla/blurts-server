@@ -57,6 +57,15 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               padding="0"
               alt=""
               src={`${config.serverUrl}/images/email/monitor-logo-transparent.png`}
+              css-class="dm-img-light"
+            />
+            <mj-image
+              align="left"
+              width="160px"
+              padding="0"
+              alt=""
+              src={`${config.serverUrl}/images/email/monitor-logo-transparent-dark-mode.svg`}
+              css-class="dm-img-dark"
             />
           </mj-column>
         </mj-section>
