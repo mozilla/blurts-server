@@ -1,0 +1,22 @@
+name: ssdlc-sbom
+
+permissions: {}
+
+on:
+  release:
+    types: [published]
+  push:
+    branches:
+      - 'main'
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  sbom:
+    uses: mozilla/ssdlc-actions/.github/workflows/ssdlc-sbom.yml@5cc2b20e42d53d1643853f12244fbec9ed2f2e0c
+    with:
+      sbom_name: ${{ github.event.release.tag_name || github.sha }}
+    permissions:
+      actions: read
+      contents: write
