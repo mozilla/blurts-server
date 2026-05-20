@@ -48,12 +48,13 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
       `}
         </mj-style>
       </mj-head>
-      <mj-body background-color="#fff">
+      <mj-body background-color="#fff" css-class="dm-body">
         {/* <!-- Hero --> */}
         <mj-section
           padding="32px 24px"
           background-color="#F5EAFF"
           border-radius="20px 20px 0px 0px"
+          css-class="dm-section-hero"
         >
           <mj-column width="100%">
             <mj-image
