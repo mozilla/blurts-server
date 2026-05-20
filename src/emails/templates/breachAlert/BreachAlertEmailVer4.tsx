@@ -40,7 +40,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
         <MetaTags />
         <HeaderStyles />
       </mj-head>
-      <mj-body background-color="#ffffff">
+      <mj-body background-color="#ffffff" css-class="dm-body">
         {/* Narrow purple accent bar at top */}
         <mj-section background-color="#592ACB" padding="0">
           <mj-column>

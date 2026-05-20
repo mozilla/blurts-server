@@ -26,6 +26,7 @@ export const EmailHero = (props: Props) => {
         padding="10px 12px"
         border-radius="16px 16px 0 0"
         background-color="#F5EAFF"
+        css-class="dm-section-hero"
       >
         <mj-group>
           <mj-column
@@ -53,7 +54,11 @@ export const EmailHero = (props: Props) => {
           </mj-column>
         </mj-group>
       </mj-section>
-      <mj-section background-color="#F5EAFF" border-radius="0 0 16px 16px">
+      <mj-section
+        background-color="#F5EAFF"
+        border-radius="0 0 16px 16px"
+        css-class="dm-section-hero"
+      >
         <mj-column>
           <mj-text font-size="20px" line-height="38px">
             <h2>{props.heading}</h2>

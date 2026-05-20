@@ -40,7 +40,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
         <MetaTags />
         <HeaderStyles />
       </mj-head>
-      <mj-body background-color="#ffffff">
+      <mj-body background-color="#ffffff" css-class="dm-body">
         {/* Logo */}
         <mj-section padding="24px 24px 0 24px">
           <mj-column>
@@ -114,7 +114,11 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
 
         {/* Breach info card — grey background, no border-radius for max client compat */}
         <mj-section padding="20px 24px 0 24px">
-          <mj-column background-color="#f5f5f5" padding="20px">
+          <mj-column
+            background-color="#f5f5f5"
+            padding="20px"
+            css-class="dm-section-card"
+          >
             <mj-text
               font-size="12px"
               font-weight="700"
