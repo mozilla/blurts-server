@@ -82,3 +82,27 @@ email-breach-alert-all-data-points-title = Dữ liệu bị lộ của bạn:
 email-breach-alert-all-next-steps-lead = Chúng tôi sẽ hướng dẫn bạn từng bước về cách giải quyết rò rỉ dữ liệu này.
 email-breach-alert-all-next-steps-cta-label = Hãy bắt đầu
 email-breach-alert-all-next-steps-button-dashboard = Đi đến bảng điều khiển
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = Chi tiết dữ liệu bị rò rỉ của { $company-name }
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } đã tìm thấy thông tin của bạn ở dữ liệu rò rỉ { $company-name } vào { $breach-date }. Bạn nhận được thông báo này vì bạn đã đăng ký nhận thông tin về <link_to_settings>thông báo rò rỉ dữ liệu</link_to_settings>.
+email-breach-alert-all-source-title-1 = Chi tiết vụ rò rỉ
+email-breach-alert-company = Công ty:
+email-breach-alert-date-of-breach = Ngày bị rò rỉ:
+email-breach-alert-info-exposed = Thông tin bị lộ của bạn:
+email-breach-alert-next-steps = Các bước tiếp theo
+email-breach-alert-next-steps-description = <sign_in_link>Đăng nhập</sign_in_link> để vào bảng điều khiển { -brand-mozilla-monitor } của bạn. Chúng tôi sẽ hướng dẫn bạn các bước cần thiết để giải quyết sự cố.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Khắc phục sự cố trên bảng điều khiển
+email-breach-alert-faqs-title = Câu hỏi thường gặp
+email-breach-alert-faq-qn-1 = Tại sao tôi lại nhận được thông báo này?
+email-breach-alert-faq-ans-1 = Bạn đã đăng ký nhận cảnh báo về rò rỉ dữ liệu. <link_to_settings>Cập nhật tùy chọn của bạn</link_to_settings> bất cứ lúc nào trong cài đặt.
+email-breach-alert-faq-qn-2 = Tại sao tôi không nhận ra công ty hoặc trang web này?
+email-breach-alert-faq-ans-2 = Tài khoản đó có thể đã thay đổi quyền sở hữu hoặc tên, liên quan đến một tài khoản cũ hoặc một tài khoản được tạo cho bạn, hoặc đến từ một danh sách thông tin cá nhân bị lộ được mua lại.
+email-breach-alert-faq-qn-3 = Cảnh báo rò rỉ dữ liệu là gì?
+email-breach-alert-faq-ans-3 = Một thông báo được gửi bởi { -brand-mozilla-monitor } khi thông tin cá nhân mà bạn đang theo dõi bị lộ, bị đánh cắp hoặc bị sao chép trái phép.
+email-breach-alert-faq-qn-4 = { -brand-mozilla-monitor } là gì?
+email-breach-alert-faq-ans-4 = Một dịch vụ thông báo rò rỉ dữ liệu miễn phí, cảnh báo bạn nếu tài khoản trực tuyến của bạn bị ảnh hưởng bởi rò rỉ dữ liệu.

@@ -78,3 +78,27 @@ email-breach-alert-all-data-points-title = Eich data datgelwyd:
 email-breach-alert-all-next-steps-lead = Byddwn yn eich arwain gam wrth gam ar sut i ddatrys y tor-data hwn.
 email-breach-alert-all-next-steps-cta-label = Cychwyn arni
 email-breach-alert-all-next-steps-button-dashboard = Mynd i'r Bwrdd Gwaith
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = Manylion tor-data { $company-name }
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = Daeth { -brand-mozilla-monitor } o hyd i'ch manylion mewn tor-data ynglŷn â { $company-name } ar { $breach-date }. Rydych chi'n cael y rhybudd hwn oherwydd i chi gofrestru ar gyfer <link_to_settings>hysbysiadau tor-data</link_to_settings>.
+email-breach-alert-all-source-title-1 = Manylion y tor-data
+email-breach-alert-company = Cwmni:
+email-breach-alert-date-of-breach = Dyddiad y tor-data:
+email-breach-alert-info-exposed = Eich manylion sydd wedi eu datgelu:
+email-breach-alert-next-steps = Camau nesaf
+email-breach-alert-next-steps-description = <sign_in_link>Mewngofnodwch</sign_in_link> i'ch bwrdd dangos { -brand-mozilla-monitor }. Byddwn yn eich arwain trwy'r camau sydd eu hangen i'w ddatrys.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Datrys tor-data ar y bwrdd dangos
+email-breach-alert-faqs-title = Cwestiynau Cyffredin
+email-breach-alert-faq-qn-1 = Pam ydw i'n derbyn hwn?
+email-breach-alert-faq-ans-1 = Rydych wedi cofrestru ar gyfer rhybuddion tor-data. <link_to_settings>Diweddarwch eich dewisiadau</link_to_settings> unrhyw bryd yn y gosodiadau.
+email-breach-alert-faq-qn-2 = Pam nad ydw i'n adnabod y cwmni neu'r wefan hon?
+email-breach-alert-faq-ans-2 = Efallai ei fod wedi newid perchnogaeth neu enw, yn cynnwys hen gyfrif neu un a gafodd ei greu ar eich cyfer, neu'n dod o restr a brynwyd o fanylion personol sydd wedi'u datgelu.
+email-breach-alert-faq-qn-3 = Beth yw rhybudd tor-data?
+email-breach-alert-faq-ans-3 = Hysbysiad mae { -brand-mozilla-monitor } yn ei anfon pan fydd manylion personol rydych chi'n ei fonitro'n cael ei ddatgelu, ei ddwyn neu ei gopïo heb ganiatâd.
+email-breach-alert-faq-qn-4 = Beth yw { -brand-mozilla-monitor }?
+email-breach-alert-faq-ans-4 = Gwasanaeth hysbysu tor-data rhad ac am ddim sy'n eich rhybuddio os yw'ch cyfrifon ar-lein wedi bod yn rhan o dor-data.

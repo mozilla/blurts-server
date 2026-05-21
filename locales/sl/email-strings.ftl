@@ -80,3 +80,27 @@ email-breach-alert-all-data-points-title = Vaši izpostavljeni podatki:
 email-breach-alert-all-next-steps-lead = Korak za korakom vas bomo vodili, kako razrešiti krajo podatkov.
 email-breach-alert-all-next-steps-cta-label = Pa začnimo
 email-breach-alert-all-next-steps-button-dashboard = Pojdi na nadzorno ploščo
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = Podrobnosti o kraji podatkov za { $company-name }
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } je našel vaše podatke v kraji podatkov { $company-name } dne { $breach-date }. To opozorilo ste prejeli, ker ste se prijavili na <link_to_settings>obvestila o krajah</link_to_settings>.
+email-breach-alert-all-source-title-1 = Podrobnosti kraje podatkov
+email-breach-alert-company = Podjetje:
+email-breach-alert-date-of-breach = Datum kraje podatkov:
+email-breach-alert-info-exposed = Vaši izpostavljeni podatki:
+email-breach-alert-next-steps = Naslednji koraki
+email-breach-alert-next-steps-description = <sign_in_link>Prijavite se</sign_in_link> na { -brand-mozilla-monitor } nadzorno ploščo. Vodili vas bomo skozi korake, ki jih potrebujete za rešitev težave.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Razrešite krajo na nadzorni plošči
+email-breach-alert-faqs-title = Pogosta vprašanja
+email-breach-alert-faq-qn-1 = Zakaj prejemam to?
+email-breach-alert-faq-ans-1 = Prijavili ste se na opozorila o kraji podatkov. Kadarkoli <link_to_settings>Posodobite svoje nastavitve</link_to_settings> v nastavitvah.
+email-breach-alert-faq-qn-2 = Zakaj ne prepoznam tega podjetja ali spletnega mesta?
+email-breach-alert-faq-ans-2 = Lahko ima spremenjeno lastništvo ali ime, vključuje star račun ali računa, ki je bil ustvarjen za vas, ali prihaja s kupljenega seznama izpostavljenih osebnih podatkov.
+email-breach-alert-faq-qn-3 = Kaj je opozorilo o kraji podatkov?
+email-breach-alert-faq-ans-3 = Obvestilo { -brand-mozilla-monitor } pošlje, ko so osebni podatki, ki jih spremljate, izpostavljeni, ukradeni ali kopirani brez dovoljenja.
+email-breach-alert-faq-qn-4 = Kaj je { -brand-mozilla-monitor }?
+email-breach-alert-faq-ans-4 = Brezplačna storitev obveščanja o krajah podatkov, ki vas opozori, če so bili vaši spletni računi vpleteni v krajo podatkov.

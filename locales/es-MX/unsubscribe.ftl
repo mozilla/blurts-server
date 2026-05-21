@@ -5,6 +5,9 @@
 
 # Confirm Unsubscription State
 
+unsubscribe-from-breach-alerts-header = ¿Quieres dejar de recibir correos de alertas de filtraciones?
+unsubscribe-from-breach-alerts-body = Ya no recibirás correos instantáneos de alertas de filtraciones por parte de { -brand-mozilla-monitor }.
+unsubscribe-link-cta = Cancelar suscripción
 
 # Success Unsubscription State
 
@@ -14,3 +17,4 @@ unsubscribe-success-link-cta = Iniciar sesión en { -brand-monitor }
 
 # Error warning
 
+unsubscribe-failed = Error al cancelar la suscripción.

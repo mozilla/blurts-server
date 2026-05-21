@@ -82,3 +82,27 @@ email-breach-alert-all-data-points-title = Dine eksponerte data:
 email-breach-alert-all-next-steps-lead = Vi vil veilede deg trinn for trinn i hvordan du løser denne datalekkasjen
 email-breach-alert-all-next-steps-cta-label = La oss komme i gang
 email-breach-alert-all-next-steps-button-dashboard = Gå til oversikten
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = Detaljer om datalekkasje hos { $company-name }
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } fant opplysningene dine i en datalekkasje hos { $company-name } den { $breach-date }. Du får dette varselet fordi du registrerte deg for <link_to_settings>varsler om datalekkasjer</link_to_settings>.
+email-breach-alert-all-source-title-1 = Datalekasjedetaljer
+email-breach-alert-company = Firma:
+email-breach-alert-date-of-breach = Dato for datalekkasje:
+email-breach-alert-info-exposed = Din eksponerte informasjon:
+email-breach-alert-next-steps = Neste steg
+email-breach-alert-next-steps-description = <sign_in_link>Logg inn</sign_in_link> på kontrollpanelet ditt i { -brand-mozilla-monitor }. Vi veileder deg gjennom trinnene som trengs for å løse det.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Løs datalekkasjen i kontrollpanelet
+email-breach-alert-faqs-title = Ofte stilte spørsmål
+email-breach-alert-faq-qn-1 = Hvorfor mottar jeg dette?
+email-breach-alert-faq-ans-1 = Du registrerte deg for varsler om datalekkasjer. <link_to_settings>Oppdater dine innstillinger</link_to_settings> når som helst i innstillinger.
+email-breach-alert-faq-qn-2 = Hvorfor kjenner jeg ikke igjen dette firmaet eller nettstedet?
+email-breach-alert-faq-ans-2 = Den kan ha endret eierskap eller navn, involvere en gammel konto eller en som ble opprettet for deg, eller komme fra en kjøpt liste med eksponert personlig informasjon.
+email-breach-alert-faq-qn-3 = Hva er et varsel om datalekkasje?
+email-breach-alert-faq-ans-3 = Et varsel som { -brand-mozilla-monitor } sender når personopplysninger du overvåker blir eksponert, stjålet eller kopiert uten tillatelse.
+email-breach-alert-faq-qn-4 = Hva er { -brand-mozilla-monitor }?
+email-breach-alert-faq-ans-4 = En gratis varslingstjeneste for datalekkasjer som advarer deg hvis nettkontoene dine har vært involvert i en datalekkasje.

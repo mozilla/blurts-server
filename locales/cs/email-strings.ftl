@@ -82,3 +82,27 @@ email-breach-alert-all-data-points-title = Vaše uniklé údaje:
 email-breach-alert-all-next-steps-lead = Provedeme vás krok za krokem, jak tento únik údajů vyřešit.
 email-breach-alert-all-next-steps-cta-label = Začínáme!
 email-breach-alert-all-next-steps-button-dashboard = Přejít na nástěnku
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = Podrobnosti o únicích dat typu { $company-name }
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } našel vaše údaje v { $company-name } úniku dat z { $breach-date }. Toto upozornění jste obdrželi, protože jste se zaregistrovali k <link_to_settings>upozorňování na úniky</link_to_settings>.
+email-breach-alert-all-source-title-1 = Podrobnosti o úniku
+email-breach-alert-company = Společnost:
+email-breach-alert-date-of-breach = Datum úniku:
+email-breach-alert-info-exposed = Vaše odhalené informace:
+email-breach-alert-next-steps = Další kroky
+email-breach-alert-next-steps-description = <sign_in_link>Přihlaste se</sign_in_link> do své nástěnky { -brand-mozilla-monitor }. Provedeme vás jednotlivými kroky k jeho vyřešení.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Vyřešit úniky na nástěnce
+email-breach-alert-faqs-title = FAQ
+email-breach-alert-faq-qn-1 = Proč toto dostávám?
+email-breach-alert-faq-ans-1 = Přihlásili jste se k příjmu upozornění na úniky dat. <link_to_settings>Aktualizujte své předvolby</link_to_settings> v nastavení.
+email-breach-alert-faq-qn-2 = Proč neznám tuto společnost či web?
+email-breach-alert-faq-ans-2 = Účet možná změnil majitele či název, může se týkat starého účtu či účtu, který byl pro vás vytvořen, nebo mohlo pocházet ze zakoupeného seznamu vyzrazených osobních údajů.
+email-breach-alert-faq-qn-3 = Co je to upozornění na únik dat?
+email-breach-alert-faq-ans-3 = Upozornění { -brand-mozilla-monitor } se zasílá, když jsou osobní údaje, které sledujete, vyzrazeny, odcizeny nebo zkopírovány bez povolení.
+email-breach-alert-faq-qn-4 = Co je { -brand-mozilla-monitor }?
+email-breach-alert-faq-ans-4 = Bezplatná služba pro upozornění na úniky dat, která vás upozorní, pokud byly vaše internetové účty součástí nějakého úniku dat.
