@@ -25,7 +25,7 @@ exposure-card-other = Anna
 # $data_breach_date is the date of the data breach.
 exposure-card-description-data-breach-action-needed = Informasjonen din er eksponert i ein datalekkasje på <data_breach_link>{ $data_breach_company } den { $data_breach_date }.</data_breach_link> Vi går gjenom stega for å fikse det.
 exposure-card-description-data-breach-fixed = Du har teke stega som trengst for å fikse <data_breach_link>denne datalekkasjen</data_breach_link>. Vi vil kontinuerleg overvake datalekkasjar og varsle deg om eventuelle nye eksponeringar.
-exposure-card-your-exposed-info = DIn eksporterte informasjon:
+exposure-card-your-exposed-info = Din eksponerte informasjon:
 exposure-card-found-the-following-data = { -brand-monitor } fann følgjande eksponerte data:
 exposure-card-resolve-exposures-cta = Løys eksponeringar
 exposure-card-label-company-logo = Firmalogo

@@ -82,3 +82,27 @@ email-breach-alert-all-data-points-title = Tus datos expuestos:
 email-breach-alert-all-next-steps-lead = Te guiaremos paso a paso sobre cómo resolver esta filtración de datos.
 email-breach-alert-all-next-steps-cta-label = Empecemos
 email-breach-alert-all-next-steps-button-dashboard = Ir al panel de control
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = Detalles de la filtración de datos de { $company-name }
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } encontró tu información en una filtración de datos de { $company-name } el { $breach-date }. Recibes esta alerta porque te registraste para recibir <link_to_settings>notificaciones de filtraciones de datos</link_to_settings>.
+email-breach-alert-all-source-title-1 = Detalles de la filtración
+email-breach-alert-company = Compañía:
+email-breach-alert-date-of-breach = Fecha de la filtración:
+email-breach-alert-info-exposed = Tu información expuesta:
+email-breach-alert-next-steps = Próximos pasos
+email-breach-alert-next-steps-description = <sign_in_link>Conéctate</sign_in_link> a tu panel de { -brand-mozilla-monitor }. Te guiaremos a través de los pasos necesarios para resolverlo.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Resolver filtración en el panel de control
+email-breach-alert-faqs-title = Preguntas frecuentes
+email-breach-alert-faq-qn-1 = ¿Por qué estoy recibiendo esto?
+email-breach-alert-faq-ans-1 = Te has suscrito a las alertas de filtración de datos. <link_to_settings>Actualiza tus preferencias</link_to_settings> en cualquier momento en los ajustes.
+email-breach-alert-faq-qn-2 = ¿Por qué no reconozco esta empresa o sitio web?
+email-breach-alert-faq-ans-2 = Es posible que haya cambiado de propietario o de nombre, que se trate de una cuenta antigua o que haya sido creada para ti, o que provenga de una lista comprada de información personal expuesta.
+email-breach-alert-faq-qn-3 = ¿Qué es una alerta de filtración de datos?
+email-breach-alert-faq-ans-3 = Es una notificación que { -brand-mozilla-monitor } envía cuando la información personal que estás monitorizando queda expuesta o es robada o copiada sin permiso.
+email-breach-alert-faq-qn-4 = ¿Qué es { -brand-mozilla-monitor }?
+email-breach-alert-faq-ans-4 = Un servicio gratuito de notificación de filtraciones de datos que te avisa si tus cuentas en línea se han visto afectadas por una filtración de datos.

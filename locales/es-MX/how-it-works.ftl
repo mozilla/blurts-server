@@ -18,6 +18,14 @@ how-it-works-page-data-breaches-intro-cta-button = Obtén un escaneo gratuito
 
 how-it-works-page-data-breaches-step-1-title = Paso 1
 how-it-works-page-data-breaches-step-1-subtitle = Realizamos escaneo en busca de filtraciones
+how-it-works-page-data-breaches-step-1-text = Con tan solo tu dirección de correo electrónico, realizamos una búsqueda en todas las filtraciones de datos conocidas. Quienes tengan una suscripción pueden monitorear 5 direcciones de correo de forma gratuita.
+
+## Step 2
+
+how-it-works-page-data-breaches-step-2-title = Paso 2
+how-it-works-page-data-breaches-step-2-subtitle = Te ayudamos a resolver las filtraciones
+how-it-works-page-data-breaches-step-2-text-1 = Como la resolución de las filtraciones suele requerir pasos manuales, como cambiar tus contraseñas o solicitar una alerta de fraude en tu historial crediticio, no podemos resolverlas por ti. Sin embargo, te guiaremos paso a paso para solucionar la exposición de tu información.
+how-it-works-page-data-breaches-step-2-text-2 = Y si tu información llega a caer en las manos equivocadas, te daremos recomendaciones de seguridad sobre lo que puedes hacer para protegerte ahora y en el futuro.
 
 ## Step 3
 

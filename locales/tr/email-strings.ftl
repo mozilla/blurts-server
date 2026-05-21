@@ -80,3 +80,25 @@ email-breach-alert-all-data-points-title = Ele geçirilen verileriniz:
 email-breach-alert-all-next-steps-lead = Bu veri ihlalini nasıl çözeceğinizi adım adım anlatacağız.
 email-breach-alert-all-next-steps-cta-label = Başlayalım
 email-breach-alert-all-next-steps-button-dashboard = Kontrol paneline git
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = { $company-name } veri ihlali ayrıntıları
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor }, { $breach-date } tarihli { $company-name } veri ihlalinde bilgilerinizi tespit etti. <link_to_settings>İhlal bildirimlerine</link_to_settings> kaydolduğunuz için bu uyarıyı aldınız.
+email-breach-alert-all-source-title-1 = İhlal ayrıntıları
+email-breach-alert-company = Şirket:
+email-breach-alert-date-of-breach = İhlal tarihi:
+email-breach-alert-info-exposed = Ele geçirilen bilgileriniz:
+email-breach-alert-next-steps = Sonraki adımlar
+email-breach-alert-next-steps-description = { -brand-mozilla-monitor } kontrol panelinize <sign_in_link>giriş yapın</sign_in_link>. Bu sorunu çözmek için izlemeniz gereken adımlarda size rehberlik edeceğiz.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = İhlali çözmek için kontrol paneline git
+email-breach-alert-faqs-title = SSS
+email-breach-alert-faq-qn-1 = Bu uyarıyı neden alıyorum?
+email-breach-alert-faq-ans-1 = Veri ihlali uyarılarına kaydoldunuz. İstediğiniz zaman <link_to_settings>tercihlerinizi güncelleyebilirsiniz</link_to_settings>.
+email-breach-alert-faq-qn-2 = Bu şirketi veya siteyi neden tanımıyorum?
+email-breach-alert-faq-qn-3 = Veri ihlali uyarısı nedir?
+email-breach-alert-faq-qn-4 = { -brand-mozilla-monitor } nedir?
+email-breach-alert-faq-ans-4 = İnternetteki hesaplarınızın bilgileri ele geçirilirse sizi uyaran ücretsiz bir veri ihlali bildirim hizmeti.
