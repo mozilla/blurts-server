@@ -40,7 +40,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
         <MetaTags />
         <HeaderStyles />
       </mj-head>
-      <mj-body background-color="#ffffff" css-class="dm-body">
+      <mj-body background-color="#ffffff">
         {/* Logo */}
         <mj-section padding="24px 24px 0 24px">
           <mj-column>
@@ -50,15 +50,6 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               padding="0"
               alt=""
               src={`${config.serverUrl}/images/email/monitor-logo-transparent.png`}
-              css-class="dm-img-light"
-            />
-            <mj-image
-              align="left"
-              width="160px"
-              padding="0"
-              alt=""
-              src={`${config.serverUrl}/images/email/monitor-logo-transparent-dark-mode.svg`}
-              css-class="dm-img-dark"
             />
           </mj-column>
         </mj-section>
@@ -114,11 +105,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
 
         {/* Breach info card — grey background, no border-radius for max client compat */}
         <mj-section padding="20px 24px 0 24px">
-          <mj-column
-            background-color="#f5f5f5"
-            padding="20px"
-            css-class="dm-section-card"
-          >
+          <mj-column background-color="#f5f5f5" padding="20px">
             <mj-text
               font-size="12px"
               font-weight="700"
