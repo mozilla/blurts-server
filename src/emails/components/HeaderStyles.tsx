@@ -6,90 +6,46 @@
 export const MetaTags = () => {
   return (
     <mj-raw>
-      <meta name="color-scheme" content="light dark" />
-      <meta name="supported-color-schemes" content="light dark" />
+      <meta name="color-scheme" content="light only" />
+      <meta name="supported-color-schemes" content="light only" />
     </mj-raw>
   );
 };
 
-// Dark mode email technique references:
-//   - https://www.emailonacid.com/blog/article/email-development/advanced-mjml-coding/
-//   - https://www.litmus.com/blog/the-ultimate-guide-to-dark-mode-for-email-marketers
-//
-// Two targeting mechanisms are used:
-//   1. `@media (prefers-color-scheme: dark)` — honored by Apple Mail, iOS Mail,
-//      Proton, and some Outlook variants.
-//   2. `[data-ogsc]` (color scheme) and `[data-ogsb]` (background scheme)
-//      attributes — injected by Outlook on Android / iOS on an ancestor
-//      element, used as descendant selectors here.
-//
-// All overrides are opt-in via CSS classes so individual templates can choose
-// which surfaces participate (`dm-body`, `dm-section-hero`, `dm-section-card`,
-// `dm-section-footer`, `dm-img-light` / `dm-img-dark`).
 export const HeaderStyles = () => {
-  const bodyBg = "#1c1b22";
-  const heroBg = "#2b2438";
-  const cardBg = "#2b2a33";
-  const textColor = "#fbfbfe";
-
-  const darkModeRules = (scope: string) => `
-        ${scope} .dm-img-light { display: none !important; }
-        ${scope} .dm-img-dark {
-          display: block !important;
-          max-height: none !important;
-          overflow: visible !important;
-        }
-
-        ${scope} .dm-body,
-        ${scope} .dm-body > div,
-        ${scope} .dm-body > table {
-          background-color: ${bodyBg} !important;
-        }
-
-        ${scope} .dm-body p,
-        ${scope} .dm-body h1,
-        ${scope} .dm-body h2,
-        ${scope} .dm-body h3,
-        ${scope} .dm-body span,
-        ${scope} .dm-body strong {
-          color: ${textColor} !important;
-        }
-
-        ${scope} .dm-section-hero,
-        ${scope} .dm-section-hero > table,
-        ${scope} .dm-section-hero > table > tbody > tr > td {
-          background-color: ${heroBg} !important;
-        }
-
-        ${scope} .dm-section-card,
-        ${scope} .dm-section-card > table,
-        ${scope} .dm-section-card > table > tbody > tr > td {
-          background-color: ${cardBg} !important;
-        }
-
-        ${scope} .dm-section-footer,
-        ${scope} .dm-section-footer > table,
-        ${scope} .dm-section-footer > table > tbody > tr > td {
-          background-color: ${cardBg} !important;
-        }
-      `;
-
-  const styles = `
+  const enforceLightMode = `
       :root {
-        color-scheme: light dark;
-        supported-color-schemes: light dark;
+        color-scheme: light only;
+        supported-color-schemes: light only;
       }
 
-      .dm-img-dark { display: none; }
+      /*
+       * Enforcing light mode does not seem to work on Gmail. Gmail force-inverts emails into its own dark mode and ignores
+       * both \`prefers-color-scheme\` and our \`color-scheme: light only\` /
+       * \`supported-color-schemes\`, so the "enforce light mode" approach
+       * above has no effect there. 
+       * 
+       * The hack: Gmail leaves CSS gradient
+       * backgrounds alone when it auto-inverts, while plain background-color
+       * values get darkened. Setting these surfaces via \`linear-gradient\`
+       * (with both stops the same color) preserves the intended color in
+       * Gmail dark mode without changing how the email looks anywhere else,
+       * so it stays safe across other clients. 
+       */
 
-      @media (prefers-color-scheme: dark) {
-        ${darkModeRules("")}
+      .hero-background-dm {
+        background: linear-gradient(#F5EAFF,#F5EAFF) !important;
       }
 
-      ${darkModeRules("[data-ogsc]")}
+      .footer-background-dm {
+        background: linear-gradient(#F9F9FA,#F9F9FA) !important;
+      }
+      
+      body {
+        background-color: #ffffff !important;
+      }
 
-      ${darkModeRules("[data-ogsb]")}
     `;
 
-  return <mj-style>{styles}</mj-style>;
+  return <mj-style>{enforceLightMode}</mj-style>;
 };

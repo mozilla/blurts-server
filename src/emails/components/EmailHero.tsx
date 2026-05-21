@@ -18,7 +18,6 @@ export const EmailHero = (props: Props) => {
   // which sets a utmContentSuffix:
   /* c8 ignore next */
   const utmContentSuffix = props.utmContentSuffix ?? "";
-  const logoHref = `${config.serverUrl}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo${utmContentSuffix}`;
 
   return (
     <mj-wrapper padding="12px 16px">
@@ -26,7 +25,6 @@ export const EmailHero = (props: Props) => {
         padding="10px 12px"
         border-radius="16px 16px 0 0"
         background-color="#F5EAFF"
-        css-class="dm-section-hero"
       >
         <mj-group>
           <mj-column
@@ -38,27 +36,15 @@ export const EmailHero = (props: Props) => {
             <mj-image
               alt={l10n.getString("public-nav-name")}
               src={`${config.serverUrl}/images/email/monitor-logo-transparent.png`}
-              href={logoHref}
+              href={`${config.serverUrl}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo${utmContentSuffix}`}
               align="center"
               width="150px"
-              css-class="dm-img-light"
-            />
-            <mj-image
-              alt={l10n.getString("public-nav-name")}
-              src={`${config.serverUrl}/images/email/monitor-logo-transparent-dark-mode.svg`}
-              href={logoHref}
-              align="center"
-              width="150px"
-              css-class="dm-img-dark"
+              css-class="hero-background-dm"
             />
           </mj-column>
         </mj-group>
       </mj-section>
-      <mj-section
-        background-color="#F5EAFF"
-        border-radius="0 0 16px 16px"
-        css-class="dm-section-hero"
-      >
+      <mj-section border-radius="0 0 16px 16px" background-color="#F5EAFF">
         <mj-column>
           <mj-text font-size="20px" line-height="38px">
             <h2>{props.heading}</h2>
