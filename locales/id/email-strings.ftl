@@ -80,3 +80,27 @@ email-breach-alert-all-data-points-title = Data Anda yang terpapar:
 email-breach-alert-all-next-steps-lead = Kami akan memandu Anda langkah demi langkah tentang cara mengatasi kebocoran data ini.
 email-breach-alert-all-next-steps-cta-label = Mari kita mulai
 email-breach-alert-all-next-steps-button-dashboard = Ke Dasbor
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = { $company-name } detail kebocoran data
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } menemukan info Anda dalam kebocoran data { $company-name } pada { $breach-date }. Anda mendapatkan peringatan ini karena Anda mendaftar ke <link_to_settings>pemberitahuan pembobolan</link_to_settings>.
+email-breach-alert-all-source-title-1 = Detail pembobolan
+email-breach-alert-company = Perusahaan:
+email-breach-alert-date-of-breach = Tanggal pelanggaran:
+email-breach-alert-info-exposed = Info Anda yang terekspos:
+email-breach-alert-next-steps = Langkah selanjutnya
+email-breach-alert-next-steps-description = <sign_in_link>Masuk</sign_in_link> ke dasbor { -brand-mozilla-monitor } Anda. Kami akan memandu Anda melalui langkah-langkah yang diperlukan untuk mengatasinya.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Selesaikan pelanggaran di dasbor
+email-breach-alert-faqs-title = T&J
+email-breach-alert-faq-qn-1 = Mengapa saya menerima ini?
+email-breach-alert-faq-ans-1 = Anda mendaftar untuk peringatan kebocoran data. <link_to_settings>Perbarui preferensi Anda</link_to_settings> kapan saja di pengaturan.
+email-breach-alert-faq-qn-2 = Mengapa saya tidak mengenali perusahaan atau situs ini?
+email-breach-alert-faq-ans-2 = Ini mungkin telah mengubah kepemilikan atau nama, melibatkan akun lama atau akun yang dibuat untuk Anda, atau berasal dari daftar informasi pribadi terbuka yang dibeli.
+email-breach-alert-faq-qn-3 = Apa itu peringatan kebocoran data?
+email-breach-alert-faq-ans-3 = Notifikasi { -brand-mozilla-monitor } dikirim saat info pribadi yang Anda pantau terungkap, dicuri, atau disalin tanpa izin.
+email-breach-alert-faq-qn-4 = Apa itu { -brand-mozilla-monitor }?
+email-breach-alert-faq-ans-4 = Layanan pemberitahuan pembobolan data gratis yang memperingatkan Anda jika akun daring Anda terlibat dalam pembobolan data.

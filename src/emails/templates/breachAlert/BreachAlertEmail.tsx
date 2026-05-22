@@ -42,7 +42,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
         <HeaderStyles />
         <mj-style>{`p { margin: 0 0 4px 0; }`}</mj-style>
       </mj-head>
-      <mj-body css-class="dm-body">
+      <mj-body>
         <EmailHero
           l10n={l10n}
           utm_campaign={utmCampaignId}

@@ -82,3 +82,27 @@ email-breach-alert-all-data-points-title = Uw gelekte gegevens:
 email-breach-alert-all-next-steps-lead = We helpen u stap voor stap hoe u dit datalek kunt oplossen.
 email-breach-alert-all-next-steps-cta-label = Laten we beginnen
 email-breach-alert-all-next-steps-button-dashboard = Naar het dashboard
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = Details over { $company-name }-datalekken
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } heeft uw gegevens gevonden in een { $company-name }-datalek dat op { $breach-date } plaats heeft gevonden. U krijgt deze melding omdat u zich hebt aangemeld voor <link_to_settings>meldingen van datalekken</link_to_settings>.
+email-breach-alert-all-source-title-1 = Datalekdetails
+email-breach-alert-company = Bedrijf:
+email-breach-alert-date-of-breach = Datum van datalek:
+email-breach-alert-info-exposed = Uw gelekte gegevens:
+email-breach-alert-next-steps = Volgende stappen
+email-breach-alert-next-steps-description = <sign_in_link>Meld u aan</sign_in_link> bij uw { -brand-mozilla-monitor }-dashboard. We leiden u door de stappen die nodig zijn om dit op te lossen.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Datalek op dashboard oplossen
+email-breach-alert-faqs-title = FAQ’s
+email-breach-alert-faq-qn-1 = Waarom ontvang ik dit?
+email-breach-alert-faq-ans-1 = U hebt zich ingeschreven voor waarschuwingen over datalekken. <link_to_settings>Werk op elk gewenst moment uw voorkeuren bij</link_to_settings> in uw instellingen.
+email-breach-alert-faq-qn-2 = Waarom herken ik dit bedrijf of deze website niet?
+email-breach-alert-faq-ans-2 = Deze kan van eigenaar of naam zijn veranderd, een oude of voor u aangemaakte account betreffen, of afkomstig zijn van een gekochte lijst met gelekte persoonlijke gegevens.
+email-breach-alert-faq-qn-3 = Wat is een datalekwaarschuwing?
+email-breach-alert-faq-ans-3 = Een melding die { -brand-mozilla-monitor } verstuurt wanneer persoonlijke gegevens die u bewaakt zonder toestemming worden gelekt, gestolen of gekopieerd.
+email-breach-alert-faq-qn-4 = Wat is { -brand-mozilla-monitor }?
+email-breach-alert-faq-ans-4 = Een gratis meldservice voor datalekken die u waarschuwt als uw online accounts betrokken zijn bij een datalek.

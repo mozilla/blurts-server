@@ -78,3 +78,27 @@ email-breach-alert-all-data-points-title = 您曝光的資料：
 email-breach-alert-all-next-steps-lead = 我們將帶您逐步向您講解，如何解決這場資料外洩事件。
 email-breach-alert-all-next-steps-cta-label = 開始使用
 email-breach-alert-all-next-steps-button-dashboard = 前往儀錶板
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = { $company-name } 資料外洩事件詳細資訊
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } 在 { $breach-date } 的一場 { $company-name } 資料外洩事件中發現您的資訊。您會收到這份警報，是因為您曾經訂閱 <link_to_settings>資料外洩通知</link_to_settings>。
+email-breach-alert-all-source-title-1 = 資料外洩事件詳細資訊
+email-breach-alert-company = 公司：
+email-breach-alert-date-of-breach = 發生日期：
+email-breach-alert-info-exposed = 您曝光的資訊：
+email-breach-alert-next-steps = 接下來可以做的事：
+email-breach-alert-next-steps-description = 請<sign_in_link>登入</sign_in_link>您的 { -brand-mozilla-monitor } 儀表板。我們將帶您逐步解決這個問題。
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = 處理儀表板上的資料外洩事件
+email-breach-alert-faqs-title = 常見問題
+email-breach-alert-faq-qn-1 = 為什麼我會收到這個？
+email-breach-alert-faq-ans-1 = 您已訂閱資料外洩警報。可隨時到設定<link_to_settings>更新偏好設定</link_to_settings>。
+email-breach-alert-faq-qn-2 = 為什麼我不認識這家公司或網站？
+email-breach-alert-faq-ans-2 = 可能是擁有者或名稱有變動、外洩的是您的舊帳號，為您建立的帳號，或該服務購買了從其他地方外洩的個人資訊。
+email-breach-alert-faq-qn-3 = 資料外洩警報是什麼？
+email-breach-alert-faq-ans-3 = 當您監控的個人資訊發生外洩、遭竊或未經授權複製時，{ -brand-mozilla-monitor } 就會寄出通知。
+email-breach-alert-faq-qn-4 = { -brand-mozilla-monitor } 是什麼？
+email-breach-alert-faq-ans-4 = 一項免費的資料外洩通知服務，可在您的網路帳號遭到外洩時通知您。

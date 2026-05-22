@@ -12,9 +12,23 @@ email-header-button-sign-in = Iniciar sesión
 email-footer-support-heading = ¿Tienes preguntas sobre { -brand-mozilla-monitor }?
 email-footer-support-content = Visita nuestro <support-link>Centro de asistencia</support-link> para obtener ayuda
 email-footer-trigger-transactional = Estás recibiendo este correo electrónico por tener una suscripción a { -brand-mozilla-monitor }.
+email-footer-reason-subscriber = Recibes este correo automático por tu suscripción a { -brand-mozilla-monitor }. Si lo recibiste por error, no es necesario realizar ninguna acción. Para más información, visita <support-link>{ -brand-mozilla } Soporte</support-link>.
+email-footer-reason-subscriber-one-time = Recibes este correo automático por única vez debido a tu suscripción a { -brand-monitor-plus }. No recibirás más mensajes de este tipo. Para más información, visita <support-link>{ -brand-mozilla } Soporte</support-link>.
+# Variables:
+#    $support_link (string) - The URL the user can visit for support, e.g. "https://support.mozilla.org"
+email-footer-support-content-plain =
+    Visita nuestro centro de asistencia para obtener ayuda:
+    { $support_link }
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Datos de filtraciones proporcionados por { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Datos de filtración proporcionados por <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Privacidad
+email-unsubscribe-link = <link_to_unsub>Cancelar suscripción</link_to_unsub>
+# Variables:
+#   $unsub_link (string) - URL to the unsubscribe page, e.g. "https://monitor.mozilla.org/unsubscribe/...".
+email-unsubscribe-link-plain = Cancelar suscripción: { $unsub_link }
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
@@ -68,3 +82,27 @@ email-breach-alert-all-data-points-title = Datos expuestos:
 email-breach-alert-all-next-steps-lead = Te guiaremos paso a paso sobre cómo resolver esta filtración de datos.
 email-breach-alert-all-next-steps-cta-label = Comencemos
 email-breach-alert-all-next-steps-button-dashboard = Ir al panel de control
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = Detalles de la filtración de datos de { $company-name }
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } encontró tu información en una filtración de datos de { $company-name } el { $breach-date }. Recibes esta alerta por tu suscripción a las <link_to_settings>notificaciones de filtraciones</link_to_settings>.
+email-breach-alert-all-source-title-1 = Detalles de la filtración
+email-breach-alert-company = Empresa:
+email-breach-alert-date-of-breach = Fecha de la filtración:
+email-breach-alert-info-exposed = Tu información expuesta:
+email-breach-alert-next-steps = Siguientes pasos
+email-breach-alert-next-steps-description = <sign_in_link>Inicia sesión</sign_in_link> en tu panel de { -brand-mozilla-monitor }. Te guiaremos por los pasos necesarios para resolverlo.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Resolver filtración en el panel
+email-breach-alert-faqs-title = Preguntas frecuentes
+email-breach-alert-faq-qn-1 = ¿Por qué recibo este mensaje?
+email-breach-alert-faq-ans-1 = Te registraste para recibir alertas de filtraciones. <link_to_settings>Actualiza tus preferencias</link_to_settings> en cualquier momento desde la configuración.
+email-breach-alert-faq-qn-2 = ¿Por qué no reconozco esta empresa o sitio?
+email-breach-alert-faq-ans-2 = Es posible que la empresa haya cambiado de nombre o dueños, que se trate de una cuenta antigua o creada en tu representación, o que la información provenga de una lista de datos expuestos que fue comprada.
+email-breach-alert-faq-qn-3 = ¿Qué es una alerta de filtración de datos?
+email-breach-alert-faq-ans-3 = Una notificación que envía { -brand-mozilla-monitor } cuando la información personal que monitoreas queda expuesta, es robada o se copia sin permiso.
+email-breach-alert-faq-qn-4 = ¿Qué es { -brand-mozilla-monitor }?
+email-breach-alert-faq-ans-4 = Un servicio gratuito de notificación de filtraciones que te avisa si tus cuentas en línea se han visto involucradas en una filtración de datos.

@@ -80,3 +80,27 @@ email-breach-alert-all-data-points-title = Os seus dados expostos:
 email-breach-alert-all-next-steps-lead = Iremos apoiar, passo a passo, na forma para resolver esta violação de dados.
 email-breach-alert-all-next-steps-cta-label = Vamos começar
 email-breach-alert-all-next-steps-button-dashboard = Ir para o painel
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = { $company-name } detalhes da violação de dados
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } encontrou a sua informação numa brecha de dados { $company-name } em { $breach-date }. Está a receber este alerta porque subscreveu às <link_to_settings>notificações de violação de dados</link_to_settings>.
+email-breach-alert-all-source-title-1 = Detalhes da violação de dados
+email-breach-alert-company = Empresa:
+email-breach-alert-date-of-breach = Data da violação de dados
+email-breach-alert-info-exposed = A sua informação exposta:
+email-breach-alert-next-steps = Passos seguintes
+email-breach-alert-next-steps-description = <sign_in_link>Inicie sessão</sign_in_link> no seu painel { -brand-mozilla-monitor }. Iremos guiar-lhe através dos passos necessários para o resolver.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Resolver violação de dados no painel
+email-breach-alert-faqs-title = Perguntas frequentes
+email-breach-alert-faq-qn-1 = Porque é que estou a receber isto?
+email-breach-alert-faq-ans-1 = Inscreveu-se para alertas de violações de dados. <link_to_settings>Atualize as suas preferências</link_to_settings> a qualquer momento nas definições.
+email-breach-alert-faq-qn-2 = Porque é que não reconheço esta empresa ou site?
+email-breach-alert-faq-ans-2 = Pode ter alterado a propriedade ou o nome, envolver uma conta antiga ou uma que foi criada para si, ou vir de uma lista comprada de informação pessoal exposta.
+email-breach-alert-faq-qn-3 = O que é um alerta de violação de dados?
+email-breach-alert-faq-ans-3 = Uma notificação que o { -brand-mozilla-monitor } envia quando uma informação pessoal que está a monitorizar é exposta, furtada ou copiada sem permissão.
+email-breach-alert-faq-qn-4 = O que é { -brand-mozilla-monitor }?
+email-breach-alert-faq-ans-4 = Um serviço gratuito de notificação de violações de dados que avisa se as suas contas online estiveram envolvidas numa violação de dados.

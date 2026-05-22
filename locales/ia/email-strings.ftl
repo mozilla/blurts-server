@@ -82,3 +82,27 @@ email-breach-alert-all-data-points-title = Tu datos exponite:
 email-breach-alert-all-next-steps-lead = Nos te guidara passo a passo re como resolver iste violation de datos.
 email-breach-alert-all-next-steps-cta-label = Que nos comencia
 email-breach-alert-all-next-steps-button-dashboard = Va al pannello de controlo
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = Detalios del violation de datos de { $company-name }
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } trovava tu informationes in un violation de datos de { $company-name } le { $breach-date }. Tu recipe iste aviso perque tu te inscribeva a <link_to_settings>avisos de violation</link_to_settings>.
+email-breach-alert-all-source-title-1 = Detalios de violation
+email-breach-alert-company = Interprisa:
+email-breach-alert-date-of-breach = Data de violation:
+email-breach-alert-info-exposed = Tu informationes exponite:
+email-breach-alert-next-steps = Passos sequente:
+email-breach-alert-next-steps-description = <sign_in_link>Accede</sign_in_link> a tu pannello de controlo de { -brand-mozilla-monitor }. Nos te guidara per le passos necessari pro resolver lo.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Resolver le violation sur le pannello de controlo
+email-breach-alert-faqs-title = Folio a questiones
+email-breach-alert-faq-qn-1 = Proque recipe io isto?
+email-breach-alert-faq-ans-1 = Tu te inscribeva al avisos de violation de datos. <link_to_settings>Actualisa tu preferentias</link_to_settings> quandocunque in parametros.
+email-breach-alert-faq-qn-2 = Perque non recognosce io iste compania o sito?
+email-breach-alert-faq-ans-2 = Il pote haber cambiate proprietate o nomine, implicar un vetere conto o illo que ha essite create pro te, o venir de un lista comprate de informationes personal exponite.
+email-breach-alert-faq-qn-3 = Que es un aviso de violation de datos?
+email-breach-alert-faq-ans-3 = Un aviso que { -brand-mozilla-monitor } invia quando informationes personal que tu survelia es exponite, robate, o copiate sin permisso.
+email-breach-alert-faq-qn-4 = Que es { -brand-mozilla-monitor }?
+email-breach-alert-faq-ans-4 = Un servicio gratuite de aviso de violation de datos que te adverte si tu contos online ha essite implicate in un violation de datos.
