@@ -61,7 +61,7 @@ export const BreachAlertEmail = (props: BreachAlertEmailProps) => {
               width="160px"
               padding="0px"
               alt=""
-              src={`${config.serverUrl}/images/email/monitor-logo-transparent.png`}
+              src={`${config.serverUrl}/images/email/breach-alerts-20260526/monitor-logo-light-purple-bg.png`}
               css-class="hero-background-dm"
             />
             <mj-spacer height="24px" />
