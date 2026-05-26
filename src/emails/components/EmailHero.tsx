@@ -35,7 +35,7 @@ export const EmailHero = (props: Props) => {
           >
             <mj-image
               alt={l10n.getString("public-nav-name")}
-              src={`${config.serverUrl}/images/email/monitor-logo-transparent.png`}
+              src={`${config.serverUrl}/images/email/breach-alerts-20260526/monitor-logo-light-purple-bg.png`}
               href={`${config.serverUrl}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo${utmContentSuffix}`}
               align="center"
               width="150px"

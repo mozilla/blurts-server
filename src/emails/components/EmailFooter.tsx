@@ -172,7 +172,7 @@ export const RedesignedEmailFooter = (props: Props) => {
         <mj-column>
           <mj-image
             alt={l10n.getString("email-footer-logo-mozilla-alt")}
-            src={`${config.serverUrl}/images/email/mozilla-logo.png`}
+            src={`${config.serverUrl}/images/email/breach-alerts-20260526/mozilla-logo-light-grey-bg.png`}
             href={`https://www.mozilla.org/?utm_source=monitor-product&utm_medium=product-email&utm_campaign=${props.utm_campaign}&utm_content=header-logo`}
             width="150px"
             align="center"
