@@ -20,8 +20,22 @@ const STRIP_FXA_CI_PATTERNS = [
   "**/www.googletagmanager.com/**",
 ];
 
+// FxA's bypass token has different values per environment. Pick by E2E_TEST_ENV.
+// Falls back to FXA_CI_SECRET if the env-specific secret isn't set, so legacy
+// configs keep working during the rollout of the per-env secrets.
+export function getActiveFxaCiSecret(): string | undefined {
+  const env = process.env.E2E_TEST_ENV;
+  if (env === "stage") {
+    return process.env.FXA_CI_SECRET_STAGE ?? process.env.FXA_CI_SECRET;
+  }
+  if (env === "production") {
+    return process.env.FXA_CI_SECRET_PROD ?? process.env.FXA_CI_SECRET;
+  }
+  return process.env.FXA_CI_SECRET;
+}
+
 export async function setupFxaCiRoutes(page: Page) {
-  if (!process.env.FXA_CI_SECRET) return;
+  if (!getActiveFxaCiSecret()) return;
   const stripFxaCi = (route: Route) => {
     const headers = { ...route.request().headers() };
     delete headers["fxa-ci"];
@@ -33,9 +47,8 @@ export async function setupFxaCiRoutes(page: Page) {
 }
 
 export function getFxaCiHeaders(): Record<string, string> {
-  return process.env.FXA_CI_SECRET
-    ? { "fxa-ci": process.env.FXA_CI_SECRET }
-    : {};
+  const secret = getActiveFxaCiSecret();
+  return secret ? { "fxa-ci": secret } : {};
 }
 
 async function waitForFxa(page: Page) {
