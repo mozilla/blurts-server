@@ -16,6 +16,10 @@ import { logger } from "../app/functions/server/logging";
  * Hashes are recomputed in-process with the same `getSha1` the app uses, so the
  * result is guaranteed to match application logic and the routine does not
  * depend on the database having the `pgcrypto` extension.
+ *
+ * The write is an optimistic compare-and-set keyed on the email value read at
+ * scan time, so a row whose email changes concurrently (between our read and
+ * our write) is skipped rather than overwritten with a hash of a stale email.
  */
 export type BackfillStaleSha1Options = {
   /** Knex connection scoped to the database containing the table. */
@@ -44,7 +48,11 @@ export type BackfillStaleSha1Result = {
   scanned: number;
   /** Number of rows whose stored hash did not match the current email. */
   stale: number;
-  /** Number of rows actually rewritten (0 when dryRun is true). */
+  /**
+   * Number of rows actually rewritten (0 when dryRun is true). May be less than
+   * `stale` if a row's email changed concurrently and the compare-and-set
+   * write was skipped.
+   */
   updated: number;
 };
 
@@ -96,12 +104,18 @@ export async function backfillStaleSha1({
       await knex.transaction(async (trx) => {
         for (const row of staleRows) {
           const email = row[emailColumn] as string;
-          await trx(table)
+          // Compare-and-set: only rewrite the hash if the email still matches
+          // the value we read and hashed. If the email changed concurrently
+          // (e.g. updatePrimaryEmail ran between our read and this write), the
+          // predicate fails, we skip the row, and we avoid clobbering the
+          // freshly-written correct hash with a hash of the stale email.
+          const affected = await trx(table)
             .where(idColumn, row[idColumn] as number)
+            .andWhere(emailColumn, email)
             .update({ [hashColumn]: getSha1(email.toLowerCase()) });
+          updated += affected;
         }
       });
-      updated += staleRows.length;
     }
 
     logger.info("backfill_stale_sha1_batch", {

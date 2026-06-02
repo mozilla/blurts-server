@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { describe, it, expect, afterEach, afterAll } from "vitest";
+import { describe, it, expect, afterEach, afterAll, vi } from "vitest";
 import { faker } from "@faker-js/faker";
 import { seeds } from "../test/db";
 import createDbConnection from "./connect";
@@ -14,6 +14,7 @@ const conn = createDbConnection();
 const STALE_HASH = getSha1("stale-placeholder@example.com");
 
 afterEach(async () => {
+  vi.restoreAllMocks();
   await conn.raw(`TRUNCATE TABLE subscribers CASCADE`);
 });
 
@@ -116,6 +117,49 @@ describe("backfillStaleSha1 - subscribers.primary_sha1", () => {
 
     const [unchanged] = await conn("subscribers").where({ id: stale.id });
     expect(unchanged.primary_sha1).toBe(STALE_HASH);
+  });
+
+  it("does not clobber a row whose email changed after it was read", async () => {
+    const oldEmail = faker.internet.email().toLowerCase();
+    const newEmail = faker.internet.email().toLowerCase();
+
+    const [row] = await conn("subscribers")
+      .insert(
+        seeds.subscribers({
+          primary_email: oldEmail,
+          primary_sha1: STALE_HASH,
+          primary_verified: true,
+        }),
+      )
+      .returning("*");
+
+    // Simulate a concurrent updatePrimaryEmail that lands between the backfill's
+    // batch read and its write: rewrite the email (with a correct hash) just
+    // before the update transaction runs.
+    const realTransaction = conn.transaction.bind(conn);
+    vi.spyOn(conn, "transaction").mockImplementation((async (
+      cb: Parameters<typeof realTransaction>[0],
+    ) => {
+      await conn("subscribers")
+        .where({ id: row.id })
+        .update({
+          primary_email: newEmail,
+          primary_sha1: getSha1(newEmail),
+          updated_at: new Date(),
+        });
+      return realTransaction(cb);
+    }) as typeof realTransaction);
+
+    const result = await backfillPrimary();
+
+    // The row was observed stale, but the compare-and-set write is skipped
+    // because the email no longer matches what we read.
+    expect(result).toStrictEqual({ scanned: 1, stale: 1, updated: 0 });
+
+    // The concurrently-written correct hash for the new email survives.
+    const [unchanged] = await conn("subscribers").where({ id: row.id });
+    expect(unchanged.primary_email).toBe(newEmail);
+    expect(unchanged.primary_sha1).toBe(getSha1(newEmail));
   });
 });
 
