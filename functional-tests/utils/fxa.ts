@@ -23,6 +23,7 @@ const STRIP_FXA_CI_PATTERNS = [
 // FxA's bypass token has different values per environment. Pick by E2E_TEST_ENV.
 // Falls back to FXA_CI_SECRET if the env-specific secret isn't set, so legacy
 // configs keep working during the rollout of the per-env secrets.
+// TODO(MNTOR-5290): remove FXA_CI_SECRET fallback once per-env secrets are stable.
 export function getActiveFxaCiSecret(): string | undefined {
   const env = process.env.E2E_TEST_ENV;
   if (env === "stage") {
