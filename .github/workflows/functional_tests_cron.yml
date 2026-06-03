@@ -67,7 +67,6 @@ jobs:
           E2E_TEST_SECRET: ${{ secrets.E2E_TEST_SECRET }}
           E2E_TEST_ACCOUNT_BASE_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_BASE_EMAIL }}
           E2E_TEST_ACCOUNT_BASE_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_BASE_PASSWORD }}
-          FXA_CI_SECRET: ${{ secrets.FXA_CI_SECRET }}
           FXA_CI_SECRET_STAGE: ${{ secrets.FXA_CI_SECRET_STAGE }}
           FXA_CI_SECRET_PROD: ${{ secrets.FXA_CI_SECRET_PROD }}
       - name: Send GitHub Action trigger data to Slack workflow

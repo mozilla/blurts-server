@@ -21,16 +21,15 @@ const STRIP_FXA_CI_PATTERNS = [
 ];
 
 // FxA's bypass token has different values per environment. Pick by E2E_TEST_ENV.
-// Falls back to FXA_CI_SECRET if the env-specific secret isn't set, so legacy
-// configs keep working during the rollout of the per-env secrets.
-// TODO(MNTOR-5290): remove FXA_CI_SECRET fallback once per-env secrets are stable.
+// Local CI runs Monitor at localhost but points OAuth at stage FxA (see .env.ci),
+// so "local" needs the stage token too.
 export function getActiveFxaCiSecret(): string | undefined {
   const env = process.env.E2E_TEST_ENV;
   if (env === "production") {
-    return process.env.FXA_CI_SECRET_PROD ?? process.env.FXA_CI_SECRET;
+    return process.env.FXA_CI_SECRET_PROD;
   }
   // stage + local both hit stage FxA.
-  return process.env.FXA_CI_SECRET_STAGE ?? process.env.FXA_CI_SECRET;
+  return process.env.FXA_CI_SECRET_STAGE;
 }
 
 export async function setupFxaCiRoutes(page: Page) {
