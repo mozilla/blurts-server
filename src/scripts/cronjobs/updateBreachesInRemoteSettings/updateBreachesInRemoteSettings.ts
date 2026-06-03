@@ -106,7 +106,8 @@ export async function main(parentLogger: Logger) {
     };
 
     try {
-      await remoteSettings.addNewBreach(data);
+      const responseJson = await remoteSettings.addNewBreach(data);
+      logger.info("Breach alert stored in Remote Settings.", responseJson);
     } catch (e) {
       failed += 1;
       logger.error("POSTing new breach to collection failed", {
