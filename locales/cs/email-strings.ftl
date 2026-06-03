@@ -86,7 +86,7 @@ email-breach-alert-all-next-steps-button-dashboard = Přejít na nástěnku
 ## Breach alert redesigned strings
 
 # $company-name is the name of the company/site that was breached.
-email-breach-alert-all-hero-heading-1 = Podrobnosti o únicích dat typu { $company-name }
+email-breach-alert-all-hero-heading-1 = Podrobnosti o únicích dat společnosti { $company-name }
 # $company-name is the name of the company/site that was breached.
 # $breach-date is the date of the breach.
 email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } našel vaše údaje v { $company-name } úniku dat z { $breach-date }. Toto upozornění jste obdrželi, protože jste se zaregistrovali k <link_to_settings>upozorňování na úniky</link_to_settings>.

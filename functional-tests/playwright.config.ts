@@ -13,6 +13,7 @@ import { FeatureFlagName } from "../src/db/tables/featureFlags";
 import "../src/config";
 import { createTestClientRegionToken } from "../src/app/functions/server/testCountryCodeToken";
 import { getBaseTestEnvUrl } from "./utils/environment";
+import { getFxaCiHeaders } from "./utils/fxa";
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -117,9 +118,7 @@ export const projects = locations.flatMap((geo) =>
             "x-forced-client-region-token": createTestClientRegionToken(
               geo.name.toLowerCase(),
             ),
-            ...(process.env.FXA_CI_SECRET
-              ? { "fxa-ci": process.env.FXA_CI_SECRET }
-              : {}),
+            ...getFxaCiHeaders(),
           },
         },
       }) as const satisfies Project,
