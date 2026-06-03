@@ -26,13 +26,11 @@ const STRIP_FXA_CI_PATTERNS = [
 // TODO(MNTOR-5290): remove FXA_CI_SECRET fallback once per-env secrets are stable.
 export function getActiveFxaCiSecret(): string | undefined {
   const env = process.env.E2E_TEST_ENV;
-  if (env === "stage") {
-    return process.env.FXA_CI_SECRET_STAGE ?? process.env.FXA_CI_SECRET;
-  }
   if (env === "production") {
     return process.env.FXA_CI_SECRET_PROD ?? process.env.FXA_CI_SECRET;
   }
-  return process.env.FXA_CI_SECRET;
+  // stage + local both hit stage FxA.
+  return process.env.FXA_CI_SECRET_STAGE ?? process.env.FXA_CI_SECRET;
 }
 
 export async function setupFxaCiRoutes(page: Page) {
