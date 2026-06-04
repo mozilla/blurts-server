@@ -5,7 +5,6 @@
 "use strict";
 
 import { knexSubscribers } from "../../db/tables/subscribers";
-import { knexEmailAddresses } from "../../db/tables/emailAddresses";
 import { backfillStaleSha1 } from "../../db/backfillStaleSha1";
 import { logger } from "../../app/functions/server/logging";
 
@@ -18,9 +17,9 @@ import { logger } from "../../app/functions/server/logging";
  * the breach-alert notifier (matches on stored hashes) to disagree with the
  * dashboard (re-hashes the live email).
  *
- * Run manually, not on a schedule. Examples:
- *   tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/backfillStaleSha1.ts --dry-run
- *   tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/backfillStaleSha1.ts --batch-size=5000
+ * Run manually with tsx (intentionally not bundled into the cron image):
+ *   tsx --tsconfig tsconfig.cronjobs.json src/scripts/one-offs/backfillStaleSha1.ts --dry-run
+ *   tsx --tsconfig tsconfig.cronjobs.json src/scripts/one-offs/backfillStaleSha1.ts --batch-size=5000
  *
  * The backfill is idempotent (only rows whose hash differs are rewritten), so
  * it is safe to re-run or resume.
@@ -42,33 +41,18 @@ if (
 async function run() {
   logger.info("backfill_stale_sha1_start", { dryRun, batchSize });
 
-  const primary = await backfillStaleSha1({
+  // subscribers and email_addresses share the same connection singleton.
+  const result = await backfillStaleSha1({
     knex: knexSubscribers,
-    table: "subscribers",
-    emailColumn: "primary_email",
-    hashColumn: "primary_sha1",
-    verifiedColumn: "primary_verified",
     batchSize,
     dryRun,
   });
 
-  const secondary = await backfillStaleSha1({
-    knex: knexEmailAddresses,
-    table: "email_addresses",
-    emailColumn: "email",
-    hashColumn: "sha1",
-    verifiedColumn: "verified",
-    batchSize,
-    dryRun,
-  });
-
-  logger.info("backfill_stale_sha1_summary", { dryRun, primary, secondary });
+  logger.info("backfill_stale_sha1_summary", { dryRun, ...result });
 }
 
 run()
   .then(async () => {
-    // knexSubscribers and knexEmailAddresses share the same connection
-    // singleton, so destroying one tears down the pool.
     await knexSubscribers.destroy();
     process.exit(0);
   })

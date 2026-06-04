@@ -13,6 +13,11 @@ const conn = createDbConnection();
 
 const STALE_HASH = getSha1("stale-placeholder@example.com");
 
+const NO_CHANGES = { scanned: 0, stale: 0, updated: 0 };
+
+const run = (overrides = {}) =>
+  backfillStaleSha1({ knex: conn, batchSize: 2, ...overrides });
+
 afterEach(async () => {
   vi.restoreAllMocks();
   await conn.raw(`TRUNCATE TABLE subscribers CASCADE`);
@@ -23,17 +28,6 @@ afterAll(async () => {
 });
 
 describe("backfillStaleSha1 - subscribers.primary_sha1", () => {
-  const backfillPrimary = (overrides = {}) =>
-    backfillStaleSha1({
-      knex: conn,
-      table: "subscribers",
-      emailColumn: "primary_email",
-      hashColumn: "primary_sha1",
-      verifiedColumn: "primary_verified",
-      batchSize: 2,
-      ...overrides,
-    });
-
   it("rewrites only verified rows whose stored hash is stale", async () => {
     const staleEmail = faker.internet.email().toLowerCase();
     const correctEmail = faker.internet.email().toLowerCase();
@@ -66,10 +60,15 @@ describe("backfillStaleSha1 - subscribers.primary_sha1", () => {
       )
       .returning("*");
 
-    const result = await backfillPrimary();
+    const result = await run();
 
     // Only the two verified rows are scanned; one is stale.
-    expect(result).toStrictEqual({ scanned: 2, stale: 1, updated: 1 });
+    expect(result.subscribers).toStrictEqual({
+      scanned: 2,
+      stale: 1,
+      updated: 1,
+    });
+    expect(result.emailAddresses).toStrictEqual(NO_CHANGES);
 
     const [fixed] = await conn("subscribers").where({ id: stale.id });
     expect(fixed.primary_sha1).toBe(getSha1(staleEmail));
@@ -93,11 +92,15 @@ describe("backfillStaleSha1 - subscribers.primary_sha1", () => {
       }),
     );
 
-    const first = await backfillPrimary();
-    expect(first.updated).toBe(1);
+    const first = await run();
+    expect(first.subscribers.updated).toBe(1);
 
-    const second = await backfillPrimary();
-    expect(second).toStrictEqual({ scanned: 1, stale: 0, updated: 0 });
+    const second = await run();
+    expect(second.subscribers).toStrictEqual({
+      scanned: 1,
+      stale: 0,
+      updated: 0,
+    });
   });
 
   it("dry-run counts stale rows without writing", async () => {
@@ -112,8 +115,12 @@ describe("backfillStaleSha1 - subscribers.primary_sha1", () => {
       )
       .returning("*");
 
-    const result = await backfillPrimary({ dryRun: true });
-    expect(result).toStrictEqual({ scanned: 1, stale: 1, updated: 0 });
+    const result = await run({ dryRun: true });
+    expect(result.subscribers).toStrictEqual({
+      scanned: 1,
+      stale: 1,
+      updated: 0,
+    });
 
     const [unchanged] = await conn("subscribers").where({ id: stale.id });
     expect(unchanged.primary_sha1).toBe(STALE_HASH);
@@ -150,11 +157,15 @@ describe("backfillStaleSha1 - subscribers.primary_sha1", () => {
       return realTransaction(cb);
     }) as typeof realTransaction);
 
-    const result = await backfillPrimary();
+    const result = await run();
 
     // The row was observed stale, but the compare-and-set write is skipped
     // because the email no longer matches what we read.
-    expect(result).toStrictEqual({ scanned: 1, stale: 1, updated: 0 });
+    expect(result.subscribers).toStrictEqual({
+      scanned: 1,
+      stale: 1,
+      updated: 0,
+    });
 
     // The concurrently-written correct hash for the new email survives.
     const [unchanged] = await conn("subscribers").where({ id: row.id });
@@ -166,7 +177,7 @@ describe("backfillStaleSha1 - subscribers.primary_sha1", () => {
 describe("backfillStaleSha1 - email_addresses.sha1", () => {
   it("rewrites only verified email rows whose stored hash is stale", async () => {
     const [subscriber] = await conn("subscribers")
-      .insert(seeds.subscribers())
+      .insert(seeds.subscribers({ primary_verified: false }))
       .returning("*");
 
     const staleEmail = faker.internet.email().toLowerCase();
@@ -191,15 +202,15 @@ describe("backfillStaleSha1 - email_addresses.sha1", () => {
       )
       .returning("*");
 
-    const result = await backfillStaleSha1({
-      knex: conn,
-      table: "email_addresses",
-      emailColumn: "email",
-      hashColumn: "sha1",
-      verifiedColumn: "verified",
-    });
+    const result = await run();
 
-    expect(result).toStrictEqual({ scanned: 1, stale: 1, updated: 1 });
+    expect(result.emailAddresses).toStrictEqual({
+      scanned: 1,
+      stale: 1,
+      updated: 1,
+    });
+    // The FK subscriber is unverified, so it is out of scope for the scan.
+    expect(result.subscribers).toStrictEqual(NO_CHANGES);
 
     const [fixed] = await conn("email_addresses").where({ id: staleRow.id });
     expect(fixed.sha1).toBe(getSha1(staleEmail));
