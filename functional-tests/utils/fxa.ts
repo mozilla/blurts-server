@@ -20,8 +20,20 @@ const STRIP_FXA_CI_PATTERNS = [
   "**/www.googletagmanager.com/**",
 ];
 
+// FxA's bypass token has different values per environment. Pick by E2E_TEST_ENV.
+// Local CI runs Monitor at localhost but points OAuth at stage FxA (see .env.ci),
+// so "local" needs the stage token too.
+export function getActiveFxaCiSecret(): string | undefined {
+  const env = process.env.E2E_TEST_ENV;
+  if (env === "production") {
+    return process.env.FXA_CI_SECRET_PROD;
+  }
+  // stage + local both hit stage FxA.
+  return process.env.FXA_CI_SECRET_STAGE;
+}
+
 export async function setupFxaCiRoutes(page: Page) {
-  if (!process.env.FXA_CI_SECRET) return;
+  if (!getActiveFxaCiSecret()) return;
   const stripFxaCi = (route: Route) => {
     const headers = { ...route.request().headers() };
     delete headers["fxa-ci"];
@@ -33,9 +45,8 @@ export async function setupFxaCiRoutes(page: Page) {
 }
 
 export function getFxaCiHeaders(): Record<string, string> {
-  return process.env.FXA_CI_SECRET
-    ? { "fxa-ci": process.env.FXA_CI_SECRET }
-    : {};
+  const secret = getActiveFxaCiSecret();
+  return secret ? { "fxa-ci": secret } : {};
 }
 
 async function waitForFxa(page: Page) {
