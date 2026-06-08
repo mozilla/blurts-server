@@ -84,7 +84,7 @@
     "@stripe/stripe-js": "^9.7.0",
     "@types/jsdom": "^28.0.3",
     "@types/node": "^25.3.5",
-    "@types/react": "19.2.14",
+    "@types/react": "19.2.15",
     "@types/react-dom": "19.2.3",
     "canvas-confetti": "^1.9.4",
     "ioredis": "^5.9.2",
@@ -101,10 +101,10 @@
     "pg": "^8.20.0",
     "prom-client": "^15.1.3",
     "raw-loader": "^4.0.2",
-    "react": "19.2.5",
+    "react": "19.2.6",
     "react-aria": "^3.49.0",
     "react-cookie": "^8.1.2",
-    "react-dom": "19.2.5",
+    "react-dom": "19.2.6",
     "react-intersection-observer": "^10.0.2",
     "react-stately": "^3.45.0",
     "react-toastify": "^11.0.5",
@@ -174,7 +174,7 @@
     "yaml": "^2.8.3"
   },
   "overrides": {
-    "@types/react": "19.2.14",
+    "@types/react": "19.2.15",
     "@types/react-dom": "19.2.3",
     "next-auth": {
       "nodemailer": "^8"
