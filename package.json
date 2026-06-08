@@ -67,7 +67,7 @@
     "@google-cloud/pubsub": "^5.2.2",
     "@grpc/grpc-js": "1.14.3",
     "@leeoniya/ufuzzy": "^1.0.19",
-    "@mozilla/glean": "^5.0.7",
+    "@mozilla/glean": "^5.0.8",
     "@next/env": "16.2.6",
     "@next/third-parties": "16.2.6",
     "@opentelemetry/auto-instrumentations-node": "^0.76.0",
