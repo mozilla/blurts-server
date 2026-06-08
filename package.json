@@ -81,7 +81,7 @@
     "@sentry/nextjs": "^10.55.0",
     "@sentry/node": "^10.27.0",
     "@sentry/opentelemetry": "^10.34.0",
-    "@stripe/stripe-js": "^8.5.3",
+    "@stripe/stripe-js": "^9.7.0",
     "@types/jsdom": "^28.0.3",
     "@types/node": "^25.3.5",
     "@types/react": "19.2.14",
