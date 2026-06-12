@@ -28,6 +28,17 @@ Long-running consumer containers woken by a GCP Pub/Sub streaming pull.
 | ---------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------- |
 | **C1 · Email breach alerts** | Pulls the Pub/Sub topic that B1 publishes to → sends alert emails | [emailBreachAlerts/index.ts:39](../../src/scripts/cronjobs/emailBreachAlerts/index.ts#L39) | [breach-pipeline](./flows/breach-pipeline.md) |
 
+## Group D — Triggered by an end user (browser → page render)
+
+Next.js page Server Components: a browser GET renders them on the server. The URL is the folder path.
+
+| Entrypoint                         | Trigger                                                                  | Code                                                                                                                             | Flow                                            |
+| ---------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| **D1 · Recent Data Breaches page** | Browser GET `/breaches`; renders the full public breach catalog          | [breaches/page.tsx:36](<../../src/app/[locale]/(redesign)/(public)/breaches/page.tsx#L36>)                                       | [breach-read-path](./flows/breach-read-path.md) |
+| **D2 · Breach detail page**        | Browser GET `/breach-details/[breachName]`; one breach by name           | [breach-details/page.tsx:51](<../../src/app/[locale]/(redesign)/(public)/breach-details/[breachName]/page.tsx#L51>)              | [breach-read-path](./flows/breach-read-path.md) |
+| **D3 · Dashboard breaches**        | Browser GET `/user/dashboard` (authenticated); per-user matched breaches | [dashboard/page.tsx:32](<../../src/app/[locale]/(redesign)/(authenticated)/user/(dashboard)/dashboard/[[...slug]]/page.tsx#L32>) | [breach-read-path](./flows/breach-read-path.md) |
+
 ## Related docs
 
 - [ADR 0003 — Use a queue for backend services](../adr/0003-use-queue-for-backend-services.md) — why B1 hands off to Pub/Sub instead of emailing inline.
+- [`docs/fx-integration.mmd`](../fx-integration.mmd) — the Firefox ↔ FxA ↔ Monitor OAuth handshake.
