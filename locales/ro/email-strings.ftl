@@ -82,3 +82,11 @@ email-breach-alert-all-data-points-title = Datele tale expuse:
 email-breach-alert-all-next-steps-lead = Te vom ghida pas cu pas ca să rezolvi această încălcare a securității datelor.
 email-breach-alert-all-next-steps-cta-label = Să începem
 email-breach-alert-all-next-steps-button-dashboard = Mergi la tabloul de bord
+
+## Breach alert redesigned strings
+
+email-breach-alert-company = Companie:
+email-breach-alert-info-exposed = Informații expuse:
+email-breach-alert-next-steps = Pașii următori
+email-breach-alert-faqs-title = Întrebări frecvente
+email-breach-alert-faq-qn-4 = Ce este { -brand-mozilla-monitor }?
