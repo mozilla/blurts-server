@@ -4,6 +4,7 @@
 
 # Breach Data Classes
 
+academic-records = Academic records
 account-balances = Account balances
 address-book-contacts = Address book contacts
 age-groups = Age groups
@@ -36,6 +37,7 @@ comments = Comments
 company-names = Company names
 credit-card-cvv = Credit card CVV
 credit-cards = Credit cards
+credit-scores = Credit scores
 credit-status-information = Credit status information
 cryptocurrency-wallet-addresses = Cryptocurrency wallet addresses
 cryptocurrency-wallet-hashes = Cryptocurrency wallet hashes
@@ -51,6 +53,7 @@ delivery-instructions = Delivery instructions
 device-information = Device information
 device-serial-numbers = Device serial numbers
 device-usage-tracking-data = Device usage tracking data
+disabilities = Disabilities
 display-names = Display names
 drinking-habits = Drinking habits
 driver-s-licenses = Driver’s licenses
@@ -90,6 +93,7 @@ iq-levels = IQ levels
 job-applications = Job applications
 job-titles = Job titles
 language-preferences = Language preferences
+latitude-and-longitude-pairs = Latitude and longitude pairs
 # This string refers to vehicle license plates.
 licence-plates = License Plates
 living-costs = Living costs
@@ -156,6 +160,7 @@ sms-messages = SMS messages
 social-connections = Social connections
 social-media-profiles = Social media profiles
 social-security-numbers = Social security numbers
+socioeconomic-levels = Socioeconomic levels
 spoken-languages = Spoken languages
 spouses-names = Spouses names
 support-tickets = Support tickets
