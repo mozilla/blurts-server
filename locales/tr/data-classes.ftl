@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = Akademik kayıtlar
 account-balances = Hesap bakiyeleri
 address-book-contacts = Adres defteri kişileri
 age-groups = Yaş grupları
@@ -37,6 +38,7 @@ comments = Yorumlar
 company-names = Şirket adları
 credit-card-cvv = Kredi kartı CVV
 credit-cards = Kredi kartları
+credit-scores = Kredi notları
 credit-status-information = Kredi durumu bilgisi
 cryptocurrency-wallet-addresses = Kripto para cüzdan adresleri
 cryptocurrency-wallet-hashes = Kripto para cüzdan hash'leri
@@ -52,6 +54,7 @@ delivery-instructions = Teslimat talimatları
 device-information = Cihaz bilgileri
 device-serial-numbers = Cihaz seri numaraları
 device-usage-tracking-data = Cihaz kullanımı izleme verileri
+disabilities = Engellilik kayıtları
 display-names = Görünen adlar
 drinking-habits = İçki alışkanlıkları
 driver-s-licenses = Sürücü belgeleri
@@ -91,6 +94,7 @@ iq-levels = IQ seviyeleri
 job-applications = İş başvuruları
 job-titles = İş unvanları
 language-preferences = Dil tercihleri
+latitude-and-longitude-pairs = Enlem ve boylam çiftleri
 # This string refers to vehicle license plates.
 licence-plates = Plaka numaraları
 living-costs = Yaşam maliyetleri
@@ -157,6 +161,7 @@ sms-messages = SMS mesajları
 social-connections = Sosyal bağlantılar
 social-media-profiles = Sosyal medya profilleri
 social-security-numbers = Sosyal güvenlik numaraları
+socioeconomic-levels = Sosyoekonomik seviyeler
 spoken-languages = Konuşulan diller
 spouses-names = Eşlerin adları
 support-tickets = Destek talepleri

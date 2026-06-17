@@ -19,6 +19,27 @@ settings-alert-preferences-option-two = Lähetä kaikki tietovuotoilmoitukset en
 ## Monitored email addresses
 
 settings-email-verification-callout = Sähköpostiosoitteen vahvistus vaaditaan
+settings-remove-email-button-label = Poista
+settings-email-addresses-header = Sähköpostiosoitteet
+settings-email-addresses-description = { -brand-monitor } ilmoittaa sinulle, jos näitä sähköposteja esiintyy tunnetuissa tietovuodoissa.
+settings-email-addresses-add-email-button = Lisää sähköpostiosoite
+# Variables:
+#   $limit (number) - Number of emails that can be added for monitoring.
+settings-email-addresses-add-email-indicator-limit = Lisää enintään { $limit }
+settings-email-addresses-add-email-resend-button-label = Lähetä vahvistuslinkki uudelleen
+input-error-alt = Virhe
+
+## Email address dialog
+
+settings-email-addresses-initial-dialog-header = Lisää sähköpostiosoite
+settings-email-addresses-initial-dialog-description = Lähetämme sinulle vahvistuslinkin, jolla voit vahvistaa, että haluat sisällyttää sähköpostiosoitteesi tuleviin { -brand-monitor } -tarkistuksiin.
+settings-email-addresses-initial-dialog-add-email-input-label = Kirjoita sähköpostiosoite
+settings-email-addresses-initial-dialog-add-email-button-label = Lähetä vahvistuslinkki
+# Variables:
+#   $email (string) - Email address the confirmation has been sent to.
+settings-email-addresses-confirmation-dialog-header = Vahvistuslinkki lähetetty osoitteeseen <b>{ $email }</b>
+settings-email-addresses-confirmation-dialog-description = Avaa linkki lisätäksesi sen tälle tilille tulevia { -brand-monitor } -tarkistuksia varten.
+settings-email-addresses-confirmation-dialog-close-button = Sulje
 
 ## Delete Monitor account
 
@@ -34,6 +55,8 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = Hylkää
 
 ## Settings page redesign
 
+# Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
+settings-tab-label-update-scan-info = Päivitä tarkistustiedot
 settings-tab-label-edit-info = Muokkaa tietojasi
 settings-tab-label-notifications = Aseta ilmoitukset
 settings-tab-label-manage-account = Hallinnoi tiliä

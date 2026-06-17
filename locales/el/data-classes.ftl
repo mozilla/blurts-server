@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = Ακαδημαϊκά αρχεία
 account-balances = Υπόλοιπα λογαριασμών
 address-book-contacts = Επαφές ευρετηρίου
 age-groups = Ηλικιακές ομάδες
@@ -37,6 +38,7 @@ comments = Σχόλια
 company-names = Ονόματα εταιρειών
 credit-card-cvv = CVV πιστωτικής κάρτας
 credit-cards = Πιστωτικές κάρτες
+credit-scores = Πιστωτικές βαθμολογίες
 credit-status-information = Πληροφορίες πιστωτικής κατάστασης
 cryptocurrency-wallet-addresses = Διευθύνσεις πορτοφολιών κρυπτονομισμάτων
 cryptocurrency-wallet-hashes = Hashes πορτοφολιού κρυπτονομισμάτων
@@ -52,6 +54,7 @@ delivery-instructions = Οδηγίες παράδοσης
 device-information = Πληροφορίες συσκευής
 device-serial-numbers = Σειριακοί αριθμοί συσκευών
 device-usage-tracking-data = Δεδομένα καταγραφής χρήσης συσκευής
+disabilities = Αναπηρίες
 display-names = Εμφανιζόμενα ονόματα
 drinking-habits = Συνήθειες κατανάλωσης ποτών
 driver-s-licenses = Άδειες οδήγησης
@@ -91,6 +94,7 @@ iq-levels = Επίπεδα IQ
 job-applications = Αιτήσεις εργασίας
 job-titles = Τίτλοι επαγγελμάτων
 language-preferences = Προτιμήσεις γλώσσας
+latitude-and-longitude-pairs = Ζεύγη γεωγραφικού πλάτους και γεωγραφικού μήκους
 # This string refers to vehicle license plates.
 licence-plates = Πινακίδες οχημάτων
 living-costs = Έξοδα διαβίωσης
@@ -157,6 +161,7 @@ sms-messages = Μηνύματα SMS
 social-connections = Κοινωνικές συνδέσεις
 social-media-profiles = Προφίλ κοινωνικών δικτύων
 social-security-numbers = Αριθμοί κοινωνικής ασφάλισης
+socioeconomic-levels = Κοινωνικοοικονομικά επίπεδα
 spoken-languages = Ομιλούμενες γλώσσες
 spouses-names = Ονόματα συζύγων
 support-tickets = Αιτήματα υποστήριξης

@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = Hồ sơ học tập
 account-balances = Số dư tài khoản
 address-book-contacts = Danh bạ
 age-groups = Nhóm tuổi
@@ -37,6 +38,7 @@ comments = Bình luận
 company-names = Tên công ty
 credit-card-cvv = Thẻ tín dụng CVV
 credit-cards = Thẻ tín dụng
+credit-scores = Điểm tín dụng
 credit-status-information = Thông tin trạng thái tín dụng
 cryptocurrency-wallet-addresses = Địa chỉ ví tiền điện tử
 cryptocurrency-wallet-hashes = Hàm băm ví tiền điện tử
@@ -52,6 +54,7 @@ delivery-instructions = Hướng dẫn giao hàng
 device-information = Thông tin thiết bị
 device-serial-numbers = Số sê-ri thiết bị
 device-usage-tracking-data = Dữ liệu theo dõi sử dụng thiết bị
+disabilities = Người khuyêt tật
 display-names = Tên hiển thị
 drinking-habits = Thói quen uống
 driver-s-licenses = Giấy phép lái xe
@@ -91,6 +94,7 @@ iq-levels = Mức độ IQ
 job-applications = Đơn xin việc
 job-titles = Chức danh công việc
 language-preferences = Ngôn ngữ đã chọn
+latitude-and-longitude-pairs = Cặp vĩ độ và kinh độ
 # This string refers to vehicle license plates.
 licence-plates = Biển số xe
 living-costs = Chi phí sinh hoạt
@@ -157,6 +161,7 @@ sms-messages = Tin nhắn SMS
 social-connections = Kết nối xã hội
 social-media-profiles = Hồ sơ truyền thông xã hội
 social-security-numbers = Số an sinh xã hội
+socioeconomic-levels = Mức độ kinh tế xã hội
 spoken-languages = Ngôn ngữ nói
 spouses-names = Tên vợ/chồng
 support-tickets = Vé hỗ trợ

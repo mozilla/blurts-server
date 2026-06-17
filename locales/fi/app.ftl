@@ -38,6 +38,7 @@ user-verify-token-error = Vahvistuspoletti vaaditaan.
 compromised-data = Paljastuneet tiedot:
 # Link title
 more-about-this-breach = Lisätietoja tietovuodosta
+sensitive-sites = Kuinka { -product-name } käsittelee arkaluonteisia sivustoja?
 what-data = Paljastuneet tiedot:
 delayed-reporting-headline = Miksi vuodosta ilmoittaminen kesti niin kauan?
 delayed-reporting-copy =
@@ -46,6 +47,8 @@ delayed-reporting-copy =
 
 ##
 
+what-is-a-website-breach = Mitä verkkosivuston vuodolla tarkoitetaan?
+website-breach-blurb = Tietovuoto verkkosivustolta tapahtuu, kun kyberrikolliset varastavat, kopioivat tai paljastavat verkkotilien henkilökohtaisia tietoja. Tämä on usein seurausta hakkereiden löytämästä heikkoudesta verkkosivuston tietoturvassa. Tiedot voivat vuotaa myös vahingossa.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Yhteenveto
