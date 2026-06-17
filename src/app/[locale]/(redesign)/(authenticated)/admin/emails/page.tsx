@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { EmailTrigger } from "./EmailTrigger";
 import { getUserEmails } from "../../../../../../db/tables/emailAddresses";
+import { config } from "../../../../../../config";
 
 export default async function DevPage() {
   const session = await getServerSession();
@@ -22,12 +23,11 @@ export default async function DevPage() {
   const emailRows = await getUserEmails(session.user.subscriber.id);
 
   return (
-    <>
-      <EmailTrigger
-        emailAddresses={[session.user.email].concat(
-          emailRows.map((emailRow) => emailRow.email),
-        )}
-      />
-    </>
+    <EmailTrigger
+      serverUrl={config.serverUrl}
+      emailAddresses={[session.user.email].concat(
+        emailRows.map((emailRow) => emailRow.email),
+      )}
+    />
   );
 }
