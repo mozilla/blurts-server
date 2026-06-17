@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = Академические записи
 account-balances = Остатки на счетах
 address-book-contacts = Контакты адресной книги
 age-groups = Возрастные группы
@@ -37,6 +38,7 @@ comments = Комментарии
 company-names = Названия компаний
 credit-card-cvv = CVV-коды банковских карт
 credit-cards = Банковские карты
+credit-scores = Кредитная история
 credit-status-information = Наличие кредитов
 cryptocurrency-wallet-addresses = Адреса криптовалютных кошельков
 cryptocurrency-wallet-hashes = Хеши криптовалютных кошельков
@@ -52,6 +54,7 @@ delivery-instructions = Инструкции по доставке
 device-information = Информация об устройствах
 device-serial-numbers = Серийные номера устройств
 device-usage-tracking-data = Данные отслеживания об использовании устройств
+disabilities = Ограниченные возможности
 display-names = Отображаемые имена
 drinking-habits = Употребление алкоголя
 driver-s-licenses = Водительские права
@@ -91,6 +94,7 @@ iq-levels = Уровни IQ
 job-applications = Заявления о приёме на работу
 job-titles = Названия должностей
 language-preferences = Языковые настройки
+latitude-and-longitude-pairs = Пары «широта» и «долгота»
 # This string refers to vehicle license plates.
 licence-plates = Номерные знаки
 living-costs = Расходы на проживание
@@ -157,6 +161,7 @@ sms-messages = SMS-сообщения
 social-connections = Социальные связи
 social-media-profiles = Профили социальных сетей
 social-security-numbers = Номера социального страхования
+socioeconomic-levels = Социально-экономические уровни
 spoken-languages = Языки общения
 spouses-names = Имена супругов
 support-tickets = Заявки в службы поддержки

@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = Catatan akademik
 account-balances = Saldo akun
 address-book-contacts = Kontak buku alamat
 age-groups = Kelompok usia
@@ -37,6 +38,7 @@ comments = Komentar
 company-names = Nama perusahaan
 credit-card-cvv = CVV kartu kredit
 credit-cards = Kartu kredit
+credit-scores = Nilai kredit
 credit-status-information = Informasi status kredit
 cryptocurrency-wallet-addresses = Alamat dompet Cryptocurrency
 cryptocurrency-wallet-hashes = Hash dompet mata uang kripto
@@ -52,6 +54,7 @@ delivery-instructions = Instruksi pengiriman
 device-information = Informasi peranti
 device-serial-numbers = Nomor seri perangkat
 device-usage-tracking-data = Data pelacakan penggunaan perangkat
+disabilities = Disabilitas
 display-names = Tampilkan nama
 drinking-habits = Kebiasaan minum
 driver-s-licenses = SIM
@@ -91,6 +94,7 @@ iq-levels = Tingkat IQ
 job-applications = Lamaran kerja
 job-titles = Jabatan kerja
 language-preferences = Preferensi bahasa
+latitude-and-longitude-pairs = Pasangan garis lintang dan garis bujur
 # This string refers to vehicle license plates.
 licence-plates = Plat Nomor Polisi
 living-costs = Biaya hidup
@@ -157,6 +161,7 @@ sms-messages = Pesan SMS
 social-connections = Hubungan sosial
 social-media-profiles = Profil media sosial
 social-security-numbers = Nomor jaminan sosial
+socioeconomic-levels = Tingkat sosial ekonomi
 spoken-languages = Bahasa lisan
 spouses-names = Nama pasangan
 support-tickets = Tiket dukungan

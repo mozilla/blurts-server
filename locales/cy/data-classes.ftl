@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = Cofnodion academaidd
 account-balances = Balansau cyfrifon
 address-book-contacts = Cysylltiadau llyfr cyfeiriadau
 age-groups = Grwpiau oedran
@@ -37,6 +38,7 @@ comments = Sylwadau
 company-names = Enwau cwmnïau
 credit-card-cvv = CVV cerdyn credyd
 credit-cards = Cardiau credyd
+credit-scores = Sgoriau credyd
 credit-status-information = Manylion statws credyd
 cryptocurrency-wallet-addresses = Cyfeiriadau waled cryptoarian
 cryptocurrency-wallet-hashes = Hashiad waled cryptoarian
@@ -52,6 +54,7 @@ delivery-instructions = Cyfarwyddiadau anfon
 device-information = Manylion dyfais
 device-serial-numbers = Rhifau cyfresol dyfeisiau
 device-usage-tracking-data = Data tracio defnydd y ddyfais
+disabilities = Anableddau
 display-names = Enwau dangos
 drinking-habits = Arferion yfed
 driver-s-licenses = Trwyddedau gyrrwr
@@ -91,6 +94,7 @@ iq-levels = Lefelau IQ
 job-applications = Ceisiadau am swyddi
 job-titles = Teitlau swyddi
 language-preferences = Dewisiadau iaith
+latitude-and-longitude-pairs = Parau lledred a hydred
 # This string refers to vehicle license plates.
 licence-plates = Platiau Trwyddedau
 living-costs = Costau byw
@@ -157,6 +161,7 @@ sms-messages = Negeseuon SMS
 social-connections = Cysylltiadau cymdeithasol
 social-media-profiles = Proffiliau cyfryngau cymdeithasol
 social-security-numbers = Rhifau nawdd cymdeithasol
+socioeconomic-levels = Lefelau economaidd-gymdeithasol
 spoken-languages = Siarad Ieithoedd
 spouses-names = Enw'r priod
 support-tickets = Tocynnau cymorth

@@ -14,6 +14,10 @@ landing-all-hero-image-chart-label = vuotoa
 
 ## Top navbar
 
+landing-all-hero-navbar-link-how-it-works = Näin se toimii
+landing-all-hero-navbar-link-pricing = Hinnoittelu
+landing-all-hero-navbar-link-faqs = UKK
+landing-all-hero-navbar-link-recent-breaches = Viimeisimmät tietovuodot
 
 # Value Proposition
 

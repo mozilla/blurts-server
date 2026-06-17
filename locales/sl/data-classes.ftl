@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = Akademske evidence
 account-balances = stanja na računih
 address-book-contacts = stiki iz imenika
 age-groups = starostne skupine
@@ -37,6 +38,7 @@ comments = Komentarji
 company-names = Imena podjetij
 credit-card-cvv = kode CVV kreditnih kartic
 credit-cards = kreditne kartice
+credit-scores = Bonitetne ocene
 credit-status-information = informacije o kreditnem stanju
 cryptocurrency-wallet-addresses = Naslove denarnic kriptovalut
 cryptocurrency-wallet-hashes = prstni odtisi kriptodenarnice
@@ -52,6 +54,7 @@ delivery-instructions = navodila za dostavo
 device-information = podatki o napravah
 device-serial-numbers = serijske številke naprav
 device-usage-tracking-data = podatki o sledenju uporabe naprav
+disabilities = Invalidnost
 display-names = Prikazna imena
 drinking-habits = pivske navade
 driver-s-licenses = vozniška dovoljenja
@@ -91,6 +94,7 @@ iq-levels = IQ
 job-applications = prijave za delovno mesto
 job-titles = službeni nazivi
 language-preferences = Jezikovne nastavitve
+latitude-and-longitude-pairs = Zemljepisne širine in dolžine
 # This string refers to vehicle license plates.
 licence-plates = registrske tablice
 living-costs = življenjski stroški
@@ -157,6 +161,7 @@ sms-messages = sporočila SMS
 social-connections = družbene povezave
 social-media-profiles = profili družabnih medijev
 social-security-numbers = številke socialnih zavarovanj
+socioeconomic-levels = družbenoekonomske ravni
 spoken-languages = govorjeni jeziki
 spouses-names = imena zakoncev
 support-tickets = vstopnice za podporo
