@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = Utdanningsopplysningar
 account-balances = Konto-saldoar
 address-book-contacts = Adressebokskontaktar
 age-groups = Aldersgrupper
@@ -37,6 +38,7 @@ comments = Kommentarar
 company-names = Firmanamn
 credit-card-cvv = CVV-kodar for betalingskort
 credit-cards = Betalingskort
+credit-scores = Kredittvurderingar
 credit-status-information = Informasjon om betalingsevne
 cryptocurrency-wallet-addresses = Adresser til kryptovaluta-lommebøker
 cryptocurrency-wallet-hashes = Hash-verdiar for kryptovaluta-lommebøker
@@ -92,6 +94,7 @@ iq-levels = IQ-nivå
 job-applications = Jobbsøknadar
 job-titles = Jobbtitlar
 language-preferences = Språkinnstillingar
+latitude-and-longitude-pairs = Breidde- og lengdegradskoordinatar
 # This string refers to vehicle license plates.
 licence-plates = Bilskilt
 living-costs = Levekostnadar
