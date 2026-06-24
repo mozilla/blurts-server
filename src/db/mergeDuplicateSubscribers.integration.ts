@@ -349,6 +349,136 @@ describe("mergeDuplicateSubscribers - child re-parenting", () => {
     ).toHaveLength(1);
     expect(await conn("subscribers").where("fxa_uid", fxaUid)).toHaveLength(1);
   });
+
+  it("preserves email_subscriptions.subscribed=true when the dropped duplicate was subscribed", async () => {
+    const fxaUid = faker.string.uuid();
+    const loser = await seedSubscriber(
+      { fxa_uid: fxaUid },
+      { updatedAt: new Date("2023-01-01T00:00:00.000Z") },
+    );
+    const winner = await seedSubscriber(
+      { fxa_uid: fxaUid },
+      { updatedAt: new Date("2024-01-01T00:00:00.000Z") },
+    );
+
+    // Winner is unsubscribed from the list, loser is still subscribed: the
+    // surviving row must stay subscribed rather than keep the winner's false.
+    await conn("email_subscriptions").insert({
+      subscriber_id: winner.id,
+      token: faker.string.alphanumeric(32),
+      list_id: BREACH_ALERT_LIST_ID,
+      subscribed: false,
+      updated_at: new Date(),
+    });
+    await conn("email_subscriptions").insert({
+      subscriber_id: loser.id,
+      token: faker.string.alphanumeric(32),
+      list_id: BREACH_ALERT_LIST_ID,
+      subscribed: true,
+      updated_at: new Date(),
+    });
+
+    const result = await run();
+
+    expect(result.perTable["email_subscriptions"]).toStrictEqual({
+      reparented: 0,
+      deleted: 1,
+    });
+    const [survivor] = await conn("email_subscriptions").where(
+      "subscriber_id",
+      winner.id,
+    );
+    expect(survivor.subscribed).toBe(true);
+  });
+
+  it("preserves email_notifications.notified=true so a breach alert is not re-sent", async () => {
+    const fxaUid = faker.string.uuid();
+    const loser = await seedSubscriber(
+      { fxa_uid: fxaUid },
+      { updatedAt: new Date("2023-01-01T00:00:00.000Z") },
+    );
+    const winner = await seedSubscriber(
+      { fxa_uid: fxaUid },
+      { updatedAt: new Date("2024-01-01T00:00:00.000Z") },
+    );
+    const [breach] = await conn("breaches")
+      .insert(seeds.breaches())
+      .returning("*");
+
+    const sharedEmail = "alert@example.com";
+    // Winner row is not-yet-notified, loser row IS notified for the same
+    // (breach, email): the merged account must end up notified.
+    await conn("email_notifications").insert(
+      seeds.emailNotifications(winner.id, breach.id, {
+        email: sharedEmail,
+        notified: false,
+        appeared: false,
+      }),
+    );
+    await conn("email_notifications").insert(
+      seeds.emailNotifications(loser.id, breach.id, {
+        email: sharedEmail,
+        notified: true,
+        appeared: true,
+      }),
+    );
+
+    const result = await run();
+
+    expect(result.perTable["email_notifications"]).toStrictEqual({
+      reparented: 0,
+      deleted: 1,
+    });
+    const [survivor] = await conn("email_notifications").where({
+      subscriber_id: winner.id,
+      breach_id: breach.id,
+      email: sharedEmail,
+    });
+    expect(survivor.notified).toBe(true);
+    expect(survivor.appeared).toBe(true);
+  });
+
+  it("preserves email verification when a dropped duplicate email was verified", async () => {
+    const fxaUid = faker.string.uuid();
+    const sharedSecondary = "shared-secondary@example.com";
+    const loser = await seedSubscriber(
+      { fxa_uid: fxaUid, primary_verified: false },
+      { updatedAt: new Date("2023-01-01T00:00:00.000Z") },
+    );
+    const winner = await seedSubscriber(
+      { fxa_uid: fxaUid, primary_verified: false },
+      { updatedAt: new Date("2024-01-01T00:00:00.000Z") },
+    );
+
+    // Winner owns the secondary UNverified; the loser owns the same email
+    // verified. The kept winner row must be promoted to verified.
+    await conn("email_addresses").insert(
+      seeds.emails(winner.id, { email: sharedSecondary, verified: false }),
+    );
+    await conn("email_addresses").insert(
+      seeds.emails(loser.id, { email: sharedSecondary, verified: true }),
+    );
+    // The loser's primary equals the winner's primary, and the loser verified
+    // it: the winner's primary_verified must be promoted to true.
+    await conn("subscribers")
+      .where("id", loser.id)
+      .update({
+        primary_email: winner.primary_email,
+        primary_verified: true,
+        updated_at: new Date("2023-01-01T00:00:00.000Z"),
+      });
+
+    await run();
+
+    const [survivingSecondary] = await conn("email_addresses").where({
+      subscriber_id: winner.id,
+      email: sharedSecondary,
+    });
+    expect(survivingSecondary.verified).toBe(true);
+
+    const [merged] = await conn("subscribers").where("id", winner.id);
+    expect(merged.primary_verified).toBe(true);
+  });
 });
 
 describe("mergeDuplicateSubscribers - dry run and idempotency", () => {

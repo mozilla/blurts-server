@@ -80,6 +80,15 @@ type ChildTable = {
    */
   conflictColumns: string[] | null;
   /**
+   * Boolean columns OR-merged from every colliding loser row into the row that
+   * survives de-dupe, so a "stronger" value is never lost when its row is
+   * dropped. Without this, dropping a colliding duplicate could discard
+   * `email_notifications.notified = true` (re-sending a breach alert) or
+   * `email_subscriptions.subscribed = true` (silently unsubscribing the user).
+   * Defaults to none.
+   */
+  orColumns?: string[];
+  /**
    * Whether the FK cascades on delete. Informational only - we re-parent or
    * delete every child row explicitly regardless - but it documents which
    * tables would otherwise block the subscriber delete.
@@ -123,12 +132,17 @@ const CHILD_TABLES: ChildTable[] = [
     table: "email_subscriptions",
     fkColumn: "subscriber_id",
     conflictColumns: ["list_id"],
+    // Keep the user subscribed if any duplicate row was subscribed to the list.
+    orColumns: ["subscribed"],
     cascades: true,
   },
   {
     table: "email_notifications",
     fkColumn: "subscriber_id",
     conflictColumns: ["breach_id", "email"],
+    // Preserve "already notified"/"appeared" so the merge can't re-send a
+    // breach alert the loser was already notified about.
+    orColumns: ["notified", "appeared"],
     cascades: false, // FK does not cascade - must be cleared before delete
   },
   {
@@ -288,7 +302,9 @@ function conflictKey(
  * (FK, ...conflictColumns) key already exists on the winner *or* on an
  * earlier-kept loser in the same group - groups can hold up to a dozen rows, so
  * two losers can collide with each other even when the winner has no matching
- * row. Returns per-table tallies.
+ * row. Before a colliding row is dropped, its `orColumns` boolean flags are
+ * OR-merged into the surviving row so a `true` value (e.g. `notified`,
+ * `subscribed`) is never lost. Returns per-table tallies.
  */
 async function mergeChildTable(
   trx: Knex.Transaction,
@@ -305,16 +321,26 @@ async function mergeChildTable(
   }
 
   const conflictColumns = child.conflictColumns;
+  const orColumns = child.orColumns ?? [];
+  const selectColumns = ["id", ...conflictColumns, ...orColumns];
 
-  // Keys the winner already owns; a loser row matching one of these collides.
-  const owned = new Set<string>();
+  // The row that survives for a given conflict key, plus the running OR of its
+  // boolean flags. The first row seen for a key wins; later colliding rows are
+  // dropped after folding their `true` flags into this survivor.
+  type Survivor = { id: number; flags: Record<string, boolean> };
+  const survivors = new Map<string, Survivor>();
+  const flagsOf = (row: Record<string, unknown>): Record<string, boolean> =>
+    Object.fromEntries(
+      orColumns.map((column) => [column, row[column] === true]),
+    );
+
   const winnerRows = await trx(child.table)
     .where(child.fkColumn, winnerId)
-    .select("id", ...conflictColumns);
-  for (const row of winnerRows) {
-    const key = conflictKey(row as Record<string, unknown>, conflictColumns);
-    if (key !== null) {
-      owned.add(key);
+    .select(...selectColumns);
+  for (const row of winnerRows as Array<Record<string, unknown>>) {
+    const key = conflictKey(row, conflictColumns);
+    if (key !== null && !survivors.has(key)) {
+      survivors.set(key, { id: row.id as number, flags: flagsOf(row) });
     }
   }
 
@@ -324,23 +350,37 @@ async function mergeChildTable(
   const loserRows = await trx(child.table)
     .whereIn(child.fkColumn, loserIds)
     .orderBy("id", "asc")
-    .select("id", ...conflictColumns);
+    .select(...selectColumns);
   const collidingIds: number[] = [];
-  for (const row of loserRows) {
-    const key = conflictKey(row as Record<string, unknown>, conflictColumns);
+  // Survivor id -> the flag columns that must be flipped to `true`.
+  const flagBumps = new Map<number, Record<string, true>>();
+  for (const row of loserRows as Array<Record<string, unknown>>) {
+    const key = conflictKey(row, conflictColumns);
     if (key === null) {
       continue;
     }
-    if (owned.has(key)) {
-      collidingIds.push(row.id as number);
-    } else {
-      owned.add(key);
+    const survivor = survivors.get(key);
+    if (!survivor) {
+      survivors.set(key, { id: row.id as number, flags: flagsOf(row) });
+      continue;
+    }
+    collidingIds.push(row.id as number);
+    for (const column of orColumns) {
+      if (row[column] === true && !survivor.flags[column]) {
+        survivor.flags[column] = true;
+        const bump = flagBumps.get(survivor.id) ?? {};
+        bump[column] = true;
+        flagBumps.set(survivor.id, bump);
+      }
     }
   }
 
   let deleted = 0;
   if (collidingIds.length > 0) {
     deleted = await trx(child.table).whereIn("id", collidingIds).del();
+  }
+  for (const [survivorId, bump] of flagBumps) {
+    await trx(child.table).where("id", survivorId).update(bump);
   }
 
   const reparented = await trx(child.table)
@@ -354,6 +394,12 @@ async function mergeChildTable(
  * Re-parent the losers' `email_addresses` to the winner (dropping
  * case-insensitive duplicates against what the winner already owns), then carry
  * each loser's distinct primary email over as a new secondary row.
+ *
+ * Verification is never lost when a duplicate is dropped: breach scanning only
+ * matches verified emails (`subscribers.primary_verified` /
+ * `email_addresses.verified`), so if the surviving copy is unverified but a
+ * dropped duplicate proved ownership (`verified = true`), the survivor is
+ * promoted to verified.
  */
 async function mergeEmailAddresses(
   trx: Knex.Transaction,
@@ -363,19 +409,53 @@ async function mergeEmailAddresses(
   const winnerId = winner.id as number;
   const loserIds = losers.map((row) => row.id as number);
 
-  // Emails the winner already owns: its primary plus any existing secondaries.
-  const owned = new Set<string>();
+  // Emails the winner already owns and where each lives, so a dropped verified
+  // duplicate can promote the surviving copy. The winner's primary lives on the
+  // `subscribers` row; secondaries are `email_addresses` rows.
+  type Owned =
+    | { kind: "primary" }
+    | { kind: "address"; id: number; verified: boolean };
+  const owned = new Map<string, Owned>();
+
+  let winnerPrimaryVerified =
+    (winner.primary_verified as boolean | null) === true;
+  let promoteWinnerPrimary = false;
+  const addressVerifyPromotions = new Set<number>();
+
+  // Record that the surviving owner of `key` has had its address verified by a
+  // dropped duplicate, promoting it if it was not already verified.
+  const promoteVerified = (key: string): void => {
+    const entry = owned.get(key);
+    if (!entry) {
+      return;
+    }
+    if (entry.kind === "primary") {
+      if (!winnerPrimaryVerified) {
+        winnerPrimaryVerified = true;
+        promoteWinnerPrimary = true;
+      }
+    } else if (!entry.verified) {
+      entry.verified = true;
+      addressVerifyPromotions.add(entry.id);
+    }
+  };
+
   const winnerPrimary = (winner.primary_email as string | null) ?? "";
   if (winnerPrimary) {
-    owned.add(winnerPrimary.toLowerCase());
+    owned.set(winnerPrimary.toLowerCase(), { kind: "primary" });
   }
   const winnerEmailRows = await trx("email_addresses")
     .where("subscriber_id", winnerId)
-    .select("email");
+    .select("id", "email", "verified");
   for (const row of winnerEmailRows) {
     const email = (row.email as string | null) ?? "";
-    if (email) {
-      owned.add(email.toLowerCase());
+    const key = email.toLowerCase();
+    if (key && !owned.has(key)) {
+      owned.set(key, {
+        kind: "address",
+        id: row.id as number,
+        verified: row.verified === true,
+      });
     }
   }
 
@@ -385,10 +465,13 @@ async function mergeEmailAddresses(
   const loserEmailRows = await trx("email_addresses")
     .whereIn("subscriber_id", loserIds)
     .orderBy("id", "asc")
-    .select("id", "email");
+    .select("id", "email", "verified");
   for (const row of loserEmailRows) {
     const key = ((row.email as string | null) ?? "").toLowerCase();
     if (key && owned.has(key)) {
+      if (row.verified === true) {
+        promoteVerified(key);
+      }
       await trx("email_addresses")
         .where("id", row.id as number)
         .del();
@@ -398,7 +481,11 @@ async function mergeEmailAddresses(
         .where("id", row.id as number)
         .update({ subscriber_id: winnerId });
       if (key) {
-        owned.add(key);
+        owned.set(key, {
+          kind: "address",
+          id: row.id as number,
+          verified: row.verified === true,
+        });
       }
       reparented += 1;
     }
@@ -408,18 +495,45 @@ async function mergeEmailAddresses(
   for (const loser of losers) {
     const email = (loser.primary_email as string | null) ?? "";
     const key = email.toLowerCase();
-    if (!email || owned.has(key)) {
+    const loserPrimaryVerified =
+      (loser.primary_verified as boolean | null) === true;
+    if (!email) {
       continue;
     }
-    await trx("email_addresses").insert({
-      subscriber_id: winnerId,
-      email,
-      sha1: getSha1(key),
-      verification_token: uuidv4(),
-      verified: (loser.primary_verified as boolean | null) ?? false,
+    if (owned.has(key)) {
+      // The winner already owns this email; carry over the loser's verification
+      // if the surviving copy was not yet verified.
+      if (loserPrimaryVerified) {
+        promoteVerified(key);
+      }
+      continue;
+    }
+    const [inserted] = (await trx("email_addresses")
+      .insert({
+        subscriber_id: winnerId,
+        email,
+        sha1: getSha1(key),
+        verification_token: uuidv4(),
+        verified: loserPrimaryVerified,
+      })
+      .returning("id")) as Array<{ id: number }>;
+    owned.set(key, {
+      kind: "address",
+      id: inserted.id,
+      verified: loserPrimaryVerified,
     });
-    owned.add(key);
     addedAsSecondary += 1;
+  }
+
+  if (promoteWinnerPrimary) {
+    await trx(SUBSCRIBERS_TABLE)
+      .where("id", winnerId)
+      .update({ primary_verified: true });
+  }
+  if (addressVerifyPromotions.size > 0) {
+    await trx(EMAIL_ADDRESSES_TABLE)
+      .whereIn("id", [...addressVerifyPromotions])
+      .update({ verified: true });
   }
 
   return { reparented, dropped, addedAsSecondary };
