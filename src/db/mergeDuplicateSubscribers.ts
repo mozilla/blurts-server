@@ -226,10 +226,23 @@ function buildWinnerUpdate(
       .filter((time) => time > 0);
     return times.length > 0 ? new Date(Math.max(...times)) : null;
   };
-  // true if any row is true, otherwise preserve the winner's own value (which
-  // may be `null` for the legacy `all_emails_to_primary` flag).
+  // true if any row is true, otherwise preserve the winner's own value.
   const orFlag = (column: string): unknown =>
     all.some((row) => row[column] === true) ? true : winner[column];
+
+  // `all_emails_to_primary` is tri-state, not a plain OR flag: `null` means
+  // instant breach alerts are OFF, while both `true` (deliver to primary) and
+  // `false` (deliver to the affected address) are subscribed delivery modes.
+  // Keep the user subscribed if ANY row was subscribed - prefer `true`, fall
+  // back to `false`, and only land on `null` when every row was unsubscribed -
+  // so a winner `null` + loser `false` no longer silently unsubscribes them.
+  const allEmailsToPrimary = all.some(
+    (row) => row.all_emails_to_primary === true,
+  )
+    ? true
+    : all.some((row) => row.all_emails_to_primary === false)
+      ? false
+      : null;
 
   return {
     sign_in_count: all.reduce(
@@ -241,7 +254,7 @@ function buildWinnerUpdate(
     fx_newsletter: orFlag("fx_newsletter"),
     monthly_monitor_report: orFlag("monthly_monitor_report"),
     first_broker_removal_email_sent: orFlag("first_broker_removal_email_sent"),
-    all_emails_to_primary: orFlag("all_emails_to_primary"),
+    all_emails_to_primary: allEmailsToPrimary,
     // Required by the typed update; held at the existing (max) value.
     updated_at: winner.updated_at as Date,
   };

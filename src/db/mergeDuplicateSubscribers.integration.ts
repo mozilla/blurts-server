@@ -109,6 +109,45 @@ describe("mergeDuplicateSubscribers - winner selection and aggregation", () => {
     expect(await conn("subscribers").where("id", loser.id)).toHaveLength(0);
   });
 
+  it("keeps the user subscribed when a loser had instant breach alerts on (false) and the winner was null", async () => {
+    const fxaUid = faker.string.uuid();
+    // `all_emails_to_primary` is tri-state: null = unsubscribed, false =
+    // subscribed (deliver to affected address), true = subscribed (deliver to
+    // primary). The winner is unsubscribed but a loser was subscribed-to-
+    // affected, so the merged row must stay subscribed (false), not null.
+    const loser = await seedSubscriber(
+      { fxa_uid: fxaUid, all_emails_to_primary: false },
+      { updatedAt: new Date("2023-01-01T00:00:00.000Z") },
+    );
+    const winner = await seedSubscriber(
+      { fxa_uid: fxaUid, all_emails_to_primary: null },
+      { updatedAt: new Date("2024-01-01T00:00:00.000Z") },
+    );
+
+    await run();
+
+    const [merged] = await conn("subscribers").where("id", winner.id);
+    expect(merged.all_emails_to_primary).toBe(false);
+    expect(await conn("subscribers").where("id", loser.id)).toHaveLength(0);
+  });
+
+  it("prefers primary delivery (true) over affected (false) when both are present", async () => {
+    const fxaUid = faker.string.uuid();
+    const loser = await seedSubscriber(
+      { fxa_uid: fxaUid, all_emails_to_primary: true },
+      { updatedAt: new Date("2023-01-01T00:00:00.000Z") },
+    );
+    const winner = await seedSubscriber(
+      { fxa_uid: fxaUid, all_emails_to_primary: false },
+      { updatedAt: new Date("2024-01-01T00:00:00.000Z") },
+    );
+
+    await run();
+
+    const [merged] = await conn("subscribers").where("id", winner.id);
+    expect(merged.all_emails_to_primary).toBe(true);
+  });
+
   it("leaves non-duplicate fxa_uids (and NULL fxa_uids) untouched", async () => {
     await seedSubscriber(
       { fxa_uid: faker.string.uuid() },
