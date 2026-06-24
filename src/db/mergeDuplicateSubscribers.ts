@@ -67,15 +67,16 @@ type ChildTable = {
   /**
    * Columns *besides* the FK that participate in the table's UNIQUE
    * constraint. A loser row collides (and is dropped rather than re-parented)
-   * when the winner already has a row matching the FK plus these columns.
+   * when its (FK, ...conflictColumns) key already exists on the winner *or* on
+   * an earlier-kept loser in the same group.
    *
    *   - `null`  -> table has no UNIQUE constraint on the FK; always re-parent.
-   *   - `[]`    -> UNIQUE is on the FK alone (one row per subscriber); the
-   *               winner having any row means every loser row collides.
+   *   - `[]`    -> UNIQUE is on the FK alone (one row per subscriber); at most
+   *               one row across the winner and losers survives.
    *   - [cols]  -> UNIQUE is on (FK, ...cols).
    *
-   * Matching uses SQL `=`, so NULLs stay distinct exactly as a default
-   * (NULLS DISTINCT) UNIQUE index treats them.
+   * A NULL in any conflict column makes a row distinct, exactly as a default
+   * (NULLS DISTINCT) UNIQUE index treats it, so such rows never collide.
    */
   conflictColumns: string[] | null;
   /**
@@ -247,8 +248,34 @@ function buildWinnerUpdate(
 }
 
 /**
+ * Build the UNIQUE-constraint key for a row from its conflict columns. A NULL
+ * (or missing) value in any column makes the row distinct under default
+ * NULLS DISTINCT semantics, so it can never collide and is signalled with a
+ * `null` key (always kept). With no conflict columns the key is constant, i.e.
+ * the constraint is on the FK alone (one row per subscriber).
+ */
+function conflictKey(
+  row: Record<string, unknown>,
+  conflictColumns: string[],
+): string | null {
+  const parts: string[] = [];
+  for (const column of conflictColumns) {
+    const value = row[column];
+    if (value === null || value === undefined) {
+      return null;
+    }
+    parts.push(JSON.stringify(value));
+  }
+  return parts.join("\u0000");
+}
+
+/**
  * Re-parent a child table's loser rows to the winner, first dropping any that
- * would violate the table's UNIQUE constraint. Returns per-table tallies.
+ * would violate the table's UNIQUE constraint. A loser row is dropped when its
+ * (FK, ...conflictColumns) key already exists on the winner *or* on an
+ * earlier-kept loser in the same group - groups can hold up to a dozen rows, so
+ * two losers can collide with each other even when the winner has no matching
+ * row. Returns per-table tallies.
  */
 async function mergeChildTable(
   trx: Knex.Transaction,
@@ -256,28 +283,51 @@ async function mergeChildTable(
   winnerId: number,
   loserIds: number[],
 ): Promise<ChildTableCount> {
-  let deleted = 0;
-
-  if (child.conflictColumns !== null) {
-    // Find loser rows whose (FK, ...conflictColumns) already exists on the
-    // winner. Correlate the inner copy (alias `w`) back to the outer table by
-    // its real name so we never alias the table being deleted.
-    const conflictColumns = child.conflictColumns;
-    const collidingRows = await trx(child.table)
+  // No UNIQUE constraint on the FK: every loser row re-parents unconditionally.
+  if (child.conflictColumns === null) {
+    const reparented = await trx(child.table)
       .whereIn(child.fkColumn, loserIds)
-      .whereExists((qb) => {
-        qb.select(trx.raw("1"))
-          .from(`${child.table} as w`)
-          .where(`w.${child.fkColumn}`, winnerId);
-        for (const column of conflictColumns) {
-          qb.whereRaw("w.?? = ??.??", [column, child.table, column]);
-        }
-      })
-      .select("id");
-    const collidingIds = collidingRows.map((row) => row.id as number);
-    if (collidingIds.length > 0) {
-      deleted = await trx(child.table).whereIn("id", collidingIds).del();
+      .update({ [child.fkColumn]: winnerId });
+    return { reparented, deleted: 0 };
+  }
+
+  const conflictColumns = child.conflictColumns;
+
+  // Keys the winner already owns; a loser row matching one of these collides.
+  const owned = new Set<string>();
+  const winnerRows = await trx(child.table)
+    .where(child.fkColumn, winnerId)
+    .select("id", ...conflictColumns);
+  for (const row of winnerRows) {
+    const key = conflictKey(row as Record<string, unknown>, conflictColumns);
+    if (key !== null) {
+      owned.add(key);
     }
+  }
+
+  // Walk loser rows in a deterministic order, keeping the first row for each
+  // key (against the winner and earlier losers) and dropping the rest so the
+  // bulk re-parent below can never create a duplicate on the winner.
+  const loserRows = await trx(child.table)
+    .whereIn(child.fkColumn, loserIds)
+    .orderBy("id", "asc")
+    .select("id", ...conflictColumns);
+  const collidingIds: number[] = [];
+  for (const row of loserRows) {
+    const key = conflictKey(row as Record<string, unknown>, conflictColumns);
+    if (key === null) {
+      continue;
+    }
+    if (owned.has(key)) {
+      collidingIds.push(row.id as number);
+    } else {
+      owned.add(key);
+    }
+  }
+
+  let deleted = 0;
+  if (collidingIds.length > 0) {
+    deleted = await trx(child.table).whereIn("id", collidingIds).del();
   }
 
   const reparented = await trx(child.table)

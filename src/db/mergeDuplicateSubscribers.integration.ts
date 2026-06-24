@@ -265,6 +265,51 @@ describe("mergeDuplicateSubscribers - child re-parenting", () => {
     // The loser was deleted despite the non-cascading FKs.
     expect(await conn("subscribers").where("id", loser.id)).toHaveLength(0);
   });
+
+  it("de-dupes a constrained child when two losers collide and the winner has no row", async () => {
+    const fxaUid = faker.string.uuid();
+    // A 3-row group where the winner has NO email_subscriptions row, but both
+    // losers subscribe to the same list. Re-parenting both naively would make
+    // the winner own two rows for that list, violating UNIQUE(subscriber_id,
+    // list_id); only one must survive.
+    const loserA = await seedSubscriber(
+      { fxa_uid: fxaUid },
+      { updatedAt: new Date("2023-01-01T00:00:00.000Z") },
+    );
+    const loserB = await seedSubscriber(
+      { fxa_uid: fxaUid },
+      { updatedAt: new Date("2023-06-01T00:00:00.000Z") },
+    );
+    const winner = await seedSubscriber(
+      { fxa_uid: fxaUid },
+      { updatedAt: new Date("2024-01-01T00:00:00.000Z") },
+    );
+
+    await conn("email_subscriptions").insert({
+      subscriber_id: loserA.id,
+      token: faker.string.alphanumeric(32),
+      list_id: BREACH_ALERT_LIST_ID,
+      updated_at: new Date(),
+    });
+    await conn("email_subscriptions").insert({
+      subscriber_id: loserB.id,
+      token: faker.string.alphanumeric(32),
+      list_id: BREACH_ALERT_LIST_ID,
+      updated_at: new Date(),
+    });
+
+    const result = await run();
+
+    // One loser row re-parented, the other dropped as a same-group collision.
+    expect(result.perTable["email_subscriptions"]).toStrictEqual({
+      reparented: 1,
+      deleted: 1,
+    });
+    expect(
+      await conn("email_subscriptions").where("subscriber_id", winner.id),
+    ).toHaveLength(1);
+    expect(await conn("subscribers").where("fxa_uid", fxaUid)).toHaveLength(1);
+  });
 });
 
 describe("mergeDuplicateSubscribers - dry run and idempotency", () => {
