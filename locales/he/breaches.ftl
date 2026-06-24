@@ -4,9 +4,11 @@
 
 breach-all-meta-page-title = מאגר מידע של דליפות נתונים — { -brand-fx-monitor }
 breach-all-meta-social-title = כל דליפות הנתונים שזוהו על־ידי { -brand-fx-monitor }
+breach-all-meta-social-description = ניתן לעיין ברשימת דליפות הנתונים המלאה שזוהו על־ידי { -brand-fx-monitor }, ולברר האם המידע שלך דלף.
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-page-title = דליפת נתונים של { $company } - ‏{ -brand-fx-monitor }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = האם הושפעת מדליפת הנתונים של { $company }?
+breach-detail-meta-social-description = ניתן לבדוק באמצעות { -brand-fx-monitor } האם המידע האישי שלך נחשף בדליפה הזו ולהבין מה לעשות הלאה.

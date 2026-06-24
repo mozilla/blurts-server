@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = Utdanningsopplysninger
 account-balances = Kontosaldoer
 address-book-contacts = Adressebokskontakter
 age-groups = Aldersgrupper
@@ -37,6 +38,7 @@ comments = Kommentarer
 company-names = Firmanavn
 credit-card-cvv = CVV-koder for betalingskort
 credit-cards = Betalingskort
+credit-scores = Kredittvurderinger
 credit-status-information = Informasjon om kredittverdighet
 cryptocurrency-wallet-addresses = Adresser til kryptovaluta-lommebøker
 cryptocurrency-wallet-hashes = Hash-verdier for kryptovaluta-lommebøker
@@ -52,6 +54,7 @@ delivery-instructions = Leveringsinstruksjoner
 device-information = Enhetsinformasjon
 device-serial-numbers = Serienummer på enheter
 device-usage-tracking-data = Sporingsdata for bruk av enheter
+disabilities = Funksjonsnedsettelser
 display-names = Visningsnavn
 drinking-habits = Drikkevaner
 driver-s-licenses = Førerkort
@@ -91,6 +94,7 @@ iq-levels = IQ-nivåer
 job-applications = Jobbsøknader
 job-titles = Jobbtitler
 language-preferences = Språkinnstillinger
+latitude-and-longitude-pairs = Bredde- og lengdegradskoordinater
 # This string refers to vehicle license plates.
 licence-plates = Bilskilt
 living-costs = Levekostnader
@@ -157,6 +161,7 @@ sms-messages = SMS-meldinger
 social-connections = Sosiale forbindelser
 social-media-profiles = Profiler på sosiale medier
 social-security-numbers = Personnummer
+socioeconomic-levels = Sosioøkonomiske nivåer
 spoken-languages = Talte språk
 spouses-names = Navn på ektefeller
 support-tickets = Support-spørsmål
