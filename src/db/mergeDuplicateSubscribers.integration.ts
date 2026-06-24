@@ -133,7 +133,7 @@ describe("mergeDuplicateSubscribers - winner selection and aggregation", () => {
 
   it("prefers primary delivery (true) over affected (false) when both are present", async () => {
     const fxaUid = faker.string.uuid();
-    const loser = await seedSubscriber(
+    await seedSubscriber(
       { fxa_uid: fxaUid, all_emails_to_primary: true },
       { updatedAt: new Date("2023-01-01T00:00:00.000Z") },
     );
