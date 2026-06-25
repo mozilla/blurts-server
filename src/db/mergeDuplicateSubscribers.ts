@@ -339,6 +339,12 @@ async function mergeChildTable(
     .select(...selectColumns);
   for (const row of winnerRows as Array<Record<string, unknown>>) {
     const key = conflictKey(row, conflictColumns);
+    // The winner cannot already hold two rows with the same key (the table's
+    // own UNIQUE constraint forbids it), so `survivors.has(key)` is never true
+    // here - the guard is purely defensive and no winner data is dropped. A
+    // `null` key (NULL in a conflict column) is skipped so it stays distinct,
+    // matching default NULLS DISTINCT semantics. Losing/colliding loser rows
+    // are handled below, where their `orColumns` flags are preserved.
     if (key !== null && !survivors.has(key)) {
       survivors.set(key, { id: row.id as number, flags: flagsOf(row) });
     }
