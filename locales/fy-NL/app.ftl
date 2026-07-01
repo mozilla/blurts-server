@@ -56,6 +56,8 @@ delayed-reporting-copy =
 
 what-is-a-website-breach = Wat is in websitedatalek?
 website-breach-blurb = In datalek fan in website bart, wannear cyberkriminelen persoanlike gegevens út online-accounts stelle, kopiearje of bleatlizze. Dat bart it meast, wannear hackers in swak plak yn de befeiliging fan de website fine. It kin lykwols ek barre as accountynformaasje by fersin lekt wurdt.
+what-is-data-agg = Wat is in gegevenssamler?
+what-is-data-agg-blurb = Gegevenssamlers of gegevenshannelers sammelje gegevens út iepenbiere registers en oare boarnen, wêrûnder gegevens dy’t fan bedriuwen kocht binne. Se kombinearje dizze gegevens om detaillearre konsuminteprofilen te meitsjen, dy’t foar marketingdoeleinen oan bedriuwen ferkocht wurde. Hackers kinne dizze gegevens brûke foar profilearring, identiteitsstellerij of oare foarmen fan fraude. Miskien werkenne jo guon fan dizze bedriuwen net, omdat gegevenssamlers faaks gegevens oer minsken sammelje sûnder dat dizze ea in account oanmeitsje of harren foar in tsjinst ynskriuwe.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Oersjoch

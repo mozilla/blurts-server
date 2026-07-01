@@ -51,6 +51,8 @@ delayed-reporting-copy =
 
 what-is-a-website-breach = Beth yw tor-data gwefan?
 website-breach-blurb = Mae tor-data gwefan yn digwydd pan fydd troseddwyr seibr yn dwyn, copïo neu ddatgelu manylion personol o gyfrifon ar-lein. Mae fel arfer yn ganlyniad i hacwyr yn dod o hyd i fan gwan ym maes diogelwch y wefan. Gall achosion o dor-data ddigwydd hefyd pan fydd manylion cyfrifon yn cael eu datgelu'n ddamweiniol.
+what-is-data-agg = Beth yw crynhowr data?
+what-is-data-agg-blurb = Mae crynhowyr data, neu froceriaid data, yn casglu gwybodaeth o gofnodion cyhoeddus a ffynonellau eraill, gan gynnwys data a brynwyd gan gwmnïau. Maen nhw'n casglu'r wybodaeth yma i greu proffiliau defnyddwyr manwl, sy'n cael eu gwerthu i fusnesau at ddibenion marchnata. Gallai hacwyr ddefnyddio'r data hwn ar gyfer proffilio, dynwared, neu fathau eraill o dwyll. Efallai nad ydych yn adnabod rhai o'r cwmnïau hyn oherwydd bod crynhowyr data yn aml yn casglu gwybodaeth am bobl heb iddyn nhw greu cyfrif neu gofrestru ar gyfer gwasanaeth.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Trosolwg

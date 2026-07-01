@@ -49,6 +49,8 @@ delayed-reporting-copy = Cela peut parfois prendre des mois ou des années pour 
 
 what-is-a-website-breach = Qu’est-ce qu’une fuite de données de site web ?
 website-breach-blurb = Une fuite de données de site web se produit lorsque des cybercriminels volent, copient ou compromettent des informations à caractère personnel de comptes en ligne. Cela arrive généralement lorsque des pirates informatiques trouvent une faille dans la sécurité du site web. Des fuites peuvent également se produire lorsque des informations de compte sont divulguées par accident.
+what-is-data-agg = Qu’est-ce qu’un agrégateur de données ?
+what-is-data-agg-blurb = Les agrégateurs de données, ou courtiers en données, collectent des informations à partir de sources publiques et d’autres sources, y compris des données achetées auprès d’entreprises. Ces informations servent à créer des profils de consommateurs détaillés, qui sont ensuite vendus à des entreprises à des fins publicitaires. Des pirates pourraient utiliser ces données pour le profilage, l’usurpation d’identité ou d’autres formes de fraude. Il est possible que vous ne connaissiez pas certaines de ces entreprises, car les agrégateurs de données recueillent souvent des informations sur les personnes sans qu’elles aient jamais créé de compte ou souscrit à un service.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Vue d’ensemble

@@ -52,6 +52,8 @@ delayed-reporting-copy =
 
 what-is-a-website-breach = O que é uma falha de segurança do site?
 website-breach-blurb = Uma falha de segurança de dados de um site ocorre quando os cibercriminosos roubam, copiam ou expõem a informação pessoal de contas na Internet. Geralmente, é a consequência dos piratas informáticos encontrarem um ponto fraco na segurança do site. As falhas de segurança também podem acontecer quando a informação sobre contas é divulgada de forma acidental.
+what-is-data-agg = O que é um agregador de dados?
+what-is-data-agg-blurb = Agregadores ou agentes de dados, recolhem informação de registos públicos e outras fontes, incluindo dados adquiridos a empresas. Estes compilam esta informação para criar perfis detalhados dos consumidores, que são vendidos a empresas para fins de marketing. Os piratas informáticos podem utilizar estes dados para perfilar, fazer-se passar por nós ou outras formas de fraude. Pode não reconhecer algumas destas empresas porque os agregadores de dados recolhem, muitas vezes, informações sobre as pessoas sem que estas criem uma conta ou subscrevem a um serviço.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Sinopse

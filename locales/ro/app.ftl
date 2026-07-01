@@ -53,6 +53,7 @@ delayed-reporting-copy = Uneori, poate dura luni sau ani ca datele de autentific
 
 what-is-a-website-breach = Ce este o încălcare a securității datelor în cazul unui site web?
 website-breach-blurb = O încălcare a securității datelor în cazul unui site web apare când infractorii cibernetici fură, copiază sau expun informații cu caracter personal din conturi online. Este de obicei rezultatul identificării de către hackeri a unui punct slab în securitatea site-ului web. Încălcările pot apărea și la divulgarea accidentală a datelor aferente conturilor.
+what-is-data-agg = Ce sunt agregatoarele de date?
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Prezentare generală

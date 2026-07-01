@@ -52,6 +52,8 @@ delayed-reporting-copy =
 
 what-is-a-website-breach = Apa itu pembobolan situs web?
 website-breach-blurb = Kebocoran data situs web terjadi ketika penjahat siber mencuri, menyalin, atau mengungkap informasi pribadi dari akun daring. Biasanya ini merupakan hasil peretas yang menemukan titik lemah dalam keamanan situs web. Pembobolan juga dapat terjadi ketika informasi akun bocor secara tidak sengaja.
+what-is-data-agg = Apa itu agregator data?
+what-is-data-agg-blurb = Pengumpul data, atau perantara data, mengumpulkan informasi dari catatan publik dan sumber lainnya, termasuk data yang dibeli dari perusahaan. Mereka mengumpulkan informasi ini untuk membuat profil konsumen terperinci, yang dijual ke bisnis untuk tujuan pemasaran. Peretas dapat menggunakan data ini untuk membuat profil, peniruan identitas, atau bentuk penipuan lainnya. Anda mungkin tidak mengenali beberapa dari perusahaan ini karena agregator data sering mengumpulkan informasi tentang orang-orang tanpa mereka pernah membuat akun atau mendaftar untuk suatu layanan.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Ringkasan

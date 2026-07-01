@@ -56,6 +56,8 @@ delayed-reporting-copy =
 
 what-is-a-website-breach = Mi az a webhelyen történt adatvédelmi incidens?
 website-breach-blurb = Webhelyet érintő adatvédelmi incidens akkor történik, ha számítógépes bűnözők ellopják, lemásolják vagy nyilvánosságra hozzák az online fiókok személyes adatait. Ez általában annak a következménye, hogy a hackerek gyenge pontot találnak a webhely biztonságában. Adatvédelmi incidensek akkor is előfordulhatnak, ha a fiókadatok véletlenül szivárognak ki.
+what-is-data-agg = Mi egy adatgyűjtő?
+what-is-data-agg-blurb = Az adatgyűjtők vagy adatbrókerek nyilvános nyilvántartásokból és más forrásokból gyűjtenek információkat, beleértve a cégektől vásárolt adatokat is. Ezeket az információkat összeállítják, hogy részletes fogyasztói profilokat hozzanak létre, amelyeket marketinges célokra értékesítenek a vállalkozásoknak. A hackerek ezeket az adatokat profilalkotásra, megszemélyesítésre vagy a csalás más formáira használhatják fel. Lehet, hogy nem ismeri fel ezeket a cégeket, mert az adatgyűjtők gyakran gyűjtenek információkat emberekről anélkül, hogy fiókot készítettek volna, vagy feliratkoztak valamelyik szolgáltatásra.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Áttekintés

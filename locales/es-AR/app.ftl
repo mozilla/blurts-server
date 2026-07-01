@@ -55,6 +55,8 @@ delayed-reporting-copy =
 
 what-is-a-website-breach = ¿Qué es una filtración de un sitio web?
 website-breach-blurb = Una filtración de datos de un sitio web sucede cuando los cibercriminales roban, copian o exponen información personal de cuentas en línea. Es usualmente el resultado de hackers buscando puntos débiles en la seguridad de los sitios. Las filtraciones también suceden cuando la información de las cuentas se filtra por accidente.
+what-is-data-agg = ¿Qué es un agregador de datos?
+what-is-data-agg-blurb = Los agregadores de datos, o data brokers, recopilan información de registros públicos y otras fuentes, incluidos los datos comprados a las empresas. Recopilan esta información para crear perfiles detallados de los consumidores, que se venden a las empresas con fines de marketing. Los hackers podrían usar estos datos para perfilamiento, suplantación de identidad u otras formas de fraude. Es posible que no reconozca algunas de estas empresas porque los agregadores de datos a menudo recopilan información sobre las personas sin que ellas mismas creen una cuenta o se registren en un servicio.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Visión general

@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = 学术记录
 account-balances = 账户余额
 address-book-contacts = 通讯录联系人
 age-groups = 年龄段
@@ -37,6 +38,7 @@ comments = 评论
 company-names = 公司名称
 credit-card-cvv = 信用卡安全码（CVV）
 credit-cards = 信用卡
+credit-scores = 信用评分
 credit-status-information = 信用状态信息
 cryptocurrency-wallet-addresses = 加密货币钱包地址
 cryptocurrency-wallet-hashes = 加密货币钱包哈希
@@ -52,6 +54,7 @@ delivery-instructions = 发货指导
 device-information = 设备信息
 device-serial-numbers = 设备序列号
 device-usage-tracking-data = 设备使用跟踪数据
+disabilities = 残障状况
 display-names = 显示名称
 drinking-habits = 饮酒习惯
 driver-s-licenses = 驾照信息
@@ -91,6 +94,7 @@ iq-levels = 智商水平
 job-applications = 求职经历
 job-titles = 职务
 language-preferences = 语言首选项
+latitude-and-longitude-pairs = 经纬度数据
 # This string refers to vehicle license plates.
 licence-plates = 车牌号
 living-costs = 生活费用
@@ -157,6 +161,7 @@ sms-messages = 短信内容
 social-connections = 社交关系
 social-media-profiles = 社交媒体资料
 social-security-numbers = 美国社会保障号码
+socioeconomic-levels = 社会经济水平
 spoken-languages = 掌握的语言
 spouses-names = 配偶姓名
 support-tickets = 技术支持请求
