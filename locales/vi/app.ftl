@@ -56,6 +56,8 @@ delayed-reporting-copy =
 
 what-is-a-website-breach = Trang web bị rò rỉ là gì?
 website-breach-blurb = Rò rỉ dữ liệu trang web xảy ra khi tội phạm mạng ăn cắp, sao chép hoặc tiết lộ thông tin cá nhân từ tài khoản trực tuyến. Nó thường là kết quả của tin tặc tìm thấy một điểm yếu trong bảo mật của trang web. Rò rỉ dữ liệu cũng có thể xảy ra khi thông tin tài khoản bị rò rỉ do lỗi kỹ thuật.
+what-is-data-agg = Tập hợp dữ liệu là gì?
+what-is-data-agg-blurb = Các công ty tổng hợp dữ liệu, hay còn gọi là các nhà môi giới dữ liệu, thu thập thông tin từ hồ sơ công khai và các nguồn khác, bao gồm cả dữ liệu mua từ các công ty. Họ tổng hợp thông tin này để tạo ra các hồ sơ người tiêu dùng chi tiết, sau đó bán cho các doanh nghiệp để phục vụ mục đích tiếp thị. Tin tặc có thể sử dụng dữ liệu này để lập hồ sơ, mạo danh hoặc các hình thức gian lận khác. Bạn có thể không nhận ra một số công ty này vì các công ty tổng hợp dữ liệu thường thu thập thông tin về mọi người mà không cần họ tạo tài khoản hoặc đăng ký dịch vụ.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Tổng quan

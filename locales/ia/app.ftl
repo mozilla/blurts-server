@@ -53,6 +53,8 @@ delayed-reporting-copy = A vices, il pote prender menses o annos ante que le cre
 
 what-is-a-website-breach = Qual es un violation de sito web?
 website-breach-blurb = Un violation de datos de sito web eveni quando le cybercriminales roba, copia o expone informationes personal de contos in linea. Isto es generalmente un resultato de hackers que trova un puncto debile in le securitate del sito web. Violationes pote alsi evenir quando informationes del conto es divulgate per accidente.
+what-is-data-agg = Que es un aggregator de datos?
+what-is-data-agg-blurb = Aggregatores de datos, o mediatores de datos, collige informationes ab registrationes public e altere fontes, incluse datos comprate ab le companias. Illes compila iste informationes pro crear profilos de consumitor detaliate, que es vendite a negotios pro scopos de marketing. Piratas informatic poterea usar iste datos pro le profilage, le usurpation del identitate, o altere formas de fraude. Tu pote non recognoscer parte de iste companias perque le aggregatores de datos sovente collige informationes re personas sin que illes jammais crea un conto o se inscribe a un servicio.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Vision general

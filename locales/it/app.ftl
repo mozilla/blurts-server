@@ -49,6 +49,8 @@ delayed-reporting-copy = A volte possono volerci mesi o anni prima che le creden
 
 what-is-a-website-breach = Che cos’è una violazione di dati?
 website-breach-blurb = La violazione di dati di un sito web si verifica quando criminali informatici rubano, copiano o espongono informazioni personali dagli account online. Di solito è il risultato del lavoro di hacker che riescono a individuare un punto debole nella sicurezza del sito web. Una violazione può verificarsi anche quando le informazioni sull’account vengono lasciate trapelare per errore.
+what-is-data-agg = Che cos’è un aggregatore di dati?
+what-is-data-agg-blurb = Gli aggregatori di dati, noti anche come data broker, raccolgono informazioni da registri pubblici e altre fonti, compresi dati acquistati da aziende. Queste informazioni vengono assemblate per creare profili dettagliati dei consumatori, poi venduti alle imprese a fini di marketing. I criminali informatici possono sfruttare questi dati per attività di profilazione, furto d’identità o altre forme di frode. Potresti non conoscere alcune di queste aziende, poiché spesso gli aggregatori raccolgono dati sulle persone senza che queste abbiano mai creato un account o si siano registrate a un servizio.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Panoramica

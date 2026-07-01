@@ -56,6 +56,8 @@ delayed-reporting-copy =
 
 what-is-a-website-breach = What is a web site breach?
 website-breach-blurb = A web site data breach happens when cyber criminals steal, copy, or expose personal information from online accounts. It’s usually a result of hackers finding a weak spot in the web site’s security. Breaches can also happen when account information gets leaked by accident.
+what-is-data-agg = What is a data aggregator?
+what-is-data-agg-blurb = Data aggregators, or data brokers, collect information from public records and other sources, including data purchased from companies. They compile this information to create detailed consumer profiles, which are sold to businesses for marketing purposes. Hackers could use this data for profiling, impersonation or other forms of fraud. You may not recognise some of these companies because data aggregators often collect information about people without them ever creating an account or signing up for a service.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Overview

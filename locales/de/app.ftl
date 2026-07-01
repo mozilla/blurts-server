@@ -54,6 +54,8 @@ delayed-reporting-copy = Es kann manchmal Monate oder Jahre dauern, bis offengel
 
 what-is-a-website-breach = Was ist ein Website-Datenleck?
 website-breach-blurb = Ein Datenleak einer Website liegt vor, wenn Cyber-Kriminelle persönliche Daten aus Online-Konten stehlen, kopieren oder offenlegen. Das passiert meist dann, wenn Hacker eine Schwachstelle in der Sicherheit der Website finden. Es kann aber auch vorkommen, dass Kontoinformationen versehentlich geleakt werden.
+what-is-data-agg = Was ist ein Daten-Aggregator?
+what-is-data-agg-blurb = Datensammler oder Datenmakler sammeln Informationen aus öffentlichen Aufzeichnungen und anderen Quellen, einschließlich Daten, die von Unternehmen gekauft wurden. Sie stellen diese Daten zusammen, um detaillierte Verbraucherprofile zu erstellen, die zu Marketingzwecken an Unternehmen verkauft werden. Hacker könnten diese Daten für Profilerstellung, Identitätsdiebstahl oder andere Formen von Betrug verwenden. Sie erkennen einige dieser Unternehmen vielleicht nicht wieder, weil Datensammler oft Informationen über Menschen sammeln, ohne dass sie jemals ein Konto erstellen oder sich für einen Dienst anmelden.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Übersicht

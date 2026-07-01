@@ -98,6 +98,8 @@ delayed-reporting-copy =
 
 what-is-a-website-breach = Kaj je kraja podatkov spletne strani?
 website-breach-blurb = Do kraje podatkov spletne strani pride, ko spletni napadalci ukradejo, kopirajo ali razkrijejo osebne podatke spletnih računov. Običajno je rezultat tega, da hekerji odkrijejo šibko točko varnosti spletne strani. Kraje se lahko zgodijo tudi, če se podatki o računu na spletu pojavijo po naključju.
+what-is-data-agg = Kaj je zbiralnik podatkov?
+what-is-data-agg-blurb = Posredniki podatkov ali zbiralci podatkov zbirajo informacije iz javnih evidenc in drugih virov, vključno s podatki, kupljenimi od podjetij. Te podatke zbirajo in ustvarjajo podrobne profile uporabnikov, ki jih podjetjem prodajajo za namene trženja. Hekerji lahko te podatke uporabijo za spremljanje podatkov, za lažno predstavljanje ali za druge oblike prevar. Nekaterih od teh podjetij morda ne prepoznate, ker zbiralniki podatkov pogosto zbirajo podatke o ljudeh, ne da bi ti ljudje kdaj ustvarili račun ali prijavili storitev.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Pregled

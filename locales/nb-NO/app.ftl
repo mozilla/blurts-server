@@ -56,6 +56,8 @@ delayed-reporting-copy =
 
 what-is-a-website-breach = Hva er en nettstedsdatalekkasje?
 website-breach-blurb = En nettsteds-datalekkasje kan skyldes cyber-kriminelle som stjeler, kopierer eller eksponerer personlig informasjon fra kontoer på nettet. Det er vanligvis et resultat av at hackere finner et svakt punkt i nettstedets sikkerhetsforanstaltninger. Datalekkasje kan også skje når kontoinformasjon blir lekket ved et uhell.
+what-is-data-agg = Hva er en datainnsamler?
+what-is-data-agg-blurb = Datainnsamlere, eller datameglere, samler inn informasjon fra offentlige registre og andre kilder, inkludert data kjøpt fra selskaper. De sammenstiller denne informasjonen for å lage detaljerte forbrukerprofiler, som selges til virksomheter for markedsføringsformål. Hackere kan bruke disse dataene til profilering, til å utgi seg for å være andre eller til andre former for svindel. Du kjenner kanskje ikke igjen noen av disse selskapene, fordi datainnsamlere ofte samler inn informasjon om personer uten at de noen gang har opprettet en konto eller registrert seg for en tjeneste.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Oversikt
