@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { describe, it, expect, afterEach, afterAll } from "vitest";
+import { describe, it, expect, beforeAll, afterEach, afterAll } from "vitest";
 import { faker } from "@faker-js/faker";
 import { seeds } from "../test/db";
 import createDbConnection from "./connect";
@@ -41,11 +41,27 @@ async function seedSubscriber(
   return (await conn("subscribers").where("id", row.id).first())!;
 }
 
+// The partial UNIQUE index on `subscribers.fxa_uid` (migration
+// 20260622140000_add_unique_fxa_uid_index) is the final safety gate applied
+// *after* this merge routine has removed duplicates in production. These tests
+// intentionally seed multiple rows sharing one `fxa_uid` to exercise the merge,
+// so they must run against the pre-index schema. Drop it for the duration of
+// this file and restore it afterwards (integration files run sequentially, so
+// no other file observes the gap).
+beforeAll(async () => {
+  await conn.raw(`DROP INDEX IF EXISTS subscribers_fxa_uid_unique_idx`);
+});
+
 afterEach(async () => {
   await conn.raw(`TRUNCATE TABLE subscribers, breaches CASCADE`);
 });
 
 afterAll(async () => {
+  await conn.raw(
+    `CREATE UNIQUE INDEX IF NOT EXISTS subscribers_fxa_uid_unique_idx
+       ON subscribers (fxa_uid)
+       WHERE fxa_uid IS NOT NULL`,
+  );
   await conn.destroy();
 });
 
