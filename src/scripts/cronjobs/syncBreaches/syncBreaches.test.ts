@@ -32,6 +32,7 @@ import {
   getAllBreaches,
 } from "../../../db/tables/breaches";
 import { redisClient } from "../../../db/redis/client";
+import { captureException } from "@sentry/node";
 
 vi.mock("../../../utils/s3", () => ({
   uploadToS3: vi.fn().mockResolvedValue(undefined),
@@ -169,6 +170,18 @@ describe("syncBreaches", () => {
       await getBreachIcons(breaches);
       expect(updateBreachFaviconUrl).toHaveBeenCalledTimes(breaches.length - 1);
       expect(uploadToS3).toHaveBeenCalledTimes(breaches.length - 1);
+      expect(vi.mocked(captureException)).toHaveBeenCalledWith(
+        expect.any(Error),
+        expect.objectContaining({
+          contexts: expect.objectContaining({
+            breach: expect.objectContaining({
+              breachName: expect.any(String),
+              breachDomain: expect.any(String),
+              logoFilename: expect.any(String),
+            }),
+          }),
+        }),
+      );
     });
     it("continues processing if error is thrown in updateBreachFaviconUrl", async () => {
       fetchSpy.mockResolvedValue({

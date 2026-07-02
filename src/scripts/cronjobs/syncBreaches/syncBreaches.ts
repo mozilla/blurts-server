@@ -97,7 +97,9 @@ export async function getBreachIcons(breaches: HibpGetBreachesResponse) {
         logoFilename,
       });
       captureException(error, {
-        data: { breachName, breachDomain, logoFilename },
+        contexts: {
+          breach: { breachName, breachDomain, logoFilename },
+        },
       });
       continue;
     }
