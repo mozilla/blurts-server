@@ -225,13 +225,15 @@ export async function breachMessageHandler(
       );
       notified += 1;
     } catch (error) {
-      sentry?.addBreadcrumb({
-        data: {
-          subscriber_id: recipient.subscriber_id,
-          breach_id: breachAlert.Id,
+      logger.error("Failed to notify user of breach: ", error);
+      sentry?.captureException(error, {
+        contexts: {
+          breachAlert: {
+            subscriber_id: recipient.subscriber_id,
+            breach_id: breachAlert.Id,
+          },
         },
       });
-      logger.error("Failed to notify user of breach: ", error);
       errorRecipients += 1;
     }
   }

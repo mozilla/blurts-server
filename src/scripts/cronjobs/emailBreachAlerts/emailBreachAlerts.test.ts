@@ -39,7 +39,7 @@ vi.mock("@sentry/node", async (importOriginal) => {
   const actual: typeof Sentry = await importOriginal();
   return {
     ...actual,
-    addBreadcrumb: vi.fn(),
+    captureException: vi.fn(),
     setTag: vi.fn(),
   };
 });
@@ -56,7 +56,7 @@ vi.mock("../../../db/tables/email_subscriptions", () => ({
 
 describe("breachMessageHandler", () => {
   let logger: Logger;
-  const breadcrumbSpy = vi.mocked(Sentry.addBreadcrumb);
+  const captureExceptionSpy = vi.mocked(Sentry.captureException);
   const setTagSpy = vi.mocked(Sentry.setTag);
   const breachSpy = vi.fn();
 
@@ -195,7 +195,7 @@ describe("breachMessageHandler", () => {
     );
   });
 
-  it("returns success:false when sending fails (and adds breadcrumb)", async () => {
+  it("returns success:false and captures the exception when sending fails", async () => {
     breachSpy.mockResolvedValueOnce(mockBreach(validBreachDefaults));
     const subs = {
       findByHashes: vi
@@ -224,7 +224,18 @@ describe("breachMessageHandler", () => {
     expect(res.success).toBe(false);
     expect(res.errors).toBe(1);
     expect(sendEmail).toHaveBeenCalledTimes(1);
-    expect(breadcrumbSpy).toHaveBeenCalledTimes(1);
+    expect(captureExceptionSpy).toHaveBeenCalledTimes(1);
+    expect(captureExceptionSpy).toHaveBeenCalledWith(
+      expect.any(Error),
+      expect.objectContaining({
+        contexts: {
+          breachAlert: expect.objectContaining({
+            subscriber_id: expect.anything(),
+            breach_id: expect.anything(),
+          }),
+        },
+      }),
+    );
   });
 
   it.each([
