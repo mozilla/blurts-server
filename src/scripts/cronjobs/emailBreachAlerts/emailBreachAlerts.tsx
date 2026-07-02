@@ -288,7 +288,12 @@ export function runJob(config: EmailBreachAlertsJobConfig) {
   });
   const messageFn = async (message: Message) => {
     return await Sentry.withIsolationScope(async () => {
-      return breachMessageHandler(message, ...config.messageFnOpts);
+      try {
+        return await breachMessageHandler(message, ...config.messageFnOpts);
+      } catch (error) {
+        Sentry.captureException(error);
+        throw error; // preserve the existing nack-on-throw behavior
+      }
     });
   };
   // Initialize the handler, which subscribes to events emitted
