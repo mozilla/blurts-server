@@ -18,6 +18,13 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
+const SENTRY_SLUG = "cron-email-breach-alerts";
+
+const checkInId = Sentry.captureCheckIn({
+  monitorSlug: SENTRY_SLUG,
+  status: "in_progress",
+});
+
 Sentry.setTag("job", "emailBreachAlerts");
 
 import { fetchHibpBreaches } from "../../../utils/hibp";
@@ -59,25 +66,39 @@ async function start() {
     },
     logger,
   });
-  runJob({
-    gcp: {
-      projectId,
-      subscription,
-    },
-    messageFnOpts: [
-      logger,
-      createBreachDataService({
-        redis,
-        sync,
-        getBreachesFromDb: getBreaches,
+  try {
+    runJob({
+      gcp: {
+        projectId,
+        subscription,
+      },
+      messageFnOpts: [
         logger,
-      }),
-      { findByHashes: getBreachNotificationSubscribersByHashes },
-      NotificationsRepo,
-      sendEmail,
+        createBreachDataService({
+          redis,
+          sync,
+          getBreachesFromDb: getBreaches,
+          logger,
+        }),
+        { findByHashes: getBreachNotificationSubscribersByHashes },
+        NotificationsRepo,
+        sendEmail,
+        Sentry,
+      ],
+      jobLogger: logger,
       Sentry,
-    ],
-    jobLogger: logger,
-    Sentry,
-  });
+    });
+    Sentry.captureCheckIn({
+      checkInId,
+      monitorSlug: SENTRY_SLUG,
+      status: "ok",
+    });
+  } catch (error) {
+    Sentry.captureCheckIn({
+      checkInId,
+      monitorSlug: SENTRY_SLUG,
+      status: "error",
+    });
+    throw error;
+  }
 }
