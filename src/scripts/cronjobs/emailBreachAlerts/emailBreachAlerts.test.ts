@@ -229,10 +229,7 @@ describe("breachMessageHandler", () => {
       expect.any(Error),
       expect.objectContaining({
         contexts: {
-          breachAlert: expect.objectContaining({
-            subscriber_id: expect.anything(),
-            breach_id: expect.anything(),
-          }),
+          breachAlert: { breach_id: expect.anything() },
         },
       }),
     );

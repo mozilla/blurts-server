@@ -229,7 +229,6 @@ export async function breachMessageHandler(
       sentry?.captureException(error, {
         contexts: {
           breachAlert: {
-            subscriber_id: recipient.subscriber_id,
             breach_id: breachAlert.Id,
           },
         },
