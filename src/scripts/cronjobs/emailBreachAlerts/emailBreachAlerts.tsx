@@ -225,13 +225,14 @@ export async function breachMessageHandler(
       );
       notified += 1;
     } catch (error) {
-      sentry?.addBreadcrumb({
-        data: {
-          subscriber_id: recipient.subscriber_id,
-          breach_id: breachAlert.Id,
+      logger.error("Failed to notify user of breach: ", error);
+      sentry?.captureException(error, {
+        contexts: {
+          breachAlert: {
+            breach_id: breachAlert.Id,
+          },
         },
       });
-      logger.error("Failed to notify user of breach: ", error);
       errorRecipients += 1;
     }
   }
@@ -286,7 +287,12 @@ export function runJob(config: EmailBreachAlertsJobConfig) {
   });
   const messageFn = async (message: Message) => {
     return await Sentry.withIsolationScope(async () => {
-      return breachMessageHandler(message, ...config.messageFnOpts);
+      try {
+        return await breachMessageHandler(message, ...config.messageFnOpts);
+      } catch (error) {
+        Sentry.captureException(error);
+        throw error; // preserve the existing nack-on-throw behavior
+      }
     });
   };
   // Initialize the handler, which subscribes to events emitted
