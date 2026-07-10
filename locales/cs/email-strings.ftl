@@ -89,20 +89,20 @@ email-breach-alert-all-next-steps-button-dashboard = Přejít na nástěnku
 email-breach-alert-all-hero-heading-1 = Podrobnosti o únicích dat společnosti { $company-name }
 # $company-name is the name of the company/site that was breached.
 # $breach-date is the date of the breach.
-email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } našel vaše údaje v { $company-name } úniku dat z { $breach-date }. Toto upozornění jste obdrželi, protože jste se zaregistrovali k <link_to_settings>upozorňování na úniky</link_to_settings>.
+email-breach-alert-all-lead-1 = Služba { -brand-mozilla-monitor } zjistila, že vaše údaje byly odhaleny při úniku dat společnosti { $company-name } dne { $breach-date }. Toto upozornění jste obdrželi, protože jste se přihlásili k odběru <link_to_settings>oznámení o úniku dat</link_to_settings>.
 email-breach-alert-all-source-title-1 = Podrobnosti o úniku
 email-breach-alert-company = Společnost:
 email-breach-alert-date-of-breach = Datum úniku:
 email-breach-alert-info-exposed = Vaše odhalené informace:
 email-breach-alert-next-steps = Další kroky
-email-breach-alert-next-steps-description = <sign_in_link>Přihlaste se</sign_in_link> do své nástěnky { -brand-mozilla-monitor }. Provedeme vás jednotlivými kroky k jeho vyřešení.
+email-breach-alert-next-steps-description = <sign_in_link>Přihlaste se</sign_in_link> do svého ovládacího panelu { -brand-mozilla-monitor }. Provedeme vás kroky potřebnými k vyřešení tohoto problému.
 email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Vyřešit úniky na nástěnce
 email-breach-alert-faqs-title = FAQ
 email-breach-alert-faq-qn-1 = Proč toto dostávám?
-email-breach-alert-faq-ans-1 = Přihlásili jste se k příjmu upozornění na úniky dat. <link_to_settings>Aktualizujte své předvolby</link_to_settings> v nastavení.
+email-breach-alert-faq-ans-1 = Přihlásili jste se k odběru upozornění na úniky osobních údajů. <link_to_settings>Své preference můžete kdykoli upravit</link_to_settings> v nastavení.
 email-breach-alert-faq-qn-2 = Proč neznám tuto společnost či web?
-email-breach-alert-faq-ans-2 = Účet možná změnil majitele či název, může se týkat starého účtu či účtu, který byl pro vás vytvořen, nebo mohlo pocházet ze zakoupeného seznamu vyzrazených osobních údajů.
+email-breach-alert-faq-ans-2 = Může se jednat o účet, který změnil majitele nebo název, o starý účet nebo o účet, který byl vytvořen pro vás, případně o účet pocházející ze zakoupeného seznamu uniklých osobních údajů.
 email-breach-alert-faq-qn-3 = Co je to upozornění na únik dat?
-email-breach-alert-faq-ans-3 = Upozornění { -brand-mozilla-monitor } se zasílá, když jsou osobní údaje, které sledujete, vyzrazeny, odcizeny nebo zkopírovány bez povolení.
+email-breach-alert-faq-ans-3 = Oznámení { -brand-mozilla-monitor } se odešle, pokud dojde k úniku, odcizení nebo neoprávněnému zkopírování osobních údajů, které sledujete.
 email-breach-alert-faq-qn-4 = Co je { -brand-mozilla-monitor }?
-email-breach-alert-faq-ans-4 = Bezplatná služba pro upozornění na úniky dat, která vás upozorní, pokud byly vaše internetové účty součástí nějakého úniku dat.
+email-breach-alert-faq-ans-4 = Bezplatná služba pro oznamování úniků dat, která vás upozorní, pokud se vaše online účty staly terčem úniku dat.

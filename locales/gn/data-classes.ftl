@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = Kuatiata tekombo’egua
 account-balances = Mba’ete rembyre
 address-book-contacts = Ehecha kundaharape jehaiha
 age-groups = Aty hi’aryjojáva
@@ -37,6 +38,7 @@ comments = Je’erei
 company-names = Empresa réra
 credit-card-cvv = Kuatia’atã ñemurã CVV
 credit-cards = Kuatia’atã ñemurã
+credit-scores = Jedevekue mbokyta
 credit-status-information = Ñemurã rekotee marandu
 cryptocurrency-wallet-addresses = Criptomoneda kundaharenda
 cryptocurrency-wallet-hashes = Criptomoneda ashes ryru
@@ -52,6 +54,7 @@ delivery-instructions = Delivery jejapo rape
 device-information = Mba’e’oka marandu
 device-serial-numbers = Mba’e’oka papapy hekoetáva
 device-usage-tracking-data = Mba’e’oka jeporu mba’ekuaarã rapykuehoha
+disabilities = Katupyryambue
 display-names = Téra ehechauka hag̃ua
 drinking-habits = Guari ñemokõ meme
 driver-s-licenses = Mongu’ekuaa ñe’ẽme’ẽguigua
@@ -91,6 +94,7 @@ iq-levels = CI oĩha
 job-applications = Mba’ejerure mba’aporã
 job-titles = Nerenda mba’apohápe
 language-preferences = Ñe’ẽ jerohoryvéva
+latitude-and-longitude-pairs = Latitud ha longitud rendatee
 # This string refers to vehicle license plates.
 licence-plates = Ñe’ẽmboguapy
 living-costs = Tekove repy
@@ -157,6 +161,7 @@ sms-messages = SMS ñe’ẽmondo
 social-connections = Tekogua jejuaju
 social-media-profiles = Ava ñandutieta mba’etee
 social-security-numbers = Seguridad social papapy
+socioeconomic-levels = Virureko jekuaa rehegua
 spoken-languages = Ñe’ẽnguéra ojeporúva
 spouses-names = Mendare réra
 support-tickets = Pytyvõ jerure

@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = Dosare academice
 account-balances = solduri ale conturilor
 address-book-contacts = contacte din agendă
 age-groups = categorii de vârstă
@@ -37,6 +38,7 @@ comments = Comentarii
 company-names = Denumiri de firme
 credit-card-cvv = coduri de securitate (CVV/CVC) ale cardurilor de credit
 credit-cards = carduri de credit
+credit-scores = Scoruri de credit
 credit-status-information = informații privind starea creditelor
 cryptocurrency-wallet-addresses = Adrese de portofele de criptomonede
 cryptocurrency-wallet-hashes = Hashuri portofel de criptomonede
@@ -52,6 +54,7 @@ delivery-instructions = Instrucțiuni de livrare
 device-information = informații despre dispozitive
 device-serial-numbers = Numere de serie ale dispozitivelor
 device-usage-tracking-data = date de urmărire a utilizării dispozitivelor
+disabilities = Dizabilități
 display-names = Denumiri afișate
 drinking-habits = obiceiuri privind consumul de alcool
 driver-s-licenses = Permise de conducere
@@ -91,6 +94,7 @@ iq-levels = Niveluri IQ
 job-applications = Cereri de angajare
 job-titles = profesii/meserii
 language-preferences = Preferințe de limbă
+latitude-and-longitude-pairs = Perechi de latitudine și longitudine
 # This string refers to vehicle license plates.
 licence-plates = Plăcuțe de înmatriculare
 living-costs = Costuri de trai
@@ -157,6 +161,7 @@ sms-messages = mesaje SMS
 social-connections = contacte pe rețele sociale
 social-media-profiles = profiluri pe rețelele sociale
 social-security-numbers = coduri numerice personale
+socioeconomic-levels = Niveluri socioeconomice
 spoken-languages = limbi vorbite
 spouses-names = Numele consorților
 support-tickets = tichete de asistență tehnică

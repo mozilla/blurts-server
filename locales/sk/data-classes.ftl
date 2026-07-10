@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = akademické záznamy
 account-balances = zostatky na účtoch
 address-book-contacts = kontakty v adresári
 age-groups = vekové skupiny
@@ -37,6 +38,7 @@ comments = Komentáre
 company-names = Názvy spoločností
 credit-card-cvv = CVV platobných kariet
 credit-cards = platobné karty
+credit-scores = kreditné skóre
 credit-status-information = informácie o stavoch úverov
 cryptocurrency-wallet-addresses = Adresy kryptomenových peňaženiek
 cryptocurrency-wallet-hashes = hashe kryptomenových peňaženiek
@@ -52,6 +54,7 @@ delivery-instructions = pokyny na doručenie
 device-information = informácie o zariadeniach
 device-serial-numbers = sériové čísla zariadení
 device-usage-tracking-data = údaje o využívaní zariadenia
+disabilities = zdravotné postihnutia
 display-names = Zobrazované mená
 drinking-habits = pitné návyky
 driver-s-licenses = vodičské preukazy
@@ -91,6 +94,7 @@ iq-levels = Úrovne IQ
 job-applications = žiadosti o zamestnanie
 job-titles = názvy pracovných pozícií
 language-preferences = Jazykové nastavenia
+latitude-and-longitude-pairs = páry zemepisnej šírky a dĺžky
 # This string refers to vehicle license plates.
 licence-plates = evidenčné čísla vozidiel
 living-costs = životné náklady
@@ -157,6 +161,7 @@ sms-messages = SMS správy
 social-connections = sociálne prepojenia
 social-media-profiles = profily zo sociálnych sietí
 social-security-numbers = čísla sociálneho zabezpečenia
+socioeconomic-levels = socioekonomické úrovne
 spoken-languages = znalosti cudzích jazykov
 spouses-names = mená partnerov
 support-tickets = tickety zo stránky podpory

@@ -56,6 +56,8 @@ delayed-reporting-copy =
 
 what-is-a-website-breach = Vad är ett webbplatsintrång?
 website-breach-blurb = Ett intrång mot webbplatsen händer när cyberkriminella stjäl, kopierar eller avslöjar personuppgifter från onlinekonton. Det är oftast ett resultat av att hackare hittar en svag punkt i webbplatsens säkerhet. Intrånget kan också ske när kontouppgifter läckas av misstag.
+what-is-data-agg = Vad är en datainsamlare?
+what-is-data-agg-blurb = Datainsamlare, eller datamäklare, samlar in information från offentliga register och andra källor, inklusive uppgifter som köpts från företag. De sammanställer denna information för att skapa detaljerade konsumentprofiler, som säljs till företag i marknadsföringssyfte. Hackare kan använda denna data för profilering, identitetsstörning eller andra former av bedrägeri. Du kanske inte känner igen vissa av dessa företag eftersom datainsamlare ofta samlar in information om personer utan att de någonsin har skapat ett konto eller registrerat sig för en tjänst.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Översikt

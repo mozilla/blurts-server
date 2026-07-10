@@ -68,3 +68,7 @@ email-breach-alert-all-data-points-title = Altistuneet tietosi:
 email-breach-alert-all-next-steps-lead = Opastamme sinua vaihe vaiheelta tämän tietovuodon ratkaisemisessa.
 email-breach-alert-all-next-steps-cta-label = Aloitetaan
 email-breach-alert-all-next-steps-button-dashboard = Siirry kojelaudalle
+
+## Breach alert redesigned strings
+
+email-breach-alert-faq-qn-1 = Miksi saan tämän?

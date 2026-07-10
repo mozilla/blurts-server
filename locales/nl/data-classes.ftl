@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = Academische dossiers
 account-balances = Banksaldo’s
 address-book-contacts = Adresboekcontacten
 age-groups = Leeftijdsgroepen
@@ -37,6 +38,7 @@ comments = Opmerkingen
 company-names = Bedrijfsnamen
 credit-card-cvv = Creditcard-CVV
 credit-cards = Creditcards
+credit-scores = Creditcards
 credit-status-information = Informatie over kredietstatus
 cryptocurrency-wallet-addresses = Cryptocurrency-portemonnee-adressen
 cryptocurrency-wallet-hashes = Cryptocurrency-portemonnee-hashes
@@ -52,6 +54,7 @@ delivery-instructions = Afleverinstructies
 device-information = Apparaatgegevens
 device-serial-numbers = Serienummers van apparaten
 device-usage-tracking-data = Volggegevens over apparaatgebruik
+disabilities = Handicaps
 display-names = Namen weergeven
 drinking-habits = Drinkgewoonten
 driver-s-licenses = Rijbewijzen
@@ -91,6 +94,7 @@ iq-levels = IQ-niveaus
 job-applications = Vacatures
 job-titles = Functietitels
 language-preferences = Taalvoorkeuren
+latitude-and-longitude-pairs = Breedte- en lengtegraadparen
 # This string refers to vehicle license plates.
 licence-plates = Kentekens
 living-costs = Kosten levensonderhoud
@@ -157,6 +161,7 @@ sms-messages = Sms-berichten
 social-connections = Sociale connecties
 social-media-profiles = Profielen op sociale media
 social-security-numbers = Burgerservicenummers
+socioeconomic-levels = Sociaal-economische niveaus
 spoken-languages = Gesproken talen
 spouses-names = Namen echtgenoten
 support-tickets = Ondersteuningsaanvragen

@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = dossiers académiques
 account-balances = soldes des comptes
 address-book-contacts = contacts du carnet d’adresses
 age-groups = tranches d’âge
@@ -37,6 +38,7 @@ comments = commentaires
 company-names = noms de sociétés
 credit-card-cvv = cryptogrammes visuels des cartes bancaires
 credit-cards = cartes bancaires
+credit-scores = scores de crédit
 credit-status-information = informations sur la note de crédit
 cryptocurrency-wallet-addresses = adresses des portefeuilles de cryptomonnaies
 cryptocurrency-wallet-hashes = empreintes des portefeuilles de cryptomonnaies
@@ -52,6 +54,7 @@ delivery-instructions = instructions de livraison
 device-information = informations sur les appareils
 device-serial-numbers = numéros de série des appareils
 device-usage-tracking-data = données de suivi de l’utilisation des appareils
+disabilities = handicaps
 display-names = noms d’affichage
 drinking-habits = boissons habituelles
 driver-s-licenses = permis de conduire
@@ -91,6 +94,7 @@ iq-levels = niveaux de QI
 job-applications = demandes d’emploi
 job-titles = professions
 language-preferences = préférences de langue
+latitude-and-longitude-pairs = paires de latitude et de longitude
 # This string refers to vehicle license plates.
 licence-plates = plaques d’immatriculation
 living-costs = coûts de la vie
@@ -157,6 +161,7 @@ sms-messages = SMS
 social-connections = réseau de connaissances
 social-media-profiles = profils des réseaux sociaux
 social-security-numbers = numéros de sécurité sociale
+socioeconomic-levels = niveaux socioéconomiques
 spoken-languages = langues parlées
 spouses-names = noms des conjoints
 support-tickets = demandes d’assistance

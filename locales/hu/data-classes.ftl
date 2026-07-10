@@ -5,6 +5,7 @@
 
 # Breach Data Classes
 
+academic-records = Tanulmányi nyilvántartások
 account-balances = Számlaegyenlegek
 address-book-contacts = Címjegyzék-kapcsolatok
 age-groups = Korcsoportok
@@ -37,6 +38,7 @@ comments = Megjegyzések
 company-names = Cégnevek
 credit-card-cvv = Bankkártyák CVV adatai
 credit-cards = Bankkártyák
+credit-scores = Hitelképességi pontok
 credit-status-information = Hitelképességi információk
 cryptocurrency-wallet-addresses = Kriptotárcacímek
 cryptocurrency-wallet-hashes = Kriptopénztárca ujjlenyomatok
@@ -52,6 +54,7 @@ delivery-instructions = Kiszállítási utasítások
 device-information = Eszközinformációk
 device-serial-numbers = Eszköz sorozatszámok
 device-usage-tracking-data = Eszközhasználati követési adatok
+disabilities = Fogyatékosságok
 display-names = Megjelenítendő nevek
 drinking-habits = Alkoholfogyasztási szokások
 driver-s-licenses = Jogosítványok
@@ -91,6 +94,7 @@ iq-levels = IQ szintek
 job-applications = Állásjelentkezések
 job-titles = Beosztások
 language-preferences = Nyelvi beállítások
+latitude-and-longitude-pairs = Szélességi és hosszúsági koordinátapárok
 # This string refers to vehicle license plates.
 licence-plates = Rendszámtáblák
 living-costs = Megélhetési költségek
@@ -157,6 +161,7 @@ sms-messages = SMS üzenetek
 social-connections = Közösségi kapcsolatok
 social-media-profiles = Közösségi média profilok
 social-security-numbers = Társadalombiztosítási azonosítók
+socioeconomic-levels = Szocioökonómiai szintek
 spoken-languages = Beszélt nyelvek
 spouses-names = Házastársak nevei
 support-tickets = Támogatási jegyek

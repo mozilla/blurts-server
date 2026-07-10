@@ -82,3 +82,27 @@ email-breach-alert-all-data-points-title = Datele tale expuse:
 email-breach-alert-all-next-steps-lead = Te vom ghida pas cu pas ca să rezolvi această încălcare a securității datelor.
 email-breach-alert-all-next-steps-cta-label = Să începem
 email-breach-alert-all-next-steps-button-dashboard = Mergi la tabloul de bord
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = Detalii despre încălcarea securității datelor cu caracter personal pe { $company-name }{ " " }
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } ți-a găsit informațiile într-o încălcare a securității datelor { $company-name } pe { $breach-date }. Primești această alertă pentru că te-ai abonat pentru <link_to_settings>notificări despre încălcări ale securității datelor</link_to_settings>.
+email-breach-alert-all-source-title-1 = Detaliile încălcării securității datelor
+email-breach-alert-company = Companie:
+email-breach-alert-date-of-breach = Data încălcării:
+email-breach-alert-info-exposed = Informații expuse:
+email-breach-alert-next-steps = Pașii următori
+email-breach-alert-next-steps-description = <sign_in_link>Intră în cont</sign_in_link> pe tabloul de bord { -brand-mozilla-monitor }. Te vom ghida prin pașii pe care trebuie să îi urmezi pentru rezolvarea ei.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Rezolvă încălcarea securității datelor în tabloul de bord
+email-breach-alert-faqs-title = Întrebări frecvente
+email-breach-alert-faq-qn-1 = De ce primesc asta?
+email-breach-alert-faq-ans-1 = Te-ai înscris pentru alerte privind încălcări ale securității datelor. <link_to_settings>Actualizează-ți preferințele</link_to_settings> oricând în setări.
+email-breach-alert-faq-qn-2 = De ce nu recunosc această companie sau site?
+email-breach-alert-faq-ans-2 = Este posibil să-și fi schimbat proprietarul sau denumirea, să implice un cont vechi sau unul creat pentru tine sau să provină dintr-o listă achiziționată de date personale expuse.
+email-breach-alert-faq-qn-3 = Ce este o alertă de încălcare a securității datelor?
+email-breach-alert-faq-ans-3 = O notificare pe care { -brand-mozilla-monitor } o trimite când datele personale pe care le monitorizezi sunt expuse, furate sau copiate fără permisiune.
+email-breach-alert-faq-qn-4 = Ce este { -brand-mozilla-monitor }?
+email-breach-alert-faq-ans-4 = Un serviciu gratuit de notificare a încălcării securității datelor, care te avertizează dacă conturile tale online au fost implicate într-o încălcare de securitate a datelor.
