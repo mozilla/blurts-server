@@ -6,6 +6,6 @@ import type { FeatureFlagName } from "../src/db/tables/featureFlags";
 declare module "@playwright/test" {
   interface PlaywrightTestOptions {
     countryCode?: string;
-    projectEnabledFeatureFlags?: FeatureFlagName[];
+    enabledFeatureFlagsForProject?: FeatureFlagName[];
   }
 }

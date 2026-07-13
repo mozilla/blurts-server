@@ -111,7 +111,7 @@ export const projects = locations.flatMap((geo) =>
           geolocation: geo.geolocation,
           locale: geo.locale,
           permissions: ["geolocation"],
-          projectEnabledFeatureFlags: getEnabledFeatureFlags(),
+          enabledFeatureFlagsForProject: getEnabledFeatureFlags(),
           extraHTTPHeaders: {
             "Accept-Language": `${geo.locale},${geo.name.toLowerCase()};q=1.0`,
             "X-Client-Region": geo.name.toLowerCase(),

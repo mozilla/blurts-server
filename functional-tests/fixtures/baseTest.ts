@@ -34,7 +34,7 @@ const test = baseTest.extend<{
   // All enabled feature flags
   enabledFeatureFlags: async ({ localForcedFeatureFlags }, use, testInfo) => {
     const enabledFeatureFlags: FeatureFlagName[] =
-      testInfo.project.use?.projectEnabledFeatureFlags ?? [];
+      testInfo.project.use?.enabledFeatureFlagsForProject ?? [];
     const mergedFlags: FeatureFlagName[] = Array.from(
       new Set([...enabledFeatureFlags, ...localForcedFeatureFlags]),
     );
