@@ -18,6 +18,12 @@ import {
 
 import * as Sentry from "@sentry/nextjs";
 import { getPubSub } from "../../../../gcp/clients";
+import { inspect } from "node:util";
+
+// Dump a full util.inspect of the publish error once per process — it surfaces nested /
+// non-enumerable gax fields (cause / statusDetails / the metadata map) the explicit field
+// extraction can't. The concise fields (code / details / message / stack) log every failure.
+let pubsubErrorInspected = false;
 
 export type PostHibpNotificationRequestBody = {
   breachName: string;
@@ -72,7 +78,29 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {
-    logger.error("error_queuing_hibp_breach:", { topicName, exception: ex });
+    // gRPC/gax errors don't JSON-serialize their useful fields (winston's default json format
+    // drops non-enumerable Error props like message/stack), so the log used to collapse to an
+    // opaque {note, metadata:{}}. Pull the fields onto the top-level object via direct access,
+    // and add a rate-limited full inspect to catch anything nested (cause / statusDetails).
+    const err = ex as {
+      code?: unknown;
+      details?: unknown;
+      message?: unknown;
+      stack?: unknown;
+    };
+    const fields: Record<string, unknown> = {
+      topicName,
+      // gRPC status: 7 = PERMISSION_DENIED, 5 = NOT_FOUND, 16 = UNAUTHENTICATED
+      code: err?.code,
+      details: err?.details,
+      message: err?.message,
+      stack: err?.stack,
+    };
+    if (!pubsubErrorInspected) {
+      pubsubErrorInspected = true;
+      fields.inspect = inspect(ex, { depth: 6, breakLength: Infinity });
+    }
+    logger.error("error_queuing_hibp_breach:", fields);
     incHibpNotifyFailure("pubsub-error");
     Sentry.captureException(ex);
     return NextResponse.json({ success: false }, { status: 429 });
