@@ -140,7 +140,7 @@
     "@typescript-eslint/parser": "^8.53.1",
     "@vitejs/plugin-react": "^6.0.3",
     "@vitest/coverage-v8": "^4.1.9",
-    "@vitest/eslint-plugin": "^1.6.20",
+    "@vitest/eslint-plugin": "^1.6.21",
     "@vitest/ui": "^4.0.18",
     "adm-zip": "^0.5.16",
     "esbuild": "0.28.1",
