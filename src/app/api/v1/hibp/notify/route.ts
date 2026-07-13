@@ -21,7 +21,8 @@ import { getPubSub } from "../../../../gcp/clients";
 import { inspect } from "node:util";
 
 // Dump a full util.inspect of the publish error once per process — it surfaces nested /
-// non-enumerable gax fields (cause / statusDetails / the metadata map) the explicit field
+// non-enumerable gax (Google API Extensions) fields (cause / statusDetails / the metadata map)
+// the explicit field
 // extraction can't. The concise fields (code / details / message / stack) log every failure.
 let pubsubErrorInspected = false;
 
