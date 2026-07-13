@@ -113,9 +113,6 @@ export const config = {
       hibpTopic: getEnvString("GCP_PUBSUB_TOPIC_NAME", {
         fallbackValue: isLocalOrTest ? "hibp-breaches" : undefined,
       }),
-      // Diagnostic A/B lever for the breach-alert publish outage: default true = unchanged.
-      // Set GCP_PUBSUB_ENABLE_OTEL_TRACING=false to disable the Pub/Sub client's OTEL tracing.
-      enableOtelTracing: process.env.GCP_PUBSUB_ENABLE_OTEL_TRACING !== "false",
     },
   },
   aws: {

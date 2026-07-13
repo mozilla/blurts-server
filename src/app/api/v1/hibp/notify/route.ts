@@ -20,11 +20,49 @@ import * as Sentry from "@sentry/nextjs";
 import { getPubSub } from "../../../../gcp/clients";
 import { inspect } from "node:util";
 
-// Dump a full util.inspect of the publish error once per process — it surfaces nested /
-// non-enumerable gax (Google API Extensions) fields (cause / statusDetails / the metadata map)
-// the explicit field
-// extraction can't. The concise fields (code / details / message / stack) log every failure.
+// The publish failure is logged verbosely only once per process (this guard). gRPC/gax
+// (Google API Extensions) errors
+// carry their real signal in non-enumerable Error props (message/stack) and nested fields
+// (cause / statusDetails / the gRPC metadata map) that winston's JSON format drops, so a full
+// util.inspect is the only faithful dump; it also runs the one-time credential probe below.
+// Every failure still logs the cheap top-level code/details in case the failure mode changes.
 let pubsubErrorInspected = false;
+
+/**
+ * One-time diagnostic probe of the failing Pub/Sub client's own credentials, to test whether the
+ * workload-identity path is what's breaking publish (the leading suspect for the all-undefined
+ * gRPC status). Never throws, and never emits the access token or private key — only non-secret
+ * identity/infra values (project id, universe domain, service-account email) plus whether a token
+ * could be obtained and its length. If a call throws, its inspected error is the likely root cause.
+ */
+async function probePubSubCredentials(
+  pubsub: ReturnType<typeof getPubSub>,
+): Promise<Record<string, unknown>> {
+  const auth = pubsub.auth;
+  const out: Record<string, unknown> = {};
+  const capture = async (key: string, fn: () => Promise<unknown>) => {
+    try {
+      out[key] = await fn();
+    } catch (e) {
+      out[`${key}_error`] = inspect(e, { depth: 4, breakLength: Infinity });
+    }
+  };
+  await capture("projectId", () => auth.getProjectId());
+  await capture("universeDomain", () => auth.getUniverseDomain());
+  await capture(
+    "clientEmail",
+    async () => (await auth.getCredentials()).client_email,
+  );
+  await capture("accessToken", async () => {
+    // NEVER log the token itself — only whether one was obtained and its length.
+    const token = await auth.getAccessToken();
+    return {
+      ok: typeof token === "string" && token.length > 0,
+      length: token?.length ?? 0,
+    };
+  });
+  return out;
+}
 
 export type PostHibpNotificationRequestBody = {
   breachName: string;
@@ -79,10 +117,10 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {
-    // gRPC/gax errors don't JSON-serialize their useful fields (winston's default json format
-    // drops non-enumerable Error props like message/stack), so the log used to collapse to an
-    // opaque {note, metadata:{}}. Pull the fields onto the top-level object via direct access,
-    // and add a rate-limited full inspect to catch anything nested (cause / statusDetails).
+    // gRPC/gax errors hide their real signal in non-enumerable/nested fields that winston's JSON
+    // format drops (the log used to collapse to an opaque {note, metadata:{}}). Log the cheap
+    // top-level code/details every time; dump everything verbose (message/stack/full inspect)
+    // plus the one-time credential probe once per process (see pubsubErrorInspected above).
     const err = ex as {
       code?: unknown;
       details?: unknown;
@@ -94,16 +132,23 @@ export async function POST(req: NextRequest) {
       // gRPC status: 7 = PERMISSION_DENIED, 5 = NOT_FOUND, 16 = UNAUTHENTICATED
       code: err?.code,
       details: err?.details,
-      message: err?.message,
-      stack: err?.stack,
     };
     if (!pubsubErrorInspected) {
       pubsubErrorInspected = true;
-      fields.inspect = inspect(ex, { depth: 6, breakLength: Infinity });
+      fields.errorName = (ex as Error)?.constructor?.name;
+      fields.message = err?.message;
+      fields.stack = err?.stack;
+      fields.inspect = inspect(ex, { depth: 8, breakLength: Infinity });
+      fields.credentialProbe = await probePubSubCredentials(pubsub);
     }
     logger.error("error_queuing_hibp_breach:", fields);
     incHibpNotifyFailure("pubsub-error");
-    Sentry.captureException(ex);
+    // extra rides the same fields onto the Sentry issue; fingerprint stops these grouping under
+    // the useless "undefined undefined: undefined" title. fields carries no token/private key.
+    Sentry.captureException(ex, {
+      extra: fields,
+      fingerprint: ["hibp-notify-pubsub-publish-failure"],
+    });
     return NextResponse.json({ success: false }, { status: 429 });
   }
 }
