@@ -19,6 +19,7 @@ import {
 import * as Sentry from "@sentry/nextjs";
 import { getPubSub } from "../../../../gcp/clients";
 import { inspect } from "node:util";
+import { redactSecrets } from "./redactSecrets";
 
 // The publish failure is logged verbosely only once per process (this guard). gRPC/gax
 // (Google API Extensions) errors
@@ -44,7 +45,10 @@ async function tryPubSubCredentials(
     try {
       out[key] = await fn();
     } catch (e) {
-      out[`${key}_error`] = inspect(e, { depth: 4, breakLength: Infinity });
+      out[`${key}_error`] = inspect(redactSecrets(e), {
+        depth: 4,
+        breakLength: Infinity,
+      });
     }
   };
   await capture("projectId", () => auth.getProjectId());
@@ -138,7 +142,10 @@ export async function POST(req: NextRequest) {
       fields.errorName = (ex as Error)?.constructor?.name;
       fields.message = err?.message;
       fields.stack = err?.stack;
-      fields.inspect = inspect(ex, { depth: 8, breakLength: Infinity });
+      fields.inspect = inspect(redactSecrets(ex), {
+        depth: 8,
+        breakLength: Infinity,
+      });
       fields.credentialCheck = await tryPubSubCredentials(pubsub);
     }
     logger.error("error_queuing_hibp_breach:", fields);
