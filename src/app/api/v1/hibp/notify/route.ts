@@ -24,18 +24,18 @@ import { inspect } from "node:util";
 // (Google API Extensions) errors
 // carry their real signal in non-enumerable Error props (message/stack) and nested fields
 // (cause / statusDetails / the gRPC metadata map) that winston's JSON format drops, so a full
-// util.inspect is the only faithful dump; it also runs the one-time credential probe below.
+// util.inspect is the only faithful dump; it also runs the one-time credential check below.
 // Every failure still logs the cheap top-level code/details in case the failure mode changes.
 let pubsubErrorInspected = false;
 
 /**
- * One-time diagnostic probe of the failing Pub/Sub client's own credentials, to test whether the
+ * One-time diagnostic check of the failing Pub/Sub client's own credentials, to test whether the
  * workload-identity path is what's breaking publish (the leading suspect for the all-undefined
  * gRPC status). Never throws, and never emits the access token or private key — only non-secret
  * identity/infra values (project id, universe domain, service-account email) plus whether a token
  * could be obtained and its length. If a call throws, its inspected error is the likely root cause.
  */
-async function probePubSubCredentials(
+async function tryPubSubCredentials(
   pubsub: ReturnType<typeof getPubSub>,
 ): Promise<Record<string, unknown>> {
   const auth = pubsub.auth;
@@ -120,7 +120,7 @@ export async function POST(req: NextRequest) {
     // gRPC/gax errors hide their real signal in non-enumerable/nested fields that winston's JSON
     // format drops (the log used to collapse to an opaque {note, metadata:{}}). Log the cheap
     // top-level code/details every time; dump everything verbose (message/stack/full inspect)
-    // plus the one-time credential probe once per process (see pubsubErrorInspected above).
+    // plus the one-time credential check once per process (see pubsubErrorInspected above).
     const err = ex as {
       code?: unknown;
       details?: unknown;
@@ -139,7 +139,7 @@ export async function POST(req: NextRequest) {
       fields.message = err?.message;
       fields.stack = err?.stack;
       fields.inspect = inspect(ex, { depth: 8, breakLength: Infinity });
-      fields.credentialProbe = await probePubSubCredentials(pubsub);
+      fields.credentialCheck = await tryPubSubCredentials(pubsub);
     }
     logger.error("error_queuing_hibp_breach:", fields);
     incHibpNotifyFailure("pubsub-error");
