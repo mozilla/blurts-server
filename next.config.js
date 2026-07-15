@@ -185,7 +185,19 @@ const nextConfig = {
   //      ⨯ ./node_modules/fengari/src
   //    Module not found: Can't resolve './ROOT' <dynamic>
   //    server relative imports are not implemented yet. Please try an import relative to the file you are importing from.
-  serverExternalPackages: ["mjml", "commonjs", "knex", "ioredis-mock"],
+  // @grpc/grpc-js, google-gax and @google-cloud/pubsub must stay external. Bundling grpc-js
+  // corrupts its error StatusObject, which breaks Pub/Sub publishing and renders the failure as
+  // the useless "undefined undefined: undefined" (code/details stripped) instead of a real gRPC
+  // status. Keeping them external loads them unbundled from node_modules, where publishing works.
+  serverExternalPackages: [
+    "mjml",
+    "commonjs",
+    "knex",
+    "ioredis-mock",
+    "@google-cloud/pubsub",
+    "@grpc/grpc-js",
+    "google-gax",
+  ],
 };
 
 const sentryOptions = {
