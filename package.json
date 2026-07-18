@@ -142,7 +142,7 @@
     "@vitest/coverage-v8": "^4.1.9",
     "@vitest/eslint-plugin": "^1.6.20",
     "@vitest/ui": "^4.0.18",
-    "adm-zip": "^0.5.16",
+    "adm-zip": "^0.6.0",
     "esbuild": "0.28.1",
     "eslint": "^9.39.2",
     "eslint-config-next": "16.2.10",
