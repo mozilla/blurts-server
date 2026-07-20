@@ -100,7 +100,7 @@ describe("BreachDataService factory", () => {
       expect(result!.BreachDate).toBeInstanceOf(Date);
       expect(result!.AddedDate).toBeInstanceOf(Date);
       expect(result!.ModifiedDate).toBeInstanceOf(Date);
-      // ...and the rehydrated instants match the source, so a value-shifting
+      // ...and the rehydrated timestamps match the source, so a value-shifting
       // reparse (wrong type, tz offset, truncated precision) can't slip through.
       expect(result!.BreachDate.getTime()).toEqual(
         new Date(fakeBreach.breach_date).getTime(),
