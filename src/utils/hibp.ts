@@ -249,9 +249,16 @@ function dbToHibp(breach: BreachRow): HibpLikeDbBreach {
     Name: breach.name,
     Title: breach.title,
     Domain: breach.domain,
-    BreachDate: breach.breach_date,
-    AddedDate: breach.added_date,
-    ModifiedDate: breach.modified_date,
+    // Rehydrate the date columns into Date objects. `breach` arrives here either
+    // straight from Postgres (already a Date) OR from the Redis breaches cache,
+    // where a JSON.stringify/JSON.parse round trip has turned every Date into an
+    // ISO string. Consumers (e.g. the breach alert email template's
+    // `BreachDate.toLocaleDateString()`) rely on the declared Date type, so
+    // normalise both cases to a Date here. `new Date(existingDate)` is a safe
+    // clone. See MNTOR-5317.
+    BreachDate: new Date(breach.breach_date),
+    AddedDate: new Date(breach.added_date),
+    ModifiedDate: new Date(breach.modified_date),
     PwnCount: breach.pwn_count,
     Description: breach.description,
     LogoPath: breach.logo_path,
