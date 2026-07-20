@@ -76,6 +76,44 @@ describe("BreachDataService factory", () => {
       expect(mockSync.syncBreaches).not.toHaveBeenCalled();
       expect(getBreachesFromDb).not.toHaveBeenCalled();
     });
+    it("rehydrates date columns to Date objects on a cache hit (MNTOR-5317)", async () => {
+      // Regression guard. On a cache hit the breach is round tripped through
+      // Redis, and JSON.parse turns the Date columns into ISO strings. The
+      // breach alert email template calls `breach.BreachDate.toLocaleDateString()`,
+      // which throws "toLocaleDateString is not a function" on a string. dbToHibp
+      // must rehydrate the date columns so the runtime matches the declared type.
+      const fakeBreach = seeds.breaches();
+      // Mirror the real cache write path: JSON.stringify serialises Dates to strings.
+      await redis.set(REDIS_ALL_BREACHES_KEY, JSON.stringify([fakeBreach]));
+      const mockSync: BreachSyncService = {
+        syncBreaches: vi.fn().mockResolvedValue(undefined),
+      };
+      const getBreachesFromDb = vi.fn().mockResolvedValue([]);
+      const service = createBreachDataService({
+        redis,
+        sync: mockSync,
+        getBreachesFromDb,
+        logger,
+      });
+      const result = await service.getBreach(fakeBreach.name);
+      expect(result).not.toBeUndefined();
+      expect(result!.BreachDate).toBeInstanceOf(Date);
+      expect(result!.AddedDate).toBeInstanceOf(Date);
+      expect(result!.ModifiedDate).toBeInstanceOf(Date);
+      // ...and the rehydrated timestamps match the source, so a value-shifting
+      // reparse (wrong type, tz offset, truncated precision) can't slip through.
+      expect(result!.BreachDate.getTime()).toEqual(
+        new Date(fakeBreach.breach_date).getTime(),
+      );
+      expect(result!.AddedDate.getTime()).toEqual(
+        new Date(fakeBreach.added_date).getTime(),
+      );
+      expect(result!.ModifiedDate.getTime()).toEqual(
+        new Date(fakeBreach.modified_date).getTime(),
+      );
+      // The exact call the email template makes; throws on a string.
+      expect(() => result!.BreachDate.toLocaleDateString()).not.toThrow();
+    });
     it("reads from db and updates cache if cache miss; no sync if key found", async () => {
       const fakeBreach = seeds.breaches();
       const mockSync: BreachSyncService = {

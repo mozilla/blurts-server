@@ -249,9 +249,10 @@ function dbToHibp(breach: BreachRow): HibpLikeDbBreach {
     Name: breach.name,
     Title: breach.title,
     Domain: breach.domain,
-    BreachDate: breach.breach_date,
-    AddedDate: breach.added_date,
-    ModifiedDate: breach.modified_date,
+    // Rehydrate cached ISO strings to Date. See MNTOR-5317.
+    BreachDate: new Date(breach.breach_date),
+    AddedDate: new Date(breach.added_date),
+    ModifiedDate: new Date(breach.modified_date),
     PwnCount: breach.pwn_count,
     Description: breach.description,
     LogoPath: breach.logo_path,
