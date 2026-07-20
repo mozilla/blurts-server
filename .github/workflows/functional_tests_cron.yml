@@ -71,7 +71,7 @@ jobs:
           FXA_CI_SECRET_PROD: ${{ secrets.FXA_CI_SECRET_PROD }}
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
-        uses: slackapi/slack-github-action@45a88b9581bfab2566dc881e2cd66d334e621e2c # v3.0.3
+        uses: slackapi/slack-github-action@0d95c9a7becc1e6e297d76df9bc735c44f4cbcbc # v3.0.5
         if: failure() && github.ref == 'refs/heads/main'
         with:
           webhook: ${{ secrets.SLACK_GHA_FAILURES_WEBHOOK }}
