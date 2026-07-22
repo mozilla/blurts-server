@@ -12,9 +12,16 @@ email-header-button-sign-in = Entrar
 email-footer-support-heading = Dúvidas sobre o { -brand-mozilla-monitor }?
 email-footer-support-content = Visite nosso <support-link>centro de suporte</support-link> para obter ajuda
 email-footer-trigger-transactional = Você recebeu este email por ter assinatura do { -brand-mozilla-monitor }.
+# Variables:
+#   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
+email-footer-source-hibp-plain = Dados de vazamentos fornecidos por { -brand-HIBP }: { $hibp_link }
 email-footer-source-hibp = Dados de vazamentos fornecidos por <hibp-link>{ -brand-HIBP }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Privacidade
+email-unsubscribe-link = <link_to_unsub>Cancelar inscrição</link_to_unsub>
+# Variables:
+#   $unsub_link (string) - URL to the unsubscribe page, e.g. "https://monitor.mozilla.org/unsubscribe/...".
+email-unsubscribe-link-plain = Cancelar inscrição: { $unsub_link }
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
@@ -68,3 +75,16 @@ email-breach-alert-all-data-points-title = Seus dados expostos:
 email-breach-alert-all-next-steps-lead = Orientaremos você, passo a passo, sobre como resolver este vazamento de dados.
 email-breach-alert-all-next-steps-cta-label = Vamos começar
 email-breach-alert-all-next-steps-button-dashboard = Acesse o painel do usuário
+
+## Breach alert redesigned strings
+
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = Detalhes do vazamento de dados de { $company-name }
+email-breach-alert-all-source-title-1 = Detalhes do vazamento
+email-breach-alert-company = Empresa:
+email-breach-alert-date-of-breach = Data do vazamento:
+email-breach-alert-info-exposed = Suas informações expostas:
+email-breach-alert-next-steps = Próximas etapas
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Resolver vazamento no painel
+email-breach-alert-faqs-title = Dúvidas frequentes
+email-breach-alert-faq-qn-1 = Por que recebi isso?

@@ -47,7 +47,7 @@ email-subject-no-breaches = { -product-name } hat keine bekannten Datenlecks gef
 # Subject line of email
 email-subject-verify = Bestätige deine E-Mail-Adresse für { -product-name }
 fxm-warns-you-no-breaches =
-    { " " }{ -product-name } warnt dich vor Datenlecks, die deine persönlichen Daten betreffen.
+    { -product-name } warnt dich vor Datenlecks, die deine persönlichen Daten betreffen.
     Bisher wurden keine Datenlecks festgestellt. Wir senden dir eine Benachrichtigung, wenn deine E-Mail-Adresse in einem neuen Datenleck auftaucht.
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`

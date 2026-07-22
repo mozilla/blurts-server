@@ -36,7 +36,7 @@ email-unsubscribe-link-plain = Ofmelde: { $unsub_link }
 # Button text
 verify-email-cta = E-mailadres ferifiearje
 # Headline of verification email
-email-link-expires = Dizze keppeling ferrint oer 24 oer
+email-link-expires = Dizze keppeling ferrint oer 24 oeren
 
 ##
 
