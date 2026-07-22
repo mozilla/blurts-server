@@ -82,3 +82,11 @@ email-breach-alert-all-data-points-title = 유출된 데이터:
 email-breach-alert-all-next-steps-lead = 이번 데이터 유출을 해결하는 방법에 대해 단계별로 안내해 드리겠습니다.
 email-breach-alert-all-next-steps-cta-label = 시작합시다
 email-breach-alert-all-next-steps-button-dashboard = 대시보드로 가기
+
+## Breach alert redesigned strings
+
+email-breach-alert-company = 회사:
+email-breach-alert-next-steps = 다음 단계
+email-breach-alert-faqs-title = 자주 묻는 질문
+email-breach-alert-faq-qn-1 = 왜 이 화면이 나왔나요?
+email-breach-alert-faq-qn-4 = { -brand-mozilla-monitor }는 무엇인가요?

@@ -86,7 +86,7 @@ email-breach-alert-all-next-steps-button-dashboard = Mergi la tabloul de bord
 ## Breach alert redesigned strings
 
 # $company-name is the name of the company/site that was breached.
-email-breach-alert-all-hero-heading-1 = Detalii despre încălcarea securității datelor cu caracter personal pe { $company-name }{ " " }
+email-breach-alert-all-hero-heading-1 = Detalii despre încălcarea securității datelor cu caracter personal pe { $company-name }
 # $company-name is the name of the company/site that was breached.
 # $breach-date is the date of the breach.
 email-breach-alert-all-lead-1 = { -brand-mozilla-monitor } ți-a găsit informațiile într-o încălcare a securității datelor { $company-name } pe { $breach-date }. Primești această alertă pentru că te-ai abonat pentru <link_to_settings>notificări despre încălcări ale securității datelor</link_to_settings>.

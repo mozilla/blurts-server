@@ -22,8 +22,8 @@ announcement-big-img-alt = Imagine de annuncio
 # $emailAddressesCount (string) - number of email addresses allowed for data breach monitoring
 announcement-free-data-breach-monitoring-title =
     { $emailAddressesCount ->
-        [one] Survelia gratuitemente le violationes de datos pro un maximo de { $emailAdddressesCount } adresse e-mail.
-       *[other] Survelia gratuitemente le violationes de datos pro un maximo de { $emailAdddressesCount } adresses e-mail.
+        [one] Survelia gratuitemente le violationes de datos pro un maximo de { $emailAddressesCount } adresse e-mail.
+       *[other] Survelia gratuitemente le violationes de datos pro un maximo de { $emailAddressesCount } adresses e-mail.
     }
 announcement-free-data-breach-monitoring-description = Adjuta nos mantener secur tu informationes con nostre surveliantia de violation de datos data. { -brand-monitor } te alertara si tu informationes appare in un violation de datos.
 announcement-free-data-breach-monitoring-cta-label = Pro saper plus

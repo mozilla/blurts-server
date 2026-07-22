@@ -53,6 +53,7 @@ delayed-reporting-copy = Ikatu oraha heta jasy térã ary umi credencial ojehech
 
 what-is-a-website-breach = ¿Mba’e ñanduti ñembogua?
 website-breach-blurb = Peteĩ ñanduti ñembogua oiko umi hekovaíva ñadutípe omondáramo, ombokuatia térã ohechaukáramo maranduete ñandutigua. Kóva oiko hekovaíva ñadutípe ojuhúramo nahekorosãiha heta kuatiarogue, ikatu avei oñembogua marandu mba’etégui eheka’ỹre.
+what-is-data-agg = ¿Mba’e mba’ekuaarã mbojuapyhára?
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Jehechapa

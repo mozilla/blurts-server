@@ -52,6 +52,7 @@ delayed-reporting-copy =
 what-is-a-website-breach = Web sitesi ihlali nedir?
 website-breach-blurb = Siber suçlular çevrimiçi hesaplardan kişisel bilgileri çaldığında, kopyaladığında veya ifşa ettiğinde web sitesinde veri ihlali meydana gelir. Genellikle hacker'ların web sitesinin güvenliğinde zayıf bir nokta bulması sonucunda oluşur. Hesap bilgileri kazayla sızdırıldığında da ihlaller meydana gelebilir.
 what-is-data-agg = Veri toplayıcı nedir?
+what-is-data-agg-blurb = Veri toplayıcıları veya veri aracıları, kamuya açık kayıtlardan ve diğer kaynaklardan (örn. şirketlerden satın alınan veriler) bilgi toplar. Bu bilgileri derleyerek ayrıntılı müşteri profilleri oluşturup bunları işletmelere satarlar. Hacker’lar bu verileri profil çıkarma, kimlik taklidi ve diğer dolandırıcılık biçimleri için kullanabilir. Veri toplayıcıları genellikle insanlar hakkında daha hesap açmadan veya bir hizmete kaydolmadan bilgi topladıkları için bu şirketlerden bazılarını tanımayabilirsiniz.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Genel Bakış
