@@ -92,6 +92,7 @@ email-breach-alert-company = Mba’apohaguasu
 email-breach-alert-date-of-breach = Ñembogua arange:
 email-breach-alert-info-exposed = Ne marandu ivaikuaa:
 email-breach-alert-next-steps = Jeku’e tenonderãva
+email-breach-alert-next-steps-description = <sign_in_link>Eike </sign_in_link> nde { -brand-mozilla-monitor } jehecha rupápe. Rohechaukáta ndéve mba’éichapa ikatúta emoĩporã uperire.
 email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Emyatyrõ ñembogua jehechaha rupápe
 email-breach-alert-faqs-title = FAQs
 email-breach-alert-faq-qn-1 = ¿Mba’ére og̃uahẽ chéve kóva?
