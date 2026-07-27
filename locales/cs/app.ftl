@@ -142,7 +142,7 @@ delayed-reporting-copy = Občas to může trvat měsíce či roky, než se přih
 what-is-a-website-breach = Co je únik dat z webových stránek?
 website-breach-blurb = Únik dat z webových stránek se odehraje, když kyberzločinci odcizí, zkopírují nebo zveřejní osobní údaje z internetových účtů. Zpravidla je to výsledkem činnosti hackerů, kteří nalezli slabé místo v zabezpečení webu. K úniku osobních údajů z účtu však také může dojít nedopatřením.
 what-is-data-agg = Co je to agregátor dat?
-what-is-data-agg-blurb = Agregátory dat nebo zprostředkovatelé dat sbírají informace z veřejných záznamů a jiných zdrojů, včetně dat zakoupených od společností. Tyto informace shromažďují a vytváří podrobné profily zákazníků, které jsou prodávány firmám pro marketingové účely. Hackeři by mohli tato data použít k profilování, vydávání se za jinou osobu nebo k jiným formám podvodu. Některé z těchto společností nepoznáváte, protože agregátory dat často sbírají informace o lidech, aniž by si vytvořili účet nebo se zaregistrovali k odběru služby.
+what-is-data-agg-blurb = Agregátoři dat, neboli zprostředkovatelé dat, shromažďují informace z veřejných registrů a dalších zdrojů, včetně dat zakoupených od firem. Tyto informace pak zpracovávají a vytvářejí z nich podrobné profily spotřebitelů, které prodávají firmám pro marketingové účely. Hackeři by tato data mohli zneužít k profilování, vydávání se za jiné osoby nebo k jiným formám podvodu. Některé z těchto společností možná nepoznáte, protože agregátoři dat často shromažďují informace o lidech, aniž by si tito lidé kdykoli vytvořili účet nebo se zaregistrovali k nějaké službě.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Přehled

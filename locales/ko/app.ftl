@@ -56,6 +56,7 @@ delayed-reporting-copy =
 
 what-is-a-website-breach = 웹 사이트 유출이란 무엇입니까?
 website-breach-blurb = 웹 사이트 데이터 침해 사고는 사이버 범죄자가 온라인 계정에서 개인 정보를 도용, 복사 또는 노출 할 때 발생합니다. 일반적으로 해커가 웹 사이트의 보안에서 취약한 부분을 찾은 결과입니다. 실수로 계정 정보가 유출 된 경우에도 침해가 발생할 수 있습니다.
+what-is-data-agg = 데이터 수집기는 무엇인가요?
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = 개요

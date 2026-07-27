@@ -54,6 +54,7 @@ delayed-reporting-copy = Uneori, poate dura luni sau ani ca datele de autentific
 what-is-a-website-breach = Ce este o încălcare a securității datelor în cazul unui site web?
 website-breach-blurb = O încălcare a securității datelor în cazul unui site web apare când infractorii cibernetici fură, copiază sau expun informații cu caracter personal din conturi online. Este de obicei rezultatul identificării de către hackeri a unui punct slab în securitatea site-ului web. Încălcările pot apărea și la divulgarea accidentală a datelor aferente conturilor.
 what-is-data-agg = Ce sunt agregatoarele de date?
+what-is-data-agg-blurb = Agregatoarele de date sau brokerii de date colectează informații din registre publice și din alte surse, inclusiv date cumpărate de la firme. Le compilează și creează profiluri detaliate ale consumatorilor, care sunt vândute companiilor în scopuri de marketing. Hackerii ar putea folosi aceste date pentru crearea de profiluri, falsificarea identității sau alte forme de fraudă. Este posibil să nu recunoști unele dintre aceste companii, deoarece agregatoarele de date colectează adesea informații despre persoane fără ca ele să își creeze vreodată un cont sau să se înscrie la un serviciu.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Prezentare generală

@@ -23,6 +23,7 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
+-brand-solo-ai = Solo AI
 
 ##
 
@@ -38,12 +39,17 @@ user-verify-token-error = Token de verificação é necessário.
 compromised-data = Dados comprometidos:
 # Link title
 more-about-this-breach = Mais informações sobre este vazamento
+sensitive-sites = Com o { -product-name } trata sites sensíveis?
+sensitive-sites-copy = O { -product-name } só revela contas associadas a esses tipos de vazamento após um endereço de email ter sido validado. Significa que você é a única pessoa que pode ver se suas informações apareceram em um vazamento (a menos que mais alguém tenha acesso à sua conta de email).
 what-data = Que dados foram comprometidos:
 delayed-reporting-headline = Por que demorou tanto para relatar este vazamento?
 delayed-reporting-copy = Às vezes demora meses ou anos para que credenciais expostas em um vazamento de dados apareça na dark web. Vazamentos são adicionados ao nosso banco de dados assim que são descobertos e confirmados.
 
 ##
 
+what-is-a-website-breach = O que é um vazamento de site?
+website-breach-blurb = Um vazamento de dados de site acontece quando criminosos cibernéticos roubam, copiam ou expõem informações pessoais de contas online. Geralmente é resultado de hackers procurando um ponto fraco na segurança do site. Vazamentos também podem acontecer quando informações de contas são vazados por acidente.
+what-is-data-agg = O que é um agregador de dados?
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Visão geral
