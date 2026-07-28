@@ -5,7 +5,7 @@
 "use client";
 
 import { FormEventHandler, ReactNode, RefObject, useState } from "react";
-import { signIn } from "next-auth/react";
+import { signInToFxa } from "../../../functions/client/signInToFxa";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
 import styles from "./SignUpForm.module.scss";
@@ -38,7 +38,7 @@ export const SignUpForm = (props: Props) => {
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
-    void signIn(
+    signInToFxa(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
       `email=${encodeURIComponent(emailInput)}`,

@@ -4,7 +4,8 @@
 
 "use client";
 
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { signInToFxa } from "../../functions/client/signInToFxa";
 import { useL10n } from "../../hooks/l10n";
 import { Button, ButtonProps } from "./Button";
 import { useTelemetry } from "../../hooks/useTelemetry";
@@ -28,7 +29,7 @@ export const SignInButton = (props: ButtonProps) => {
         recordTelemetry("ctaButton", "click", {
           button_id: "sign_in",
         });
-        void signIn("fxa", { callbackUrl: "/user/dashboard" });
+        signInToFxa("fxa", { callbackUrl: "/user/dashboard" });
       }}
     >
       {l10n.getString("sign-in")}

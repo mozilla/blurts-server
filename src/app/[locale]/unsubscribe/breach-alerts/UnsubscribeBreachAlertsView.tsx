@@ -11,7 +11,7 @@ import Image from "next/image";
 import { useL10n } from "../../../hooks/l10n";
 import { toast, ToastOptions } from "react-toastify";
 import { TelemetryButton } from "../../../components/client/TelemetryButton";
-import { signIn } from "next-auth/react";
+import { signInToFxa } from "../../../functions/client/signInToFxa";
 
 export const UnsubscribeBreachAlertsView = ({ token }: { token: string }) => {
   const l10n = useL10n();
@@ -86,7 +86,7 @@ export const UnsubscribeBreachAlertsView = ({ token }: { token: string }) => {
           if (!unsubscribeSuccess) {
             void handleUnsubscribe();
           } else {
-            void signIn("fxa", { callbackUrl: "/user/dashboard" });
+            signInToFxa("fxa", { callbackUrl: "/user/dashboard" });
           }
         }}
       >
