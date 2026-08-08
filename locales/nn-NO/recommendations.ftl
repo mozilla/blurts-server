@@ -65,9 +65,9 @@ rec-ip-subhead-2 = Bruk eit VPN for å maskere IP-addressa di
 # Recommendation subhead
 rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
 rec-moz-vpn-update-2 =
-    IP-adressa di (Internet Protocol Adress) identifiserer plasseringa di  
+    IP-adressa di (Internet Protocol Adress) kan seie noko om kvar du er 
     og internettleverandøren din. Ei teneste som { -brand-mozilla-vpn } 
-    maskerer IP-adressa di for å gøyme plasseringa di.
+    maskerer IP-adressa di for skjule plasseringa di.
 rec-hist-pw-subhead = Unngå å bruke passord på nytt
 # Link title
 rec-hist-pw-cta-fx = Vis innloggingar på { -brand-name }
