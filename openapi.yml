@@ -195,6 +195,11 @@ paths:
         **Atomicity**
         - Requests are atomic: the update is applied to all targeted emails and dataclasses, or to none.
 
+        **Validation**
+        - A data class the referenced breach never leaked is a `400`, not a silent skip.
+          Firefox holds every breach's data classes locally via Remote Settings, so it can
+          avoid sending one, and accepting it would write state no interface ever surfaces.
+
         **Repeated input**
         - Repeated `breachId` entries are accepted and merged, taking the union of the
           `(email, dataClass)` pairs they imply. An item that omits `emails` contributes every
@@ -254,9 +259,10 @@ paths:
       responses:
         "204":
           description: Resolution state updated successfully.
+        # Matches the web app's per-breach resolve.
         "400":
           description: Invalid request, for example an empty batch, an empty `dataClasses` array,
-            or a malformed email address.
+            a malformed email address, or a data class the referenced breach never leaked.
         "401":
           description: Authentication required
         "403":
