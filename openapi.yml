@@ -52,8 +52,7 @@ components:
         message:
           type: string
     DataClass:
-      # Enum so new values stay compatible.
-      description: A kind of data leaked in a breach. This API handles `passwords` alone. Remote Settings serves the same value in HIBP's Title Case, `Passwords`.
+      description: A kind of data leaked in a breach. This API handles `passwords` alone. Remote Settings serves the same value in HIBP's Title Case, `Passwords`. Expect more values later, so treat this as an open set rather than generating a closed type from it.
       type: string
       enum:
         - passwords
@@ -298,7 +297,7 @@ paths:
         "403":
           $ref: "#/components/responses/Forbidden"
         "404":
-          description: An unknown `breachId`, a breach this endpoint does not serve, or an email address this user does not monitor. All give the same code and message on purpose, so the response cannot be used to work out which addresses exist on an account.
+          description: An unknown `breachId`, a breach this endpoint does not serve, or an email address this user does not monitor, which includes an address the user owns but has not verified. All give the same code and message on purpose, so the response cannot be used to work out which addresses exist on an account.
           content:
             application/json:
               schema:
