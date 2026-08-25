@@ -27,52 +27,6 @@ components:
         authenticated user from the token subject (`sub`). All `/user/*` endpoints are scoped
         to the authenticated subject and never return or modify data for any other user.
   schemas:
-    Breach:
-      type: object
-      required:
-        - id
-        - domain
-        - addedDate
-        - breachDate
-        - modifiedDate
-        - dataClasses
-        - isSensitive
-      properties:
-        id:
-          description: A unique identifier for the breach
-          type: string
-        domain:
-          description: |
-            The domain of the primary website the breach occurred on. 
-            This may be used for identifying other assets external systems may have for the site.
-            This value comes from HIBP. See (their API docs)[https://haveibeenpwned.com/api/v3#BreachModel] for more information.
-          type: string
-        breachDate:
-          description: The date (with no time) the breach originally occurred on in ISO 8601 format. This is not always accurate — frequently breaches are discovered and reported long after the original incident. Use this attribute as a guide only.
-          type: string
-          format: date
-        addedDate:
-          description: The date and time (precision to the minute) the breach was added to the system in ISO 8601 format.
-          type: string
-          format: date-time
-        modifiedDate:
-          description: >
-            The date and time (precision to the minute) the breach was modified in ISO 8601 format. 
-            This will only differ from the AddedDate attribute if other attributes represented here are changed 
-            or data in the breach itself is changed (i.e. additional data is identified and loaded). 
-            It is always either equal to or greater then the AddedDate attribute, never less than.
-          type: string
-          format: date-time
-        dataClasses:
-          description: >
-            This attribute describes the nature of the data compromised in the breach and contains an alphabetically
-            ordered string array of impacted data classes. See https://haveibeenpwned.com/api/v3/dataclasses for list of dataclasses.
-          type: array
-          items:
-            type: string
-        isSensitive:
-          description: Indicates if the breach is considered [sensitive](https://haveibeenpwned.com/FAQs#SensitiveBreach)
-          type: boolean
     UserBreachState:
       type: object
       description: Object describing the current breach state and resolutions
@@ -100,11 +54,15 @@ components:
       type: object
       description: A breach affecting 1 or more email addresses tracked by a Monitor User, and resolution actions taken
       required:
-        - breach
+        - id
         - breachedAccounts
       properties:
-        breach:
-          $ref: "#/components/schemas/Breach"
+        id:
+          description: >
+            The HIBP breach name, for example `Adobe`. Firefox already holds this key
+            from the `fxmonitor-breaches` Remote Settings collection, so it joins the
+            breach metadata locally. This is not Monitor's internal numeric breach id.
+          type: string
         breachedAccounts:
           type: array
           items:
@@ -134,7 +92,9 @@ paths:
           in: query
           required: false
           description: >
-            Filter breaches to those whose breach.dataClasses includes any (but not necessarily all) of the specified values.
+            Filter breaches to those that leaked any (but not necessarily all) of the specified
+            data classes. This filters on the breach's own data classes, which the response no
+            longer carries; Firefox reads them from Remote Settings.
           schema:
             type: array
             items:
@@ -194,20 +154,11 @@ paths:
                 hasBreaches:
                   summary: Breaches found
                   value:
-                    - breach:
-                        id: "Breach1"
-                        domain: "example.com"
-                        breachDate: "2023-04-10"
-                        addedDate: "2023-05-01T12:34:00Z"
-                        modifiedDate: "2023-05-01T12:34:00Z"
-                        dataClasses:
-                          - "email-addresses"
-                          - "passwords"
-                        isSensitive: false
+                    - id: "Adobe"
                       breachedAccounts:
                         - email: "alice@example.com"
                           resolvedDataClasses:
-                            Passwords: {}
+                            passwords: {}
                 noResults:
                   summary: No breaches found
                   value: []
@@ -269,7 +220,10 @@ paths:
                     items:
                       type: string
                   breachId:
-                    description: The unique breach identifier
+                    description: >
+                      The HIBP breach name, for example `Adobe`. The same identifier
+                      the `GET /user/breaches` response returns as `id`, not Monitor's
+                      internal numeric breach id.
                     type: string
                   resolved:
                     type: boolean
@@ -278,10 +232,10 @@ paths:
               resolveMultipleBreaches:
                 summary: Resolve multiple breaches
                 value:
-                  - breachId: "Breach1"
+                  - breachId: "Adobe"
                     dataClasses: ["passwords"]
                     resolved: true
-                  - breachId: "Breach2"
+                  - breachId: "LinkedIn"
                     dataClasses: ["passwords"]
                     emails: ["alice@example.com"]
                     resolved: true
@@ -290,17 +244,17 @@ paths:
                 value:
                   - emails: ["alice@example.com"]
                     dataClasses: ["passwords"]
-                    breachId: "Breach1"
+                    breachId: "Adobe"
                     resolved: true
               undoPasswordsAllEmailsInBreach:
                 summary: Unresolve Passwords resolution for all affected emails in multiple breaches
                 value:
                   - dataClasses: ["passwords"]
                     resolved: false
-                    breachId: "Breach1"
+                    breachId: "Adobe"
                   - dataClasses: ["passwords"]
                     resolved: false
-                    breachId: "Breach2"
+                    breachId: "LinkedIn"
       responses:
         "204":
           description: Resolution state updated successfully.
