@@ -31,12 +31,14 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-      bearerFormat: JWT
-      description: >
-        Token granted by Firefox Accounts (FxA).
-        The server validates the token (signature, issuer, audience, expiry) and derives the
-        authenticated user from the token subject (`sub`). All `/user/*` endpoints are scoped
-        to the authenticated subject and never return or modify data for any other user.
+      # FxA owns the token format.
+      description: |
+        An OAuth token granted by Firefox Accounts (FxA), carrying the
+        `https://identity.mozilla.com/apps/monitor` scope.
+
+        We introspect the token with FxA, so this contract asserts no token format: do not
+        rely on it being a JWT. Requests are scoped to the token's subject and never touch
+        another user's data.
   schemas:
     DataClass:
       description: >
@@ -88,6 +90,18 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/UserBreachState"
+
+  responses:
+    Unauthorized:
+      description: >
+        No usable token. The `Authorization` header is missing or malformed, or FxA reports
+        the token as inactive or expired.
+    Forbidden:
+      description: >
+        The token is valid but does not grant access, for one of two reasons. Either it lacks
+        the `https://identity.mozilla.com/apps/monitor` scope, or the FxA account behind it
+        has no Monitor subscriber. This integration serves existing Monitor accounts only and
+        never creates one.
 
 paths:
   /user/breaches:
@@ -163,9 +177,9 @@ paths:
                   summary: No breaches found
                   value: []
         "401":
-          description: Authentication required
+          $ref: "#/components/responses/Unauthorized"
         "403":
-          description: Not authorized
+          $ref: "#/components/responses/Forbidden"
 
   /user/breaches/resolutions:
     post:
@@ -264,8 +278,8 @@ paths:
           description: Invalid request, for example an empty batch, an empty `dataClasses` array,
             a malformed email address, or a data class the referenced breach never leaked.
         "401":
-          description: Authentication required
+          $ref: "#/components/responses/Unauthorized"
         "403":
-          description: Not authorized
+          $ref: "#/components/responses/Forbidden"
         "404":
           description: Breach or email not found (or not visible to this user)
