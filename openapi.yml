@@ -40,6 +40,16 @@ components:
         rely on it being a JWT. Requests are scoped to the token's subject and never touch
         another user's data.
   schemas:
+    Error:
+      type: object
+      description: >
+        Body of every non-2xx response. `message` explains the particular case, for logs and
+        bug reports. It is not stable, so do not match on it.
+      required:
+        - message
+      properties:
+        message:
+          type: string
     DataClass:
       description: >
         A kind of data leaked in a breach. This API handles `passwords` alone, since
@@ -96,12 +106,31 @@ components:
       description: >
         No usable token. The `Authorization` header is missing or malformed, or FxA reports
         the token as inactive or expired.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            message: FxA reports this token as inactive.
     Forbidden:
       description: >
         The token is valid but does not grant access, for one of two reasons. Either it lacks
         the `https://identity.mozilla.com/apps/monitor` scope, or the FxA account behind it
         has no Monitor subscriber. This integration serves existing Monitor accounts only and
         never creates one.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          examples:
+            missingScope:
+              summary: Token does not carry the Monitor scope
+              value:
+                message: This token lacks the https://identity.mozilla.com/apps/monitor scope.
+            noMonitorAccount:
+              summary: FxA account has never signed up for Monitor
+              value:
+                message: This Firefox account has no Monitor subscriber.
     TooManyRequests:
       description: Rate limited. Wait the interval in `Retry-After`, then retry.
       headers:
@@ -111,11 +140,23 @@ components:
           schema:
             type: integer
             minimum: 1
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            message: Too many requests. Retry after 60 seconds.
     ServiceUnavailable:
       description: >
         Monitor is unavailable. This covers our own failures only; an unreachable HIBP is not
         one of them, since we serve last known breach data as a normal `200` instead. Safe to
         retry.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            message: Monitor is temporarily unavailable.
 
 paths:
   /user/breaches:
@@ -190,6 +231,14 @@ paths:
                 noResults:
                   summary: No breaches found
                   value: []
+        "400":
+          description: A query parameter failed validation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: "domain must not be empty."
         "401":
           $ref: "#/components/responses/Unauthorized"
         "403":
@@ -295,12 +344,38 @@ paths:
         "400":
           description: Invalid request, for example an empty batch, an empty `dataClasses` array,
             a malformed email address, or a data class the referenced breach never leaked.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                unknownDataClass:
+                  summary: Data class outside the accepted set
+                  value:
+                    message: "dataClasses[0] must be one of: passwords."
+                malformedEmail:
+                  summary: Email is not a valid address
+                  value:
+                    message: "emails[0] is not a valid email address."
+                dataClassNotInBreach:
+                  summary: Breach never leaked the requested data class
+                  value:
+                    message: The Adobe breach did not leak passwords.
         "401":
           $ref: "#/components/responses/Unauthorized"
         "403":
           $ref: "#/components/responses/Forbidden"
         "404":
-          description: Breach or email not found (or not visible to this user)
+          description: >
+            An unknown `breachId`, or an email address this user does not monitor. Both give the
+            same code and the same message on purpose, so the response cannot be used to work
+            out which addresses exist on an account.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                message: One or more of the referenced breaches or email addresses was not found.
         "429":
           $ref: "#/components/responses/TooManyRequests"
         "503":
