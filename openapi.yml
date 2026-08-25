@@ -154,6 +154,7 @@ components:
 paths:
   /user/breaches:
     get:
+      operationId: listUserBreaches
       summary: List password breaches affecting this user
       # Passwords only, the panel's one action.
       description: |
@@ -226,6 +227,7 @@ paths:
 
   /user/breaches/resolutions:
     post:
+      operationId: createBreachResolutions
       summary: Mark password breaches resolved
       description: |
         Mark data classes resolved for one or more breaches. Resolutions only move one way, this API cannot unresolve a data class.
