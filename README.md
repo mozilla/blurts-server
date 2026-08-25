@@ -26,7 +26,7 @@ npx @redocly/cli@2 lint                              # validate, should report z
 npx @redocly/cli@2 build-docs openapi.yml -o /tmp/api.html  # read it as the client team will
 ```
 
-`lint` needs no arguments because `redocly.yaml` names the description and turns off two rules we ignore on purpose, each with a comment saying why. Anything it reports is worth fixing.
+`lint` needs no arguments because `redocly.yaml` names the description. It turns off one rule we ignore on purpose, with a comment saying why. Anything it reports is worth fixing.
 
 ## Development
 
