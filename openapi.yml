@@ -4,11 +4,13 @@ info:
   description: |
     Monitor's external API for Firefox clients.
 
-    Remote Settings owns breach facts, this API owns per-user resolution state. The client
-    joins them on the HIBP breach name, returned here as `id`.
+    Remote Settings owns breach facts, this API owns per-user resolution state. The client joins them on the HIBP breach name, returned here as `id`.
 
     "Monitored" means the account's verified primary and secondary email addresses.
   version: "1.0.0"
+  license:
+    name: MPL-2.0
+    identifier: MPL-2.0
 # The web app already owns /api/v1.
 servers:
   - url: https://monitor.mozilla.org/api/firefox/v1
@@ -27,9 +29,7 @@ components:
       type: http
       scheme: bearer
       # We introspect the token with FxA.
-      description: >
-        An OAuth token granted by Firefox Accounts (FxA), carrying the
-        `https://identity.mozilla.com/apps/monitor` scope. Treat it as opaque.
+      description: An OAuth token granted by Firefox Accounts (FxA), carrying the `https://identity.mozilla.com/apps/monitor` scope. Treat it as opaque.
   schemas:
     Error:
       type: object
@@ -41,9 +41,7 @@ components:
           type: string
     DataClass:
       # Enum so new values stay compatible.
-      description: >
-        A kind of data leaked in a breach. This API handles `passwords` alone. Remote Settings
-        serves the same value in HIBP's Title Case, `Passwords`.
+      description: A kind of data leaked in a breach. This API handles `passwords` alone. Remote Settings serves the same value in HIBP's Title Case, `Passwords`.
       type: string
       enum:
         - passwords
@@ -60,10 +58,7 @@ components:
           format: email
         resolvedDataClasses:
           # No timestamp, we store a checked list.
-          description: >
-            Data classes this user has marked resolved for this breach, in the privacy panel
-            or on the Monitor website. Scoped to `passwords`, so resolutions of other
-            exposures are not reported here.
+          description: Data classes this user has marked resolved for this breach, in the privacy panel or on the Monitor website. Scoped to `passwords`, so resolutions of other exposures are not reported here.
           type: array
           items:
             $ref: "#/components/schemas/DataClass"
@@ -77,9 +72,7 @@ components:
       properties:
         id:
           # Not the internal numeric breach id.
-          description: >
-            The HIBP breach name, for example `Adobe`. Firefox joins the breach metadata
-            locally from the `fxmonitor-breaches` Remote Settings collection.
+          description: The HIBP breach name, for example `Adobe`. Firefox joins the breach metadata locally from the `fxmonitor-breaches` Remote Settings collection.
           type: string
         breachedAccounts:
           type: array
@@ -88,9 +81,7 @@ components:
 
   responses:
     Unauthorized:
-      description: >
-        No usable token. The `Authorization` header is missing or malformed, or FxA reports
-        the token as inactive or expired.
+      description: No usable token. The `Authorization` header is missing or malformed, or FxA reports the token as inactive or expired.
       content:
         application/json:
           schema:
@@ -98,10 +89,8 @@ components:
           example:
             message: FxA reports this token as inactive.
     Forbidden:
-      description: >
-        The token is valid but does not grant access: either it lacks the Monitor scope, or
-        the account has no Monitor subscriber. Monitor serves existing accounts only and
-        never creates one.
+      description: |
+        The token is valid but does not grant access: either it lacks the Monitor scope, or the account has no Monitor subscriber. Monitor serves existing accounts only and never creates one.
       content:
         application/json:
           schema:
@@ -145,19 +134,15 @@ paths:
       summary: List password breaches affecting this user
       # Passwords only, the panel's one action.
       description: |
-        Breaches that leaked passwords, with `passwords` resolution state for each monitored
-        email the breach affected.
+        Breaches that leaked passwords, with `passwords` resolution state for each monitored email the breach affected.
 
-        **Freshness.** When HIBP is unavailable we serve the last known breach data as a
-        normal `200`, with no staleness signal.
+        **Freshness.** When HIBP is unavailable we serve the last known breach data as a normal `200`, with no staleness signal.
 
       parameters:
         - name: domain
           in: query
           required: false
-          description: >
-            Filter by the breached site's primary domain, matched exactly. A breach filed
-            under `twitter.com` does not match `x.com`.
+          description: Filter by the breached site's primary domain, matched exactly. A breach filed under `twitter.com` does not match `x.com`.
           schema:
             type: string
             minLength: 1
@@ -178,9 +163,7 @@ paths:
           description: |
             Breaches affecting emails this user is monitoring.
 
-            Absence is authoritative. A breach missing from this list means we checked and
-            this user is not affected by it, not that we failed to look. An empty array means
-            the same for every breach.
+            Absence is authoritative. A breach missing from this list means we checked and this user is not affected by it, not that we failed to look. An empty array means the same for every breach.
           content:
             application/json:
               schema:
@@ -219,11 +202,9 @@ paths:
     post:
       summary: Mark password breaches resolved
       description: |
-        Mark data classes resolved for one or more breaches. Resolutions only move one way,
-        this API cannot unresolve a data class.
+        Mark data classes resolved for one or more breaches. Resolutions only move one way, this API cannot unresolve a data class.
 
-        Idempotent per `(email, dataClass, breachId)`. Repeated `breachId` entries merge, and
-        order does not matter.
+        Idempotent per `(email, dataClass, breachId)`. Repeated `breachId` entries merge, and order does not matter.
 
         Atomic: every targeted email and data class updates, or none does.
 
@@ -246,9 +227,7 @@ paths:
                   emails:
                     type: array
                     minItems: 1
-                    description: >
-                      Monitored email addresses to apply the update to. If omitted, applies to
-                      every monitored address the referenced breach affected.
+                    description: Monitored email addresses to apply the update to. If omitted, applies to every monitored address the referenced breach affected.
                     items:
                       type: string
                       format: email
@@ -280,8 +259,7 @@ paths:
         "204":
           description: Resolution state updated successfully.
         "400":
-          description: Invalid request, for example an empty batch, an empty `dataClasses` array,
-            or a malformed email address.
+          description: Invalid request, for example an empty batch, an empty `dataClasses` array, or a malformed email address.
           content:
             application/json:
               schema:
@@ -300,10 +278,7 @@ paths:
         "403":
           $ref: "#/components/responses/Forbidden"
         "404":
-          description: >
-            An unknown `breachId`, a breach this endpoint does not serve, or an email address
-            this user does not monitor. All give the same message on purpose, so the response
-            cannot be used to work out which addresses exist on an account.
+          description: An unknown `breachId`, a breach this endpoint does not serve, or an email address this user does not monitor. All give the same message on purpose, so the response cannot be used to work out which addresses exist on an account.
           content:
             application/json:
               schema:
