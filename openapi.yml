@@ -102,6 +102,20 @@ components:
         the `https://identity.mozilla.com/apps/monitor` scope, or the FxA account behind it
         has no Monitor subscriber. This integration serves existing Monitor accounts only and
         never creates one.
+    TooManyRequests:
+      description: Rate limited. Wait the interval in `Retry-After`, then retry.
+      headers:
+        Retry-After:
+          required: true
+          description: Seconds to wait before retrying.
+          schema:
+            type: integer
+            minimum: 1
+    ServiceUnavailable:
+      description: >
+        Monitor is unavailable. This covers our own failures only; an unreachable HIBP is not
+        one of them, since we serve last known breach data as a normal `200` instead. Safe to
+        retry.
 
 paths:
   /user/breaches:
@@ -180,6 +194,10 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "403":
           $ref: "#/components/responses/Forbidden"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "503":
+          $ref: "#/components/responses/ServiceUnavailable"
 
   /user/breaches/resolutions:
     post:
@@ -283,3 +301,7 @@ paths:
           $ref: "#/components/responses/Forbidden"
         "404":
           description: Breach or email not found (or not visible to this user)
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "503":
+          $ref: "#/components/responses/ServiceUnavailable"
