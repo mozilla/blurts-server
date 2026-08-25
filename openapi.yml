@@ -2,11 +2,16 @@ openapi: "3.1.1"
 info:
   title: Monitor Breach Alerts API
   description: Monitor's external API for Firefox clients
-  version: "1.0"
+  version: "1.0.0"
+# The web app already owns /api/v1.
 servers:
-  - url: https://monitor.mozilla.org/api/v1
+  - url: https://monitor.mozilla.org/api/firefox/v1
     description: Production endpoint
-  - url: http://localhost:6060/api/v1
+  - url: https://monitor-stage.allizom.org/api/firefox/v1
+    description: Stage endpoint
+  - url: https://dev.monitor.nonprod.webservices.mozgcp.net/api/firefox/v1
+    description: Dev endpoint
+  - url: http://localhost:6060/api/firefox/v1
     description: Local development server
 security:
   - bearerAuth: []
