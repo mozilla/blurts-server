@@ -135,7 +135,14 @@ components:
             code: rate-limited
             message: Too many requests. Retry after 60 seconds.
     ServiceUnavailable:
-      description: Monitor is unavailable.
+      description: Monitor is unavailable. Safe to retry, after the interval in `Retry-After` when it is present.
+      headers:
+        Retry-After:
+          required: false
+          description: Seconds to wait before retrying.
+          schema:
+            type: integer
+            minimum: 1
       content:
         application/json:
           schema:
@@ -153,6 +160,8 @@ paths:
         Breaches that leaked passwords, with `passwords` resolution state for each monitored email the breach affected.
 
         **Freshness.** When HIBP is unavailable we serve the last known breach data as a normal `200`, with no staleness signal.
+
+        **Cadence.** Poll no more than hourly, and once a day is enough. Breaches reach HIBP weeks or months after the incident, so polling harder gains nothing, and the `429` threshold is set with this range in mind.
 
       parameters:
         - name: domain
