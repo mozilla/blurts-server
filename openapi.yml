@@ -33,10 +33,22 @@ components:
   schemas:
     Error:
       type: object
-      description: Body of every non-2xx response. `message` is not stable, do not match on it.
+      description: Body of every non-2xx response. Branch on `code`. `message` is for logs and bug reports, it is not stable, so do not match on it.
       required:
+        - code
         - message
       properties:
+        code:
+          description: Stable, machine-readable cause. Kebab-case, like the data class values.
+          type: string
+          enum:
+            - token-invalid
+            - missing-scope
+            - no-monitor-account
+            - invalid-request
+            - not-found
+            - rate-limited
+            - unavailable
         message:
           type: string
     DataClass:
@@ -87,6 +99,7 @@ components:
           schema:
             $ref: "#/components/schemas/Error"
           example:
+            code: token-invalid
             message: FxA reports this token as inactive.
     Forbidden:
       description: |
@@ -99,10 +112,12 @@ components:
             missingScope:
               summary: Token does not carry the Monitor scope
               value:
+                code: missing-scope
                 message: This token lacks the https://identity.mozilla.com/apps/monitor scope.
             noMonitorAccount:
               summary: FxA account has never signed up for Monitor
               value:
+                code: no-monitor-account
                 message: This Firefox account has no Monitor subscriber.
     TooManyRequests:
       description: Rate limited. Wait the interval in `Retry-After`, then retry.
@@ -118,6 +133,7 @@ components:
           schema:
             $ref: "#/components/schemas/Error"
           example:
+            code: rate-limited
             message: Too many requests. Retry after 60 seconds.
     ServiceUnavailable:
       description: Monitor is unavailable.
@@ -126,6 +142,7 @@ components:
           schema:
             $ref: "#/components/schemas/Error"
           example:
+            code: unavailable
             message: Monitor is temporarily unavailable.
 
 paths:
@@ -188,6 +205,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
               example:
+                code: invalid-request
                 message: "domain must not be empty."
         "401":
           $ref: "#/components/responses/Unauthorized"
@@ -268,22 +286,25 @@ paths:
                 unknownDataClass:
                   summary: Data class outside the accepted set
                   value:
+                    code: invalid-request
                     message: "dataClasses[0] must be one of: passwords."
                 malformedEmail:
                   summary: Email is not a valid address
                   value:
+                    code: invalid-request
                     message: "emails[0] is not a valid email address."
         "401":
           $ref: "#/components/responses/Unauthorized"
         "403":
           $ref: "#/components/responses/Forbidden"
         "404":
-          description: An unknown `breachId`, a breach this endpoint does not serve, or an email address this user does not monitor. All give the same message on purpose, so the response cannot be used to work out which addresses exist on an account.
+          description: An unknown `breachId`, a breach this endpoint does not serve, or an email address this user does not monitor. All give the same code and message on purpose, so the response cannot be used to work out which addresses exist on an account.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
               example:
+                code: not-found
                 message: One or more of the referenced breaches or email addresses was not found.
         "429":
           $ref: "#/components/responses/TooManyRequests"
