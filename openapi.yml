@@ -88,7 +88,7 @@ components:
 paths:
   /user/breaches:
     get:
-      description: >
+      description: |
         Get breaches for an authenticated user. Returns a list of breaches; each item includes
         per-email user state for monitored emails affected by that breach.
 
@@ -99,12 +99,19 @@ paths:
         breach's data classes locally via Remote Settings, so it needs no filter to narrow
         this further.
 
+        **Freshness.** When HIBP is unavailable we serve the last known breach data as a
+        normal `200`. The response carries no staleness signal. A client has no useful
+        action to take on one. Breaches typically reach HIBP weeks or months after the incident,
+        so data that is hours behind is not meaningfully worse.
+
       parameters:
         - name: domain
           in: query
           required: false
           description: >
-            Filter breaches by the breached site's primary domain (exact match), e.g. "example.com".
+            Filter breaches by the breached site's primary domain, matched exactly, for example
+            "example.com". Site renames are out of scope for this contract: a breach filed under
+            `twitter.com` does not match `x.com`.
           schema:
             type: string
             minLength: 1
@@ -127,7 +134,13 @@ paths:
 
       responses:
         "200":
-          description: List of breaches associated with emails the user is monitoring
+          description: |
+            Breaches affecting emails this user is monitoring.
+
+            Absence is authoritative. A breach missing from this list means we checked and
+            this user is not affected by it, not that we failed to look. An empty array
+            means the same for every breach. This is what lets a client confidently render
+            a "your info was not in this breach" state.
           content:
             application/json:
               schema:
