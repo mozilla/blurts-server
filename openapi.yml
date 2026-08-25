@@ -1,7 +1,14 @@
 openapi: "3.1.1"
 info:
   title: Monitor Breach Alerts API
-  description: Monitor's external API for Firefox clients
+  description: |
+    Monitor's external API for Firefox clients.
+
+    Two systems own two halves of the picture, in two different vocabularies.
+    Remote Settings owns breach facts and serves HIBP's Title Case, for example
+    `Passwords`. This API owns per-user resolution state and uses kebab-case, for
+    example `passwords`. The client joins the two on the HIBP breach name, which
+    this API returns as `id`.
   version: "1.0.0"
 # The web app already owns /api/v1.
 servers:
