@@ -27,6 +27,17 @@ components:
         authenticated user from the token subject (`sub`). All `/user/*` endpoints are scoped
         to the authenticated subject and never return or modify data for any other user.
   schemas:
+    DataClass:
+      description: >
+        A kind of data leaked in a breach. This API handles `passwords` alone, since
+        the privacy panel's one action is "Mark as done" on a password breach. Note
+        that this API uses kebab-case while Remote Settings serves HIBP's Title Case,
+        for example `Passwords`, so clients map between the two. This is staying an enum,
+        even though we only have one value right now, as adding values later stays backwards
+        compatible.
+      type: string
+      enum:
+        - passwords
     UserBreachState:
       type: object
       description: Object describing the current breach state and resolutions
@@ -40,13 +51,14 @@ components:
           format: email
         resolvedDataClasses:
           description: >
-            Data classes this user has marked resolved for this breach, for example after
-            changing their password. Monitor stores a checked list and nothing more. There
-            is no resolution timestamp in the database to expose, so this array carries the
-            data classes alone.
+            Data classes this user has marked resolved for this breach, whether in the
+            privacy panel or on the Monitor website. Monitor stores a checked list and
+            nothing more, so this array carries the data classes alone with no timestamp.
+            Scoped to `passwords`, matching the breaches this endpoint returns; a user's
+            resolutions of other exposures on the Monitor website are not reported here.
           type: array
           items:
-            type: string
+            $ref: "#/components/schemas/DataClass"
 
     UserBreach:
       type: object
@@ -73,6 +85,13 @@ paths:
         Get breaches for an authenticated user. Returns a list of breaches; each item includes
         per-email user state for monitored emails affected by that breach.
 
+        Scoped to breaches that leaked passwords, and to `passwords` resolution state. The
+        privacy panel acts on passwords alone, and a breach exposure reveals that a person
+        holds an account on a site, so this endpoint returns the narrowest answer that
+        serves the panel rather than the user's full exposure history. Firefox holds every
+        breach's data classes locally via Remote Settings, so it needs no filter to narrow
+        this further.
+
       parameters:
         - name: domain
           in: query
@@ -86,46 +105,6 @@ paths:
             example:
               summary: Example domain
               value: example.com
-        - name: dataClasses
-          in: query
-          required: false
-          description: >
-            Filter breaches to those that leaked any (but not necessarily all) of the specified
-            data classes. This filters on the breach's own data classes, which the response no
-            longer carries; Firefox reads them from Remote Settings.
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-          examples:
-            passwords:
-              summary: Breaches that include passwords
-              value: ["passwords"]
-            pii:
-              summary: Breaches that include passwords or email addresses
-              value: ["passwords", "email-addresses"]
-        - name: unresolvedDataClasses
-          in: query
-          required: false
-          description: >
-            Filter breaches to those where one or more of the specified dataclasses
-            are still unresolved for the authenticated user, for at least one breached account.
-            A breach matches if any of the specified dataclasses are unresolved 
-            for at least one monitored email. Note that the breached accounts in the response are
-            not filtered by this parameter; the client will receive the complete set of breached account states
-            for the given breach.
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-          examples:
-            passwords:
-              summary: Breaches with unresolved passwords
-              value: ["passwords"]
         - name: includeSensitive
           in: query
           required: false
@@ -216,7 +195,7 @@ paths:
                     minItems: 1
                     description: Data classes to mark resolved for the selected emails.
                     items:
-                      type: string
+                      $ref: "#/components/schemas/DataClass"
                   breachId:
                     description: >
                       The HIBP breach name, for example `Adobe`. The same identifier
