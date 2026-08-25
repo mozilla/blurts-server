@@ -39,16 +39,14 @@ components:
           type: string
           format: email
         resolvedDataClasses:
-          description: Data classes that have been resolved by user action, e.g. changing their password. Key-value object where key is the dataclass and the value is the timestamp of the resolution action.
-          type: object
-          # Right now we're not tracking things like timestamp or source (monitor vs. fx)
-          # but having an object gives flexibility in the future
-          additionalProperties:
-            type: object
-            properties:
-              resolvedAt:
-                type: string
-                format: date-time
+          description: >
+            Data classes this user has marked resolved for this breach, for example after
+            changing their password. Monitor stores a checked list and nothing more. There
+            is no resolution timestamp in the database to expose, so this array carries the
+            data classes alone.
+          type: array
+          items:
+            type: string
 
     UserBreach:
       type: object
@@ -157,8 +155,7 @@ paths:
                     - id: "Adobe"
                       breachedAccounts:
                         - email: "alice@example.com"
-                          resolvedDataClasses:
-                            passwords: {}
+                          resolvedDataClasses: ["passwords"]
                 noResults:
                   summary: No breaches found
                   value: []
@@ -172,7 +169,9 @@ paths:
       description: |
         Bulk endpoint for breach resolutions.
 
-        Upsert resolution state for one or more breaches across one or more monitored email addresses.
+        Mark data classes resolved for one or more breaches across one or more monitored
+        email addresses. Resolutions only move one way: there is no way to unresolve a
+        data class through this API.
 
         This operation is idempotent per `(email, dataClass, breachId)`. Repeating the same
         request results in the same stored state and does not produce an error.
@@ -201,7 +200,6 @@ paths:
                 additionalProperties: false
                 required:
                   - dataClasses
-                  - resolved
                   - breachId
                 properties:
                   emails:
@@ -216,7 +214,7 @@ paths:
                   dataClasses:
                     type: array
                     minItems: 1
-                    description: Dataclasses to mark resolved/unresolved for the selected emails.
+                    description: Data classes to mark resolved for the selected emails.
                     items:
                       type: string
                   breachId:
@@ -225,36 +223,21 @@ paths:
                       the `GET /user/breaches` response returns as `id`, not Monitor's
                       internal numeric breach id.
                     type: string
-                  resolved:
-                    type: boolean
-                    description: True to mark resolved; false to mark unresolved.
             examples:
               resolveMultipleBreaches:
                 summary: Resolve multiple breaches
                 value:
                   - breachId: "Adobe"
                     dataClasses: ["passwords"]
-                    resolved: true
                   - breachId: "LinkedIn"
                     dataClasses: ["passwords"]
                     emails: ["alice@example.com"]
-                    resolved: true
               resolvePasswordsOneEmail:
-                summary: Resolve Passwords for one email in one breach
+                summary: Resolve passwords for one email in one breach
                 value:
                   - emails: ["alice@example.com"]
                     dataClasses: ["passwords"]
                     breachId: "Adobe"
-                    resolved: true
-              undoPasswordsAllEmailsInBreach:
-                summary: Unresolve Passwords resolution for all affected emails in multiple breaches
-                value:
-                  - dataClasses: ["passwords"]
-                    resolved: false
-                    breachId: "Adobe"
-                  - dataClasses: ["passwords"]
-                    resolved: false
-                    breachId: "LinkedIn"
       responses:
         "204":
           description: Resolution state updated successfully.
