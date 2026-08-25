@@ -9,6 +9,10 @@ info:
     `Passwords`. This API owns per-user resolution state and uses kebab-case, for
     example `passwords`. The client joins the two on the HIBP breach name, which
     this API returns as `id`.
+
+    "Monitored", used throughout, means the account's primary email address plus any
+    secondary addresses, verified ones only. An unverified address is not monitored:
+    it is never returned here, and a resolution sent for one is rejected.
   version: "1.0.0"
 # The web app already owns /api/v1.
 servers:
@@ -184,6 +188,9 @@ paths:
         - For privacy reasons, if any provided email address is not associated with the authenticated
           user, the server treats the request as if the resource does not exist and returns
           `404 Not Found`.
+        - An address the user owns but has not verified gets that same `404`. It is not a
+          monitored address, and answering identically for both cases keeps the response
+          from revealing which addresses exist on the account.
 
         **Atomicity**
         - Requests are atomic: the update is applied to all targeted emails and dataclasses, or to none.
