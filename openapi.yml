@@ -276,11 +276,6 @@ paths:
         **Atomicity**
         - Requests are atomic: the update is applied to all targeted emails and dataclasses, or to none.
 
-        **Validation**
-        - A data class the referenced breach never leaked is a `400`, not a silent skip.
-          Firefox holds every breach's data classes locally via Remote Settings, so it can
-          avoid sending one, and accepting it would write state no interface ever surfaces.
-
         **Repeated input**
         - Repeated `breachId` entries are accepted and merged, taking the union of the
           `(email, dataClass)` pairs they imply. An item that omits `emails` contributes every
@@ -340,10 +335,9 @@ paths:
       responses:
         "204":
           description: Resolution state updated successfully.
-        # Matches the web app's per-breach resolve.
         "400":
           description: Invalid request, for example an empty batch, an empty `dataClasses` array,
-            a malformed email address, or a data class the referenced breach never leaked.
+            or a malformed email address.
           content:
             application/json:
               schema:
@@ -357,19 +351,15 @@ paths:
                   summary: Email is not a valid address
                   value:
                     message: "emails[0] is not a valid email address."
-                dataClassNotInBreach:
-                  summary: Breach never leaked the requested data class
-                  value:
-                    message: The Adobe breach did not leak passwords.
         "401":
           $ref: "#/components/responses/Unauthorized"
         "403":
           $ref: "#/components/responses/Forbidden"
         "404":
           description: >
-            An unknown `breachId`, or an email address this user does not monitor. Both give the
-            same code and the same message on purpose, so the response cannot be used to work
-            out which addresses exist on an account.
+            An unknown `breachId`, a breach this endpoint does not serve, or an email address
+            this user does not monitor. All give the same message on purpose, so the response
+            cannot be used to work out which addresses exist on an account.
           content:
             application/json:
               schema:
