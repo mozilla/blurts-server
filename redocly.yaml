@@ -1,0 +1,9 @@
+# Redocly CLI config. See README, "API contract".
+apis:
+  firefox-v1:
+    root: openapi.yml
+rules:
+  # Local development server is deliberate.
+  no-server-example.com: off
+  # No client codegen from this description.
+  operation-operationId: off
