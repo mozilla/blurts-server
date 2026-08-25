@@ -4,15 +4,10 @@ info:
   description: |
     Monitor's external API for Firefox clients.
 
-    Two systems own two halves of the picture, in two different vocabularies.
-    Remote Settings owns breach facts and serves HIBP's Title Case, for example
-    `Passwords`. This API owns per-user resolution state and uses kebab-case, for
-    example `passwords`. The client joins the two on the HIBP breach name, which
-    this API returns as `id`.
+    Remote Settings owns breach facts, this API owns per-user resolution state. The client
+    joins them on the HIBP breach name, returned here as `id`.
 
-    "Monitored", used throughout, means the account's primary email address plus any
-    secondary addresses, verified ones only. An unverified address is not monitored:
-    it is never returned here, and a resolution sent for one is rejected.
+    "Monitored" means the account's verified primary and secondary email addresses.
   version: "1.0.0"
 # The web app already owns /api/v1.
 servers:
@@ -31,39 +26,30 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-      # FxA owns the token format.
-      description: |
+      # We introspect the token with FxA.
+      description: >
         An OAuth token granted by Firefox Accounts (FxA), carrying the
-        `https://identity.mozilla.com/apps/monitor` scope.
-
-        We introspect the token with FxA, so this contract asserts no token format: do not
-        rely on it being a JWT. Requests are scoped to the token's subject and never touch
-        another user's data.
+        `https://identity.mozilla.com/apps/monitor` scope. Treat it as opaque.
   schemas:
     Error:
       type: object
-      description: >
-        Body of every non-2xx response. `message` explains the particular case, for logs and
-        bug reports. It is not stable, so do not match on it.
+      description: Body of every non-2xx response. `message` is not stable, do not match on it.
       required:
         - message
       properties:
         message:
           type: string
     DataClass:
+      # Enum so new values stay compatible.
       description: >
-        A kind of data leaked in a breach. This API handles `passwords` alone, since
-        the privacy panel's one action is "Mark as done" on a password breach. Note
-        that this API uses kebab-case while Remote Settings serves HIBP's Title Case,
-        for example `Passwords`, so clients map between the two. This is staying an enum,
-        even though we only have one value right now, as adding values later stays backwards
-        compatible.
+        A kind of data leaked in a breach. This API handles `passwords` alone. Remote Settings
+        serves the same value in HIBP's Title Case, `Passwords`.
       type: string
       enum:
         - passwords
     UserBreachState:
       type: object
-      description: Object describing the current breach state and resolutions
+      description: Per-email resolution state for one breach.
       required:
         - email
         - resolvedDataClasses
@@ -73,28 +59,27 @@ components:
           type: string
           format: email
         resolvedDataClasses:
+          # No timestamp, we store a checked list.
           description: >
-            Data classes this user has marked resolved for this breach, whether in the
-            privacy panel or on the Monitor website. Monitor stores a checked list and
-            nothing more, so this array carries the data classes alone with no timestamp.
-            Scoped to `passwords`, matching the breaches this endpoint returns; a user's
-            resolutions of other exposures on the Monitor website are not reported here.
+            Data classes this user has marked resolved for this breach, in the privacy panel
+            or on the Monitor website. Scoped to `passwords`, so resolutions of other
+            exposures are not reported here.
           type: array
           items:
             $ref: "#/components/schemas/DataClass"
 
     UserBreach:
       type: object
-      description: A breach affecting 1 or more email addresses tracked by a Monitor User, and resolution actions taken
+      description: One breach affecting this user, with resolution state per affected email.
       required:
         - id
         - breachedAccounts
       properties:
         id:
+          # Not the internal numeric breach id.
           description: >
-            The HIBP breach name, for example `Adobe`. Firefox already holds this key
-            from the `fxmonitor-breaches` Remote Settings collection, so it joins the
-            breach metadata locally. This is not Monitor's internal numeric breach id.
+            The HIBP breach name, for example `Adobe`. Firefox joins the breach metadata
+            locally from the `fxmonitor-breaches` Remote Settings collection.
           type: string
         breachedAccounts:
           type: array
@@ -114,9 +99,8 @@ components:
             message: FxA reports this token as inactive.
     Forbidden:
       description: >
-        The token is valid but does not grant access, for one of two reasons. Either it lacks
-        the `https://identity.mozilla.com/apps/monitor` scope, or the FxA account behind it
-        has no Monitor subscriber. This integration serves existing Monitor accounts only and
+        The token is valid but does not grant access: either it lacks the Monitor scope, or
+        the account has no Monitor subscriber. Monitor serves existing accounts only and
         never creates one.
       content:
         application/json:
@@ -147,10 +131,7 @@ components:
           example:
             message: Too many requests. Retry after 60 seconds.
     ServiceUnavailable:
-      description: >
-        Monitor is unavailable. This covers our own failures only; an unreachable HIBP is not
-        one of them, since we serve last known breach data as a normal `200` instead. Safe to
-        retry.
+      description: Monitor is unavailable.
       content:
         application/json:
           schema:
@@ -161,30 +142,22 @@ components:
 paths:
   /user/breaches:
     get:
+      summary: List password breaches affecting this user
+      # Passwords only, the panel's one action.
       description: |
-        Get breaches for an authenticated user. Returns a list of breaches; each item includes
-        per-email user state for monitored emails affected by that breach.
-
-        Scoped to breaches that leaked passwords, and to `passwords` resolution state. The
-        privacy panel acts on passwords alone, and a breach exposure reveals that a person
-        holds an account on a site, so this endpoint returns the narrowest answer that
-        serves the panel rather than the user's full exposure history. Firefox holds every
-        breach's data classes locally via Remote Settings, so it needs no filter to narrow
-        this further.
+        Breaches that leaked passwords, with `passwords` resolution state for each monitored
+        email the breach affected.
 
         **Freshness.** When HIBP is unavailable we serve the last known breach data as a
-        normal `200`. The response carries no staleness signal. A client has no useful
-        action to take on one. Breaches typically reach HIBP weeks or months after the incident,
-        so data that is hours behind is not meaningfully worse.
+        normal `200`, with no staleness signal.
 
       parameters:
         - name: domain
           in: query
           required: false
           description: >
-            Filter breaches by the breached site's primary domain, matched exactly, for example
-            "example.com". Site renames are out of scope for this contract: a breach filed under
-            `twitter.com` does not match `x.com`.
+            Filter by the breached site's primary domain, matched exactly. A breach filed
+            under `twitter.com` does not match `x.com`.
           schema:
             type: string
             minLength: 1
@@ -195,15 +168,10 @@ paths:
         - name: includeSensitive
           in: query
           required: false
-          description: >
-            When set to `true`, includes breaches marked as sensitive in the response.
-            By default, sensitive breaches are excluded.
+          description: Include breaches marked sensitive.
           schema:
             type: boolean
-          examples:
-            include:
-              summary: Include sensitive breaches
-              value: true
+            default: false
 
       responses:
         "200":
@@ -211,9 +179,8 @@ paths:
             Breaches affecting emails this user is monitoring.
 
             Absence is authoritative. A breach missing from this list means we checked and
-            this user is not affected by it, not that we failed to look. An empty array
-            means the same for every breach. This is what lets a client confidently render
-            a "your info was not in this breach" state.
+            this user is not affected by it, not that we failed to look. An empty array means
+            the same for every breach.
           content:
             application/json:
               schema:
@@ -250,37 +217,17 @@ paths:
 
   /user/breaches/resolutions:
     post:
+      summary: Mark password breaches resolved
       description: |
-        Bulk endpoint for breach resolutions.
+        Mark data classes resolved for one or more breaches. Resolutions only move one way,
+        this API cannot unresolve a data class.
 
-        Mark data classes resolved for one or more breaches across one or more monitored
-        email addresses. Resolutions only move one way: there is no way to unresolve a
-        data class through this API.
+        Idempotent per `(email, dataClass, breachId)`. Repeated `breachId` entries merge, and
+        order does not matter.
 
-        This operation is idempotent per `(email, dataClass, breachId)`. Repeating the same
-        request results in the same stored state and does not produce an error.
+        Atomic: every targeted email and data class updates, or none does.
 
-        If `emails` is omitted within an individual resolution item, 
-        the update applies to all monitored email addresses affected by the breach referenced by `breachId`
-        for the authenticated user.
-
-        **Authorization and privacy**
-        - All `emails` provided must be monitored by the authenticated user.
-        - For privacy reasons, if any provided email address is not associated with the authenticated
-          user, the server treats the request as if the resource does not exist and returns
-          `404 Not Found`.
-        - An address the user owns but has not verified gets that same `404`. It is not a
-          monitored address, and answering identically for both cases keeps the response
-          from revealing which addresses exist on the account.
-
-        **Atomicity**
-        - Requests are atomic: the update is applied to all targeted emails and dataclasses, or to none.
-
-        **Repeated input**
-        - Repeated `breachId` entries are accepted and merged, taking the union of the
-          `(email, dataClass)` pairs they imply. An item that omits `emails` contributes every
-          monitored address affected by that breach. Resolutions only move one way, so
-          duplicates cannot contradict each other and the result does not depend on order.
+        Every address in `emails` must be monitored by the authenticated user.
 
       requestBody:
         required: true
@@ -300,8 +247,8 @@ paths:
                     type: array
                     minItems: 1
                     description: >
-                      Monitored email addresses to apply the update to. If omitted, applies to all
-                      monitored email addresses affected by the referenced breach.
+                      Monitored email addresses to apply the update to. If omitted, applies to
+                      every monitored address the referenced breach affected.
                     items:
                       type: string
                       format: email
@@ -312,10 +259,7 @@ paths:
                     items:
                       $ref: "#/components/schemas/DataClass"
                   breachId:
-                    description: >
-                      The HIBP breach name, for example `Adobe`. The same identifier
-                      the `GET /user/breaches` response returns as `id`, not Monitor's
-                      internal numeric breach id.
+                    description: The HIBP breach name, as returned by `GET /user/breaches` in `id`.
                     type: string
             examples:
               resolveMultipleBreaches:
