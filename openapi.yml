@@ -195,12 +195,19 @@ paths:
         **Atomicity**
         - Requests are atomic: the update is applied to all targeted emails and dataclasses, or to none.
 
+        **Repeated input**
+        - Repeated `breachId` entries are accepted and merged, taking the union of the
+          `(email, dataClass)` pairs they imply. An item that omits `emails` contributes every
+          monitored address affected by that breach. Resolutions only move one way, so
+          duplicates cannot contradict each other and the result does not depend on order.
+
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: array
+              minItems: 1
               items:
                 type: object
                 additionalProperties: false
@@ -248,7 +255,8 @@ paths:
         "204":
           description: Resolution state updated successfully.
         "400":
-          description: Invalid request (e.g., empty dataClasses, invalid email string format, non-unique breach IDs).
+          description: Invalid request, for example an empty batch, an empty `dataClasses` array,
+            or a malformed email address.
         "401":
           description: Authentication required
         "403":
