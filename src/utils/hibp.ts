@@ -19,6 +19,7 @@ import {
 } from "../db/redis/client.ts";
 import { config } from "../config.ts";
 import { incKanonFailure, incKanonRequest } from "./metrics.ts";
+import { captureException } from "@sentry/node";
 
 // TODO: fix hardcode
 const HIBP_USER_AGENT = "monitor/1.0.0";
@@ -69,9 +70,9 @@ async function _throttledFetch(
   try {
     meters?.requests?.();
     const response = await fetch(url, reqOptions);
-    const responseJson = await response.json();
-    if (response.ok) return responseJson as unknown;
-
+    if (response.ok) {
+      return await response.json();
+    }
     switch (response.status) {
       case 404:
         // 404 can mean "no results", return undefined response
@@ -97,12 +98,13 @@ async function _throttledFetch(
         }
       default:
         meters?.failures?.(response.status ?? 500);
-        throw responseJson;
+        throw Error(
+          `HTTP Response: [${response.status}] ${response.statusText}`,
+        );
     }
   } catch (e) {
-    if (e instanceof Error) {
-      logger.error("hibp_throttle_fetch_error", { stack: e.stack });
-    }
+    logger.error("hibp_throttle_fetch_error", { error: e, url });
+    captureException(e, { data: url });
     throw e;
   }
 }
@@ -116,7 +118,7 @@ async function hibpApiFetch(path: string, options = {}) {
   try {
     return await _throttledFetch(url, reqOptions);
   } catch (ex) {
-    logger.error("hibp_api_fetch", { exception: ex });
+    logger.error("hibp_api_fetch", { exception: ex, path });
   }
 }
 /* c8 ignore stop */
