@@ -127,7 +127,9 @@ export type HibpGetBreachesResponse = Array<{
   Domain: string;
   AddedDate: ISO8601DateString;
   BreachDate: ISO8601DateString;
-  DataClasses: Array<keyof HibpBreachDataTypes>;
+  // Raw from HIBP, so Title Case: "Email addresses".
+  // See HibpLabelByDataType, and HibpLikeDbBreach below.
+  DataClasses: string[];
   Description: string;
   LogoPath: string;
   IsFabricated: boolean;
@@ -203,7 +205,7 @@ export function formatDataClass(dataClass: string): string {
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-function formatDataClassesArray(dataClasses: Array<keyof HibpBreachDataTypes>) {
+function formatDataClassesArray(dataClasses: string[]) {
   return dataClasses.map((dataClass) => formatDataClass(dataClass)) as Array<
     HibpBreachDataTypes[keyof HibpBreachDataTypes]
   >;
@@ -232,6 +234,7 @@ export type HibpLikeDbBreach = {
   PwnCount: BreachRow["pwn_count"];
   Description: BreachRow["description"];
   LogoPath: BreachRow["logo_path"];
+  // Converted at ingestion, so kebab-case: "email-addresses".
   DataClasses: BreachRow["data_classes"];
   IsVerified: BreachRow["is_verified"];
   IsFabricated: BreachRow["is_fabricated"];
