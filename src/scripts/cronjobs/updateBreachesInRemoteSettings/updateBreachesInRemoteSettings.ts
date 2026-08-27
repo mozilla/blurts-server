@@ -12,10 +12,17 @@ import * as HIBP from "../../../utils/hibp";
 import { RemoteSettingsClient } from "../../../utils/remoteSettingsClient";
 import { type Logger } from "winston";
 import { config } from "../../../config";
+import { HibpLabelByDataType } from "../../../app/functions/universal/breach";
 
 type RemoteSettingsBreach = Pick<
   HIBP.HibpGetBreachesResponse[number],
-  "Name" | "Domain" | "BreachDate" | "PwnCount" | "AddedDate" | "DataClasses"
+  | "Name"
+  | "Domain"
+  | "BreachDate"
+  | "PwnCount"
+  | "AddedDate"
+  | "DataClasses"
+  | "IsSensitive"
 >;
 
 export type UpdateBreachesJobConfig = {
@@ -75,7 +82,7 @@ export async function main(parentLogger: Logger) {
   });
   const allHibpBreaches = await HIBP.fetchHibpBreaches();
   const remoteBreaches = await remoteSettings.fetchRemoteBreachNames();
-  // Get all valid password breaches that aren't currently in remote settings
+  // Get all valid password or email breaches that aren't currently in remote settings
   const newBreaches = allHibpBreaches.filter((breach) => {
     return (
       !breach.IsRetired &&
@@ -83,7 +90,8 @@ export async function main(parentLogger: Logger) {
       !breach.IsFabricated &&
       breach.IsVerified &&
       breach.Domain !== "" &&
-      breach.DataClasses.includes("Passwords") &&
+      (breach.DataClasses.includes(HibpLabelByDataType.Passwords) ||
+        breach.DataClasses.includes(HibpLabelByDataType.Email)) &&
       !remoteBreaches.has(breach.Name)
     );
   });
@@ -103,6 +111,8 @@ export async function main(parentLogger: Logger) {
       PwnCount: breach.PwnCount,
       AddedDate: breach.AddedDate,
       DataClasses: breach.DataClasses,
+      // The panel hides these, the credential manager may not.
+      IsSensitive: breach.IsSensitive,
     };
 
     try {
