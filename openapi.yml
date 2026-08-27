@@ -52,10 +52,11 @@ components:
         message:
           type: string
     DataClass:
-      description: A kind of data leaked in a breach. This API handles `passwords` alone. Remote Settings serves the same value in HIBP's Title Case, `Passwords`. Expect more values later, so treat this as an open set rather than generating a closed type from it.
+      description: A kind of data leaked in a breach. Remote Settings serves the same values in HIBP's Title Case, `Passwords` and `Email addresses`. Expect more values later, so treat this as an open set rather than generating a closed type from it.
       type: string
       enum:
         - passwords
+        - email-addresses
     UserBreachState:
       type: object
       description: Per-email resolution state for one breach.
@@ -69,7 +70,7 @@ components:
           format: email
         resolvedDataClasses:
           # No timestamp, we store a checked list.
-          description: Data classes this user has marked resolved for this breach, in the privacy panel or on the Monitor website. Scoped to `passwords`, so resolutions of other exposures are not reported here.
+          description: Data classes this user has marked resolved for this breach, in the privacy panel or on the Monitor website. Limited to the data classes this API serves, so resolutions of other exposures on the Monitor website are not reported here.
           type: array
           items:
             $ref: "#/components/schemas/DataClass"
@@ -83,7 +84,7 @@ components:
       properties:
         id:
           # Not the internal numeric breach id.
-          description: The HIBP breach name, for example `Adobe`. Firefox joins the breach metadata locally from the `fxmonitor-breaches` Remote Settings collection.
+          description: The HIBP breach name, for example `Adobe`. Firefox joins the breach metadata locally from the `fxmonitor-breaches` Remote Settings collection. Every `id` returned here is present in that collection, so a client can always resolve one.
           type: string
         breachedAccounts:
           type: array
@@ -155,10 +156,10 @@ paths:
   /user/breaches:
     get:
       operationId: listUserBreaches
-      summary: List password breaches affecting this user
-      # Passwords only, the panel's one action.
+      summary: List breaches affecting this user
+      # Passwords and emails, what the panel acts on.
       description: |
-        Breaches that leaked passwords, with `passwords` resolution state for each monitored email the breach affected.
+        Breaches that leaked passwords or email addresses, with resolution state for each monitored email the breach affected.
 
         **Freshness.** When HIBP is unavailable we serve the last known breach data as a normal `200`, with no staleness signal.
 
@@ -204,6 +205,10 @@ paths:
                       breachedAccounts:
                         - email: "alice@example.com"
                           resolvedDataClasses: ["passwords"]
+                    - id: "Facebook"
+                      breachedAccounts:
+                        - email: "alice@example.com"
+                          resolvedDataClasses: []
                 noResults:
                   summary: No breaches found
                   value: []
@@ -228,7 +233,7 @@ paths:
   /user/breaches/resolutions:
     post:
       operationId: createBreachResolutions
-      summary: Mark password breaches resolved
+      summary: Mark breach data classes resolved
       description: |
         Mark data classes resolved for one or more breaches. Resolutions only move one way, this API cannot unresolve a data class.
 
@@ -262,7 +267,7 @@ paths:
                   dataClasses:
                     type: array
                     minItems: 1
-                    description: Data classes to mark resolved for the selected emails.
+                    description: Data classes to mark resolved for the selected emails. Each must be one the referenced breach actually leaked, so a breach that leaked only email addresses takes `email-addresses`, not `passwords`.
                     items:
                       $ref: "#/components/schemas/DataClass"
                   breachId:
@@ -283,6 +288,11 @@ paths:
                   - emails: ["alice@example.com"]
                     dataClasses: ["passwords"]
                     breachId: "Adobe"
+              resolveEmailOnlyBreach:
+                summary: A breach that leaked no passwords takes email-addresses
+                value:
+                  - breachId: "Facebook"
+                    dataClasses: ["email-addresses"]
       responses:
         "204":
           description: Resolution state updated successfully.
@@ -297,7 +307,7 @@ paths:
                   summary: Data class outside the accepted set
                   value:
                     code: invalid-request
-                    message: "dataClasses[0] must be one of: passwords."
+                    message: "dataClasses[0] must be one of: passwords, email-addresses."
                 malformedEmail:
                   summary: Email is not a valid address
                   value:
