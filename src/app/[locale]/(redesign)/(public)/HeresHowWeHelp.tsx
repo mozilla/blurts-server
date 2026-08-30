@@ -4,7 +4,7 @@
 
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signInToFxa } from "../../../functions/client/signInToFxa";
 import { Button } from "../../../components/client/Button";
 import { useL10n } from "../../../hooks/l10n";
 import styles from "./LandingView.module.scss";
@@ -40,7 +40,7 @@ export const HeresHowWeHelp = () => {
         className={styles.heresHowWeHelpCta}
         variant="primary"
         onPress={() => {
-          void signIn("fxa");
+          signInToFxa("fxa");
           record("ctaButton", "click", {
             button_id: "clicked_get_scan_fifth",
           });
