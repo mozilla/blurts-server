@@ -262,7 +262,7 @@ paths:
                   dataClasses:
                     type: array
                     minItems: 1
-                    description: Data classes to mark resolved for the selected emails. Each must be one the referenced breach actually leaked, so a breach that leaked only email addresses takes `email-addresses`, not `passwords`.
+                    description: Data classes to mark resolved for the selected emails. Each must be one the referenced breach actually leaked, so a breach that leaked only email addresses takes `email-addresses`, not `passwords`. Sending one it did not leak is a `400`, so refresh your Remote Settings copy before retrying.
                     items:
                       $ref: "#/components/schemas/DataClass"
                   breachId:
@@ -292,7 +292,7 @@ paths:
         "204":
           description: Resolution state updated successfully.
         "400":
-          description: Invalid request, for example an empty batch, an empty `dataClasses` array, or a malformed email address.
+          description: Invalid request, for example an empty batch, an empty `dataClasses` array, a malformed email address, or a data class the referenced breach never leaked.
           content:
             application/json:
               schema:
@@ -308,6 +308,11 @@ paths:
                   value:
                     code: invalid-request
                     message: "emails[0] is not a valid email address."
+                dataClassNotInBreach:
+                  summary: Breach never leaked the requested data class
+                  value:
+                    code: invalid-request
+                    message: The Facebook breach did not leak passwords.
         "401":
           $ref: "#/components/responses/Unauthorized"
         "403":
