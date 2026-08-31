@@ -33,7 +33,7 @@ components:
   schemas:
     Error:
       type: object
-      description: Body of every non-2xx response. Branch on `code`. `message` is for logs and bug reports, it is not stable, so do not match on it.
+      description: Body of every non-2xx response we generate. Our WAF can answer first, and those responses carry neither this body nor a `code`. Branch on `code`. `message` is for logs and bug reports, it is not stable, so do not match on it.
       required:
         - code
         - message
@@ -120,11 +120,12 @@ components:
               value:
                 code: no-monitor-account
                 message: This Firefox account has no Monitor subscriber.
+    # TODO(MNTOR-4119): set the threshold, and decide app or edge.
     TooManyRequests:
-      description: Rate limited. Wait the interval in `Retry-After`, then retry.
+      description: Rate limited. Wait the interval in `Retry-After` if it is present, otherwise back off and retry.
       headers:
         Retry-After:
-          required: true
+          required: false
           description: Seconds to wait before retrying.
           schema:
             type: integer
@@ -177,7 +178,7 @@ paths:
 
         **Joining.** Almost every `id` resolves in `fxmonitor-breaches`, but the collection is slower than this API. It publishes daily, and each batch is signed only after a person reviews it, deliberately, because it ships to every Firefox. So a breach can be live here for days before Firefox sees it, and a HIBP rename retires an id. Skip an id you cannot resolve rather than erroring, and pick it up on a later poll.
 
-        **Cadence.** Poll no more than hourly, and once a day is enough. Breaches reach HIBP weeks or months after the incident, so polling harder gains nothing, and the `429` threshold is set with this range in mind.
+        **Cadence.** Poll no more than hourly, and once a day is enough. Breaches reach HIBP weeks or months after the incident, so polling harder gains nothing.
 
       parameters:
         - name: domain
