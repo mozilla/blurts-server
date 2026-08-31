@@ -163,7 +163,7 @@ paths:
 
         Sensitive breaches, as HIBP marks them, are never returned. The privacy panel must not surface one, so there is no parameter to ask for them. Remote Settings does carry them, flagged, because the credential manager is allowed to.
 
-        **Freshness.** When HIBP is unavailable we serve the last known breach data as a normal `200`, with no staleness signal.
+        **Freshness.** Breach metadata comes from a catalog we refresh every 10 minutes, so a new breach can take that long to appear. The per user match is live on every request and is not cached, so there is no last known result to serve when it fails.
 
         **Cadence.** Poll no more than hourly, and once a day is enough. Breaches reach HIBP weeks or months after the incident, so polling harder gains nothing, and the `429` threshold is set with this range in mind.
 
@@ -184,7 +184,7 @@ paths:
           description: |
             Breaches affecting emails this user is monitoring.
 
-            Absence is authoritative. A breach missing from this list means we checked and this user is not affected by it, not that we failed to look. An empty array means the same for every breach.
+            A breach missing from this list means we checked and this user is not affected by it. An empty array means that that is true for every breach. A `200` is never a partial answer, i.e when the lookup fails we send a `503` instead.
           content:
             application/json:
               schema:
@@ -223,6 +223,7 @@ paths:
           $ref: "#/components/responses/TooManyRequests"
         "503":
           $ref: "#/components/responses/ServiceUnavailable"
+          description: We could not check this user against HIBP, so we do not know what they are affected by. Keep the breaches you already hold, do not clear them, and retry.
 
   /user/breaches/resolutions:
     post:
