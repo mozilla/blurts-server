@@ -52,7 +52,7 @@ components:
         message:
           type: string
     DataClass:
-      description: A kind of data leaked in a breach. Remote Settings serves the same values in HIBP's Title Case, `Passwords` and `Email addresses`. Expect more values later, so treat this as an open set rather than generating a closed type from it.
+      description: A kind of data leaked in a breach. Remote Settings serves the same values in HIBP's Title Case, `Passwords` and `Email addresses`.
       type: string
       enum:
         - passwords
@@ -70,7 +70,7 @@ components:
           format: email
         resolvedDataClasses:
           # No timestamp, we store a checked list.
-          description: Data classes this user has marked resolved for this breach, in the privacy panel or on the Monitor website. Limited to the data classes this API serves, so resolutions of other exposures on the Monitor website are not reported here.
+          description: Data classes this user has marked resolved for this breach, in the privacy panel or on the Monitor website. A breach is resolved once this array holds every `Passwords` or `Email addresses` the Remote Settings record lists. That record can carry other data classes, and none of them ever appears here.
           type: array
           items:
             $ref: "#/components/schemas/DataClass"
@@ -165,7 +165,7 @@ paths:
 
         **Freshness.** Breach metadata comes from a catalog we refresh every 10 minutes, so a new breach can take that long to appear. The per user match is live on every request and is not cached, so there is no last known result to serve when it fails.
 
-        **Joining.** Almost every `id` resolves in `fxmonitor-breaches`, but the collection is slower than this API: it publishes daily, and each batch is signed only after a person reviews it, deliberately, because it ships to every Firefox. So a breach can be live here for days before Firefox sees it, and a HIBP rename retires an id. Skip an id you cannot resolve rather than erroring, and pick it up on a later poll.
+        **Joining.** Almost every `id` resolves in `fxmonitor-breaches`, but the collection is slower than this API. It publishes daily, and each batch is signed only after a person reviews it, deliberately, because it ships to every Firefox. So a breach can be live here for days before Firefox sees it, and a HIBP rename retires an id. Skip an id you cannot resolve rather than erroring, and pick it up on a later poll.
 
         **Cadence.** Poll no more than hourly, and once a day is enough. Breaches reach HIBP weeks or months after the incident, so polling harder gains nothing, and the `429` threshold is set with this range in mind.
 
