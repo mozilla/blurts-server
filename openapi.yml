@@ -161,6 +161,8 @@ paths:
       description: |
         Breaches that leaked passwords or email addresses, with resolution state for each monitored email the breach affected.
 
+        Sensitive breaches, as HIBP marks them, are never returned. The privacy panel must not surface one, so there is no parameter to ask for them. Remote Settings does carry them, flagged, because the credential manager is allowed to.
+
         **Freshness.** When HIBP is unavailable we serve the last known breach data as a normal `200`, with no staleness signal.
 
         **Cadence.** Poll no more than hourly, and once a day is enough. Breaches reach HIBP weeks or months after the incident, so polling harder gains nothing, and the `429` threshold is set with this range in mind.
@@ -177,14 +179,6 @@ paths:
             example:
               summary: Example domain
               value: example.com
-        - name: includeSensitive
-          in: query
-          required: false
-          description: Include breaches marked sensitive.
-          schema:
-            type: boolean
-            default: false
-
       responses:
         "200":
           description: |
