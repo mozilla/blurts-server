@@ -48,6 +48,7 @@ components:
             - invalid-request
             - not-found
             - rate-limited
+            - internal-error
             - unavailable
         message:
           type: string
@@ -135,6 +136,15 @@ components:
           example:
             code: rate-limited
             message: Too many requests. Retry after 60 seconds.
+    InternalError:
+      description: Something failed on our side. The request may not have been applied. Retry, and keep any state you already hold.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: internal-error
+            message: Monitor could not complete this request.
     ServiceUnavailable:
       description: Monitor is unavailable. Safe to retry, after the interval in `Retry-After` when it is present.
       headers:
@@ -223,6 +233,8 @@ paths:
           $ref: "#/components/responses/Forbidden"
         "429":
           $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalError"
         "503":
           $ref: "#/components/responses/ServiceUnavailable"
           description: We could not check this user against HIBP, so we do not know what they are affected by. Keep the breaches you already hold, do not clear them, and retry.
@@ -330,5 +342,7 @@ paths:
                 message: One or more of the referenced breaches or email addresses was not found.
         "429":
           $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalError"
         "503":
           $ref: "#/components/responses/ServiceUnavailable"
