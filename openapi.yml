@@ -251,7 +251,7 @@ paths:
 
         Atomic: every targeted email and data class updates, or none does.
 
-        Every address in `emails` must be monitored by the authenticated user.
+        Every address in `emails` must be monitored by the authenticated user, and affected by the referenced breach.
 
       requestBody:
         required: true
