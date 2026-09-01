@@ -90,7 +90,7 @@ components:
         - resolvedDataClasses
       properties:
         email:
-          description: The impacted email address
+          description: A monitored address the breach affected.
           type: string
           format: email
         resolvedDataClasses:
@@ -113,6 +113,7 @@ components:
           type: string
         breachedAccounts:
           type: array
+          minItems: 1
           items:
             $ref: "#/components/schemas/UserBreachState"
 
