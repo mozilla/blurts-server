@@ -138,7 +138,7 @@ components:
             code: rate-limited
             message: Too many requests. Retry after 60 seconds.
     InternalError:
-      description: Something failed on our side. The request may not have been applied. Retry, and keep any state you already hold.
+      description: Something failed on our side. Retry, and keep any state you already hold.
       content:
         application/json:
           schema:
@@ -352,5 +352,6 @@ paths:
           $ref: "#/components/responses/TooManyRequests"
         "500":
           $ref: "#/components/responses/InternalError"
+          description: Something failed on our side. Treat the batch as not applied and retry it, repeats are safe.
         "503":
           $ref: "#/components/responses/ServiceUnavailable"
