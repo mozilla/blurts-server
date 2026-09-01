@@ -197,7 +197,7 @@ paths:
           description: |
             Breaches affecting emails this user is monitoring.
 
-            A breach missing from this list means we checked and this user is not affected by it. An empty array means that that is true for every breach. A `200` is never a partial answer, i.e when the lookup fails we send a `503` instead.
+            A breach missing from this list means we checked and this user is not affected by it. An empty array means that is true for every breach. A `200` is never a partial answer, so when the lookup fails we send a `503` instead.
           content:
             application/json:
               schema:
