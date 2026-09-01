@@ -333,7 +333,7 @@ paths:
         "403":
           $ref: "#/components/responses/Forbidden"
         "404":
-          description: An unknown `breachId`, a breach this endpoint does not serve, or an email address this user does not monitor, which includes an address the user owns but has not verified. All give the same code and message on purpose, so the response cannot be used to work out which addresses exist on an account.
+          description: An unknown `breachId`, a breach this endpoint does not serve, or an email address this user does not monitor, which includes an address the user owns but has not verified. All give the same code and message, so the response does not say which of them applied.
           content:
             application/json:
               schema:
