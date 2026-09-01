@@ -58,9 +58,33 @@ components:
       enum:
         - passwords
         - email-addresses
+    BreachResolution:
+      description: One item of a `POST /user/breaches/resolutions` body. Names a breach and the data classes to mark resolved, applied to every address in `emails`, or to every address the breach affected when `emails` is omitted.
+      type: object
+      additionalProperties: false
+      required:
+        - dataClasses
+        - breachId
+      properties:
+        emails:
+          type: array
+          minItems: 1
+          description: Monitored email addresses to apply the update to. If omitted, applies to every monitored address the referenced breach affected.
+          items:
+            type: string
+            format: email
+        dataClasses:
+          type: array
+          minItems: 1
+          description: Data classes to mark resolved for the selected emails. Each must be one the referenced breach actually leaked, so a breach that leaked only email addresses takes `email-addresses`, not `passwords`. Sending one it did not leak is a `400`, so refresh your Remote Settings copy before retrying.
+          items:
+            $ref: "#/components/schemas/DataClass"
+        breachId:
+          description: The HIBP breach name, as returned by `GET /user/breaches` in `id`.
+          type: string
     UserBreachState:
       type: object
-      description: Per-email resolution state for one breach.
+      description: One entry of `breachedAccounts`. What a single address has resolved for the breach holding it. Each address carries its own list, so two addresses in the same breach can differ.
       required:
         - email
         - resolvedDataClasses
@@ -78,7 +102,7 @@ components:
 
     UserBreach:
       type: object
-      description: One breach affecting this user, with resolution state per affected email.
+      description: One item of the `GET /user/breaches` response. A breach, plus one `UserBreachState` for each monitored address it affected.
       required:
         - id
         - breachedAccounts
@@ -261,28 +285,7 @@ paths:
               type: array
               minItems: 1
               items:
-                type: object
-                additionalProperties: false
-                required:
-                  - dataClasses
-                  - breachId
-                properties:
-                  emails:
-                    type: array
-                    minItems: 1
-                    description: Monitored email addresses to apply the update to. If omitted, applies to every monitored address the referenced breach affected.
-                    items:
-                      type: string
-                      format: email
-                  dataClasses:
-                    type: array
-                    minItems: 1
-                    description: Data classes to mark resolved for the selected emails. Each must be one the referenced breach actually leaked, so a breach that leaked only email addresses takes `email-addresses`, not `passwords`. Sending one it did not leak is a `400`, so refresh your Remote Settings copy before retrying.
-                    items:
-                      $ref: "#/components/schemas/DataClass"
-                  breachId:
-                    description: The HIBP breach name, as returned by `GET /user/breaches` in `id`.
-                    type: string
+                $ref: "#/components/schemas/BreachResolution"
             examples:
               resolveMultipleBreaches:
                 summary: Resolve multiple breaches
