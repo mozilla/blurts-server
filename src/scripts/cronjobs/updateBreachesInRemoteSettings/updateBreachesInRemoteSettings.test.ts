@@ -134,9 +134,16 @@ describe("updateBreachesInRemoteSettings job", () => {
 
       await main(mockLog);
 
-      expect(addBreachSpy).toHaveBeenCalledWith(
-        expect.objectContaining({ Name: emailOnly.Name }),
-      );
+      // Pins the whole record
+      expect(addBreachSpy).toHaveBeenCalledWith({
+        Name: emailOnly.Name,
+        Domain: emailOnly.Domain,
+        BreachDate: emailOnly.BreachDate,
+        PwnCount: emailOnly.PwnCount,
+        AddedDate: emailOnly.AddedDate,
+        DataClasses: emailOnly.DataClasses,
+        IsSensitive: false,
+      });
     });
     it("skips a breach that leaked neither passwords nor emails", async () => {
       const neither = {
