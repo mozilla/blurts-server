@@ -9,21 +9,13 @@
 
 import * as Sentry from "@sentry/node";
 import * as HIBP from "../../../utils/hibp";
-import { RemoteSettingsClient } from "../../../utils/remoteSettingsClient";
+import {
+  RemoteSettingsClient,
+  type RemoteSettingsBreach,
+} from "../../../utils/remoteSettingsClient";
 import { type Logger } from "winston";
 import { config } from "../../../config";
 import { HibpLabelByDataType } from "../../../app/functions/universal/breach";
-
-type RemoteSettingsBreach = Pick<
-  HIBP.HibpGetBreachesResponse[number],
-  | "Name"
-  | "Domain"
-  | "BreachDate"
-  | "PwnCount"
-  | "AddedDate"
-  | "DataClasses"
-  | "IsSensitive"
->;
 
 export type UpdateBreachesJobConfig = {
   user: string;
