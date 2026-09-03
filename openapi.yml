@@ -217,6 +217,11 @@ paths:
             Breaches affecting emails this user is monitoring.
 
             A breach missing from this list means we checked and this user is not affected by it. An empty array means that is true for every breach. A `200` is never a partial answer, so when the lookup fails we send a `503` instead.
+          headers:
+            Cache-Control:
+              description: Always `private, no-store`. This response is scoped to one user and must never be cached by a shared intermediary.
+              schema:
+                type: string
           content:
             application/json:
               schema:
