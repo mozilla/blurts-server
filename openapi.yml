@@ -39,25 +39,19 @@ components:
         - message
       properties:
         code:
-          description: Stable, machine-readable cause. Kebab-case, like the data class values.
+          description: Stable, machine-readable cause, kebab-case. Today `token-invalid`, `missing-scope`, `no-monitor-account`, `invalid-request`, `not-found`, `rate-limited`, `internal-error`, `unavailable`. We may add values in the future, so fall back to the status code for one you do not recognise.
           type: string
-          enum:
-            - token-invalid
-            - missing-scope
-            - no-monitor-account
-            - invalid-request
-            - not-found
-            - rate-limited
-            - internal-error
-            - unavailable
         message:
           type: string
     DataClass:
-      description: A kind of data leaked in a breach. Remote Settings serves the same values in HIBP's Title Case, `Passwords` and `Email addresses`.
+      description: A data class you can mark resolved. Closed set, we reject anything else with a `400`. Remote Settings serves the same values in HIBP's Title Case, `Passwords` and `Email addresses`.
       type: string
       enum:
         - passwords
         - email-addresses
+    ResolvedDataClass:
+      description: A data class we report as resolved. `passwords` and `email-addresses` today, but this is an open set, so accept a value you do not recognise instead of rejecting the response.
+      type: string
     BreachResolution:
       description: One item of a `POST /user/breaches/resolutions` body. Names a breach and the data classes to mark resolved, applied to every address in `emails`, or to every address the breach affected when `emails` is omitted.
       type: object
@@ -95,10 +89,10 @@ components:
           format: email
         resolvedDataClasses:
           # No timestamp, we store a checked list.
-          description: Data classes this user has marked resolved for this breach, in the privacy panel or on the Monitor website. A breach is resolved once this array holds every `Passwords` or `Email addresses` the Remote Settings record lists. That record can carry other data classes, and none of them ever appears here.
+          description: Data classes this user has marked resolved for this breach, in the privacy panel or on the Monitor website. A breach is resolved once this array holds every `Passwords` or `Email addresses` the Remote Settings record lists. That record can carry other data classes, and only the ones this API serves appear here.
           type: array
           items:
-            $ref: "#/components/schemas/DataClass"
+            $ref: "#/components/schemas/ResolvedDataClass"
 
     UserBreach:
       type: object
