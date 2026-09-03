@@ -35,7 +35,11 @@ async function deleteTestUserAccounts(browser: Browser) {
 
     await page.goto(`${getBaseTestEnvUrl()}/user/settings/manage-account`);
 
-    await page.getByRole("button", { name: "Open user menu" }).click();
+    // Stage can redirect slowly. Wait for the menu button before clicking so
+    // we don't race an in-flight navigation.
+    const userMenuButton = page.getByRole("button", { name: "Open user menu" });
+    await userMenuButton.waitFor({ state: "visible" });
+    await userMenuButton.click();
     const manageAccountLink = page.getByRole("menuitem", {
       name: "Manage your ⁨Mozilla account⁩",
       exact: false,
@@ -52,7 +56,10 @@ async function deleteTestUserAccounts(browser: Browser) {
       name: "Delete account",
     });
     await deleteButtonConfirm.click();
-    await page.waitForURL(`${getBaseTestEnvUrl()}/en`);
+    // After deletion the app redirects to the localized home page. Match the
+    // /en prefix instead of an exact URL so a trailing path or query does not
+    // abort the wait.
+    await page.waitForURL(`${getBaseTestEnvUrl()}/en**`);
 
     await page.goto(manageFxaAccountUrl!);
     await page.getByRole("link", { name: "Delete Account" }).click();
