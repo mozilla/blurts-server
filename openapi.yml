@@ -53,7 +53,7 @@ components:
       description: A data class we report as resolved. `passwords` and `email-addresses` today, but this is an open set, so accept a value you do not recognise instead of rejecting the response.
       type: string
     BreachResolution:
-      description: One item of a `POST /user/breaches/resolutions` body. Names a breach and the data classes to mark resolved, applied to every address in `emails`, or to every address the breach affected when `emails` is omitted.
+      description: One entry of a `POST /user/breaches/resolutions` body. Names a breach, the data classes to mark resolved, and the addresses to target.
       type: object
       additionalProperties: false
       required:
@@ -63,7 +63,7 @@ components:
         emails:
           type: array
           minItems: 1
-          description: Monitored email addresses to apply the update to. If omitted, applies to every monitored address the referenced breach affected.
+          description: Email addresses to target. Omit it to target every monitored address the breach affected.
           items:
             type: string
             format: email
@@ -271,11 +271,11 @@ paths:
       description: |
         Mark data classes resolved for one or more breaches. Resolutions only move one way, this API cannot unresolve a data class.
 
+        Each entry targets the addresses in `emails`, or every monitored address the breach affected when `emails` is omitted. Every address you list in `emails` must be monitored by this user and affected by that breach.
+
         Idempotent per `(email, dataClass, breachId)`. Repeated `breachId` entries merge, and order does not matter.
 
         Atomic: every targeted email and data class updates, or none does.
-
-        Every address in `emails` must be monitored by the authenticated user, and affected by the referenced breach.
 
       requestBody:
         required: true
@@ -310,7 +310,7 @@ paths:
         "204":
           description: Resolution state updated successfully.
         "400":
-          description: Invalid request, for example an empty batch, an empty `dataClasses` array, a malformed email address, or a data class the referenced breach never leaked.
+          description: Invalid request, for example an empty batch, an empty `emails` or `dataClasses` array, a malformed email address, or a data class the referenced breach never leaked.
           content:
             application/json:
               schema:
@@ -341,7 +341,8 @@ paths:
 
             - an unknown `breachId`, or a breach this endpoint does not serve
             - an address this user does not monitor, including one they own but have not verified
-            - a monitored address the referenced breach did not affect
+            - an address the referenced breach did not affect
+            - an entry that targets nothing: `emails` omitted, and the breach affected no monitored address
 
             All give the same code and message, so the response does not say which of them applied.
           content:
@@ -350,7 +351,7 @@ paths:
                 $ref: "#/components/schemas/Error"
               example:
                 code: not-found
-                message: One or more of the referenced breaches or email addresses was not found.
+                message: Nothing matched for one or more entries.
         "429":
           $ref: "#/components/responses/TooManyRequests"
         "500":
