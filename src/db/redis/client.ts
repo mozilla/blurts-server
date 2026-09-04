@@ -11,8 +11,13 @@ export const REDIS_ALL_BREACHES_KEY = "breaches";
 export const REDIS_ALL_DATA_BROKERS_KEY = "dataBrokers";
 export const BREACHES_EXPIRY_SECONDS = 3600 * 12; // 12 hour
 
-let singleton: Redis;
+let singleton: Redis | undefined;
 export const redisClient = () => {
+  // Reuse the connection; a new one would cause a leak
+  if (singleton) {
+    return singleton;
+  }
+
   if (process.env.REDIS_URL?.includes("redis.mock")) {
     singleton = new MockRedis();
     logger.debug("redis_mock_client_created_success");
