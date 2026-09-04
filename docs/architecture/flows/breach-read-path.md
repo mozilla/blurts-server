@@ -39,7 +39,8 @@ Entrypoint: [`getBreaches.ts:13`](../../../src/app/functions/server/getBreaches.
 
 | Step                                                                                                                                                        | Code                                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `getAllBreachesFromDb()` — read-through cache: read Redis key `"breaches"`; on a miss query Postgres `getAllBreaches()` and repopulate Redis with a 12h TTL | [hibp.ts:277](../../../src/utils/hibp.ts#L277), miss/set path [:290](../../../src/utils/hibp.ts#L290)–[:305](../../../src/utils/hibp.ts#L305) |
+| `getAllBreachesFromDb()` — read-through cache: read Redis key `"breaches"`; on a miss query Postgres `getAllBreaches()` and repopulate Redis with a 12h TTL | [hibp.ts:278](../../../src/utils/hibp.ts#L278), miss/set path [:291](../../../src/utils/hibp.ts#L291)–[:306](../../../src/utils/hibp.ts#L306) |
+| On a Redis _fault_ (not a miss), read Postgres directly                                                                                                     | [hibp.ts:319](../../../src/utils/hibp.ts#L319)–[:333](../../../src/utils/hibp.ts#L333)                                                        |
 | Redis key/TTL constants — `REDIS_ALL_BREACHES_KEY = "breaches"`, `BREACHES_EXPIRY_SECONDS = 12h`                                                            | [redis/client.ts:10](../../../src/db/redis/client.ts#L10), [:12](../../../src/db/redis/client.ts#L12)                                         |
 | Cold-start fallback only when the table is empty: `fetchHibpBreaches()` → `upsertBreaches()` → re-read                                                      | [getBreaches.ts:21](../../../src/app/functions/server/getBreaches.ts#L21)                                                                     |
 | `dbToHibp` shapes each snake_case `BreachRow` into the PascalCase `HibpLikeDbBreach` the views consume                                                      | [hibp.ts:246](../../../src/utils/hibp.ts#L246), type [:224](../../../src/utils/hibp.ts#L224)                                                  |
@@ -113,9 +114,11 @@ The diagram owns the ordering and the per-email loop; the table carries the anch
 
 Two separate read-through implementations back the breach catalog, and they share the same Redis key (`"breaches"`) and 12h TTL:
 
-- `getAllBreachesFromDb()` ([hibp.ts:277](../../../src/utils/hibp.ts#L277)) — used by `getBreaches()`, i.e. every read surface in this doc.
+- `getAllBreachesFromDb()` ([hibp.ts:278](../../../src/utils/hibp.ts#L278)) — used by `getBreaches()`, i.e. every read surface in this doc.
 - `BreachDataService`'s read-through — used by the email pipeline's `getBreach(name)` (see [breach-pipeline.md](./breach-pipeline.md#breach-metadata-cache-redis)).
 
 That key is written/refreshed by the [breach-sync-cron Cache Refresh stage](./breach-sync-cron.md#stage-3--cache-refresh). Because the key is shared, a stale or missing catalog can at worst delay a brand-new breach appearing on these pages until the next sync — never surface wrong data.
+
+Both a cache _miss_ and a cache _fault_ read Postgres. A miss (key absent or expired) reads Postgres and repopulates the cache. A fault (Redis unreachable, or refusing connections because it is at `maxclients`) reads Postgres without repopulating. Either way the catalog is served, so a Redis problem degrades these pages to uncached reads rather than emptying them.
 
 Only the catalog is cached. The dashboard's per-user match (Stage 3) is never cached — every dashboard load makes a live HIBP k-anon call per verified email, so who a subscriber matches is always recomputed.

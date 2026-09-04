@@ -3,19 +3,45 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { vi, describe, it, expect, beforeEach, afterAll } from "vitest";
-import { createRedisInstance } from "./util";
-import { redisClient } from "./client";
 import MockRedis from "ioredis-mock";
 import type { Redis } from "ioredis";
 
-vi.mock("@sentry/core", () => ({
-  logger: {
-    debug: vi.fn(),
-  },
-}));
+vi.mock("../../app/functions/server/logging", async () => {
+  const { mockLogger } = await import("../../test/helpers/mockLogger");
+  return { logger: mockLogger() };
+});
+// Stubs out the only code that builds a real client.
 vi.mock("./util", () => ({
   createRedisInstance: vi.fn(),
 }));
+
+/**
+ * Import a fresh copy of the client module.
+ *
+ * `redisClient()` caches its client in module-level state, which lives as
+ * long as the module registry entry. Import `./client` once at the top of
+ * this file and the first test to call it would fix the client for every
+ * later test. `vi.resetModules()` drops the registry, so the next import
+ * re-runs the module body with `singleton` unset.
+ *
+ * The imports have to be dynamic and have to live in here. A static
+ * top-level import binds before any test runs and `vi.resetModules()` does
+ * not rebind it, so it would keep pointing at the stale copy. `./util` and
+ * the logger are re-imported for the same reason: their `vi.mock` factories
+ * return new spies per registry, and the test has to assert on the same
+ * spies the client called.
+ */
+async function loadClient() {
+  vi.resetModules();
+  const { createRedisInstance } = await import("./util");
+  const { logger } = await import("../../app/functions/server/logging");
+  const { redisClient } = await import("./client");
+  return {
+    redisClient,
+    createRedisInstance: vi.mocked(createRedisInstance),
+    logger,
+  };
+}
 
 describe("redisClient", () => {
   const originalEnv = process.env;
@@ -27,18 +53,24 @@ describe("redisClient", () => {
     process.env = originalEnv;
   });
 
-  it('returns a MockRedis instance when REDIS_URL includes "redis.mock"', () => {
+  it('returns a MockRedis instance when REDIS_URL includes "redis.mock"', async () => {
     process.env.REDIS_URL = "redis.mock://localhost";
+    const { redisClient, createRedisInstance, logger } = await loadClient();
+
     const client = redisClient();
 
     expect(client).toBeInstanceOf(MockRedis);
     expect(createRedisInstance).not.toHaveBeenCalled();
+    expect(logger.info).toHaveBeenCalledWith("redis_client_created", {
+      mock: true,
+    });
   });
 
-  it("uses createRedisInstance when REDIS_URL is not defined", () => {
+  it("uses createRedisInstance when REDIS_URL is not defined", async () => {
     delete process.env.REDIS_URL;
+    const { redisClient, createRedisInstance } = await loadClient();
     const fakeClient = {} as unknown as Redis;
-    vi.mocked(createRedisInstance).mockReturnValue(fakeClient);
+    createRedisInstance.mockReturnValue(fakeClient);
 
     const client = redisClient();
 
@@ -46,14 +78,49 @@ describe("redisClient", () => {
     expect(client).toBe(fakeClient);
   });
 
-  it('uses createRedisInstance when REDIS_URL does not include "redis.mock"', () => {
-    process.env.REDIS_URL = "redis://localhost:6379";
+  it('uses createRedisInstance when REDIS_URL does not include "redis.mock"', async () => {
+    // Only string-matched by client.ts; nothing ever dials it.
+    process.env.REDIS_URL = "redis://redis.invalid:6379";
+    const { redisClient, createRedisInstance } = await loadClient();
     const fakeClient = {} as unknown as Redis;
-    vi.mocked(createRedisInstance).mockReturnValue(fakeClient);
+    createRedisInstance.mockReturnValue(fakeClient);
 
     const client = redisClient();
 
     expect(createRedisInstance).toHaveBeenCalledTimes(1);
     expect(client).toBe(fakeClient);
+  });
+
+  it("opens one connection no matter how many times it is called", async () => {
+    process.env.REDIS_URL = "redis://redis.invalid:6379";
+    const { redisClient, createRedisInstance } = await loadClient();
+    createRedisInstance.mockReturnValue({} as unknown as Redis);
+
+    const clients = Array.from({ length: 100 }, () => redisClient());
+
+    expect(createRedisInstance).toHaveBeenCalledTimes(1);
+    expect(new Set(clients).size).toBe(1);
+  });
+
+  it("logs its creation once at info", async () => {
+    process.env.REDIS_URL = "redis://redis.invalid:6379";
+    const { redisClient, createRedisInstance, logger } = await loadClient();
+    createRedisInstance.mockReturnValue({} as unknown as Redis);
+
+    Array.from({ length: 100 }, () => redisClient());
+
+    expect(logger.info).toHaveBeenCalledTimes(1);
+    expect(logger.info).toHaveBeenCalledWith("redis_client_created", {
+      mock: false,
+    });
+  });
+
+  it("reuses the mock client too", async () => {
+    process.env.REDIS_URL = "redis.mock://localhost";
+    const { redisClient } = await loadClient();
+
+    const clients = Array.from({ length: 100 }, () => redisClient());
+
+    expect(new Set(clients).size).toBe(1);
   });
 });

@@ -313,9 +313,24 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
     }
   } catch (e) {
     logger.error("get_all_breaches_from_db", {
-      exception: "No breaches exist in the database: " + (e as string),
+      exception: "Failed to read breaches from redis: " + (e as string),
     });
-    return [];
+
+    // A Redis fault must not look like an empty breaches table.
+    if (dbBreaches.length === 0) {
+      try {
+        dbBreaches = await getAllBreaches();
+        logger.info("get_all_breaches_from_db_fallback", {
+          numOfBreaches: dbBreaches.length,
+        });
+      } catch (dbError) {
+        logger.error("get_all_breaches_from_db", {
+          exception:
+            "No breaches exist in the database: " + (dbError as string),
+        });
+        return [];
+      }
+    }
   }
 
   // TODO: we can do some filtering here for the most commonly used fields
