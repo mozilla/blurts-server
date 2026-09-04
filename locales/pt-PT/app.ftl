@@ -40,20 +40,21 @@ compromised-data = Dados comprometidos:
 # Link title
 more-about-this-breach = Mais acerca desta brecha
 sensitive-sites = Como é que o { -product-name } trata sites sensíveis?
-sensitive-sites-copy = { -product-name } só revela as contas associadas com a estes tipos de violações de dados depois de um endereço de e-mail ter sido confirmado. Isto significa que é a única pessoa que pode ver se a sua informação estava numa violação de dados (a menos que alguém tenha acesso à sua conta de e-mail).
+sensitive-sites-copy =
+    { -product-name } só revela as contas associadas com a estes tipos
+    de violações de dados depois de um endereço de e-mail ter sido confirmado. Isto significa que
+    é a única pessoa que pode ver se a sua informação estava numa violação de dados (a menos que
+    alguém tenha acesso à sua conta de email).
 what-data = Que dados foram comprometidos:
 delayed-reporting-headline = Porque demorou tanto tempo até esta violação de dados ser reportada?
 delayed-reporting-copy =
     Pode demorar meses ou até mesmo anos para as credenciais expostas 
     numa violação de dados aparecerem na dark web. As violações de dados são adicionadas à nossa base de dados 
     assim que são descobertas e validadas.
-
-##
-
 what-is-a-website-breach = O que é uma falha de segurança do site?
-website-breach-blurb = Uma falha de segurança de dados de um site ocorre quando os cibercriminosos roubam, copiam ou expõem a informação pessoal de contas na Internet. Geralmente, é a consequência dos piratas informáticos encontrarem um ponto fraco na segurança do site. As falhas de segurança também podem acontecer quando a informação sobre contas é divulgada de forma acidental.
+website-breach-blurb = Uma falha de segurança de dados de um site ocorre quando os ciber criminosos roubam, copiam ou expõem a informação pessoal de contas na Internet. Geralmente é o resultado dos hackers encontrarem um ponto fraco na segurança do site. As falhas de segurança também podem acontecer quando a informação sobre contas é divulgada de forma acidental.
 what-is-data-agg = O que é um agregador de dados?
-what-is-data-agg-blurb = Agregadores ou agentes de dados, recolhem informação de registos públicos e outras fontes, incluindo dados adquiridos a empresas. Estes compilam esta informação para criar perfis detalhados dos consumidores, que são vendidos a empresas para fins de marketing. Os piratas informáticos podem utilizar estes dados para perfilar, fazer-se passar por nós ou outras formas de fraude. Pode não reconhecer algumas destas empresas porque os agregadores de dados recolhem, muitas vezes, informações sobre as pessoas sem que estas criem uma conta ou subscrevem a um serviço.
+what-is-data-agg-blurb = Agregadores de dados, ou agentes de dados, recolhem informação de registos públicos e outras fontes, incluindo dados comprados a empresas. Estes compilam esta informação para criar perfis detalhados dos consumidores, que são vendidos a empresas para fins de marketing. Os hackers podem utilizar estes dados para perfilar, fazer-se passar por nós, ou outras formas de fraude. Pode não reconhecer algumas destas empresas porque os agregadores de dados recolhem muitas vezes informações sobre as pessoas sem que estas criem uma conta ou subscrevem a um serviço.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Sinopse

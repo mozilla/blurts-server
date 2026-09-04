@@ -51,9 +51,6 @@ delayed-reporting-copy =
     Μερικές φορές μπορεί να περάσουν μήνες ή χρόνια μέχρι να εμφανιστούν τα 
     εκτεθειμένα διαπιστευτήρια στο Dark Web. Οι παραβιάσεις προστίθενται στη βάση δεδομένων 
     μας μόλις ανακαλυφθούν και επαληθευτούν.
-
-##
-
 what-is-a-website-breach = Τι είναι μια παραβίαση ιστοτόπου;
 website-breach-blurb = Μια παραβίαση δεδομένων ιστοτόπου συμβαίνει όταν οι κυβερνοεγκληματίες υποκλέπτουν, αντιγράφουν ή εξάγουν προσωπικά στοιχεία από διαδικτυακούς λογαριασμούς. Προκύπτει συνήθως όταν οι hacker βρίσκουν ένα τρωτό σημείο στην ασφάλεια του ιστοτόπου. Παραβιάσεις συμβαίνουν επίσης όταν οι πληροφορίες των λογαριασμών διαρρέουν κατά λάθος.
 what-is-data-agg = Τι είναι ένας συναθροιστής δεδομένων;
@@ -132,7 +129,7 @@ main-nav-link-faq-tooltip = Συχνές ερωτήσεις
 
 user-menu-trigger-label = Άνοιγμα μενού χρήστη
 user-menu-trigger-tooltip = Προφίλ
-user-menu-manage-fxa-label = Διαχείριση { -brand-mozilla-account(case: "gen", capitalization: "lower") }
+user-menu-manage-fxa-label = Διαχείριση { -brand-mozilla-account(capitalization: "lower", case: "gen") }
 user-menu-settings-label = Ρυθμίσεις
 user-menu-settings-tooltip = Ρύθμιση του { -brand-mozilla-monitor }
 user-menu-help-label = Βοήθεια και υποστήριξη
@@ -144,7 +141,7 @@ user-menu-signout-tooltip = Αποσύνδεση από το { -brand-mozilla-mo
 
 mozilla = { -brand-mozilla }
 terms-of-service = Όροι υπηρεσίας
-privacy-notice = Σημείωση απορρήτου
+privacy-notice = Δήλωση απορρήτου
 github = { -brand-github }
 footer-nav-recent-breaches = Πρόσφατες παραβιάσεις δεδομένων
 footer-external-link-faq-label = Συχνές ερωτήσεις

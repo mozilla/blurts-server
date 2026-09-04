@@ -96,6 +96,7 @@ email-breach-alert-next-steps-description = <sign_in_link>Eike </sign_in_link> n
 email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = Emyatyrõ ñembogua jehechaha rupápe
 email-breach-alert-faqs-title = FAQs
 email-breach-alert-faq-qn-1 = ¿Mba’ére og̃uahẽ chéve kóva?
+email-breach-alert-faq-ans-1 = Eñemboheraguapy og̃uahẽ hag̃ua mba’ekuaarã ñembogua. <link_to_settings>Embohekopyahu erohoryvéva</link_to_settings> ejapose vove ñembohekohápe.
 email-breach-alert-faq-qn-2 = ¿Mba’ére ndaikuaái ko mba’apoha térã tenda?
 email-breach-alert-faq-qn-3 = ¿Mba’épa mba’ekuaarã kyhyjerã ñembogua?
 email-breach-alert-faq-qn-4 = ¿Mba’e { -brand-mozilla-monitor }?

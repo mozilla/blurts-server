@@ -38,3 +38,11 @@ modal-active-number-of-exposures-part-one-all =
         [one] We k'utb'al kuk'ut ronojel mul xqariq jalajoj uwach juq'attzij le k'o chi uwach ronojel retztaqan rech { $limit } taqoqxa'nib'al  le ktajin kawilawachij.
        *[other] We k'utb'al kuk'ut ronojel mul xqariq jalajoj uwach juq'attzij le k'o chi uwach ronojel retztaqan le kopan pa { $limit } taqoqxa'nib'al  le ktajin kawilawachij.
     }
+modal-active-number-of-exposures-part-two = Pacha', we k'o 10 k'axk'olil chi rij le achaweb'al, wene are kub'ij chi xa jun rajilab'alil ch'aweb'al k'o chi uwach k'axk'olil pa 10 jalajoj uk'olib'al web', on kub'ij chi 22 rajilab'alil ch'aweb'al k'o chi uwach k'axk'olil pa 5 jalajoj uk'olib'al web'.
+modal-active-number-of-exposures-part-three-all = Are taq che'utzirisaxik ke'eya' pa le tz'aqat rajilab'alil suk'mayinem rech k'axk'olil pa le uxaq wuj rech utzirisanem.
+modal-fixed-number-of-exposures-title = Chi rij le rajilab'alil suk'umatal taq k'axk'olil
+modal-fixed-number-of-exposures-all = We k'utwachib'al, ruk'a'am le tz'aqat rajilab'alil taq retztaqan le suk'umam pa ronojel taqoqxa'nib'al pa kematz'ib' le ktajin ka'ilawachixik. Are taq kkojtaj retal le suk'umatal k'axk'olil. kya' pa le t'aqat rajilab'alil waral.
+modal-cta-ok = Ja'e
+modal-cta-got-it = Xink'oxomaj
+open-modal-alt = Ujaqik k'utb'e
+close-modal-alt = Utz'apixik k'utb'e
