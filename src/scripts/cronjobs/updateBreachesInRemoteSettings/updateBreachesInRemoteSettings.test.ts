@@ -124,6 +124,55 @@ describe("updateBreachesInRemoteSettings job", () => {
       await main(mockLog);
       expect(reviewSpy).not.toHaveBeenCalled();
     });
+    it("syncs a breach that leaked emails but no passwords", async () => {
+      const emailOnly = HibpData[0] as HIBP.HibpGetBreachesResponse[number];
+      expect(emailOnly.DataClasses).not.toContain("Passwords");
+      vi.mocked(HIBP.fetchHibpBreaches).mockResolvedValue([emailOnly]);
+      fetchBreachesSpy.mockResolvedValueOnce(new Set([]));
+      addBreachSpy.mockResolvedValue(undefined);
+      reviewSpy.mockResolvedValue(undefined);
+
+      await main(mockLog);
+
+      // Pins the whole record
+      expect(addBreachSpy).toHaveBeenCalledWith({
+        Name: emailOnly.Name,
+        Domain: emailOnly.Domain,
+        BreachDate: emailOnly.BreachDate,
+        PwnCount: emailOnly.PwnCount,
+        AddedDate: emailOnly.AddedDate,
+        DataClasses: emailOnly.DataClasses,
+        IsSensitive: false,
+      });
+    });
+    it("skips a breach that leaked neither passwords nor emails", async () => {
+      const neither = {
+        ...(HibpData[0] as HIBP.HibpGetBreachesResponse[number]),
+        Name: "NoUsableDataClasses",
+        DataClasses: ["Names", "Phone numbers"],
+      };
+      vi.mocked(HIBP.fetchHibpBreaches).mockResolvedValue([neither]);
+      fetchBreachesSpy.mockResolvedValueOnce(new Set([]));
+
+      await main(mockLog);
+
+      expect(addBreachSpy).not.toHaveBeenCalled();
+    });
+    it("carries IsSensitive so clients can filter on it", async () => {
+      const sensitive = HibpData.find(
+        (breach) => breach.IsSensitive,
+      ) as HIBP.HibpGetBreachesResponse[number];
+      vi.mocked(HIBP.fetchHibpBreaches).mockResolvedValue([sensitive]);
+      fetchBreachesSpy.mockResolvedValueOnce(new Set([]));
+      addBreachSpy.mockResolvedValue(undefined);
+      reviewSpy.mockResolvedValue(undefined);
+
+      await main(mockLog);
+
+      expect(addBreachSpy).toHaveBeenCalledWith(
+        expect.objectContaining({ Name: sensitive.Name, IsSensitive: true }),
+      );
+    });
     it("happy path: logs counts, posts filtered breaches, requests review, and exits", async () => {
       const breaches = HibpData.slice(0, 3) as HIBP.HibpGetBreachesResponse;
       vi.mocked(HIBP.fetchHibpBreaches).mockResolvedValue(breaches);
@@ -133,8 +182,7 @@ describe("updateBreachesInRemoteSettings job", () => {
 
       await main(mockLog);
       expect(vi.mocked(HIBP.fetchHibpBreaches)).toHaveBeenCalledTimes(1);
-      // First mock breach is ignored because of no passwords
-      expect(addBreachSpy).toHaveBeenCalledTimes(2);
+      expect(addBreachSpy).toHaveBeenCalledTimes(3);
       expect(reviewSpy).toHaveBeenCalledTimes(1);
     });
     it("happy path: exits with code 1 if review fails", async () => {
@@ -149,7 +197,7 @@ describe("updateBreachesInRemoteSettings job", () => {
 
       await main(mockLog);
       expect(vi.mocked(HIBP.fetchHibpBreaches)).toHaveBeenCalledTimes(1);
-      expect(addBreachSpy).toHaveBeenCalledTimes(2);
+      expect(addBreachSpy).toHaveBeenCalledTimes(3);
       expect(reviewSpy).toHaveBeenCalledTimes(1);
       expect(process.exitCode).toEqual(1);
 
