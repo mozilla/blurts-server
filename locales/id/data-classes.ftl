@@ -5,7 +5,7 @@
 
 # Breach Data Classes
 
-academic-records = Catatan akademik
+academic-records = Catatan akademis
 account-balances = Saldo akun
 address-book-contacts = Kontak buku alamat
 age-groups = Kelompok usia
@@ -104,7 +104,7 @@ login-histories = Riwayat masuk
 loyalty-program-details = Detail program loyalitas
 mac-addresses = Alamat MAC
 marital-statuses = Status pernikahan
-military-service = Layanan militer
+military-service = Wajib militer
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
 mnemonic-phrases = Frasa mnemonik
 mothers-maiden-names = Nama gadis ibu

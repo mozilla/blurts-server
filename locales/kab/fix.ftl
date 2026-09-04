@@ -18,9 +18,6 @@ fix-flow-celebration-next-label = Ad nkemmel
 fix-flow-celebration-next-recommendations-label = Wali iwellihen
 fix-flow-celebration-next-dashboard-label = Ddu ɣer tfelwit n usenqed
 
-## High-risk flow
-
-
 ## Leaked passwords and security questions flow
 
 fix-flow-celebration-leaked-passwords-title = Awalen n uεeddi ttummestnen tura!

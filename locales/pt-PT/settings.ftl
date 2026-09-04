@@ -2,9 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-
-# Settings page
-
 settings-page-title = Definições do { -product-short-name }
 
 ## Breach alert preferences
@@ -20,9 +17,9 @@ settings-alert-preferences-option-two = Enviar todos alertas de violações de d
 
 settings-email-verification-callout = Verificação de e-mail necessária
 settings-remove-email-button-label = Remover
-settings-email-addresses-header = Endereços de e-mail
-settings-email-addresses-description = { -brand-monitor } irá alertá-lo se estes e-mails aparecerem em violações de dados conhecidas.
-settings-email-addresses-add-email-button = Adicionar endereço de e-mail
+settings-email-addresses-header = Endereços de email
+settings-email-addresses-description = O { -brand-monitor } irá alertá-lo se estes emails aparecerem em violações de dados conhecidas.
+settings-email-addresses-add-email-button = Adicionar endereço de email
 # Variables:
 #   $limit (number) - Number of emails that can be added for monitoring.
 settings-email-addresses-add-email-indicator-limit = Adicionar até { $limit }
@@ -31,14 +28,14 @@ input-error-alt = Erro
 
 ## Email address dialog
 
-settings-email-addresses-initial-dialog-header = Adicionar um endereço de e-mail
-settings-email-addresses-initial-dialog-description = Iremos enviar uma ligação de verificação para confirmar que pretende incluir a mesma numa verificação futura de { -brand-monitor }.
-settings-email-addresses-initial-dialog-add-email-input-label = Inserir endereço de e-mail
+settings-email-addresses-initial-dialog-header = Adicionar um endereço de email
+settings-email-addresses-initial-dialog-description = Iremos enviar uma ligação de verificação para confirmar que pretende incluir a mesma numa verificação futura do { -brand-monitor }.
+settings-email-addresses-initial-dialog-add-email-input-label = Inserir endereço de email
 settings-email-addresses-initial-dialog-add-email-button-label = Enviar ligação de verificação
 # Variables:
 #   $email (string) - Email address the confirmation has been sent to.
 settings-email-addresses-confirmation-dialog-header = Ligação de verificação enviada para <b>{ $email }</b>
-settings-email-addresses-confirmation-dialog-description = Abrir a ligação para o adicionar a esta conta para futuras { -brand-monitor } digitalizações.
+settings-email-addresses-confirmation-dialog-description = Abra a ligação para o adicionar a esta conta para futuras verificações do { -brand-monitor }.
 settings-email-addresses-confirmation-dialog-close-button = Fechar
 
 ## Delete Monitor account
@@ -56,7 +53,7 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = Ignorar
 ## Settings page redesign
 
 # Label for a navigation bar link to settings for updating the users scan profile info – “update” is used as a verb.
-settings-tab-label-update-scan-info = Atualizar informação de digitalização
+settings-tab-label-update-scan-info = Atualizar informação de verificação
 settings-tab-label-edit-info = Editar as suas informações
 settings-tab-label-notifications = Definir notificações
 settings-tab-label-manage-account = Gerir conta
