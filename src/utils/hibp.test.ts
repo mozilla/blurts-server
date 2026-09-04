@@ -89,11 +89,16 @@ describe("getAllBreachesFromDb", () => {
     favicon_url: null,
   } as unknown as BreachRow;
 
-  function mockRedis(get: () => Promise<string | null>) {
-    vi.mocked(redisClient).mockReturnValue({
-      get: vi.fn().mockImplementation(get),
-      set: vi.fn().mockResolvedValue("OK"),
-    } as never);
+  function mockRedis(overrides: {
+    get?: () => Promise<string | null>;
+    set?: () => Promise<string>;
+  }) {
+    const client = {
+      get: vi.fn().mockImplementation(overrides.get ?? (async () => null)),
+      set: vi.fn().mockImplementation(overrides.set ?? (async () => "OK")),
+    };
+    vi.mocked(redisClient).mockReturnValue(client as never);
+    return client;
   }
 
   beforeEach(() => {
@@ -101,7 +106,7 @@ describe("getAllBreachesFromDb", () => {
   });
 
   it("serves the cached breaches when Redis answers", async () => {
-    mockRedis(async () => JSON.stringify([breachRow]));
+    mockRedis({ get: async () => JSON.stringify([breachRow]) });
 
     const breaches = await getAllBreachesFromDb();
 
@@ -109,8 +114,18 @@ describe("getAllBreachesFromDb", () => {
     expect(getAllBreaches).not.toHaveBeenCalled();
   });
 
+  it("reads Postgres and refills the cache on a miss", async () => {
+    const client = mockRedis({ get: async () => null });
+    vi.mocked(getAllBreaches).mockResolvedValue([breachRow]);
+
+    const breaches = await getAllBreachesFromDb();
+
+    expect(breaches).toHaveLength(1);
+    expect(client.set).toHaveBeenCalledTimes(1);
+  });
+
   it("reads Postgres when the Redis read fails", async () => {
-    mockRedis(() => Promise.reject(new Error("ECONNREFUSED")));
+    mockRedis({ get: () => Promise.reject(new Error("ECONNREFUSED")) });
     vi.mocked(getAllBreaches).mockResolvedValue([breachRow]);
 
     const breaches = await getAllBreachesFromDb();
@@ -122,18 +137,51 @@ describe("getAllBreachesFromDb", () => {
     expect(getAllBreaches).toHaveBeenCalledTimes(1);
   });
 
-  it("returns nothing when Redis and Postgres are both down", async () => {
-    mockRedis(() => Promise.reject(new Error("ECONNREFUSED")));
+  it("does not try to refill a faulted Redis", async () => {
+    const client = mockRedis({
+      get: () => Promise.reject(new Error("ECONNREFUSED")),
+    });
+    vi.mocked(getAllBreaches).mockResolvedValue([breachRow]);
+
+    await getAllBreachesFromDb();
+
+    // A second command would stall for another commandTimeout.
+    expect(client.set).not.toHaveBeenCalled();
+  });
+
+  it("blames Postgres, and queries it once, when Postgres is what failed", async () => {
+    mockRedis({ get: async () => null });
     vi.mocked(getAllBreaches).mockRejectedValue(new Error("pool timeout"));
 
     const breaches = await getAllBreachesFromDb();
 
     expect(breaches).toEqual([]);
+    expect(getAllBreaches).toHaveBeenCalledTimes(1);
     expect(logger.error).toHaveBeenCalledWith(
-      "get_all_breaches_from_db",
+      "get_all_breaches_from_db_failed",
       expect.objectContaining({
         exception: expect.stringContaining("No breaches exist in the database"),
       }),
+    );
+    expect(logger.error).not.toHaveBeenCalledWith(
+      "get_breaches_from_redis_failed",
+      expect.anything(),
+    );
+  });
+
+  it("still serves the breaches when only the cache write fails", async () => {
+    mockRedis({
+      get: async () => null,
+      set: () => Promise.reject(new Error("OOM")),
+    });
+    vi.mocked(getAllBreaches).mockResolvedValue([breachRow]);
+
+    const breaches = await getAllBreachesFromDb();
+
+    expect(breaches).toHaveLength(1);
+    expect(logger.error).toHaveBeenCalledWith(
+      "set_breaches_in_redis_failed",
+      expect.anything(),
     );
   });
 });
