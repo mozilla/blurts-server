@@ -1,12 +1,25 @@
 openapi: "3.1.1"
 info:
   title: Monitor Breach Alerts API
-  description: Monitor's external API for Firefox clients
-  version: "1.0"
+  description: |
+    Monitor's external API for Firefox clients.
+
+    Remote Settings owns breach facts, this API owns per-user resolution state. The client joins them on the HIBP breach name, returned here as `id`.
+
+    "Monitored" means the account's verified primary and secondary email addresses.
+  version: "1.0.0"
+  license:
+    name: MPL-2.0
+    identifier: MPL-2.0
+# The web app already owns /api/v1.
 servers:
-  - url: https://monitor.mozilla.org/api/v1
+  - url: https://monitor.mozilla.org/api/firefox/v1
     description: Production endpoint
-  - url: http://localhost:6060/api/v1
+  - url: https://monitor-stage.allizom.org/api/firefox/v1
+    description: Stage endpoint
+  - url: https://dev.monitor.nonprod.webservices.mozgcp.net/api/firefox/v1
+    description: Dev endpoint
+  - url: http://localhost:6060/api/firefox/v1
     description: Local development server
 security:
   - bearerAuth: []
@@ -15,124 +28,182 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-      bearerFormat: JWT
-      description: >
-        Token granted by Firefox Accounts (FxA).
-        The server validates the token (signature, issuer, audience, expiry) and derives the
-        authenticated user from the token subject (`sub`). All `/user/*` endpoints are scoped
-        to the authenticated subject and never return or modify data for any other user.
+      # We introspect the token with FxA.
+      description: An OAuth token granted by Firefox Accounts (FxA), carrying the `https://identity.mozilla.com/apps/monitor` scope. Treat it as opaque.
   schemas:
-    Breach:
+    Error:
       type: object
+      description: Body of every non-2xx response we generate. Our WAF can answer first, and those responses carry neither this body nor a `code`. Branch on `code`. `message` is for logs and bug reports, it is not stable, so do not match on it.
       required:
-        - id
-        - domain
-        - addedDate
-        - breachDate
-        - modifiedDate
-        - dataClasses
-        - isSensitive
+        - code
+        - message
       properties:
-        id:
-          description: A unique identifier for the breach
+        code:
+          description: Stable, machine-readable cause, kebab-case. Today `token-invalid`, `missing-scope`, `no-monitor-account`, `invalid-request`, `not-found`, `rate-limited`, `internal-error`, `unavailable`. We may add values in the future, so fall back to the status code for one you do not recognise.
           type: string
-        domain:
-          description: |
-            The domain of the primary website the breach occurred on. 
-            This may be used for identifying other assets external systems may have for the site.
-            This value comes from HIBP. See (their API docs)[https://haveibeenpwned.com/api/v3#BreachModel] for more information.
+        message:
           type: string
-        breachDate:
-          description: The date (with no time) the breach originally occurred on in ISO 8601 format. This is not always accurate — frequently breaches are discovered and reported long after the original incident. Use this attribute as a guide only.
-          type: string
-          format: date
-        addedDate:
-          description: The date and time (precision to the minute) the breach was added to the system in ISO 8601 format.
-          type: string
-          format: date-time
-        modifiedDate:
-          description: >
-            The date and time (precision to the minute) the breach was modified in ISO 8601 format. 
-            This will only differ from the AddedDate attribute if other attributes represented here are changed 
-            or data in the breach itself is changed (i.e. additional data is identified and loaded). 
-            It is always either equal to or greater then the AddedDate attribute, never less than.
-          type: string
-          format: date-time
-        dataClasses:
-          description: >
-            This attribute describes the nature of the data compromised in the breach and contains an alphabetically
-            ordered string array of impacted data classes. See https://haveibeenpwned.com/api/v3/dataclasses for list of dataclasses.
+    DataClass:
+      description: A data class you can mark resolved. Closed set, we reject anything else with a `400`. Remote Settings serves the same values in HIBP's Title Case, `Passwords` and `Email addresses`.
+      type: string
+      enum:
+        - passwords
+        - email-addresses
+    ResolvedDataClass:
+      description: A data class we report as resolved. `passwords` and `email-addresses` today, but this is an open set, so accept a value you do not recognise instead of rejecting the response.
+      type: string
+    BreachResolution:
+      description: One entry of a `POST /user/breaches/resolutions` body. Names a breach, the data classes to mark resolved, and the addresses to target.
+      type: object
+      additionalProperties: false
+      required:
+        - dataClasses
+        - breachId
+      properties:
+        emails:
           type: array
+          minItems: 1
+          description: Email addresses to target. Omit it to target every monitored address the breach affected.
           items:
             type: string
-        isSensitive:
-          description: Indicates if the breach is considered [sensitive](https://haveibeenpwned.com/FAQs#SensitiveBreach)
-          type: boolean
+            format: email
+        dataClasses:
+          type: array
+          minItems: 1
+          description: Data classes to mark resolved for the selected emails. Each must be one the referenced breach actually leaked, so a breach that leaked only email addresses takes `email-addresses`, not `passwords`. Sending one it did not leak is a `400`, so refresh your Remote Settings copy before retrying.
+          items:
+            $ref: "#/components/schemas/DataClass"
+        breachId:
+          description: The HIBP breach name, as returned by `GET /user/breaches` in `id`.
+          type: string
     UserBreachState:
       type: object
-      description: Object describing the current breach state and resolutions
+      description: One entry of `breachedAccounts`. What a single address has resolved for the breach holding it. Each address carries its own list, so two addresses in the same breach can differ.
       required:
         - email
         - resolvedDataClasses
       properties:
         email:
-          description: The impacted email address
+          description: A monitored address the breach affected.
           type: string
           format: email
         resolvedDataClasses:
-          description: Data classes that have been resolved by user action, e.g. changing their password. Key-value object where key is the dataclass and the value is the timestamp of the resolution action.
-          type: object
-          # Right now we're not tracking things like timestamp or source (monitor vs. fx)
-          # but having an object gives flexibility in the future
-          additionalProperties:
-            type: object
-            properties:
-              resolvedAt:
-                type: string
-                format: date-time
+          # No timestamp, we store a checked list.
+          description: Data classes this user has marked resolved for this breach, in the privacy panel or on the Monitor website. A breach is resolved once this array holds every `Passwords` or `Email addresses` the Remote Settings record lists. That record can carry other data classes, and only the ones this API serves appear here.
+          type: array
+          items:
+            $ref: "#/components/schemas/ResolvedDataClass"
 
     UserBreach:
       type: object
-      description: A breach affecting 1 or more email addresses tracked by a Monitor User, and resolution actions taken
+      description: One item of the `GET /user/breaches` response. A breach, plus one `UserBreachState` for each monitored address it affected.
       required:
-        - breach
+        - id
         - breachedAccounts
       properties:
-        breach:
-          $ref: "#/components/schemas/Breach"
+        id:
+          # Not the internal numeric breach id.
+          description: The HIBP breach name, for example `Adobe`. It is the `Name` of the matching `fxmonitor-breaches` record, matched exactly and case sensitively.
+          type: string
         breachedAccounts:
           type: array
+          minItems: 1
           items:
             $ref: "#/components/schemas/UserBreachState"
 
-paths:
-  /user:
-    post:
-      description: >
-        Create a new Monitor user using FxA token; links the new Monitor user to the FxA account
-        specified in the token. Must only be used when terms have been accepted.
-      responses:
-        "201":
-          description: User created successfully.
-        "202":
-          description: Accepted; returned when user already exists
-        "401":
-          description: Authentication required
-        "403":
-          description: Not authorized, or FxA account no longer exists
+  responses:
+    Unauthorized:
+      description: No usable token. The `Authorization` header is missing or malformed, or FxA reports the token as inactive or expired.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: token-invalid
+            message: FxA reports this token as inactive.
+    Forbidden:
+      description: |
+        The token is valid but does not grant access: either it lacks the Monitor scope, or the account has no Monitor subscriber. Monitor serves existing accounts only and never creates one.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          examples:
+            missingScope:
+              summary: Token does not carry the Monitor scope
+              value:
+                code: missing-scope
+                message: This token lacks the https://identity.mozilla.com/apps/monitor scope.
+            noMonitorAccount:
+              summary: FxA account has never signed up for Monitor
+              value:
+                code: no-monitor-account
+                message: This Firefox account has no Monitor subscriber.
+    # TODO(MNTOR-4119): set the threshold, and decide app or edge.
+    TooManyRequests:
+      description: Rate limited. Wait the interval in `Retry-After` if it is present, otherwise back off and retry.
+      headers:
+        Retry-After:
+          required: false
+          description: Seconds to wait before retrying.
+          schema:
+            type: integer
+            minimum: 1
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: rate-limited
+            message: Too many requests. Retry after 60 seconds.
+    InternalError:
+      description: Something failed on our side. Retry, and keep any state you already hold.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: internal-error
+            message: Monitor could not complete this request.
+    ServiceUnavailable:
+      description: Monitor is unavailable. Safe to retry, after the interval in `Retry-After` when it is present.
+      headers:
+        Retry-After:
+          required: false
+          description: Seconds to wait before retrying.
+          schema:
+            type: integer
+            minimum: 1
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: unavailable
+            message: Monitor is temporarily unavailable.
 
+paths:
   /user/breaches:
     get:
-      description: >
-        Get breaches for an authenticated user. Returns a list of breaches; each item includes
-        per-email user state for monitored emails affected by that breach.
+      operationId: listUserBreaches
+      summary: List breaches affecting this user
+      # Passwords and emails, what the panel acts on.
+      description: |
+        Breaches that leaked passwords or email addresses, with resolution state for each monitored email the breach affected.
+
+        Sensitive breaches, as HIBP marks them, are never returned. The privacy panel must not surface one, so there is no parameter to ask for them. Remote Settings does carry them, flagged, because the credential manager is allowed to.
+
+        **Freshness.** Breach metadata comes from a catalog we refresh every 10 minutes, so a new breach can take that long to appear. The per user match is live on every request and is not cached, so there is no last known result to serve when it fails.
+
+        **Joining.** Almost every `id` resolves in `fxmonitor-breaches`, but the collection is slower than this API. It publishes daily, and each batch is signed only after a person reviews it, deliberately, because it ships to every Firefox. So a breach can be live here for days before Firefox sees it, and a HIBP rename retires an id. Skip an id you cannot resolve rather than erroring, and pick it up on a later poll.
+
+        **Cadence.** Poll no more than hourly, and once a day is enough. Breaches reach HIBP weeks or months after the incident, so polling harder gains nothing.
 
       parameters:
         - name: domain
           in: query
           required: false
-          description: >
-            Filter breaches by the breached site's primary domain (exact match), e.g. "example.com".
+          description: Filter by the breached site's primary domain, matched exactly. A breach filed under `twitter.com` does not match `x.com`.
           schema:
             type: string
             minLength: 1
@@ -140,60 +211,17 @@ paths:
             example:
               summary: Example domain
               value: example.com
-        - name: dataClasses
-          in: query
-          required: false
-          description: >
-            Filter breaches to those whose breach.dataClasses includes any (but not necessarily all) of the specified values.
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-          examples:
-            passwords:
-              summary: Breaches that include passwords
-              value: ["passwords"]
-            pii:
-              summary: Breaches that include passwords or email addresses
-              value: ["passwords", "email-addresses"]
-        - name: unresolvedDataClasses
-          in: query
-          required: false
-          description: >
-            Filter breaches to those where one or more of the specified dataclasses
-            are still unresolved for the authenticated user, for at least one breached account.
-            A breach matches if any of the specified dataclasses are unresolved 
-            for at least one monitored email. Note that the breached accounts in the response are
-            not filtered by this parameter; the client will receive the complete set of breached account states
-            for the given breach.
-          schema:
-            type: array
-            items:
-              type: string
-          style: form
-          explode: true
-          examples:
-            passwords:
-              summary: Breaches with unresolved passwords
-              value: ["passwords"]
-        - name: includeSensitive
-          in: query
-          required: false
-          description: >
-            When set to `true`, includes breaches marked as sensitive in the response.
-            By default, sensitive breaches are excluded.
-          schema:
-            type: boolean
-          examples:
-            include:
-              summary: Include sensitive breaches
-              value: true
-
       responses:
         "200":
-          description: List of breaches associated with emails the user is monitoring
+          description: |
+            Breaches affecting emails this user is monitoring.
+
+            A breach missing from this list means we checked and this user is not affected by it. An empty array means that is true for every breach. A `200` is never a partial answer, so when the lookup fails we send a `503` instead.
+          headers:
+            Cache-Control:
+              description: Always `private, no-store`. This response is scoped to one user and must never be cached by a shared intermediary.
+              schema:
+                type: string
           content:
             application/json:
               schema:
@@ -204,50 +232,50 @@ paths:
                 hasBreaches:
                   summary: Breaches found
                   value:
-                    - breach:
-                        id: "Breach1"
-                        domain: "example.com"
-                        breachDate: "2023-04-10"
-                        addedDate: "2023-05-01T12:34:00Z"
-                        modifiedDate: "2023-05-01T12:34:00Z"
-                        dataClasses:
-                          - "email-addresses"
-                          - "passwords"
-                        isSensitive: false
+                    - id: "Adobe"
                       breachedAccounts:
                         - email: "alice@example.com"
-                          resolvedDataClasses:
-                            Passwords: {}
+                          resolvedDataClasses: ["passwords"]
+                    - id: "Facebook"
+                      breachedAccounts:
+                        - email: "alice@example.com"
+                          resolvedDataClasses: []
                 noResults:
                   summary: No breaches found
                   value: []
+        "400":
+          description: A query parameter failed validation.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                code: invalid-request
+                message: "domain must not be empty."
         "401":
-          description: Authentication required
+          $ref: "#/components/responses/Unauthorized"
         "403":
-          description: Not authorized
+          $ref: "#/components/responses/Forbidden"
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "503":
+          $ref: "#/components/responses/ServiceUnavailable"
+          description: We could not check this user against HIBP, so we do not know what they are affected by. Keep the breaches you already hold, do not clear them, and retry.
 
   /user/breaches/resolutions:
     post:
+      operationId: createBreachResolutions
+      summary: Mark breach data classes resolved
       description: |
-        Bulk endpoint for breach resolutions.
+        Mark data classes resolved for one or more breaches. Resolutions only move one way, this API cannot unresolve a data class.
 
-        Upsert resolution state for one or more breaches across one or more monitored email addresses.
+        Each entry targets the addresses in `emails`, or every monitored address the breach affected when `emails` is omitted. Every address you list in `emails` must be monitored by this user and affected by that breach.
 
-        This operation is idempotent per `(email, dataClass, breachId)`. Repeating the same
-        request results in the same stored state and does not produce an error.
+        Idempotent per `(email, dataClass, breachId)`. Repeated `breachId` entries merge, and order does not matter.
 
-        If `emails` is omitted within an individual resolution item, 
-        the update applies to all monitored email addresses affected by the breach referenced by `breachId`
-        for the authenticated user.
-
-        **Authorization and privacy**
-        - All `emails` provided must be monitored by the authenticated user.
-        - For privacy reasons, if any provided email address is not associated with the authenticated
-          user, the server treats the request as if the resource does not exist and returns
-          `404 Not Found`.
-
-        **Atomicity**
-        - Requests are atomic: the update is applied to all targeted emails and dataclasses, or to none.
+        Atomic: every targeted email and data class updates, or none does.
 
       requestBody:
         required: true
@@ -255,70 +283,79 @@ paths:
           application/json:
             schema:
               type: array
+              minItems: 1
               items:
-                type: object
-                additionalProperties: false
-                required:
-                  - dataClasses
-                  - resolved
-                  - breachId
-                properties:
-                  emails:
-                    type: array
-                    minItems: 1
-                    description: >
-                      Monitored email addresses to apply the update to. If omitted, applies to all
-                      monitored email addresses affected by the referenced breach.
-                    items:
-                      type: string
-                      format: email
-                  dataClasses:
-                    type: array
-                    minItems: 1
-                    description: Dataclasses to mark resolved/unresolved for the selected emails.
-                    items:
-                      type: string
-                  breachId:
-                    description: The unique breach identifier
-                    type: string
-                  resolved:
-                    type: boolean
-                    description: True to mark resolved; false to mark unresolved.
+                $ref: "#/components/schemas/BreachResolution"
             examples:
               resolveMultipleBreaches:
                 summary: Resolve multiple breaches
                 value:
-                  - breachId: "Breach1"
+                  - breachId: "Adobe"
                     dataClasses: ["passwords"]
-                    resolved: true
-                  - breachId: "Breach2"
+                  - breachId: "LinkedIn"
                     dataClasses: ["passwords"]
                     emails: ["alice@example.com"]
-                    resolved: true
               resolvePasswordsOneEmail:
-                summary: Resolve Passwords for one email in one breach
+                summary: Resolve passwords for one email in one breach
                 value:
                   - emails: ["alice@example.com"]
                     dataClasses: ["passwords"]
-                    breachId: "Breach1"
-                    resolved: true
-              undoPasswordsAllEmailsInBreach:
-                summary: Unresolve Passwords resolution for all affected emails in multiple breaches
+                    breachId: "Adobe"
+              resolveEmailOnlyBreach:
+                summary: A breach that leaked no passwords takes email-addresses
                 value:
-                  - dataClasses: ["passwords"]
-                    resolved: false
-                    breachId: "Breach1"
-                  - dataClasses: ["passwords"]
-                    resolved: false
-                    breachId: "Breach2"
+                  - breachId: "Facebook"
+                    dataClasses: ["email-addresses"]
       responses:
         "204":
           description: Resolution state updated successfully.
         "400":
-          description: Invalid request (e.g., empty dataClasses, invalid email string format, non-unique breach IDs).
+          description: Invalid request, for example an empty batch, an empty `emails` or `dataClasses` array, a malformed email address, or a data class the referenced breach never leaked.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              examples:
+                unknownDataClass:
+                  summary: Data class outside the accepted set
+                  value:
+                    code: invalid-request
+                    message: "dataClasses[0] must be one of: passwords, email-addresses."
+                malformedEmail:
+                  summary: Email is not a valid address
+                  value:
+                    code: invalid-request
+                    message: "emails[0] is not a valid email address."
+                dataClassNotInBreach:
+                  summary: Breach never leaked the requested data class
+                  value:
+                    code: invalid-request
+                    message: The Facebook breach did not leak passwords.
         "401":
-          description: Authentication required
+          $ref: "#/components/responses/Unauthorized"
         "403":
-          description: Not authorized
+          $ref: "#/components/responses/Forbidden"
         "404":
-          description: Breach or email not found (or not visible to this user)
+          description: |
+            Nothing here to resolve, for one of:
+
+            - an unknown `breachId`, or a breach this endpoint does not serve
+            - an address this user does not monitor, including one they own but have not verified
+            - an address the referenced breach did not affect
+            - an entry that targets nothing: `emails` omitted, and the breach affected no monitored address
+
+            All give the same code and message, so the response does not say which of them applied.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                code: not-found
+                message: Nothing matched for one or more entries.
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
+        "500":
+          $ref: "#/components/responses/InternalError"
+          description: Something failed on our side. Treat the batch as not applied and retry it, repeats are safe.
+        "503":
+          $ref: "#/components/responses/ServiceUnavailable"

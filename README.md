@@ -17,6 +17,17 @@ the "what" and "why" of data breach alerts.
 
 ![Image of Monitor architecture](docs/monitor-architecture.png "Firefox Monitor")
 
+## API contract
+
+`openapi.yml` is the contract for the Firefox-facing API (`/api/firefox/v1`), consumed by the Firefox privacy panel. Validate it with [Redocly CLI](https://redocly.com/docs/cli), which supports OpenAPI 3.1:
+
+```sh
+npx @redocly/cli@2 lint                              # validate, should report zero problems
+npx @redocly/cli@2 build-docs openapi.yml -o /tmp/api.html  # read it as the client team will
+```
+
+`lint` needs no arguments because `redocly.yaml` names the description. It turns off one rule we ignore on purpose, with a comment saying why. Anything it reports is worth fixing.
+
 ## Development
 
 ### Requirements
