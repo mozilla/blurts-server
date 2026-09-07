@@ -11,12 +11,6 @@ guided-resolution-flow-next-arrow = 次のステップに進む
 # Celebration screens
 
 
-## Shared CTA labels
-
-
-## High-risk flow
-
-
 ## Leaked passwords and security questions flow
 
 fix-flow-celebration-leaked-passwords-title = これであなたのパスワードが保護されます。
