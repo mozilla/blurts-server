@@ -2,15 +2,12 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-
-# Breach Data Classes
-
 academic-records = Registos académicos
 account-balances = Balanços de contas
 address-book-contacts = Contactos do livro de endereços
 age-groups = Faixas etárias
 ages = Idades
-ai-prompts = Solicitações de IA
+ai-prompts = Instruções para IA
 # Refers to medical appointments.
 appointments = Marcações
 apps-installed-on-devices = Aplicações instaladas em dispositivos
@@ -40,11 +37,11 @@ credit-card-cvv = CVV do cartão de crédito
 credit-cards = Cartões de crédito
 credit-scores = Pontuações de crédito
 credit-status-information = Informação do estado de crédito
-cryptocurrency-wallet-addresses = Endereços da carteira de criptomoeda
+cryptocurrency-wallet-addresses = Endereços de carteira de criptomoeda
 cryptocurrency-wallet-hashes = Hashes da carteira de criptomoeda
 customer-feedback = Feedback de clientes
 customer-interactions = Interações com clientes
-customer-service-comments = Comentários do serviço de clientes
+customer-service-comments = Comentários do serviço de atendimento ao cliente
 dates-of-birth = Datas de nascimento
 deceased-date = Data de falecimento
 deceased-statuses = Estados de falecimento
@@ -104,7 +101,7 @@ login-histories = Histórias de autenticação
 loyalty-program-details = Detalhes do programa de fidelidade
 mac-addresses = Endereços MAC
 marital-statuses = Estados conjugais
-military-service = Serviço armada
+military-service = Serviço militar
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
 mnemonic-phrases = Frases mnemónicas
 mothers-maiden-names = Nomes de solteira das mães
@@ -155,18 +152,18 @@ school-grades-class-levels = Notas escolares (níveis de classe)
 security-questions-and-answers = Perguntas e respostas de segurança
 sexual-fetishes = Fetiches sexuais
 sexual-orientations = Orientações sexuais
-shipment-tracking-numbers = Números de monitorização do envio
+shipment-tracking-numbers = Números do rastreio da expedição
 smoking-habits = Hábitos de fumar
 sms-messages = Mensagens SMS
 social-connections = Ligações sociais
 social-media-profiles = Perfis de redes sociais
 social-security-numbers = Números da segurança social
-socioeconomic-levels = Níveis social e económicos
+socioeconomic-levels = Níveis socioeconómicos
 spoken-languages = Idiomas falados
 spouses-names = Nomes dos cônjuges
 support-tickets = Bilhetes de apoio
 survey-results = Resultados de pesquisas
-tattoo-status = Estado da Tatuagem
+tattoo-status = Estado da tatuagem
 taxation-records = Registos de tributação
 telecommunications-carrier = Operadores de telecomunicações
 time-zones = Fusos horários
@@ -179,8 +176,8 @@ utility-bills = Contas de serviços públicos
 vehicle-details = Detalhes de veículos
 vehicle-identification-numbers-vins = Números de identificação de veículos (VIN)
 vehicle-registration-plates = Matrículas de veículos
-vip-statuses = Estados VIP
-warranty-claims = Requerimentos de garantia
+vip-statuses = Estatutos VIP
+warranty-claims = Reclamações ao abrigo da garantia
 website-activity = Atividade de websites
 work-habits = Hábitos de trabalho
 years-of-birth = Anos de nascimento
