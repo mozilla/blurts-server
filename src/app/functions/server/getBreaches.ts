@@ -17,7 +17,7 @@ export async function getBreaches(): Promise<HibpLikeDbBreach[]> {
     breachesLength: breaches.length,
   });
 
-  // if "breaches" table does not return results, fall back to HIBP request
+  // An empty result means an empty table or a failed read. Both re seed from HIBP
   if (breaches?.length < 1) {
     const breachesResponse = await fetchHibpBreaches();
     logger.debug(`loaded breaches from HIBP: ${breachesResponse.length}`);
