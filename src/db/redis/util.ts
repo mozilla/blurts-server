@@ -6,7 +6,28 @@ import { Redis, RedisOptions } from "ioredis";
 import { redisConfiguration } from "./configuration";
 import { logger } from "../../app/functions/server/logging";
 
-// TODO: Testing
+const MAX_RETRY_DELAY_MS = 1000;
+
+/**
+ * How long ioredis waits before retrying a lost connection.
+ *
+ * This must never throw. ioredis calls it outside any try/catch, so a throw
+ * here escapes as an uncaught exception and takes the process down instead
+ * of letting the connection heal. Returning a delay every time means a
+ * refused connection keeps retrying until Redis comes back.
+ *
+ * The cap doubles as the worst-case per-request stall. `enableOfflineQueue`
+ * is on, so a command issued while Redis is down is only rejected when the
+ * next reconnect attempt fails. Raising the cap would leave every render
+ * holding a request slot for that long before it can fall back to Postgres.
+ *
+ * @param times how many reconnect attempts have already been made
+ * @returns milliseconds to wait before the next attempt
+ */
+export function retryStrategy(times: number): number {
+  return Math.min(times * 200, MAX_RETRY_DELAY_MS);
+}
+
 /* c8 ignore start */
 function getRedisConfiguration(): {
   port: number;
@@ -24,13 +45,7 @@ export function createRedisInstance(config = getRedisConfiguration()) {
       showFriendlyErrorStack: true,
       enableAutoPipelining: true,
       maxRetriesPerRequest: 0,
-      retryStrategy: (times: number) => {
-        if (times > 3) {
-          throw new Error(`Redis Could not connect after ${times} attempts`);
-        }
-
-        return Math.min(times * 200, 1000);
-      },
+      retryStrategy,
     };
 
     if (config.port) {
