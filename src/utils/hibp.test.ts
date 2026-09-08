@@ -10,6 +10,7 @@ import { isValidBearer, formatDataClass, getAllBreachesFromDb } from "./hibp";
 import { getAllBreaches } from "../db/tables/breaches";
 import { redisClient } from "../db/redis/client";
 import { logger } from "../app/functions/server/logging";
+import { seeds } from "../test/db";
 
 vi.mock("../db/tables/breaches", () => ({
   getAllBreaches: vi.fn(),
@@ -69,25 +70,7 @@ describe("hibp utilities", () => {
 });
 
 describe("getAllBreachesFromDb", () => {
-  const breachRow = {
-    name: "Example",
-    title: "Example",
-    domain: "example.com",
-    breach_date: "2020-01-01",
-    added_date: "2020-01-02",
-    modified_date: "2020-01-03",
-    pwn_count: 1,
-    description: "",
-    logo_path: "",
-    data_classes: ["email-addresses"],
-    is_verified: true,
-    is_fabricated: false,
-    is_sensitive: false,
-    is_retired: false,
-    is_spam_list: false,
-    is_malware: false,
-    favicon_url: null,
-  } as unknown as BreachRow;
+  const breachRow = seeds.breaches() as unknown as BreachRow;
 
   function mockRedis(overrides: {
     get?: () => Promise<string | null>;
@@ -133,7 +116,7 @@ describe("getAllBreachesFromDb", () => {
     // Returning [] here is what made getBreaches() re-fetch the whole
     // catalogue from HIBP on every request during the 2026-09-03 incident.
     expect(breaches).toHaveLength(1);
-    expect(breaches[0].Name).toBe("Example");
+    expect(breaches[0].Name).toBe(breachRow.name);
     expect(getAllBreaches).toHaveBeenCalledTimes(1);
   });
 
