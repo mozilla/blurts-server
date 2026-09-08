@@ -6,8 +6,7 @@ import { Redis, RedisOptions } from "ioredis";
 import { redisConfiguration } from "./configuration";
 import { logger } from "../../app/functions/server/logging";
 
-// Long enough to stop hammering, short enough to recover.
-const MAX_RETRY_DELAY_MS = 5000;
+const MAX_RETRY_DELAY_MS = 1000;
 
 /**
  * How long ioredis waits before retrying a lost connection.
@@ -16,6 +15,11 @@ const MAX_RETRY_DELAY_MS = 5000;
  * here escapes as an uncaught exception and takes the process down instead
  * of letting the connection heal. Returning a delay every time means a
  * refused connection keeps retrying until Redis comes back.
+ *
+ * The cap doubles as the worst-case per-request stall. `enableOfflineQueue`
+ * is on, so a command issued while Redis is down is only rejected when the
+ * next reconnect attempt fails. Raising the cap would leave every render
+ * holding a request slot for that long before it can fall back to Postgres.
  *
  * @param times how many reconnect attempts have already been made
  * @returns milliseconds to wait before the next attempt

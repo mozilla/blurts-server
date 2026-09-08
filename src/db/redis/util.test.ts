@@ -13,8 +13,14 @@ describe("retryStrategy", () => {
   });
 
   it("caps the wait so a long outage keeps retrying", () => {
-    expect(retryStrategy(25)).toBe(5000);
-    expect(retryStrategy(100_000)).toBe(5000);
+    expect(retryStrategy(5)).toBe(1000);
+    expect(retryStrategy(100_000)).toBe(1000);
+  });
+
+  it("keeps the cap low enough to bound a request stall", () => {
+    // enableOfflineQueue is on, so this cap is also how long a page render
+    // waits before it can fall back to Postgres.
+    expect(retryStrategy(100_000)).toBeLessThanOrEqual(1000);
   });
 
   it("never throws, so a refused connection cannot kill the process", () => {
