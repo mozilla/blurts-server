@@ -276,28 +276,46 @@ function dbToHibp(breach: BreachRow): HibpLikeDbBreach {
  * sanitize it, and return a javascript array
  */
 async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
-  let dbBreaches: BreachRow[] = [];
-  const rClient = redisClient();
+  let rClient: ReturnType<typeof redisClient> | undefined;
+  let cached: BreachRow[] = [];
+  let redisFaulted = false;
 
   try {
-    // attempts to fetch breaches from Redis first
-    let redisBreaches;
-    if (rClient) {
-      redisBreaches = JSON.parse(
-        (await rClient.get(REDIS_ALL_BREACHES_KEY)) || "[]",
-      ) as BreachRow[];
-    }
+    rClient = redisClient();
+    cached = JSON.parse(
+      (await rClient.get(REDIS_ALL_BREACHES_KEY)) || "[]",
+    ) as BreachRow[];
+  } catch (e) {
+    redisFaulted = true;
+    logger.error("get_breaches_from_redis_failed", {
+      exception: "Failed to read breaches from redis: " + (e as string),
+    });
+  }
 
-    if (!redisBreaches || redisBreaches.length < 1) {
-      // if Redis fails, attempt to get breaches from Postgres and set Redis
-      logger.warn("get_all_breaches_from_db", {
-        exception: "Failed to fetch breaches in redis",
-      });
+  if (cached.length > 0) {
+    logger.info("get_breaches_from_redis_successful", {
+      numOfBreaches: cached.length,
+    });
+    return cached.map(dbToHibp);
+  }
 
-      dbBreaches = await getAllBreaches();
-      logger.info("get_all_breaches_from_db_successful", {
-        numOfBreaches: dbBreaches.length,
-      });
+  // A cache miss and a Redis fault both read Postgres.
+  let dbBreaches: BreachRow[];
+  try {
+    dbBreaches = await getAllBreaches();
+    logger.info("get_all_breaches_from_db_successful", {
+      numOfBreaches: dbBreaches.length,
+    });
+  } catch (e) {
+    logger.error("get_all_breaches_from_db_failed", {
+      exception: "No breaches exist in the database: " + (e as string),
+    });
+    return [];
+  }
+
+  // Only refill after a miss; a faulted Redis would just stall again.
+  if (!redisFaulted && rClient) {
+    try {
       await rClient.set(
         REDIS_ALL_BREACHES_KEY,
         JSON.stringify(dbBreaches),
@@ -305,17 +323,11 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
         BREACHES_EXPIRY_SECONDS, // 12 hours
       );
       logger.info("set_breaches_in_redis_successful");
-    } else {
-      dbBreaches = redisBreaches;
-      logger.info("get_breaches_from_redis_successful", {
-        numOfBreaches: dbBreaches.length,
+    } catch (e) {
+      logger.error("set_breaches_in_redis_failed", {
+        exception: "Failed to write breaches to redis: " + (e as string),
       });
     }
-  } catch (e) {
-    logger.error("get_all_breaches_from_db", {
-      exception: "No breaches exist in the database: " + (e as string),
-    });
-    return [];
   }
 
   // TODO: we can do some filtering here for the most commonly used fields

@@ -4,8 +4,28 @@
 
 // @vitest-environment node
 
-import { describe, it, expect } from "vitest";
-import { isValidBearer, formatDataClass } from "./hibp";
+import { vi, describe, it, expect, beforeEach } from "vitest";
+import type { BreachRow } from "knex/types/tables";
+import { isValidBearer, formatDataClass, getAllBreachesFromDb } from "./hibp";
+import { getAllBreaches } from "../db/tables/breaches";
+import { redisClient } from "../db/redis/client";
+import { logger } from "../app/functions/server/logging";
+import { seeds } from "../test/db";
+
+vi.mock("../db/tables/breaches", () => ({
+  getAllBreaches: vi.fn(),
+  knex: vi.fn(),
+}));
+// vi.mock replaces the whole module, so the constants need re-declaring.
+vi.mock("../db/redis/client", () => ({
+  redisClient: vi.fn(),
+  REDIS_ALL_BREACHES_KEY: "breaches",
+  BREACHES_EXPIRY_SECONDS: 43200,
+}));
+vi.mock("../app/functions/server/logging", async () => {
+  const { mockLogger } = await import("../test/helpers/mockLogger");
+  return { logger: mockLogger() };
+});
 
 describe("hibp utilities", () => {
   it.each([
@@ -46,5 +66,105 @@ describe("hibp utilities", () => {
     ])("formats '%s' to '%s'", (input, expected) => {
       expect(formatDataClass(input)).toEqual(expected);
     });
+  });
+});
+
+describe("getAllBreachesFromDb", () => {
+  const breachRow = seeds.breaches() as unknown as BreachRow;
+
+  function mockRedis(overrides: {
+    get?: () => Promise<string | null>;
+    set?: () => Promise<string>;
+  }) {
+    const client = {
+      get: vi.fn().mockImplementation(overrides.get ?? (async () => null)),
+      set: vi.fn().mockImplementation(overrides.set ?? (async () => "OK")),
+    };
+    vi.mocked(redisClient).mockReturnValue(client as never);
+    return client;
+  }
+
+  beforeEach(() => {
+    vi.mocked(getAllBreaches).mockReset();
+  });
+
+  it("serves the cached breaches when Redis answers", async () => {
+    mockRedis({ get: async () => JSON.stringify([breachRow]) });
+
+    const breaches = await getAllBreachesFromDb();
+
+    expect(breaches).toHaveLength(1);
+    expect(getAllBreaches).not.toHaveBeenCalled();
+  });
+
+  it("reads Postgres and refills the cache on a miss", async () => {
+    const client = mockRedis({ get: async () => null });
+    vi.mocked(getAllBreaches).mockResolvedValue([breachRow]);
+
+    const breaches = await getAllBreachesFromDb();
+
+    expect(breaches).toHaveLength(1);
+    expect(client.set).toHaveBeenCalledTimes(1);
+  });
+
+  it("reads Postgres when the Redis read fails", async () => {
+    mockRedis({ get: () => Promise.reject(new Error("ECONNREFUSED")) });
+    vi.mocked(getAllBreaches).mockResolvedValue([breachRow]);
+
+    const breaches = await getAllBreachesFromDb();
+
+    // Returning [] here is what made getBreaches() re-fetch the whole
+    // catalogue from HIBP on every request during the 2026-09-03 incident.
+    expect(breaches).toHaveLength(1);
+    expect(breaches[0].Name).toBe(breachRow.name);
+    expect(getAllBreaches).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not try to refill a faulted Redis", async () => {
+    const client = mockRedis({
+      get: () => Promise.reject(new Error("ECONNREFUSED")),
+    });
+    vi.mocked(getAllBreaches).mockResolvedValue([breachRow]);
+
+    await getAllBreachesFromDb();
+
+    // A second command would stall for another commandTimeout.
+    expect(client.set).not.toHaveBeenCalled();
+  });
+
+  it("blames Postgres, and queries it once, when Postgres is what failed", async () => {
+    mockRedis({ get: async () => null });
+    vi.mocked(getAllBreaches).mockRejectedValue(new Error("pool timeout"));
+
+    const breaches = await getAllBreachesFromDb();
+
+    expect(breaches).toEqual([]);
+    expect(getAllBreaches).toHaveBeenCalledTimes(1);
+    expect(logger.error).toHaveBeenCalledWith(
+      "get_all_breaches_from_db_failed",
+      expect.objectContaining({
+        exception: expect.stringContaining("No breaches exist in the database"),
+      }),
+    );
+    expect(logger.error).not.toHaveBeenCalledWith(
+      "get_breaches_from_redis_failed",
+      expect.anything(),
+    );
+  });
+
+  it("still serves the breaches when only the cache write fails", async () => {
+    mockRedis({
+      get: async () => null,
+      set: () => Promise.reject(new Error("OOM")),
+    });
+    vi.mocked(getAllBreaches).mockResolvedValue([breachRow]);
+
+    const breaches = await getAllBreachesFromDb();
+
+    expect(breaches).toHaveLength(1);
+    expect(logger.error).toHaveBeenCalledWith(
+      "set_breaches_in_redis_failed",
+      expect.anything(),
+    );
   });
 });
