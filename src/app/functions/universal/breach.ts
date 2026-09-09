@@ -7,9 +7,14 @@ import { DataClassEffected } from "../../../utils/subscriberBreaches";
 // TODO: Move pure functions that operate on breaches to this file
 
 /**
- * Every kind of data a breach can leak, in Monitor's own kebab-case spelling.
- * This is what we store, what a HibpLikeDbBreach carries, and what our APIs
- * speak. See HibpLabelByDataType for how HIBP spells the same things.
+ * The data types we name, in our own kebab-case spelling. This is what we
+ * store and what our APIs speak. See HibpLabelByDataType for HIBP's spelling.
+ *
+ * Not the full list. HIBP adds a data type whenever it sees a new kind of
+ * data, and locales/en/data-classes.ftl lists around 170.
+ *
+ * These are roughly the data types the public breach detail page gives advice
+ * for, see getAllPriorityDataClasses in src/utils/recommendations.ts.
  */
 export const BreachDataTypes = {
   Passwords: "passwords",

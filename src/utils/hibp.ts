@@ -128,7 +128,9 @@ export type HibpGetBreachesResponse = Array<{
   AddedDate: ISO8601DateString;
   BreachDate: ISO8601DateString;
   // Raw from HIBP, so Title Case: "Email addresses".
-  // See HibpLabelByDataType, and HibpLikeDbBreach below.
+  // Stays string[] because HIBP sends far more data types
+  // than HibpLabelByDataType names, and HIBP invents new ones.
+  // See HibpLikeDbBreach below for the kebab-case version.
   DataClasses: string[];
   Description: string;
   LogoPath: string;
