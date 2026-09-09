@@ -103,8 +103,6 @@ export async function main(parentLogger: Logger) {
       PwnCount: breach.PwnCount,
       AddedDate: breach.AddedDate,
       DataClasses: breach.DataClasses,
-      // The panel hides these, the credential manager may not.
-      IsSensitive: breach.IsSensitive,
     };
 
     try {

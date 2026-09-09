@@ -142,7 +142,6 @@ describe("updateBreachesInRemoteSettings job", () => {
         PwnCount: emailOnly.PwnCount,
         AddedDate: emailOnly.AddedDate,
         DataClasses: emailOnly.DataClasses,
-        IsSensitive: false,
       });
     });
     it("skips a breach that leaked neither passwords nor emails", async () => {
@@ -157,21 +156,6 @@ describe("updateBreachesInRemoteSettings job", () => {
       await main(mockLog);
 
       expect(addBreachSpy).not.toHaveBeenCalled();
-    });
-    it("carries IsSensitive so clients can filter on it", async () => {
-      const sensitive = HibpData.find(
-        (breach) => breach.IsSensitive,
-      ) as HIBP.HibpGetBreachesResponse[number];
-      vi.mocked(HIBP.fetchHibpBreaches).mockResolvedValue([sensitive]);
-      fetchBreachesSpy.mockResolvedValueOnce(new Set([]));
-      addBreachSpy.mockResolvedValue(undefined);
-      reviewSpy.mockResolvedValue(undefined);
-
-      await main(mockLog);
-
-      expect(addBreachSpy).toHaveBeenCalledWith(
-        expect.objectContaining({ Name: sensitive.Name, IsSensitive: true }),
-      );
     });
     it("happy path: logs counts, posts filtered breaches, requests review, and exits", async () => {
       const breaches = HibpData.slice(0, 3) as HIBP.HibpGetBreachesResponse;

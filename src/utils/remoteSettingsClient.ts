@@ -8,13 +8,7 @@ import type { HibpGetBreachesResponse } from "./hibp";
 /** The fields we publish to Remote Settings. */
 export type RemoteSettingsBreach = Pick<
   HibpGetBreachesResponse[number],
-  | "Name"
-  | "Domain"
-  | "BreachDate"
-  | "PwnCount"
-  | "AddedDate"
-  | "DataClasses"
-  | "IsSensitive"
+  "Name" | "Domain" | "BreachDate" | "PwnCount" | "AddedDate" | "DataClasses"
 >;
 
 type RemoteSettingsClientOpts = {
