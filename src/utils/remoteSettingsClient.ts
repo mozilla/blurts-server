@@ -5,7 +5,8 @@
 import type { Logger } from "winston";
 import type { HibpGetBreachesResponse } from "./hibp";
 
-type RemoteSettingsBreach = Pick<
+/** The fields we publish to Remote Settings. */
+export type RemoteSettingsBreach = Pick<
   HibpGetBreachesResponse[number],
   "Name" | "Domain" | "BreachDate" | "PwnCount" | "AddedDate" | "DataClasses"
 >;
