@@ -4,12 +4,12 @@
 
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signInToFxa } from "../../functions/client/signInToFxa";
 import { ReactNode, useEffect } from "react";
 
 export const AutoSignIn = (): ReactNode => {
   useEffect(() => {
-    void signIn("fxa");
+    signInToFxa("fxa");
   }, []);
 
   return null;

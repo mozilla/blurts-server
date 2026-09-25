@@ -6,7 +6,7 @@
 
 import { ReactNode, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { signIn } from "next-auth/react";
+import { signInToFxa } from "../../functions/client/signInToFxa";
 import { containsExpectedSearchParams } from "../../functions/universal/attributions";
 
 export const PromptNoneAuth = (): ReactNode => {
@@ -19,7 +19,7 @@ export const PromptNoneAuth = (): ReactNode => {
       searchParams,
     );
     if (isPromptNoneAuthAttempt) {
-      void signIn("fxa", { callbackUrl: "/user/dashboard" }, authParams);
+      signInToFxa("fxa", { callbackUrl: "/user/dashboard" }, authParams);
     }
     // This effect should only run once
     // eslint-disable-next-line react-hooks/exhaustive-deps
