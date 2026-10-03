@@ -11,9 +11,13 @@
 -brand-name = Firefox
 -brand-HIBP =
     { $case ->
-        [nominative] Сервис Have I Been Pwned
-        [genitive] Сервисом Have I Been Pwned
-       *[dative] Сервису Have I Been Pwned
+        [nominative_uppercase] Сервис Have I Been Pwned
+        [genitive] сервиса Have I Been Pwned
+        [dative] сервису Have I Been Pwned
+        [accusative] сервис Have I Been Pwned
+        [instrumental] сервисом Have I Been Pwned
+        [prepositional] сервисе Have I Been Pwned
+       *[nominative] сервис Have I Been Pwned
     }
 -brand-lockwise = Firefox Lockwise
 -brand-firefox = Firefox
@@ -49,9 +53,6 @@ sensitive-sites-copy = { -product-name } показывает аккаунты, 
 what-data = Какие данные скомпрометированы:
 delayed-reporting-headline = Почему об утечке было сообщено так поздно?
 delayed-reporting-copy = Иногда информация об утёкших пользовательских данных попадает в даркнет лишь спустя месяцы и даже годы. Утечки добавляются в нашу базу данных по мере их обнаружения и проверки.
-
-##
-
 what-is-a-website-breach = Что такое утечка данных веб-сайта?
 website-breach-blurb = Утечка данных на веб-сайте происходит, когда киберпреступники крадут, копируют или раскрывают личную информацию из его аккаунтов. Обычно это происходит когда хакеры находят уязвимости в безопасности веб-сайта. Утечки также могут произойти, когда информация аккаунта становится раскрыта случайно.
 what-is-data-agg = Что такое агрегатор данных?

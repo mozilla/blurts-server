@@ -51,12 +51,10 @@ delayed-reporting-copy =
     데이터 유출로 인해 노출된 정보들이 다크 웹에 나타나는 데 
     수 개월 또는 수 년이 걸릴 수 있습니다. 유출을 확인하는 대로 
     즉시 데이터베이스에 추가됩니다.
-
-##
-
 what-is-a-website-breach = 웹 사이트 유출이란 무엇입니까?
 website-breach-blurb = 웹 사이트 데이터 침해 사고는 사이버 범죄자가 온라인 계정에서 개인 정보를 도용, 복사 또는 노출 할 때 발생합니다. 일반적으로 해커가 웹 사이트의 보안에서 취약한 부분을 찾은 결과입니다. 실수로 계정 정보가 유출 된 경우에도 침해가 발생할 수 있습니다.
 what-is-data-agg = 데이터 수집기는 무엇인가요?
+what-is-data-agg-blurb = 데이터 수집기 또는 데이터 브로커는 공개 기록 및 회사에서 구매 한 데이터를 포함한 기타 출처에서 정보를 수집합니다. 그들은 이 정보를 모아 자세한 소비자 프로필을 만들고 마케팅 목적으로 기업에 판매합니다. 해커는 이 데이터를 프로파일링, 사칭 또는 기타 형태의 사기에 사용할 수 있습니다. 데이터 수집기는 계정을 만들거나 서비스에 가입하지 않은 사람들에 대한 정보를 수집하기 때문에 이러한 회사 중 일부를 인식하지 못할 수도 있습니다.
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = 개요

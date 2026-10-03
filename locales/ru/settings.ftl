@@ -2,17 +2,14 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-
-# Settings page
-
 settings-page-title = Настройки { -product-short-name }
 
 ## Breach alert preferences
 
 settings-alert-email-preferences-title = Настройки эл. почты
 settings-alert-email-preferences-subtitle = Расскажите нам, какие письма вы хотите получать.
-settings-alert-preferences-allow-breach-alerts-title = Мгновенные оповещения об утечках
-settings-alert-preferences-allow-breach-alerts-subtitle = Эти оповещения отправляются сразу же после обнаружения утечки данных
+settings-alert-preferences-allow-breach-alerts-title = Мгновенные уведомления об утечках
+settings-alert-preferences-allow-breach-alerts-subtitle = Эти уведомления отправляются сразу же после обнаружения утечки данных
 settings-alert-preferences-option-one = Отправлять оповещения об утечках на затронутые ими адреса электронной почты
 settings-alert-preferences-option-two = Отправлять все оповещения об утечках на основной адрес электронной почты
 
