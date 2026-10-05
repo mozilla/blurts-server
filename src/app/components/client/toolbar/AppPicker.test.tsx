@@ -95,9 +95,11 @@ it("activates a link with Enter or Space via keyboard navigation", async () => {
   const trigger = screen.getByRole("button", {
     name: "⁨Mozilla⁩ apps and services",
   });
-  await user.click(trigger);
+  trigger.focus();
 
-  // Opening the menu via click auto-focuses the first item (VPN)
+  // Opening the menu via the keyboard auto-focuses the first item (VPN).
+  // (Opening it with a mouse click focuses the menu container instead.)
+  await user.keyboard("{ArrowDown}");
   const vpnLink = screen.getByRole("menuitem", { name: /vpn/i });
   expect(vpnLink).toHaveFocus();
 
@@ -109,7 +111,8 @@ it("activates a link with Enter or Space via keyboard navigation", async () => {
     label: "vpn",
   });
 
-  await user.click(trigger);
+  trigger.focus();
+  await user.keyboard("{ArrowDown}");
 
   // VPN is auto-focused; press Space to activate it
   await user.keyboard(" ");
