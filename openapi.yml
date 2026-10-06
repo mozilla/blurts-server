@@ -106,7 +106,7 @@ components:
 
   responses:
     Unauthorized:
-      description: No usable token. The `Authorization` header is missing or malformed, or FxA reports the token as inactive or expired.
+      description: No usable token. The `Authorization` header is missing or malformed, or FxA reports the token as inactive or expired. Get a new token from FxA and retry once.
       content:
         application/json:
           schema:
@@ -116,7 +116,7 @@ components:
             message: FxA reports this token as inactive.
     Forbidden:
       description: |
-        The token is valid but does not grant access: either it lacks the Monitor scope, or the account has no Monitor subscriber. Monitor serves existing accounts only and never creates one.
+        The token is valid but does not grant access: either it lacks the Monitor scope, or the account has no Monitor subscriber. Monitor serves existing accounts only and never creates one. A new token will not help. For `no-monitor-account`, retry after the user signs up.
       content:
         application/json:
           schema:
