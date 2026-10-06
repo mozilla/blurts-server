@@ -29,7 +29,7 @@ components:
       type: http
       scheme: bearer
       # We introspect the token with FxA.
-      description: An OAuth token granted by Firefox Accounts (FxA), carrying the `https://identity.mozilla.com/apps/monitor` scope. Treat it as opaque.
+      description: An OAuth token granted by Firefox Accounts (FxA), carrying the `https://identity.mozilla.com/apps/monitor` scope. Treat it as opaque. We identify the user by the token's FxA uid only, never by cookies or a Monitor website session.
   schemas:
     Error:
       type: object
@@ -128,7 +128,7 @@ components:
                 code: missing-scope
                 message: This token lacks the https://identity.mozilla.com/apps/monitor scope.
             noMonitorAccount:
-              summary: FxA account has never signed up for Monitor
+              summary: No Monitor subscriber for this FxA account
               value:
                 code: no-monitor-account
                 message: This Firefox account has no Monitor subscriber.
