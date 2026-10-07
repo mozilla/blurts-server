@@ -159,7 +159,7 @@ components:
             code: internal-error
             message: Monitor could not complete this request.
     ServiceUnavailable:
-      description: Monitor is unavailable. Safe to retry, after the interval in `Retry-After` when it is present.
+      description: Monitor is unavailable, or FxA could not verify the token. Safe to retry, after the interval in `Retry-After` when it is present.
       headers:
         Retry-After:
           required: false
@@ -255,7 +255,7 @@ paths:
           $ref: "#/components/responses/InternalError"
         "503":
           $ref: "#/components/responses/ServiceUnavailable"
-          description: We could not check this user against HIBP, so we do not know what they are affected by. Keep the breaches you already hold, do not clear them, and retry.
+          description: FxA could not verify the token, or we could not check this user against HIBP, so we do not know what they are affected by. Keep the breaches you already hold, do not clear them, and retry.
 
   /user/breaches/resolutions:
     post:
