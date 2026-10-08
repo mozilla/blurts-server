@@ -55,7 +55,7 @@ sequenceDiagram
         BE-->>FE: 200, user's breaches,<br/>or 403, no-monitor-account [5]
     end
 
-    Note over FE,BE: [1] GET /v1/account/attached_oauth_clients. Lists Monitor only while a Monitor refresh token exists<br/>[2] POST /v1/oauth/token, scope apps/monitor. Firefox caches the token<br/>[3] Bearer header. On 401 Firefox gets a new token, retries once<br/>[4] POST /v1/introspect<br/>[5] Rare, no subscriber for this FxA uid. Firefox shows sign up, no retry
+    Note over FE,BE: [1] GET /v1/account/attached_oauth_clients. Includes Monitor's client_id only while it holds a refresh token<br/>[2] POST /v1/oauth/token, scope apps/monitor. Firefox caches the token<br/>[3] Bearer header. On 401 Firefox gets a new token, retries once<br/>[4] POST /v1/introspect<br/>[5] Rare, no subscriber for this FxA uid. Firefox shows sign up, no retry
 ```
 
 ### 1c. Not signed in
