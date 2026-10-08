@@ -2,7 +2,9 @@
 
 How Firefox authenticates to Monitor's Firefox API (`/api/firefox/v1`, see [`openapi.yml`](../../../openapi.yml)). Firefox sends an FxA access token carrying the `https://identity.mozilla.com/apps/monitor` scope, and Monitor introspects it with FxA on every request.
 
-"Legacy" and "New" FxA auth differ only in how Firefox learns the user has never used Monitor. "Legacy" holds a session token, which can mint any scope, so Firefox checks `/account/attached_clients` first. "New" holds a refresh token, and FxA's token endpoint returns 403 for the Monitor scope if the user never used Monitor. Monitor's side is the same.
+"Legacy" and "New" FxA auth differ only in how Firefox learns whether the user is connected to Monitor. "Legacy" holds a session token, which can mint any scope, so Firefox first checks `/account/attached_oauth_clients` for a Monitor refresh token. "New" holds a refresh token, and FxA's token endpoint returns 403 for the Monitor scope if the user hasn't authorized Monitor. Monitor's side is the same.
+
+Today Desktop uses "Legacy" and Mobile uses "New". Desktop should switch to "New" by the end of Q4 2026.
 
 ## Two sign-ins
 
@@ -20,15 +22,17 @@ A person can be signed in to FxA in two separate places, possibly as different a
 
 Diagrams show `GET /user/breaches`. `POST /user/breaches/resolutions` authenticates the same way.
 
-|                                | "Legacy" auth                   | "New" auth                      |
-| ------------------------------ | ------------------------------- | ------------------------------- |
-| Firefox account has Monitor    | [1a](#1a-signed-in-has-monitor) | [2a](#2a-signed-in-has-monitor) |
-| Firefox account has no Monitor | [1b](#1b-signed-in-no-monitor)  | [2b](#2b-signed-in-no-monitor)  |
-| Not signed in to Firefox       | [1c](#1c-not-signed-in)         | [2c](#2c-not-signed-in)         |
+|                                | "Legacy" auth           | "New" auth              |
+| ------------------------------ | ----------------------- | ----------------------- |
+| Firefox account has Monitor    | [1a](#1a-1b-signed-in)  | [2a](#2a-2b-signed-in)  |
+| Firefox account has no Monitor | [1b](#1a-1b-signed-in)  | [2b](#2a-2b-signed-in)  |
+| Not signed in to Firefox       | [1c](#1c-not-signed-in) | [2c](#2c-not-signed-in) |
+
+1a and 1b share one diagram. 1b is either path to "Show Monitor sign up". Same for 2a and 2b.
 
 ## "Legacy" Auth
 
-### 1a. Signed in, has Monitor
+### 1a, 1b. Signed in
 
 ```mermaid
 sequenceDiagram
@@ -37,45 +41,21 @@ sequenceDiagram
     participant BE as Monitor
 
     Note over FE: User signed in,<br/>has verified session token
-    FE->>FxA: Session token, list attached clients [1]
-    FxA-->>FE: Attached clients
-    Note over FE: Monitor in list?
-    FE->>FxA: Session token, ask for Monitor scope [2]
-    FxA-->>FE: Access token
-    FE->>BE: GET /user/breaches + access token [3]
-    BE->>FxA: Is this token valid? [4]
-    FxA-->>BE: Yes, FxA uid + scopes
-    Note over BE: Has Monitor scope?<br/>Find subscriber by FxA uid
-    BE-->>FE: 200, user's breaches
-
-    Note over FE,BE: [1] GET /v1/account/attached_clients<br/>[2] POST /v1/oauth/token, scope apps/monitor. Firefox caches the token<br/>[3] Bearer header. On 401 Firefox gets a new token, retries once<br/>[4] POST /v1/introspect
-```
-
-### 1b. Signed in, no Monitor
-
-```mermaid
-sequenceDiagram
-    participant FE as Firefox
-    participant FxA
-    participant BE as Monitor
-
-    Note over FE: User signed in,<br/>has verified session token
-    FE->>FxA: Session token, list attached clients [1]
-    FxA-->>FE: Attached clients
-    alt Monitor not in list
+    FE->>FxA: Session token, list attached OAuth clients [1]
+    FxA-->>FE: Attached OAuth clients
+    alt Monitor not connected
         Note over FE: Show Monitor sign up
-    else In list, but Monitor account deleted [2]
-        FE->>FxA: Session token, ask for Monitor scope
+    else Monitor connected
+        FE->>FxA: Session token, ask for Monitor scope [2]
         FxA-->>FE: Access token
-        FE->>BE: GET /user/breaches + access token
-        BE->>FxA: Is this token valid?
+        FE->>BE: GET /user/breaches + access token [3]
+        BE->>FxA: Is this token valid? [4]
         FxA-->>BE: Yes, FxA uid + scopes
-        Note over BE: Has Monitor scope?<br/>No subscriber for this FxA uid
-        BE-->>FE: 403, no-monitor-account [3]
-        Note over FE: Show Monitor sign up
+        Note over BE: Has Monitor scope?<br/>Find subscriber by FxA uid
+        BE-->>FE: 200, user's breaches,<br/>or 403, no-monitor-account [5]
     end
 
-    Note over FE,BE: [1] GET /v1/account/attached_clients<br/>[2] Deleting a Monitor account removes our row, not the FxA attachment<br/>[3] Monitor never creates a subscriber here. Firefox does not retry, a new token won't help
+    Note over FE,BE: [1] GET /v1/account/attached_oauth_clients. Lists Monitor only while a Monitor refresh token exists<br/>[2] POST /v1/oauth/token, scope apps/monitor. Firefox caches the token<br/>[3] Bearer header. On 401 Firefox gets a new token, retries once<br/>[4] POST /v1/introspect<br/>[5] Rare, no subscriber for this FxA uid. Firefox shows sign up, no retry
 ```
 
 ### 1c. Not signed in
@@ -93,11 +73,7 @@ sequenceDiagram
 
 ## "New" Auth
 
-### 2a. Signed in, has Monitor
-
-TODO
-
-### 2b. Signed in, no Monitor
+### 2a, 2b. Signed in
 
 TODO
 
