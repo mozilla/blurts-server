@@ -29,7 +29,7 @@ components:
       type: http
       scheme: bearer
       # We introspect the token with FxA.
-      description: An OAuth token granted by Firefox Accounts (FxA), carrying the `https://identity.mozilla.com/apps/monitor` scope. Treat it as opaque.
+      description: An OAuth token granted by Firefox Accounts (FxA), carrying the `https://identity.mozilla.com/apps/monitor` scope. Treat it as opaque. We identify the user by the token's FxA uid only, never by cookies or a Monitor website session.
   schemas:
     Error:
       type: object
@@ -106,7 +106,7 @@ components:
 
   responses:
     Unauthorized:
-      description: No usable token. The `Authorization` header is missing or malformed, or FxA reports the token as inactive or expired.
+      description: No usable token. The `Authorization` header is missing or malformed, or FxA reports the token as inactive or expired. Get a new token from FxA and retry once.
       content:
         application/json:
           schema:
@@ -116,7 +116,7 @@ components:
             message: FxA reports this token as inactive.
     Forbidden:
       description: |
-        The token is valid but does not grant access: either it lacks the Monitor scope, or the account has no Monitor subscriber. Monitor serves existing accounts only and never creates one.
+        The token is valid but does not grant access: either it lacks the Monitor scope, or the account has no Monitor subscriber. Monitor serves existing accounts only and never creates one. A new token will not help. For `no-monitor-account`, retry after the user signs up.
       content:
         application/json:
           schema:
@@ -128,7 +128,7 @@ components:
                 code: missing-scope
                 message: This token lacks the https://identity.mozilla.com/apps/monitor scope.
             noMonitorAccount:
-              summary: FxA account has never signed up for Monitor
+              summary: No Monitor subscriber for this FxA account
               value:
                 code: no-monitor-account
                 message: This Firefox account has no Monitor subscriber.
@@ -159,7 +159,7 @@ components:
             code: internal-error
             message: Monitor could not complete this request.
     ServiceUnavailable:
-      description: Monitor is unavailable. Safe to retry, after the interval in `Retry-After` when it is present.
+      description: Monitor is unavailable, or FxA could not verify the token. Safe to retry, after the interval in `Retry-After` when it is present.
       headers:
         Retry-After:
           required: false
@@ -255,7 +255,7 @@ paths:
           $ref: "#/components/responses/InternalError"
         "503":
           $ref: "#/components/responses/ServiceUnavailable"
-          description: We could not check this user against HIBP, so we do not know what they are affected by. Keep the breaches you already hold, do not clear them, and retry.
+          description: FxA could not verify the token, or we could not check this user against HIBP, so we do not know what they are affected by. Keep the breaches you already hold, do not clear them, and retry.
 
   /user/breaches/resolutions:
     post:
