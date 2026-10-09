@@ -18,12 +18,12 @@ import {
   triggerVerificationEmail,
 } from "./actions";
 import { Button } from "../../../../../components/client/Button";
+import { getEnvString } from "../../../../../../config";
 
 export type Props = {
   emailAddresses: string[];
+  serverUrl: string;
 };
-
-const STORYBOOK_BASE = "http://localhost:6006/?path=/story";
 
 type EmailCard = {
   title: string;
@@ -50,6 +50,7 @@ const otherEmails: EmailCard[] = [
   },
 ];
 
+// Hard-coded the storybook IDs for now
 const breachAlertVariants: EmailCard[] = [
   {
     title: "Default",
@@ -82,6 +83,7 @@ const breachAlertVariants: EmailCard[] = [
 ];
 
 export const EmailTrigger = (props: Props) => {
+  const STORYBOOK_BASE = `${props.serverUrl}/?path=/story`;
   const [selectedEmailAddress, setSelectedEmailAddress] = useState(
     props.emailAddresses[0],
   );
