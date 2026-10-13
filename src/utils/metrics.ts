@@ -14,6 +14,7 @@ type MetricsState = {
   hibpNotifyRequestFailuresTotal: Counter<Attributes>;
   kanonRequestsTotal: Counter<Attributes>;
   kanonRequestFailuresTotal: Counter<Attributes>;
+  firefoxApiAuthTotal: Counter<Attributes>;
 };
 
 let metricsState: MetricsState | undefined;
@@ -51,11 +52,16 @@ export function getOrInitMetrics(): MetricsState {
     },
   );
 
+  const firefoxApiAuthTotal = meter.createCounter("firefox_api_auth_total", {
+    description: "Firefox API auth attempts, by outcome",
+  });
+
   const state: MetricsState = {
     hibpNotifyRequestFailuresTotal,
     hibpNotifyRequestsTotal,
     kanonRequestsTotal,
     kanonRequestFailuresTotal,
+    firefoxApiAuthTotal,
   };
   return state;
 }
@@ -90,5 +96,38 @@ export function incKanonFailure(statusCode: number, by = 1) {
 /** Increment k-anonymous range search request total count metric */
 export function incKanonRequest(by = 1) {
   getOrInitMetrics().kanonRequestsTotal.add(by);
+}
+
+/** Result of one Firefox API auth attempt */
+export type FirefoxApiAuthOutcome =
+  // Token valid, subscriber found
+  | "success"
+  // No usable Bearer token
+  | "missing-header"
+  // Inactive, no sub, or not an access token
+  | "inactive"
+  // Token lacks the Monitor scope
+  | "missing-scope"
+  // No subscriber for the FxA uid
+  | "no-subscriber"
+  // FxA unreachable, timed out, or non-2xx
+  | "introspection-error";
+
+/** Firefox API paths, as in openapi.yml */
+export type FirefoxApiEndpoint =
+  | "/user/breaches"
+  | "/user/breaches/resolutions";
+
+/** Increment Firefox API auth outcome metric */
+export function incFirefoxApiAuth(
+  outcome: FirefoxApiAuthOutcome,
+  endpoint: FirefoxApiEndpoint,
+  clientId?: string,
+) {
+  getOrInitMetrics().firefoxApiAuthTotal.add(1, {
+    outcome,
+    endpoint,
+    ...(clientId ? { client_id: clientId } : {}),
+  });
 }
 /* c8 ignore end */
