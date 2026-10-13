@@ -64,6 +64,9 @@ export const config = {
   oauthClientSecret: getEnvString("OAUTH_CLIENT_SECRET"),
   oauthProfileUri: getEnvString("OAUTH_PROFILE_URI"),
   oauthAccountUri: getEnvString("OAUTH_ACCOUNT_URI"),
+  fxaIntrospectTimeoutMs: getEnvInt("FXA_INTROSPECT_TIMEOUT_MS", {
+    fallbackValue: 1000,
+  }),
   nextAuthSecret: getEnvString("NEXTAUTH_SECRET"),
   fxaSettingsUrl: getEnvString("FXA_SETTINGS_URL"),
   // https://mozilla.github.io/ecosystem-platform/reference/tokens#claims-within-a-jwt-access-token

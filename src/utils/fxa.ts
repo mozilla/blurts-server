@@ -224,6 +224,53 @@ async function getAttachedClients(
 }
 /* c8 ignore stop */
 
+/**
+ * @see https://mozilla.github.io/ecosystem-platform/api#tag/OAuth-Server-API-Overview/operation/postIntrospect
+ */
+export type FxaIntrospection = {
+  /** Boolean indicator of whether the presented token is active. */
+  active: boolean;
+  /** The FxA uid of the user. */
+  sub?: string;
+  /** A space separated list of scope values that the user has authorized. */
+  scope?: string;
+  /** The OAuth client identifier for the requesting client application. */
+  client_id?: string;
+  /** A string representing the token type. */
+  token_type?: "access_token" | "refresh_token";
+};
+
+/** Non-2xx reply from FxA introspect */
+export class FxaIntrospectError extends Error {
+  /** @param status HTTP status FxA returned */
+  constructor(public readonly status: number) {
+    super(`FxA introspect returned ${status}`);
+    this.name = "FxaIntrospectError";
+  }
+}
+
+/**
+ * Asks FxA whether an access token is live.
+ * Throws on network, timeout, or non-2xx.
+ */
+async function introspectToken(token: string): Promise<FxaIntrospection> {
+  const endpointUrl = `${config.oauthAccountUri}/introspect`;
+  // Hint stops refresh tokens passing as active
+  const response = await fetch(endpointUrl, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ token, token_type_hint: "access_token" }),
+    signal: AbortSignal.timeout(config.fxaIntrospectTimeoutMs),
+  });
+  if (!response.ok) {
+    throw new FxaIntrospectError(response.status);
+  }
+  return (await response.json()) as FxaIntrospection;
+}
+
 // TODO: Add unit test when changing this code:
 /* c8 ignore next 3 */
 function getSha1(email: crypto.BinaryLike) {
@@ -236,4 +283,5 @@ export {
   revokeOAuthTokens,
   getSha1,
   getAttachedClients,
+  introspectToken,
 };
