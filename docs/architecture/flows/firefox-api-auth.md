@@ -16,7 +16,7 @@ A person can be signed in to FxA in two separate places, possibly as different a
 | Holds         | FxA session or refresh token | Monitor session cookie           |
 | Used by       | `/api/firefox/v1`            | The website and `/api/v1`        |
 
-**The Firefox API uses the Firefox sign-in only. It maps the token's FxA uid to a subscriber with [`getSubscriberByFxaUid`](../../../src/db/tables/subscribers.ts#L55), and ignores any Monitor website session. Below, "has Monitor" means a subscriber row exists for the Firefox account's FxA uid, created the first time that account signed in to the Monitor website.**
+**The Firefox API uses the Firefox sign-in only. It maps the token's FxA uid to a subscriber with [`getSubscriberByFxaUid`](../../../src/db/tables/subscribers.ts#L55), and ignores any Monitor website session. Below, "has Monitor" means a subscriber row exists for the Firefox account's FxA uid, created the first time that account signed in to the Monitor website. This is separate from FxA's view of whether Monitor is connected (the connected services check in "Legacy", the authorization table is read in "New").**
 
 ## Flows
 
