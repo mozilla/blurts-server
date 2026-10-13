@@ -1,5 +1,3 @@
-# Flow: Firefox API Auth
-
 How Firefox authenticates to Monitor's Firefox API (`/api/firefox/v1`, see [`openapi.yml`](../../../openapi.yml)). Firefox sends an FxA access token carrying the `https://identity.mozilla.com/apps/monitor` scope, and Monitor introspects it with FxA on every request.
 
 "Legacy" and "New" FxA auth differ only in how Firefox learns whether the user is connected to Monitor. "Legacy" holds a session token, which can mint any scope, so Firefox first checks `/account/attached_oauth_clients` for a Monitor refresh token. "New" holds a refresh token, and FxA's token endpoint returns 403 for the Monitor scope if the user hasn't authorized Monitor. For Monitor web users, this needs [MNTOR-5389](https://mozilla-hub.atlassian.net/browse/MNTOR-5389) (request the Monitor scope) and [FXA-14086](https://mozilla-hub.atlassian.net/browse/FXA-14086) (authorization table backfill). Monitor's side is the same.
@@ -60,16 +58,7 @@ sequenceDiagram
 
 ### 1c. Not signed in
 
-```mermaid
-sequenceDiagram
-    participant FE as Firefox
-    participant FxA
-    participant BE as Monitor
-
-    Note over FE: No FxA account signed in,<br/>no session token
-    Note over FxA,BE: No token, no requests
-    Note over FE: Show Firefox sign in.<br/>After sign in, continue as 1a or 1b
-```
+TODO
 
 ## "New" Auth
 
