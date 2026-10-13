@@ -12,7 +12,7 @@ A person can be signed in to FxA in two separate places, possibly as different a
 
 |               | Firefox (browser)            | Monitor website                  |
 | ------------- | ---------------------------- | -------------------------------- |
-| Signed in via | Firefox settings (Sync)      | "Sign in" on monitor.mozilla.org |
+| Signed in via | Firefox                      | "Sign in" on monitor.mozilla.org |
 | Holds         | FxA session or refresh token | Monitor session cookie           |
 | Used by       | `/api/firefox/v1`            | The website and `/api/v1`        |
 
