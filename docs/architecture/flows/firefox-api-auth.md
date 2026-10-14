@@ -44,7 +44,7 @@ sequenceDiagram
     FE->>FxA: Session token, list attached OAuth clients [1]
     FxA-->>FE: Attached OAuth clients
     alt Monitor not connected
-        Note over FE: Show Monitor sign up
+        Note over FE: Show Monitor sign up.<br/>Milestones 2-3, not milestone 1
     else Monitor connected
         FE->>FxA: Session token, ask for Monitor scope [2]
         FxA-->>FE: Access token
