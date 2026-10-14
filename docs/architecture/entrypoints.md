@@ -41,4 +41,4 @@ Next.js page Server Components: a browser GET renders them on the server. The UR
 ## Related docs
 
 - [ADR 0003 — Use a queue for backend services](../adr/0003-use-queue-for-backend-services.md) — why B1 hands off to Pub/Sub instead of emailing inline.
-- [`docs/fx-integration.mmd`](../fx-integration.mmd) — the Firefox ↔ FxA ↔ Monitor OAuth handshake.
+- [Firefox API Auth](./flows/firefox-api-auth.md) — the Firefox ↔ FxA ↔ Monitor OAuth handshake.
