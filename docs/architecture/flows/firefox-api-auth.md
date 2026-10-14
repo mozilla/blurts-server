@@ -2,7 +2,7 @@
 
 How Firefox authenticates to Monitor's Firefox API (`/api/firefox/v1`, see [`openapi.yml`](../../../openapi.yml)). Firefox sends an FxA access token carrying the `https://identity.mozilla.com/apps/monitor` scope, and Monitor introspects it with FxA on every request.
 
-"Legacy" and "New" FxA auth differ only in how Firefox learns whether the user is connected to Monitor. "Legacy" holds a session token, which can mint any scope, so Firefox first checks `/account/attached_oauth_clients` for a Monitor refresh token. "New" holds a refresh token, and FxA's token endpoint returns 403 for the Monitor scope if the user hasn't authorized Monitor. For Monitor web users, this needs [MNTOR-5389](https://mozilla-hub.atlassian.net/browse/MNTOR-5389) (request the Monitor scope) and [FXA-14086](https://mozilla-hub.atlassian.net/browse/FXA-14086) (authorization table backfill). Monitor's side is the same.
+"Legacy" and "New" FxA auth differ only in how Firefox learns whether the user is connected to Monitor. "Legacy" holds a session token, which can mint any scope, so Firefox first checks the account's attached OAuth clients for a Monitor refresh token. "New" holds a refresh token, and FxA's token endpoint returns 403 for the Monitor scope if the user hasn't authorized Monitor. For Monitor web users, this needs [MNTOR-5389](https://mozilla-hub.atlassian.net/browse/MNTOR-5389) (request the Monitor scope) and [FXA-14086](https://mozilla-hub.atlassian.net/browse/FXA-14086) (authorization table backfill). Monitor's side is the same.
 
 Today Desktop uses "Legacy" and Mobile uses "New". Desktop should switch to "New" by the end of Q4 2026.
 
@@ -55,7 +55,7 @@ sequenceDiagram
         BE-->>FE: 200, user's breaches,<br/>or 403, no-monitor-account [5]
     end
 
-    Note over FE,BE: [1] GET /v1/account/attached_oauth_clients. Includes Monitor's client_id only while it holds a refresh token. On FxA error, Firefox treats Monitor as not connected<br/>[2] POST /v1/oauth/token, scope apps/monitor. Firefox caches the token<br/>[3] Bearer header. On 401 Firefox gets a new token, retries once<br/>[4] POST /v1/introspect<br/>[5] Rare, no subscriber for this FxA uid. Firefox shows sign up, no retry
+    Note over FE,BE: [1] GET /v1/account/attached_clients, which Desktop already fetches, or the newer /attached_oauth_clients. Includes Monitor's client_id only while it holds a refresh token. On FxA error, Firefox treats Monitor as not connected<br/>[2] POST /v1/oauth/token, scope apps/monitor. Firefox caches the token<br/>[3] Bearer header. On 401 Firefox gets a new token, retries once<br/>[4] POST /v1/introspect<br/>[5] Rare, no subscriber for this FxA uid. Firefox shows sign up, no retry
 ```
 
 ### 1c. Not signed in
