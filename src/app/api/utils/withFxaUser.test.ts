@@ -194,27 +194,39 @@ describe("withFxaUser", () => {
   });
 
   describe("internal failure", () => {
-    it.each([
-      [
-        "the subscriber lookup",
-        () =>
-          vi.mocked(getSubscriberByFxaUid).mockRejectedValue(new Error("boom")),
-      ],
-      [
-        "the handler",
-        () => {
-          vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
-          handler.mockRejectedValueOnce(new Error("boom"));
-        },
-      ],
-    ])("returns 500 when %s throws", async (_label, arrange) => {
+    it("returns 500 and counts a lookup error when the lookup throws", async () => {
       mockIntrospection();
-      arrange();
+      vi.mocked(getSubscriberByFxaUid).mockRejectedValue(new Error("boom"));
 
       const res = await gated(authed());
 
       expect(res.status).toBe(500);
       expect(await res.json()).toMatchObject({ code: "internal-error" });
+      expect(incFirefoxApiAuth).toHaveBeenCalledWith(
+        "lookup-error",
+        ENDPOINT,
+        CLIENT_ID,
+      );
+      expect(Sentry.captureException).toHaveBeenCalledWith(new Error("boom"), {
+        tags: { endpoint: ENDPOINT, outcome: "lookup-error" },
+      });
+    });
+
+    it("returns 500 without a lookup error when the handler throws", async () => {
+      mockIntrospection();
+      vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+      handler.mockRejectedValueOnce(new Error("boom"));
+
+      const res = await gated(authed());
+
+      expect(res.status).toBe(500);
+      expect(await res.json()).toMatchObject({ code: "internal-error" });
+      expect(incFirefoxApiAuth).toHaveBeenCalledTimes(1);
+      expect(incFirefoxApiAuth).toHaveBeenCalledWith(
+        "success",
+        ENDPOINT,
+        CLIENT_ID,
+      );
       expect(Sentry.captureException).toHaveBeenCalledWith(new Error("boom"), {
         tags: { endpoint: ENDPOINT },
       });

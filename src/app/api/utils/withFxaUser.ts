@@ -118,8 +118,9 @@ export function withFxaUser(
       );
     }
 
+    let subscriber: FxaSubscriber | undefined;
     try {
-      const subscriber = await getSubscriberByFxaUid(sub);
+      subscriber = await getSubscriberByFxaUid(sub);
       if (!subscriber) {
         incFirefoxApiAuth("no-subscriber", endpoint, client_id);
         return errorResponse(
@@ -133,8 +134,18 @@ export function withFxaUser(
       // Await, so handler errors land below
       return await handler(req, { subscriber });
     } catch (error) {
+      // No subscriber yet means lookup failed
+      const lookupFailed = !subscriber;
+      if (lookupFailed) {
+        incFirefoxApiAuth("lookup-error", endpoint, client_id);
+      }
       // openapi.yml promises a JSON body
-      Sentry.captureException(error, { tags: { endpoint } });
+      Sentry.captureException(error, {
+        tags: {
+          endpoint,
+          ...(lookupFailed ? { outcome: "lookup-error" } : {}),
+        },
+      });
       return errorResponse(
         500,
         "internal-error",

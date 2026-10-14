@@ -111,7 +111,9 @@ export type FirefoxApiAuthOutcome =
   // No subscriber for the FxA uid
   | "no-subscriber"
   // FxA unreachable, timed out, or non-2xx
-  | "introspection-error";
+  | "introspection-error"
+  // Subscriber lookup threw, e.g. DB down
+  | "lookup-error";
 
 /** Firefox API paths, as in openapi.yml */
 export type FirefoxApiEndpoint =

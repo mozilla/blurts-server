@@ -40,7 +40,7 @@ firefox_api:
       - name: outcome
         description: |
           Any of "success", "missing-header", "inactive", "missing-scope",
-          "no-subscriber", "introspection-error"
+          "no-subscriber", "introspection-error", "lookup-error"
       - name: endpoint
         description: |
           Firefox API path from openapi.yml, e.g. "/user/breaches"
