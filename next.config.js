@@ -189,6 +189,8 @@ const nextConfig = {
   // corrupts its error StatusObject, which breaks Pub/Sub publishing and renders the failure as
   // the useless "undefined undefined: undefined" (code/details stripped) instead of a real gRPC
   // status. Keeping them external loads them unbundled from node_modules, where publishing works.
+  // @opentelemetry/instrumentation-nestjs-core uses a dynamic require.resolve() of optional
+  // @nestjs/core files, which Turbopack cannot resolve when bundling.
   serverExternalPackages: [
     "mjml",
     "commonjs",
@@ -197,6 +199,7 @@ const nextConfig = {
     "@google-cloud/pubsub",
     "@grpc/grpc-js",
     "google-gax",
+    "@opentelemetry/instrumentation-nestjs-core",
   ],
 };
 
