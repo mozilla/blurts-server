@@ -130,7 +130,7 @@ components:
                 message: FxA reports this token as inactive.
     Forbidden:
       description: |
-        The token is valid but does not grant access: either it lacks the Monitor scope, or the account has no Monitor subscriber. Monitor serves existing accounts only and never creates one. A new token will not help. For `no-monitor-account`, retry after the user signs up.
+        The token is valid but does not grant access: either it lacks the Monitor scope, or the account has no Monitor subscriber. Monitor serves existing accounts only and never creates one. A new token will not help. For `no-monitor-account`, Monitor cannot tell Firefox when the user signs up, so check again on a later poll.
       content:
         application/json:
           schema:
