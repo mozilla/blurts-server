@@ -81,7 +81,7 @@ export function withFxaUser(
     try {
       introspection = await introspectToken(token);
     } catch (error) {
-      // No token or sub in Sentry
+      // Error carries no token or sub
       Sentry.captureException(error, {
         tags: {
           outcome: "introspection-error",
