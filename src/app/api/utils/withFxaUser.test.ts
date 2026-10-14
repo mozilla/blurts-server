@@ -85,6 +85,7 @@ describe("withFxaUser", () => {
 
       expect(res.status).toBe(401);
       expect(await res.json()).toMatchObject({ code: "token-invalid" });
+      expect(res.headers.get("WWW-Authenticate")).toBe("Bearer");
       expect(incFirefoxApiAuth).toHaveBeenCalledWith(
         "missing-header",
         ENDPOINT,
@@ -106,6 +107,7 @@ describe("withFxaUser", () => {
 
       expect(res.status).toBe(401);
       expect(await res.json()).toMatchObject({ code: "token-invalid" });
+      expect(res.headers.get("WWW-Authenticate")).toBe("Bearer");
       expect(incFirefoxApiAuth).toHaveBeenCalledWith("inactive", ENDPOINT);
       expect(getSubscriberByFxaUid).not.toHaveBeenCalled();
       expect(handler).not.toHaveBeenCalled();

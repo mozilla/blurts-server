@@ -45,7 +45,14 @@ function errorResponse(
     | "unavailable",
   message: string,
 ) {
-  return NextResponse.json({ code, message }, { status });
+  return NextResponse.json(
+    { code, message },
+    {
+      status,
+      // RFC 6750 requires it on a 401
+      headers: status === 401 ? { "WWW-Authenticate": "Bearer" } : undefined,
+    },
+  );
 }
 
 /**
