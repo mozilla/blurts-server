@@ -197,6 +197,8 @@ const nextConfig = {
     "@google-cloud/pubsub",
     "@grpc/grpc-js",
     "google-gax",
+    // Uses a dynamic require.resolve() of @nestjs/core files that Turbopack can't bundle.
+    "@opentelemetry/instrumentation-nestjs-core",
   ],
 };
 
