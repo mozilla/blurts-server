@@ -34,17 +34,18 @@ function readToken(req: NextRequest): string | undefined {
   }
 }
 
+/** HTTP status for each openapi.yml error code */
+const ERROR_STATUS = {
+  "token-invalid": 401,
+  "missing-scope": 403,
+  "no-monitor-account": 403,
+  "internal-error": 500,
+  unavailable: 503,
+} as const;
+
 /** Error body per openapi.yml's Error schema */
-function errorResponse(
-  status: number,
-  code:
-    | "token-invalid"
-    | "missing-scope"
-    | "no-monitor-account"
-    | "internal-error"
-    | "unavailable",
-  message: string,
-) {
+function errorResponse(code: keyof typeof ERROR_STATUS, message: string) {
+  const status = ERROR_STATUS[code];
   return NextResponse.json(
     { code, message },
     {
@@ -73,7 +74,7 @@ export function withFxaUser(
     const token = readToken(req);
     if (!token) {
       incFirefoxApiAuth("missing-header", endpoint);
-      return errorResponse(401, "token-invalid", "Missing or malformed token.");
+      return errorResponse("token-invalid", "Missing or malformed token.");
     }
 
     let introspection: FxaIntrospection;
@@ -93,7 +94,6 @@ export function withFxaUser(
       });
       incFirefoxApiAuth("introspection-error", endpoint);
       return errorResponse(
-        503,
         "unavailable",
         "Monitor is temporarily unavailable.",
       );
@@ -103,7 +103,6 @@ export function withFxaUser(
     if (!active || !sub || token_type !== "access_token") {
       incFirefoxApiAuth("inactive", endpoint);
       return errorResponse(
-        401,
         "token-invalid",
         "FxA reports this token as inactive.",
       );
@@ -112,7 +111,6 @@ export function withFxaUser(
     if (!(scope ?? "").split(" ").includes(FXA_MONITOR_SCOPE)) {
       incFirefoxApiAuth("missing-scope", endpoint, client_id);
       return errorResponse(
-        403,
         "missing-scope",
         `This token lacks the ${FXA_MONITOR_SCOPE} scope.`,
       );
@@ -124,7 +122,6 @@ export function withFxaUser(
       if (!subscriber) {
         incFirefoxApiAuth("no-subscriber", endpoint, client_id);
         return errorResponse(
-          403,
           "no-monitor-account",
           "This Firefox account has no Monitor subscriber.",
         );
@@ -147,7 +144,6 @@ export function withFxaUser(
         },
       });
       return errorResponse(
-        500,
         "internal-error",
         "Monitor could not complete this request.",
       );
