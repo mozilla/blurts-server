@@ -107,6 +107,12 @@ components:
   responses:
     Unauthorized:
       description: No usable token. The `Authorization` header is missing or malformed, the token is not an access token, or FxA reports it as inactive, for example expired or revoked. Get a new token from FxA and retry once.
+      headers:
+        WWW-Authenticate:
+          required: true
+          description: Always `Bearer`, per RFC 6750.
+          schema:
+            type: string
       content:
         application/json:
           schema:
