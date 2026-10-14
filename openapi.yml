@@ -272,7 +272,7 @@ paths:
           $ref: "#/components/responses/InternalError"
         "503":
           $ref: "#/components/responses/ServiceUnavailable"
-          description: FxA could not verify the token, or we could not check this user against HIBP, so we do not know what they are affected by. Keep the breaches you already hold, do not clear them, and retry.
+          description: FxA could not verify the token, or we could not check this user against HIBP, so we do not know what they are affected by. Keep the breaches you already hold, do not clear them, and retry, after the interval in `Retry-After` when it is present.
 
   /user/breaches/resolutions:
     post:
@@ -355,3 +355,4 @@ paths:
           description: Something failed on our side. Treat the batch as not applied and retry it, repeats are safe.
         "503":
           $ref: "#/components/responses/ServiceUnavailable"
+          description: Monitor is unavailable, or FxA could not verify the token. Treat the batch as not applied and retry it, after the interval in `Retry-After` when it is present. Repeats are safe.
