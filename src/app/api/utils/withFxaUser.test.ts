@@ -195,9 +195,13 @@ describe("withFxaUser", () => {
       expect(res.headers.get("Retry-After")).toBe("2");
     });
 
-    it("returns 503 when introspect returns null", async () => {
+    it.each([
+      ["null", null],
+      ["an empty object", {}],
+      ["a string active", { active: "true" }],
+    ])("returns 503 when introspect returns %s", async (_label, body) => {
       vi.mocked(introspectToken).mockResolvedValue(
-        null as unknown as FxaIntrospection,
+        body as unknown as FxaIntrospection,
       );
 
       const res = await gated(authed());
@@ -210,7 +214,10 @@ describe("withFxaUser", () => {
       );
       expect(Sentry.captureException).toHaveBeenCalledWith(
         new Error("FxA introspect returned a malformed body"),
-        expect.anything(),
+        {
+          tags: { outcome: "introspection-error", endpoint: ENDPOINT },
+          fingerprint: ["firefox-api-fxa-introspect"],
+        },
       );
       expect(handler).not.toHaveBeenCalled();
     });
