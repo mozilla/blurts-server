@@ -114,7 +114,8 @@ export function withFxaUser(
       );
     }
 
-    if (!(scope ?? "").split(" ").includes(FXA_MONITOR_SCOPE)) {
+    const scopes = typeof scope === "string" ? scope.split(" ") : [];
+    if (!scopes.includes(FXA_MONITOR_SCOPE)) {
       incFirefoxApiAuth("missing-scope", endpoint, client_id);
       return errorResponse(
         "missing-scope",

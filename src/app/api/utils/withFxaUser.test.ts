@@ -119,6 +119,10 @@ describe("withFxaUser", () => {
       ["no scope at all", { scope: undefined }],
       ["other scopes only", { scope: "profile" }],
       ["a near-match scope", { scope: `${FXA_MONITOR_SCOPE}-foo` }],
+      [
+        "a non-string scope",
+        { scope: [FXA_MONITOR_SCOPE] as unknown as string },
+      ],
     ])("rejects %s with 403", async (_label, overrides) => {
       mockIntrospection(overrides);
 
