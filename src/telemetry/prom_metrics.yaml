@@ -30,3 +30,24 @@ hibp:
         trigger_condition: |
           Trigger when the aggregate failure rate is greater than
           20 req/sec.
+
+firefox_api:
+  firefox_api_auth_total:
+    description: |
+      Metric to instrument FxA token auth attempts on the Firefox API
+    type: counter
+    labels:
+      - name: outcome
+        description: |
+          Any of "success", "missing-header", "inactive", "missing-scope",
+          "no-subscriber", "introspection-error", "lookup-error"
+      - name: endpoint
+        description: |
+          Firefox API path from openapi.yml, e.g. "/user/breaches"
+      - name: client_id
+        description: |
+          FxA OAuth client id. Set only when the token is active.
+    scope: |
+      The "/api/firefox/v1" endpoints, via withFxaUser
+    # Panel and alerting: MNTOR-5348
+    alert_policy: []
