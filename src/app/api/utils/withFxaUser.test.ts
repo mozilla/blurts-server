@@ -153,27 +153,42 @@ describe("withFxaUser", () => {
   });
 
   describe("introspection failure", () => {
-    it("returns 503 and reports the FxA status to Sentry", async () => {
-      const error = new FxaIntrospectError(500);
-      vi.mocked(introspectToken).mockRejectedValue(error);
+    it.each([500, 429])(
+      "returns 503 when FxA responds %i",
+      async (httpStatus) => {
+        const error = new FxaIntrospectError(httpStatus);
+        vi.mocked(introspectToken).mockRejectedValue(error);
+
+        const res = await gated(authed());
+
+        expect(res.status).toBe(503);
+        expect(await res.json()).toMatchObject({ code: "unavailable" });
+        expect(incFirefoxApiAuth).toHaveBeenCalledWith(
+          "introspection-error",
+          ENDPOINT,
+        );
+        expect(Sentry.captureException).toHaveBeenCalledWith(error, {
+          tags: {
+            outcome: "introspection-error",
+            endpoint: ENDPOINT,
+            httpStatus,
+          },
+          fingerprint: ["firefox-api-fxa-introspect"],
+        });
+        expect(handler).not.toHaveBeenCalled();
+      },
+    );
+
+    it("sets Retry-After when introspect times out", async () => {
+      vi.mocked(introspectToken).mockRejectedValue(
+        new DOMException("timed out", "TimeoutError"),
+      );
 
       const res = await gated(authed());
 
       expect(res.status).toBe(503);
       expect(await res.json()).toMatchObject({ code: "unavailable" });
-      expect(incFirefoxApiAuth).toHaveBeenCalledWith(
-        "introspection-error",
-        ENDPOINT,
-      );
-      expect(Sentry.captureException).toHaveBeenCalledWith(error, {
-        tags: {
-          outcome: "introspection-error",
-          endpoint: ENDPOINT,
-          httpStatus: 500,
-        },
-        fingerprint: ["firefox-api-fxa-introspect"],
-      });
-      expect(handler).not.toHaveBeenCalled();
+      expect(res.headers.get("Retry-After")).toBe("2");
     });
 
     it("omits httpStatus for a network or timeout error", async () => {

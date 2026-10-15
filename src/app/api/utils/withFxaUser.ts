@@ -44,17 +44,18 @@ const ERROR_STATUS = {
   unavailable: 503,
 } as const;
 
+/** Seconds a client waits after a 503 */
+const RETRY_AFTER_SECONDS = 2;
+
 /** Error body per openapi.yml's Error schema */
 function errorResponse(code: keyof typeof ERROR_STATUS, message: string) {
   const status = ERROR_STATUS[code];
-  return NextResponse.json(
-    { code, message },
-    {
-      status,
-      // RFC 6750 requires it on a 401
-      headers: status === 401 ? { "WWW-Authenticate": "Bearer" } : undefined,
-    },
-  );
+  const headers: Record<string, string> = {};
+  // RFC 6750 requires it on a 401
+  if (status === 401) headers["WWW-Authenticate"] = "Bearer";
+  // openapi.yml lets 503 clients wait this long
+  if (status === 503) headers["Retry-After"] = String(RETRY_AFTER_SECONDS);
+  return NextResponse.json({ code, message }, { status, headers });
 }
 
 /**
