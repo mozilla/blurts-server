@@ -34,7 +34,8 @@ function readToken(req: NextRequest): string | undefined {
   }
 }
 
-/** HTTP status for each openapi.yml error code */
+/** HTTP status for each openapi.yml error code which defines the contract
+ *  that we the backend have made with the frontend. */
 const ERROR_STATUS = {
   "token-invalid": 401,
   "missing-scope": 403,
