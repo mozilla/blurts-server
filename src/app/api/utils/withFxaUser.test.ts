@@ -184,18 +184,6 @@ describe("withFxaUser", () => {
       },
     );
 
-    it("sets Retry-After when introspect times out", async () => {
-      vi.mocked(introspectToken).mockRejectedValue(
-        new DOMException("timed out", "TimeoutError"),
-      );
-
-      const res = await gated(authed());
-
-      expect(res.status).toBe(503);
-      expect(await res.json()).toMatchObject({ code: "unavailable" });
-      expect(res.headers.get("Retry-After")).toBe("2");
-    });
-
     it.each([
       ["null", null],
       ["an empty object", {}],
@@ -223,7 +211,7 @@ describe("withFxaUser", () => {
       expect(handler).not.toHaveBeenCalled();
     });
 
-    it("omits httpStatus for a network or timeout error", async () => {
+    it("returns 503 with Retry-After, on timeout", async () => {
       vi.mocked(introspectToken).mockRejectedValue(
         new DOMException("timed out", "TimeoutError"),
       );
@@ -231,6 +219,8 @@ describe("withFxaUser", () => {
       const res = await gated(authed());
 
       expect(res.status).toBe(503);
+      expect(await res.json()).toMatchObject({ code: "unavailable" });
+      expect(res.headers.get("Retry-After")).toBe("2");
       expect(Sentry.captureException).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
