@@ -11,7 +11,13 @@ export default defineConfig({
   test: {
     environment: "node",
     include: ["**/src/**/*.integration.{ts,tsx}"],
-    exclude: ["**/node_modules/**", "**/dist/**", "**/functional-tests/**"],
+    exclude: [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/functional-tests/**",
+      // Needs a production build; run with `npm run test-built-server`.
+      "**/*.builtServer.integration.ts",
+    ],
     // Run integration tests sequentially (shared DB state)
     fileParallelism: false,
     // Disable coverage for integration tests (as per Jest config)
