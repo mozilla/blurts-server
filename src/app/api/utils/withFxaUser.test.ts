@@ -191,6 +191,26 @@ describe("withFxaUser", () => {
       expect(res.headers.get("Retry-After")).toBe("2");
     });
 
+    it("returns 503 when introspect returns null", async () => {
+      vi.mocked(introspectToken).mockResolvedValue(
+        null as unknown as FxaIntrospection,
+      );
+
+      const res = await gated(authed());
+
+      expect(res.status).toBe(503);
+      expect(await res.json()).toMatchObject({ code: "unavailable" });
+      expect(incFirefoxApiAuth).toHaveBeenCalledWith(
+        "introspection-error",
+        ENDPOINT,
+      );
+      expect(Sentry.captureException).toHaveBeenCalledWith(
+        new Error("FxA introspect returned a malformed body"),
+        expect.anything(),
+      );
+      expect(handler).not.toHaveBeenCalled();
+    });
+
     it("omits httpStatus for a network or timeout error", async () => {
       vi.mocked(introspectToken).mockRejectedValue(
         new DOMException("timed out", "TimeoutError"),

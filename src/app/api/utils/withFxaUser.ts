@@ -82,6 +82,10 @@ export function withFxaUser(
     let introspection: FxaIntrospection;
     try {
       introspection = await introspectToken(token);
+      // Lands in the catch, as FxA's fault
+      if (typeof introspection?.active !== "boolean") {
+        throw new Error("FxA introspect returned a malformed body");
+      }
     } catch (error) {
       // Error carries no token or sub
       Sentry.captureException(error, {

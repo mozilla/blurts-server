@@ -110,7 +110,7 @@ export type FirefoxApiAuthOutcome =
   | "missing-scope"
   // No subscriber for the FxA uid
   | "no-subscriber"
-  // FxA unreachable, timed out, or non-2xx
+  // FxA unreachable, timed out, non-2xx, or malformed
   | "introspection-error"
   // Subscriber lookup threw, e.g. DB down
   | "lookup-error";
