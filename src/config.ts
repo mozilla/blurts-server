@@ -65,7 +65,7 @@ export const config = {
   oauthProfileUri: getEnvString("OAUTH_PROFILE_URI"),
   oauthAccountUri: getEnvString("OAUTH_ACCOUNT_URI"),
   fxaIntrospectTimeoutMs: getEnvInt("FXA_INTROSPECT_TIMEOUT_MS", {
-    fallbackValue: 1000,
+    fallbackValue: 5000,
   }),
   nextAuthSecret: getEnvString("NEXTAUTH_SECRET"),
   fxaSettingsUrl: getEnvString("FXA_SETTINGS_URL"),
