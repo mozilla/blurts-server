@@ -254,7 +254,7 @@ export class FxaIntrospectError extends Error {
  * Throws on network, timeout, or non-2xx.
  */
 async function introspectToken(token: string): Promise<FxaIntrospection> {
-  const endpointUrl = `${config.oauthAccountUri}/introspect`;
+  const endpointUrl = `${new URL(config.oauthTokenUri).origin}/v1/introspect`;
   // FxA treats hint as strict filter (not RFC 7662),
   // so refresh tokens return inactive:
   // https://github.com/mozilla/fxa/blob/f6513d066e217be90ceb3a4d32e7e51284f3edc6/packages/fxa-auth-server/lib/routes/oauth/introspect.js#L79-L86

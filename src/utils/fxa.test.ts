@@ -10,6 +10,18 @@ vi.mock("../app/functions/server/logging", () => ({
   logger: { info: vi.fn(), error: vi.fn() },
 }));
 
+// Distinct hosts, so the URL test can tell them apart
+vi.mock("../config", async (importOriginal) => {
+  const { config } = await importOriginal<typeof import("../config")>();
+  return {
+    config: {
+      ...config,
+      oauthTokenUri: "https://oauth.example/v1/token",
+      oauthAccountUri: "https://accounts.example/v1",
+    },
+  };
+});
+
 import { config } from "../config";
 import { FxaIntrospectError, introspectToken } from "./fxa";
 
@@ -33,13 +45,22 @@ afterEach(() => {
 });
 
 describe("introspectToken", () => {
-  it("POSTs the token with an access_token hint to /introspect", async () => {
+  it("posts to the OAuth host, not the account host", async () => {
     const fetchMock = stubFetch(jsonResponse({ active: false }));
 
     await introspectToken(TOKEN);
 
-    const [url, init] = fetchMock.mock.calls[0];
-    expect(url).toBe(`${config.oauthAccountUri}/introspect`);
+    expect(fetchMock.mock.calls[0][0]).toBe(
+      "https://oauth.example/v1/introspect",
+    );
+  });
+
+  it("POSTs the token with an access_token hint", async () => {
+    const fetchMock = stubFetch(jsonResponse({ active: false }));
+
+    await introspectToken(TOKEN);
+
+    const [, init] = fetchMock.mock.calls[0];
     expect(init.method).toBe("POST");
     // No client credentials, FxA ignores them
     expect(init.headers).toEqual({
