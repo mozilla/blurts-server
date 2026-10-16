@@ -16,6 +16,7 @@ type MetricsState = {
   kanonRequestFailuresTotal: Counter<Attributes>;
   firefoxApiAuthTotal: Counter<Attributes>;
   firefoxApiRateLimitTotal: Counter<Attributes>;
+  hibpRangeSearchTotal: Counter<Attributes>;
 };
 
 let metricsState: MetricsState | undefined;
@@ -62,6 +63,10 @@ export function getOrInitMetrics(): MetricsState {
     { description: "Firefox API rate limit checks, by outcome" },
   );
 
+  const hibpRangeSearchTotal = meter.createCounter("hibp_range_search_total", {
+    description: "Strict HIBP range searches, by outcome",
+  });
+
   const state: MetricsState = {
     hibpNotifyRequestFailuresTotal,
     hibpNotifyRequestsTotal,
@@ -69,6 +74,7 @@ export function getOrInitMetrics(): MetricsState {
     kanonRequestFailuresTotal,
     firefoxApiAuthTotal,
     firefoxApiRateLimitTotal,
+    hibpRangeSearchTotal,
   };
   return state;
 }
@@ -159,6 +165,34 @@ export function incFirefoxApiRateLimit(
     outcome,
     endpoint,
     ...(clientId ? { client_id: clientId } : {}),
+  });
+}
+
+/** Result of one searchHibpRange call */
+export type HibpRangeSearchOutcome =
+  // HIBP lists breaches for this hash
+  | "match"
+  // Prefix known, this hash is not
+  | "no-match"
+  // 404, no hash has this prefix
+  | "not-found"
+  // Non-2xx, see status_code
+  | "http-error"
+  // No answer within the timeout
+  | "timeout"
+  // DNS, TLS, or connection failure
+  | "network-error"
+  // Not JSON, or not an array
+  | "invalid-body";
+
+/** Increment HIBP range search metric */
+export function incHibpRangeSearch(
+  outcome: HibpRangeSearchOutcome,
+  statusCode?: number,
+) {
+  getOrInitMetrics().hibpRangeSearchTotal.add(1, {
+    outcome,
+    ...(statusCode ? { status_code: statusCode } : {}),
   });
 }
 /* c8 ignore end */

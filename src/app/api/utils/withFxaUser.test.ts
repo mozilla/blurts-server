@@ -49,6 +49,7 @@ import {
 } from "../../../utils/metrics";
 import { FXA_MONITOR_SCOPE } from "../../../constants";
 import { config } from "../../../config";
+import { UpstreamUnavailableError } from "../../../utils/error";
 import { withFxaUser, type FxaSubscriber } from "./withFxaUser";
 
 const ENDPOINT = "/user/breaches";
@@ -293,6 +294,33 @@ describe("withFxaUser", () => {
       );
       expect(Sentry.captureException).toHaveBeenCalledWith(new Error("boom"), {
         tags: { endpoint: ENDPOINT },
+      });
+    });
+  });
+
+  describe("upstream failure", () => {
+    it("returns 503 with Retry-After 300 when the handler's upstream fails", async () => {
+      mockIntrospection();
+      vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+      const error = new UpstreamUnavailableError("hibp", "http-error", {
+        status: 502,
+      });
+      handler.mockRejectedValueOnce(error);
+
+      const res = await gated(authed());
+
+      expect(res.status).toBe(503);
+      expect(res.headers.get("Retry-After")).toBe("300");
+      expect(await res.json()).toMatchObject({ code: "unavailable" });
+      expect(Sentry.captureException).toHaveBeenCalledWith(error, {
+        tags: {
+          outcome: "upstream-unavailable",
+          upstream: "hibp",
+          reason: "http-error",
+          endpoint: ENDPOINT,
+          httpStatus: 502,
+        },
+        fingerprint: ["firefox-api-hibp-unavailable"],
       });
     });
   });

@@ -18,7 +18,13 @@ import {
   BREACHES_EXPIRY_SECONDS,
 } from "../db/redis/client.ts";
 import { config } from "../config.ts";
-import { incKanonFailure, incKanonRequest } from "./metrics.ts";
+import {
+  incHibpRangeSearch,
+  incKanonFailure,
+  incKanonRequest,
+  type HibpRangeSearchOutcome,
+} from "./metrics.ts";
+import { UpstreamUnavailableError } from "./error.ts";
 
 // TODO: fix hardcode
 const HIBP_USER_AGENT = "monitor/1.0.0";
@@ -361,6 +367,83 @@ export type BreachedAccountResponse = Array<{
   hashSuffix: string;
   websites: string[];
 }>;
+
+/** Fail fast; Firefox retries later */
+const HIBP_RANGE_TIMEOUT_MS = 5000;
+
+/** Counts the failure, then builds its error */
+function hibpRangeFailure(
+  outcome: HibpRangeSearchOutcome,
+  options: ErrorOptions & { status?: number } = {},
+) {
+  incHibpRangeSearch(outcome, options.status);
+  return new UpstreamUnavailableError("hibp", outcome, options);
+}
+
+/**
+ * Breach names HIBP lists for one email hash.
+ * Unlike getBreachesForEmail, it never retries,
+ * and throws UpstreamUnavailableError on failure.
+ */
+export async function searchHibpRange(sha1: string): Promise<string[]> {
+  const sha1Upper = sha1.toUpperCase();
+  const sha1Prefix = sha1Upper.slice(0, 6);
+  const url = `${config.hibpKanonApiRoot}/range/search/${sha1Prefix}`;
+
+  let response: Response;
+  try {
+    incKanonRequest();
+    response = await fetch(url, {
+      headers: {
+        "User-Agent": HIBP_USER_AGENT,
+        Accept: "application/json",
+        "Hibp-Enterprise-Api-Key": config.hibpKanonApiToken,
+      },
+      signal: AbortSignal.timeout(HIBP_RANGE_TIMEOUT_MS),
+    });
+  } catch (error) {
+    // AbortSignal.timeout throws a TimeoutError
+    const isTimeout = (error as Error)?.name === "TimeoutError";
+    throw hibpRangeFailure(isTimeout ? "timeout" : "network-error", {
+      cause: error,
+    });
+  }
+
+  // No hash has this prefix
+  if (response.status === 404) {
+    incHibpRangeSearch("not-found");
+    return [];
+  }
+  if (!response.ok) {
+    incKanonFailure(response.status);
+    throw hibpRangeFailure("http-error", { status: response.status });
+  }
+
+  let body: unknown;
+  try {
+    body = await response.json();
+  } catch (error) {
+    throw hibpRangeFailure("invalid-body", {
+      status: response.status,
+      cause: error,
+    });
+  }
+  // Valid JSON, wrong shape
+  if (!Array.isArray(body)) {
+    throw hibpRangeFailure("invalid-body", { status: response.status });
+  }
+  const accounts = body as BreachedAccountResponse;
+
+  // Other suffixes belong to other people.
+  // The mock answers one entry for any hash.
+  const ours = isUsingMockHIBPEndpoint()
+    ? accounts[0]
+    : accounts.find((account) => account?.hashSuffix === sha1Upper.slice(6));
+  const websites = ours?.websites ?? [];
+
+  incHibpRangeSearch(websites.length > 0 ? "match" : "no-match");
+  return websites;
+}
 
 /**
  * A range of hashes can be searched by passing the hash prefix in a GET request:

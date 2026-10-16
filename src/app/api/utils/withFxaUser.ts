@@ -17,6 +17,7 @@ import {
   incFirefoxApiRateLimit,
   type FirefoxApiEndpoint,
 } from "../../../utils/metrics";
+import { UpstreamUnavailableError } from "../../../utils/error";
 import { FXA_MONITOR_SCOPE } from "../../../constants";
 import { config } from "../../../config";
 
@@ -50,6 +51,9 @@ const ERROR_STATUS = {
 
 /** Seconds a client waits after a 503 */
 const UNAVAILABLE_RETRY_AFTER_SECONDS = 2;
+
+/** Seconds a client waits after an upstream fails */
+const UPSTREAM_RETRY_AFTER_SECONDS = 300;
 
 /** One hour, per FIREFOX_API_RATE_LIMIT_PER_HOUR */
 const RATE_LIMIT_WINDOW_SECONDS = 60 * 60;
@@ -225,6 +229,25 @@ export function withFxaUser(
       // Await, so handler errors land below
       return await handler(req, { subscriber });
     } catch (error) {
+      // e.g. HIBP is down; the client retries later
+      if (error instanceof UpstreamUnavailableError) {
+        Sentry.captureException(error, {
+          tags: {
+            outcome: "upstream-unavailable",
+            upstream: error.upstream,
+            reason: error.reason,
+            endpoint,
+            ...(error.status ? { httpStatus: error.status } : {}),
+          },
+          fingerprint: [`firefox-api-${error.upstream}-unavailable`],
+        });
+        return errorResponse(
+          "unavailable",
+          "Monitor is temporarily unavailable.",
+          UPSTREAM_RETRY_AFTER_SECONDS,
+        );
+      }
+
       // No subscriber yet means lookup failed
       const lookupFailed = !subscriber;
       if (lookupFailed) {
