@@ -58,7 +58,8 @@ firefox_api:
     labels:
       - name: outcome
         description: |
-          "limited" (answered 429) or "redis-error" (let through)
+          "allowed", "limited" (answered 429), or "redis-error"
+          (let through). Not counted while the limit is 0
       - name: endpoint
         description: |
           Firefox API path from openapi.yml, e.g. "/user/breaches"

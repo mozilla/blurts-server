@@ -69,11 +69,10 @@ function errorResponse(
 }
 
 /** Seconds to wait, 0 when allowed */
-async function rateLimitRetryAfter(uid: string): Promise<number> {
-  const limit = config.firefoxApiRateLimitPerHour;
-  // 0 disables rate limiting
-  if (limit <= 0) return 0;
-
+async function rateLimitRetryAfter(
+  uid: string,
+  limit: number,
+): Promise<number> {
   const key = `firefox-api:rate-limit:${uid}`;
   // SET NX starts the window, INCR keeps its TTL
   const replies = await redisClient()
@@ -159,19 +158,27 @@ export function withFxaUser(
       );
     }
 
+    const limit = config.firefoxApiRateLimitPerHour;
     let retryAfterSeconds = 0;
-    try {
-      retryAfterSeconds = await rateLimitRetryAfter(sub);
-    } catch (error) {
-      // Fail open, like the breaches cache
-      Sentry.captureException(error, {
-        tags: { outcome: "redis-error", endpoint },
-        fingerprint: ["firefox-api-rate-limit-redis"],
-      });
-      incFirefoxApiRateLimit("redis-error", endpoint, client_id);
+    // 0 disables rate limiting
+    if (limit > 0) {
+      try {
+        retryAfterSeconds = await rateLimitRetryAfter(sub, limit);
+        incFirefoxApiRateLimit(
+          retryAfterSeconds > 0 ? "limited" : "allowed",
+          endpoint,
+          client_id,
+        );
+      } catch (error) {
+        // Fail open, like the breaches cache
+        Sentry.captureException(error, {
+          tags: { outcome: "redis-error", endpoint },
+          fingerprint: ["firefox-api-rate-limit-redis"],
+        });
+        incFirefoxApiRateLimit("redis-error", endpoint, client_id);
+      }
     }
     if (retryAfterSeconds > 0) {
-      incFirefoxApiRateLimit("limited", endpoint, client_id);
       return errorResponse(
         "rate-limited",
         `Too many requests. Retry after ${retryAfterSeconds} seconds.`,

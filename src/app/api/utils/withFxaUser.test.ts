@@ -320,7 +320,13 @@ describe("withFxaUser", () => {
         message: "Too many requests. Retry after 3600 seconds.",
       });
       expect(res.headers.get("Retry-After")).toBe("3600");
+      expect(incFirefoxApiRateLimit).toHaveBeenCalledTimes(RATE_LIMIT + 1);
       expect(incFirefoxApiRateLimit).toHaveBeenCalledWith(
+        "allowed",
+        ENDPOINT,
+        CLIENT_ID,
+      );
+      expect(incFirefoxApiRateLimit).toHaveBeenLastCalledWith(
         "limited",
         ENDPOINT,
         CLIENT_ID,
@@ -369,6 +375,7 @@ describe("withFxaUser", () => {
         expect((await gated(authed())).status).toBe(200);
       }
       expect(redisClient).not.toHaveBeenCalled();
+      expect(incFirefoxApiRateLimit).not.toHaveBeenCalled();
     });
 
     it.each([
@@ -409,6 +416,7 @@ describe("withFxaUser", () => {
       const res = await gated(authed());
 
       expect(res.status).toBe(200);
+      expect(incFirefoxApiRateLimit).toHaveBeenCalledTimes(1);
       expect(incFirefoxApiRateLimit).toHaveBeenCalledWith(
         "redis-error",
         ENDPOINT,

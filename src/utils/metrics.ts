@@ -59,7 +59,7 @@ export function getOrInitMetrics(): MetricsState {
 
   const firefoxApiRateLimitTotal = meter.createCounter(
     "firefox_api_rate_limit_total",
-    { description: "Firefox API rate limit hits and Redis errors" },
+    { description: "Firefox API rate limit checks, by outcome" },
   );
 
   const state: MetricsState = {
@@ -142,6 +142,8 @@ export function incFirefoxApiAuth(
 
 /** Result of a Firefox API rate limit check */
 export type FirefoxApiRateLimitOutcome =
+  // Under the limit, let through
+  | "allowed"
   // Over the limit, answered 429
   | "limited"
   // Redis failed, request let through
