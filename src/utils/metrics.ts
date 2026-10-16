@@ -123,6 +123,8 @@ export type FirefoxApiAuthOutcome =
   | "missing-scope"
   // No subscriber for the FxA uid
   | "no-subscriber"
+  // FirefoxApi flag off for this user
+  | "flag-off"
   // FxA unreachable, timed out, non-2xx, or malformed
   | "introspection-error"
   // Subscriber lookup threw, e.g. DB down

@@ -11,6 +11,7 @@ import {
   type FxaIntrospection,
 } from "../../../utils/fxa";
 import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
+import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 import { redisClient } from "../../../db/redis/client";
 import {
   incFirefoxApiAuth,
@@ -222,6 +223,18 @@ export function withFxaUser(
         return errorResponse(
           "no-monitor-account",
           "This Firefox account has no Monitor subscriber.",
+        );
+      }
+
+      // Off until launch; allow list lets testers in
+      const flags = await getEnabledFeatureFlags({
+        email: subscriber.primary_email,
+      });
+      if (!flags.includes("FirefoxApi")) {
+        incFirefoxApiAuth("flag-off", endpoint, client_id);
+        return errorResponse(
+          "unavailable",
+          "Monitor is temporarily unavailable.",
         );
       }
 

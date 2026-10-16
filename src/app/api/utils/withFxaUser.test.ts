@@ -22,6 +22,10 @@ vi.mock("../../../db/tables/subscribers", () => ({
   getSubscriberByFxaUid: vi.fn(),
 }));
 
+vi.mock("../../../db/tables/featureFlags", () => ({
+  getEnabledFeatureFlags: vi.fn(),
+}));
+
 vi.mock("../../../db/redis/client", () => ({
   redisClient: vi.fn(),
 }));
@@ -43,6 +47,7 @@ import {
 } from "../../../utils/fxa";
 import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
 import { redisClient } from "../../../db/redis/client";
+import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 import {
   incFirefoxApiAuth,
   incFirefoxApiRateLimit,
@@ -59,7 +64,11 @@ const CLIENT_ID = "5882386c6d801776";
 // 2, so one request reuses the window
 const RATE_LIMIT = 2;
 
-const subscriber = { id: 1, fxa_uid: "uid-a" } as FxaSubscriber;
+const subscriber = {
+  id: 1,
+  fxa_uid: "uid-a",
+  primary_email: "a@example.com",
+} as FxaSubscriber;
 
 const validIntrospection: FxaIntrospection = {
   active: true,
@@ -100,6 +109,8 @@ beforeEach(async () => {
   await redis.flushall();
   vi.mocked(redisClient).mockReturnValue(redis as never);
   setRateLimit(RATE_LIMIT);
+  // Most tests are past launch
+  vi.mocked(getEnabledFeatureFlags).mockResolvedValue(["FirefoxApi"]);
 });
 
 describe("withFxaUser", () => {
@@ -496,6 +507,39 @@ describe("withFxaUser", () => {
 
         expect(res.status).toBe(200);
         expectRedisErrorReported();
+      });
+    });
+  });
+
+  describe("FirefoxApi flag", () => {
+    it("returns 503, without Retry-After, when the flag is off", async () => {
+      mockIntrospection();
+      vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+      vi.mocked(getEnabledFeatureFlags).mockResolvedValue([]);
+
+      const res = await gated(authed());
+
+      expect(res.status).toBe(503);
+      expect(res.headers.get("Retry-After")).toBeNull();
+      expect(await res.json()).toMatchObject({ code: "unavailable" });
+      expect(handler).not.toHaveBeenCalled();
+      expect(incFirefoxApiAuth).toHaveBeenCalledTimes(1);
+      expect(incFirefoxApiAuth).toHaveBeenCalledWith(
+        "flag-off",
+        ENDPOINT,
+        CLIENT_ID,
+      );
+      expect(Sentry.captureException).not.toHaveBeenCalled();
+    });
+
+    it("checks the allow list with the primary email", async () => {
+      mockIntrospection();
+      vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+
+      await gated(authed());
+
+      expect(getEnabledFeatureFlags).toHaveBeenCalledWith({
+        email: "a@example.com",
       });
     });
   });
