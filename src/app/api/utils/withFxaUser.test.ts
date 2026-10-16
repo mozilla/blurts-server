@@ -90,10 +90,15 @@ const gated = withFxaUser(ENDPOINT, handler);
 
 const redis = new MockRedis();
 
+/** Overrides FIREFOX_API_RATE_LIMIT_PER_HOUR; config is readonly */
+function setRateLimit(perHour: number) {
+  Object.assign(config, { firefoxApiRateLimitPerHour: perHour });
+}
+
 beforeEach(async () => {
   await redis.flushall();
   vi.mocked(redisClient).mockReturnValue(redis as never);
-  Object.assign(config, { firefoxApiRateLimitPerHour: RATE_LIMIT });
+  setRateLimit(RATE_LIMIT);
 });
 
 describe("withFxaUser", () => {
@@ -302,6 +307,19 @@ describe("withFxaUser", () => {
       vi.useRealTimers();
     });
 
+    /** Redis whose transaction returns replies */
+    function mockTransaction(replies: unknown) {
+      const transaction = {
+        set: () => transaction,
+        incr: () => transaction,
+        ttl: () => transaction,
+        exec: async () => replies,
+      };
+      vi.mocked(redisClient).mockReturnValue({
+        multi: () => transaction,
+      } as never);
+    }
+
     async function reachLimit() {
       for (let i = 0; i < RATE_LIMIT; i++) {
         expect((await gated(authed())).status).toBe(200);
@@ -347,18 +365,31 @@ describe("withFxaUser", () => {
       expect((await gated(authed())).status).toBe(200);
     });
 
-    it("shares one budget across endpoints", async () => {
-      await reachLimit();
+    it("answers Retry-After 1 when the TTL reads 0", async () => {
+      mockTransaction([
+        [null, null],
+        [null, RATE_LIMIT + 1],
+        [null, 0],
+      ]);
 
-      const resolutions = withFxaUser("/user/breaches/resolutions", handler);
-      const res = await resolutions(authed());
+      const res = await gated(authed());
 
       expect(res.status).toBe(429);
-      expect(incFirefoxApiRateLimit).toHaveBeenCalledWith(
-        "limited",
+      expect(res.headers.get("Retry-After")).toBe("1");
+    });
+
+    it("shares one budget across endpoints", async () => {
+      const getBreaches = withFxaUser("/user/breaches", handler);
+      const postResolutions = withFxaUser(
         "/user/breaches/resolutions",
-        CLIENT_ID,
+        handler,
       );
+
+      // RATE_LIMIT is 2: one request each
+      expect((await getBreaches(authed())).status).toBe(200);
+      expect((await postResolutions(authed())).status).toBe(200);
+      expect((await getBreaches(authed())).status).toBe(429);
+      expect((await postResolutions(authed())).status).toBe(429);
     });
 
     it("limits each FxA uid separately", async () => {
@@ -369,62 +400,74 @@ describe("withFxaUser", () => {
     });
 
     it("FIREFOX_API_RATE_LIMIT_PER_HOUR=0 disables the limit", async () => {
-      Object.assign(config, { firefoxApiRateLimitPerHour: 0 });
+      setRateLimit(0);
 
-      for (let i = 0; i < RATE_LIMIT + 5; i++) {
+      for (let i = 0; i < RATE_LIMIT + 1; i++) {
         expect((await gated(authed())).status).toBe(200);
       }
       expect(redisClient).not.toHaveBeenCalled();
       expect(incFirefoxApiRateLimit).not.toHaveBeenCalled();
     });
 
-    it.each([
-      ["exec rejects", () => Promise.reject(new Error("ECONNREFUSED"))],
-      ["exec aborts", async () => null],
-      [
-        "a command errors",
-        async () => [
+    describe("fails open", () => {
+      /** Redis error reached Sentry and the counter */
+      function expectRedisErrorReported() {
+        expect(incFirefoxApiRateLimit).toHaveBeenCalledTimes(1);
+        expect(incFirefoxApiRateLimit).toHaveBeenCalledWith(
+          "redis-error",
+          ENDPOINT,
+          CLIENT_ID,
+        );
+        expect(Sentry.captureException).toHaveBeenCalledWith(
+          expect.any(Error),
+          {
+            tags: { outcome: "redis-error", endpoint: ENDPOINT },
+            fingerprint: ["firefox-api-rate-limit-redis"],
+          },
+        );
+      }
+
+      it("when Redis is down", async () => {
+        vi.spyOn(redis, "multi").mockImplementation(() => {
+          throw new Error("ECONNREFUSED");
+        });
+
+        const res = await gated(authed());
+
+        expect(res.status).toBe(200);
+        expectRedisErrorReported();
+      });
+
+      it("when the key has no TTL", async () => {
+        // No EX, so Redis reports TTL -1
+        await redis.set("firefox-api:rate-limit:uid-a", RATE_LIMIT);
+
+        const res = await gated(authed());
+
+        expect(res.status).toBe(200);
+        expectRedisErrorReported();
+      });
+
+      it("when the transaction aborts", async () => {
+        mockTransaction(null);
+
+        const res = await gated(authed());
+
+        expect(res.status).toBe(200);
+        expectRedisErrorReported();
+      });
+
+      it("when a command errors", async () => {
+        mockTransaction([
           [null, "OK"],
           [new Error("WRONGTYPE"), null],
           [null, 3600],
-        ],
-      ],
-      [
-        "the key has no TTL",
-        async () => [
-          [null, null],
-          [null, RATE_LIMIT + 1],
-          [null, -1],
-        ],
-      ],
-    ])("fails open when %s", async (_label, exec) => {
-      vi.mocked(redisClient).mockReturnValue({
-        multi: () => ({
-          set() {
-            return this;
-          },
-          incr() {
-            return this;
-          },
-          ttl() {
-            return this;
-          },
-          exec,
-        }),
-      } as never);
+        ]);
 
-      const res = await gated(authed());
+        const res = await gated(authed());
 
-      expect(res.status).toBe(200);
-      expect(incFirefoxApiRateLimit).toHaveBeenCalledTimes(1);
-      expect(incFirefoxApiRateLimit).toHaveBeenCalledWith(
-        "redis-error",
-        ENDPOINT,
-        CLIENT_ID,
-      );
-      expect(Sentry.captureException).toHaveBeenCalledWith(expect.any(Error), {
-        tags: { outcome: "redis-error", endpoint: ENDPOINT },
-        fingerprint: ["firefox-api-rate-limit-redis"],
+        expect(res.status).toBe(200);
+        expectRedisErrorReported();
       });
     });
   });
