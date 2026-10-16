@@ -51,3 +51,21 @@ firefox_api:
       The "/api/firefox/v1" endpoints, via withFxaUser
     # Panel and alerting: MNTOR-5348
     alert_policy: []
+  firefox_api_rate_limit_total:
+    description: |
+      Metric to instrument Firefox API rate limiting
+    type: counter
+    labels:
+      - name: outcome
+        description: |
+          "limited" (answered 429) or "redis-error" (let through)
+      - name: endpoint
+        description: |
+          Firefox API path from openapi.yml, e.g. "/user/breaches"
+      - name: client_id
+        description: |
+          FxA OAuth client id
+    scope: |
+      The "/api/firefox/v1" endpoints, via withFxaUser
+    # Panel and alerting: MNTOR-5348
+    alert_policy: []

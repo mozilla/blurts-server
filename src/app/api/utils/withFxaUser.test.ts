@@ -4,8 +4,9 @@
 
 // @vitest-environment node
 
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { NextRequest, NextResponse } from "next/server";
+import MockRedis from "ioredis-mock";
 
 vi.mock("../../functions/server/logging", () => ({
   logger: { info: vi.fn(), error: vi.fn() },
@@ -21,8 +22,13 @@ vi.mock("../../../db/tables/subscribers", () => ({
   getSubscriberByFxaUid: vi.fn(),
 }));
 
+vi.mock("../../../db/redis/client", () => ({
+  redisClient: vi.fn(),
+}));
+
 vi.mock("../../../utils/metrics", () => ({
   incFirefoxApiAuth: vi.fn(),
+  incFirefoxApiRateLimit: vi.fn(),
 }));
 
 vi.mock("@sentry/nextjs", () => ({
@@ -36,13 +42,21 @@ import {
   type FxaIntrospection,
 } from "../../../utils/fxa";
 import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
-import { incFirefoxApiAuth } from "../../../utils/metrics";
+import { redisClient } from "../../../db/redis/client";
+import {
+  incFirefoxApiAuth,
+  incFirefoxApiRateLimit,
+} from "../../../utils/metrics";
 import { FXA_MONITOR_SCOPE } from "../../../constants";
+import { config } from "../../../config";
 import { withFxaUser, type FxaSubscriber } from "./withFxaUser";
 
 const ENDPOINT = "/user/breaches";
 const TOKEN = "fxa-access-token";
 const CLIENT_ID = "5882386c6d801776";
+
+// 2, so one request reuses the window
+const RATE_LIMIT = 2;
 
 const subscriber = { id: 1, fxa_uid: "uid-a" } as FxaSubscriber;
 
@@ -73,6 +87,14 @@ function mockIntrospection(overrides: Partial<FxaIntrospection> = {}) {
 
 const handler = vi.fn(async () => NextResponse.json({ ok: true }));
 const gated = withFxaUser(ENDPOINT, handler);
+
+const redis = new MockRedis();
+
+beforeEach(async () => {
+  await redis.flushall();
+  vi.mocked(redisClient).mockReturnValue(redis as never);
+  Object.assign(config, { firefoxApiRateLimitPerHour: RATE_LIMIT });
+});
 
 describe("withFxaUser", () => {
   describe("missing or malformed header", () => {
@@ -266,6 +288,135 @@ describe("withFxaUser", () => {
       );
       expect(Sentry.captureException).toHaveBeenCalledWith(new Error("boom"), {
         tags: { endpoint: ENDPOINT },
+      });
+    });
+  });
+
+  describe("rate limit", () => {
+    beforeEach(() => {
+      mockIntrospection();
+      vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    async function reachLimit() {
+      for (let i = 0; i < RATE_LIMIT; i++) {
+        expect((await gated(authed())).status).toBe(200);
+      }
+    }
+
+    it("returns 429 with Retry-After once over the limit", async () => {
+      await reachLimit();
+      vi.mocked(getSubscriberByFxaUid).mockClear();
+
+      const res = await gated(authed());
+
+      expect(res.status).toBe(429);
+      expect(await res.json()).toEqual({
+        code: "rate-limited",
+        message: "Too many requests. Retry after 3600 seconds.",
+      });
+      expect(res.headers.get("Retry-After")).toBe("3600");
+      expect(incFirefoxApiRateLimit).toHaveBeenCalledWith(
+        "limited",
+        ENDPOINT,
+        CLIENT_ID,
+      );
+      expect(getSubscriberByFxaUid).not.toHaveBeenCalled();
+    });
+
+    it("counts Retry-After down, then recovers when the window resets", async () => {
+      vi.useFakeTimers({ toFake: ["Date"] });
+      await reachLimit();
+
+      vi.advanceTimersByTime(600_000);
+      const limited = await gated(authed());
+      expect(limited.status).toBe(429);
+      expect(limited.headers.get("Retry-After")).toBe("3000");
+
+      vi.advanceTimersByTime(3_000_000);
+      expect((await gated(authed())).status).toBe(200);
+    });
+
+    it("shares one budget across endpoints", async () => {
+      await reachLimit();
+
+      const resolutions = withFxaUser("/user/breaches/resolutions", handler);
+      const res = await resolutions(authed());
+
+      expect(res.status).toBe(429);
+      expect(incFirefoxApiRateLimit).toHaveBeenCalledWith(
+        "limited",
+        "/user/breaches/resolutions",
+        CLIENT_ID,
+      );
+    });
+
+    it("limits each FxA uid separately", async () => {
+      await reachLimit();
+      mockIntrospection({ sub: "uid-b" });
+
+      expect((await gated(authed())).status).toBe(200);
+    });
+
+    it("FIREFOX_API_RATE_LIMIT_PER_HOUR=0 disables the limit", async () => {
+      Object.assign(config, { firefoxApiRateLimitPerHour: 0 });
+
+      for (let i = 0; i < RATE_LIMIT + 5; i++) {
+        expect((await gated(authed())).status).toBe(200);
+      }
+      expect(redisClient).not.toHaveBeenCalled();
+    });
+
+    it.each([
+      ["exec rejects", () => Promise.reject(new Error("ECONNREFUSED"))],
+      ["exec aborts", async () => null],
+      [
+        "a command errors",
+        async () => [
+          [null, "OK"],
+          [new Error("WRONGTYPE"), null],
+          [null, 3600],
+        ],
+      ],
+      [
+        "the key has no TTL",
+        async () => [
+          [null, null],
+          [null, RATE_LIMIT + 1],
+          [null, -1],
+        ],
+      ],
+    ])("fails open when %s", async (_label, exec) => {
+      vi.mocked(redisClient).mockReturnValue({
+        multi: () => ({
+          set() {
+            return this;
+          },
+          incr() {
+            return this;
+          },
+          ttl() {
+            return this;
+          },
+          exec,
+        }),
+      } as never);
+
+      const res = await gated(authed());
+
+      expect(res.status).toBe(200);
+      expect(incFirefoxApiRateLimit).toHaveBeenCalledWith(
+        "redis-error",
+        ENDPOINT,
+        CLIENT_ID,
+      );
+      expect(Sentry.captureException).toHaveBeenCalledWith(expect.any(Error), {
+        tags: { outcome: "redis-error", endpoint: ENDPOINT },
+        fingerprint: ["firefox-api-rate-limit-redis"],
       });
     });
   });

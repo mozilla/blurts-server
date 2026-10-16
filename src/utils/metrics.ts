@@ -15,6 +15,7 @@ type MetricsState = {
   kanonRequestsTotal: Counter<Attributes>;
   kanonRequestFailuresTotal: Counter<Attributes>;
   firefoxApiAuthTotal: Counter<Attributes>;
+  firefoxApiRateLimitTotal: Counter<Attributes>;
 };
 
 let metricsState: MetricsState | undefined;
@@ -56,12 +57,18 @@ export function getOrInitMetrics(): MetricsState {
     description: "Firefox API auth attempts, by outcome",
   });
 
+  const firefoxApiRateLimitTotal = meter.createCounter(
+    "firefox_api_rate_limit_total",
+    { description: "Firefox API rate limit hits and Redis errors" },
+  );
+
   const state: MetricsState = {
     hibpNotifyRequestFailuresTotal,
     hibpNotifyRequestsTotal,
     kanonRequestsTotal,
     kanonRequestFailuresTotal,
     firefoxApiAuthTotal,
+    firefoxApiRateLimitTotal,
   };
   return state;
 }
@@ -127,6 +134,26 @@ export function incFirefoxApiAuth(
   clientId?: string,
 ) {
   getOrInitMetrics().firefoxApiAuthTotal.add(1, {
+    outcome,
+    endpoint,
+    ...(clientId ? { client_id: clientId } : {}),
+  });
+}
+
+/** Result of a Firefox API rate limit check */
+export type FirefoxApiRateLimitOutcome =
+  // Over the limit, answered 429
+  | "limited"
+  // Redis failed, request let through
+  | "redis-error";
+
+/** Increment Firefox API rate limit metric */
+export function incFirefoxApiRateLimit(
+  outcome: FirefoxApiRateLimitOutcome,
+  endpoint: FirefoxApiEndpoint,
+  clientId?: string,
+) {
+  getOrInitMetrics().firefoxApiRateLimitTotal.add(1, {
     outcome,
     endpoint,
     ...(clientId ? { client_id: clientId } : {}),
