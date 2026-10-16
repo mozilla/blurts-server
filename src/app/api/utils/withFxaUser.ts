@@ -52,7 +52,7 @@ const ERROR_STATUS = {
 const UNAVAILABLE_RETRY_AFTER_SECONDS = 2;
 
 /** One hour, per FIREFOX_API_RATE_LIMIT_PER_HOUR */
-const RATE_LIMIT_WINDOW_SECONDS = 3600;
+const RATE_LIMIT_WINDOW_SECONDS = 60 * 60;
 
 /** Error body per openapi.yml's Error schema */
 function errorResponse(
