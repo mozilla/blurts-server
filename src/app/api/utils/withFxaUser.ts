@@ -74,22 +74,65 @@ async function rateLimitRetryAfter(
   limit: number,
 ): Promise<number> {
   const key = `firefox-api:rate-limit:${uid}`;
-  // SET NX starts the window, INCR keeps its TTL
+  // One transaction, so the TTL always lands
   const replies = await redisClient()
     .multi()
+    // Start a window unless one is running
     .set(key, 0, "EX", RATE_LIMIT_WINDOW_SECONDS, "NX")
+    // Count this request
     .incr(key)
+    // Seconds left in the window
     .ttl(key)
     .exec();
-  if (!replies) throw new Error("Redis aborted the rate limit transaction");
-  // Each reply is [error, result]
-  const [count, ttl] = replies.slice(1).map(([error, result]) => {
+  // Null only when a WATCH aborts it
+  if (replies === null) {
+    throw new Error("Redis aborted the rate limit transaction");
+  }
+
+  // Each reply is an [error, result] pair
+  for (const [error] of replies) {
     if (error) throw error;
-    return result as number;
-  });
+  }
+  const count = replies[1][1] as number; // INCR
+  const ttl = replies[2][1] as number; // TTL
+
   // No TTL: fail open, alert via Sentry
   if (ttl < 0) throw new Error("Rate limit key has no TTL");
-  return count > limit ? Math.max(ttl, 1) : 0;
+  if (count <= limit) return 0;
+  // TTL can read 0; 0 means allowed
+  return Math.max(ttl, 1);
+}
+
+/**
+ * Seconds to wait, 0 when allowed.
+ * Fails open: Redis errors return 0.
+ */
+async function checkRateLimit(
+  uid: string,
+  endpoint: FirefoxApiEndpoint,
+  clientId?: string,
+): Promise<number> {
+  const limit = config.firefoxApiRateLimitPerHour;
+  // 0 disables rate limiting
+  if (limit <= 0) return 0;
+
+  try {
+    const retryAfterSeconds = await rateLimitRetryAfter(uid, limit);
+    if (retryAfterSeconds > 0) {
+      incFirefoxApiRateLimit("limited", endpoint, clientId);
+    } else {
+      incFirefoxApiRateLimit("allowed", endpoint, clientId);
+    }
+    return retryAfterSeconds;
+  } catch (error) {
+    // Fail open, like the breaches cache
+    Sentry.captureException(error, {
+      tags: { outcome: "redis-error", endpoint },
+      fingerprint: ["firefox-api-rate-limit-redis"],
+    });
+    incFirefoxApiRateLimit("redis-error", endpoint, clientId);
+    return 0;
+  }
 }
 
 /**
@@ -158,26 +201,7 @@ export function withFxaUser(
       );
     }
 
-    const limit = config.firefoxApiRateLimitPerHour;
-    let retryAfterSeconds = 0;
-    // 0 disables rate limiting
-    if (limit > 0) {
-      try {
-        retryAfterSeconds = await rateLimitRetryAfter(sub, limit);
-        incFirefoxApiRateLimit(
-          retryAfterSeconds > 0 ? "limited" : "allowed",
-          endpoint,
-          client_id,
-        );
-      } catch (error) {
-        // Fail open, like the breaches cache
-        Sentry.captureException(error, {
-          tags: { outcome: "redis-error", endpoint },
-          fingerprint: ["firefox-api-rate-limit-redis"],
-        });
-        incFirefoxApiRateLimit("redis-error", endpoint, client_id);
-      }
-    }
+    const retryAfterSeconds = await checkRateLimit(sub, endpoint, client_id);
     if (retryAfterSeconds > 0) {
       return errorResponse(
         "rate-limited",
