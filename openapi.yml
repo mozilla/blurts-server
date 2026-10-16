@@ -149,9 +149,8 @@ components:
               value:
                 code: no-monitor-account
                 message: This Firefox account has no Monitor subscriber.
-    # TODO(MNTOR-4119): set the threshold, and decide app or edge.
     TooManyRequests:
-      description: Rate limited. Wait the interval in `Retry-After` if it is present, otherwise back off and retry.
+      description: Rate limited. Each account gets an hourly request budget, shared by both endpoints. Wait the interval in `Retry-After` if it is present, otherwise back off and retry.
       headers:
         Retry-After:
           required: false
@@ -207,7 +206,7 @@ paths:
 
         **Joining.** Almost every `id` resolves in `fxmonitor-breaches`, but the collection is slower than this API. It publishes daily, and each batch is signed only after a person reviews it, deliberately, because it ships to every Firefox. So a breach can be live here for days before Firefox sees it, and a HIBP rename retires an id. Skip an id you cannot resolve rather than erroring, and pick it up on a later poll.
 
-        **Cadence.** Poll no more than hourly, and once a day is enough. Breaches reach HIBP weeks or months after the incident, so polling harder gains nothing.
+        **Cadence.** Poll no more than hourly, and once a day is enough. Breaches reach HIBP weeks or months after the incident, so polling harder gains nothing. Each account gets an hourly request budget, shared by both endpoints, and we answer the rest with a `429`.
 
       parameters:
         - name: domain

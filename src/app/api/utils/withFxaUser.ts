@@ -11,11 +11,14 @@ import {
   type FxaIntrospection,
 } from "../../../utils/fxa";
 import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
+import { redisClient } from "../../../db/redis/client";
 import {
   incFirefoxApiAuth,
+  incFirefoxApiRateLimit,
   type FirefoxApiEndpoint,
 } from "../../../utils/metrics";
 import { FXA_MONITOR_SCOPE } from "../../../constants";
+import { config } from "../../../config";
 
 /** Subscriber row, with emails, for the token's user */
 export type FxaSubscriber = NonNullable<
@@ -40,22 +43,96 @@ const ERROR_STATUS = {
   "token-invalid": 401,
   "missing-scope": 403,
   "no-monitor-account": 403,
+  "rate-limited": 429,
   "internal-error": 500,
   unavailable: 503,
 } as const;
 
 /** Seconds a client waits after a 503 */
-const RETRY_AFTER_SECONDS = 2;
+const UNAVAILABLE_RETRY_AFTER_SECONDS = 2;
+
+/** One hour, per FIREFOX_API_RATE_LIMIT_PER_HOUR */
+const RATE_LIMIT_WINDOW_SECONDS = 60 * 60;
 
 /** Error body per openapi.yml's Error schema */
-function errorResponse(code: keyof typeof ERROR_STATUS, message: string) {
+function errorResponse(
+  code: keyof typeof ERROR_STATUS,
+  message: string,
+  retryAfterSeconds?: number,
+) {
   const status = ERROR_STATUS[code];
   const headers: Record<string, string> = {};
   // RFC 6750 requires it on a 401
   if (status === 401) headers["WWW-Authenticate"] = "Bearer";
-  // openapi.yml lets 503 clients wait this long
-  if (status === 503) headers["Retry-After"] = String(RETRY_AFTER_SECONDS);
+  if (retryAfterSeconds) headers["Retry-After"] = String(retryAfterSeconds);
   return NextResponse.json({ code, message }, { status, headers });
+}
+
+/** Seconds to wait, 0 when allowed */
+async function rateLimitRetryAfter(
+  uid: string,
+  limit: number,
+): Promise<number> {
+  const key = `firefox-api:rate-limit:${uid}`;
+  // One transaction, so the TTL always lands
+  const replies = await redisClient()
+    .multi()
+    // Start a window unless one is running
+    .set(key, 0, "EX", RATE_LIMIT_WINDOW_SECONDS, "NX")
+    // Count this request
+    .incr(key)
+    // Seconds left in the window
+    .ttl(key)
+    .exec();
+  // Null only when a WATCH aborts it
+  if (replies === null) {
+    throw new Error("Redis aborted the rate limit transaction");
+  }
+
+  // Each reply is an [error, result] pair
+  for (const [error] of replies) {
+    if (error) throw error;
+  }
+  const count = replies[1][1] as number; // INCR
+  const ttl = replies[2][1] as number; // TTL
+
+  // No TTL: fail open, alert via Sentry
+  if (ttl < 0) throw new Error("Rate limit key has no TTL");
+  if (count <= limit) return 0;
+  // TTL can read 0; 0 means allowed
+  return Math.max(ttl, 1);
+}
+
+/**
+ * Seconds to wait, 0 when allowed.
+ * Fails open: Redis errors return 0.
+ */
+async function checkRateLimit(
+  uid: string,
+  endpoint: FirefoxApiEndpoint,
+  clientId?: string,
+): Promise<number> {
+  const limit = config.firefoxApiRateLimitPerHour;
+  // 0 disables rate limiting
+  if (limit <= 0) return 0;
+
+  try {
+    const retryAfterSeconds = await rateLimitRetryAfter(uid, limit);
+    if (retryAfterSeconds > 0) {
+      incFirefoxApiRateLimit("limited", endpoint, clientId);
+    } else {
+      incFirefoxApiRateLimit("allowed", endpoint, clientId);
+    }
+    return retryAfterSeconds;
+  } catch (error) {
+    // Fail open, like the breaches cache
+    Sentry.captureException(error, {
+      tags: { outcome: "redis-error", endpoint },
+      fingerprint: ["firefox-api-rate-limit-redis"],
+    });
+    incFirefoxApiRateLimit("redis-error", endpoint, clientId);
+    return 0;
+  }
 }
 
 /**
@@ -102,6 +179,7 @@ export function withFxaUser(
       return errorResponse(
         "unavailable",
         "Monitor is temporarily unavailable.",
+        UNAVAILABLE_RETRY_AFTER_SECONDS,
       );
     }
 
@@ -120,6 +198,15 @@ export function withFxaUser(
       return errorResponse(
         "missing-scope",
         `This token lacks the ${FXA_MONITOR_SCOPE} scope.`,
+      );
+    }
+
+    const retryAfterSeconds = await checkRateLimit(sub, endpoint, client_id);
+    if (retryAfterSeconds > 0) {
+      return errorResponse(
+        "rate-limited",
+        `Too many requests. Retry after ${retryAfterSeconds} seconds.`,
+        retryAfterSeconds,
       );
     }
 
