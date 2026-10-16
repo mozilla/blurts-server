@@ -22,7 +22,7 @@ A person can be signed in to FxA in two separate places, possibly as different a
 
 Diagrams show `GET /user/breaches`. `POST /user/breaches/resolutions` authenticates the same way.
 
-After the scope check, [`withFxaUser`](../../../src/app/api/utils/withFxaUser.ts#L161) allows each FxA uid `FIREFOX_API_RATE_LIMIT_PER_HOUR` requests an hour (default 60) across both endpoints, counted in Redis. Past that it returns `429` with `Retry-After`, the seconds until the window resets. `0` disables the limit. If Redis fails, the request goes through and Sentry gets an event.
+After the scope check, [`checkRateLimit`](../../../src/app/api/utils/withFxaUser.ts#L110) allows each FxA uid `FIREFOX_API_RATE_LIMIT_PER_HOUR` requests an hour (default 60) across both endpoints, counted in Redis. Past that it returns `429` with `Retry-After`, the seconds until the window resets. `0` disables the limit. If Redis fails, the request goes through and Sentry gets an event.
 
 |                                | "Legacy" auth           | "New" auth              |
 | ------------------------------ | ----------------------- | ----------------------- |
