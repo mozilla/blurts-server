@@ -21,6 +21,7 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
+-brand-solo-ai = Solo AI
 
 ##
 
@@ -39,9 +40,7 @@ more-about-this-breach = この侵害について詳しく見る
 what-data = 漏洩したデータ:
 delayed-reporting-headline = なぜ、この侵害の報告に時間がかかったのですか？
 delayed-reporting-copy = データ侵害にさらされた認証情報がダークウェブに現れるまで数か月または数年かかる場合があります。侵害は発見され、確認され次第データベースに追加されます。
-
-##
-
+what-is-a-website-breach = ウェブサイトの情報漏えいとは？
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = 概要
@@ -99,7 +98,10 @@ user-menu-signout-tooltip = { -brand-mozilla-monitor } からログアウトす�
 ## Footer
 
 mozilla = { -brand-mozilla }
+terms-of-service = 利用規約
+privacy-notice = プライバシー通知
 github = { -brand-github }
+footer-nav-recent-breaches = 最近のデータ漏えい
 footer-external-link-faq-label = FAQ
 footer-external-link-faq-tooltip = よくある質問
 
@@ -113,6 +115,7 @@ error-page-error-404-cta-button = 戻る
 
 ## Breach overview page
 
+all-breaches-headline-3 = 情報漏えいデータベース
 all-breaches-lead = 個人情報が漏えいしていないか確認するために、既知のデータ侵害を監視しています。2007 年以降に報告されたすべての侵害の完全なリストです。
 search-breaches = データ侵害を検索
 # the kind of user data exposed to hackers in data breach.
