@@ -253,7 +253,7 @@ paths:
                   summary: No breaches found
                   value: []
         "400":
-          description: A query parameter failed validation.
+          description: A query parameter failed validation, for example an empty or repeated `domain`, or a parameter this endpoint does not accept.
           content:
             application/json:
               schema:
