@@ -2,9 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import * as Sentry from "@sentry/nextjs";
 import { bearerToken } from "./bearerToken";
+import { errorResponse } from "./firefoxApiError";
 import {
   FxaIntrospectError,
   introspectToken,
@@ -39,17 +40,6 @@ function readToken(req: NextRequest): string | undefined {
   }
 }
 
-/** HTTP status for each openapi.yml error code which defines the contract
- *  that we the backend have made with the frontend. */
-const ERROR_STATUS = {
-  "token-invalid": 401,
-  "missing-scope": 403,
-  "no-monitor-account": 403,
-  "rate-limited": 429,
-  "internal-error": 500,
-  unavailable: 503,
-} as const;
-
 /** Seconds a client waits after a 503 */
 const UNAVAILABLE_RETRY_AFTER_SECONDS = 2;
 
@@ -58,20 +48,6 @@ const UPSTREAM_RETRY_AFTER_SECONDS = 300;
 
 /** One hour, per FIREFOX_API_RATE_LIMIT_PER_HOUR */
 const RATE_LIMIT_WINDOW_SECONDS = 60 * 60;
-
-/** Error body per openapi.yml's Error schema */
-function errorResponse(
-  code: keyof typeof ERROR_STATUS,
-  message: string,
-  retryAfterSeconds?: number,
-) {
-  const status = ERROR_STATUS[code];
-  const headers: Record<string, string> = {};
-  // RFC 6750 requires it on a 401
-  if (status === 401) headers["WWW-Authenticate"] = "Bearer";
-  if (retryAfterSeconds) headers["Retry-After"] = String(retryAfterSeconds);
-  return NextResponse.json({ code, message }, { status, headers });
-}
 
 /** Seconds to wait, 0 when allowed */
 async function rateLimitRetryAfter(
