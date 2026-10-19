@@ -7,13 +7,10 @@ import { withFxaUser } from "../../../../utils/withFxaUser";
 import { errorResponse } from "../../../../utils/firefoxApiError";
 import { getFirefoxUserBreaches } from "../../../../../functions/server/getFirefoxUserBreaches";
 
-/** Query params this route accepts */
-const ALLOWED_PARAMS = ["domain"];
-
 /** What's wrong with the params, if anything */
 function findParamError(params: URLSearchParams): string | undefined {
   for (const name of params.keys()) {
-    if (!ALLOWED_PARAMS.includes(name)) {
+    if (name !== "domain") {
       return `Unknown query parameter: ${name}.`;
     }
   }

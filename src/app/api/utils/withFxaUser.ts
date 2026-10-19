@@ -41,7 +41,7 @@ function readToken(req: NextRequest): string | undefined {
   }
 }
 
-/** Seconds a client waits after a 503 */
+/** Seconds to wait after FxA fails */
 const UNAVAILABLE_RETRY_AFTER_SECONDS = 2;
 
 /** Seconds a client waits after an upstream fails */
