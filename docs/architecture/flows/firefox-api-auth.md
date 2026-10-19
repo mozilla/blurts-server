@@ -22,7 +22,11 @@ A person can be signed in to FxA in two separate places, possibly as different a
 
 Diagrams show `GET /user/breaches`. `POST /user/breaches/resolutions` authenticates the same way.
 
-After the scope check, [`checkRateLimit`](../../../src/app/api/utils/withFxaUser.ts#L110) allows each FxA uid `FIREFOX_API_RATE_LIMIT_PER_HOUR` requests an hour (default 60) across both endpoints, counted in Redis. Past that it returns `429` with `Retry-After`, the seconds until the window resets. `0` disables the limit. If Redis fails, the request goes through and Sentry gets an event.
+After the scope check, [`checkRateLimit`](../../../src/app/api/utils/withFxaUser.ts#L92) allows each FxA uid `FIREFOX_API_RATE_LIMIT_PER_HOUR` requests an hour (default 60) across both endpoints, counted in Redis. Past that it returns `429` with `Retry-After`, the seconds until the window resets. `0` disables the limit. If Redis fails, the request goes through and Sentry gets an event.
+
+After the subscriber lookup, the [`FirefoxApi` feature flag](../../../src/app/api/utils/withFxaUser.ts#L207) gates both endpoints until launch. It's on for a subscriber when the flag is enabled, or when their primary email is in its allow list, both set at `/admin/feature-flags`. When it's off, Monitor returns `503` without `Retry-After`.
+
+If HIBP fails while answering, [`searchHibpRange`](../../../src/utils/hibp.ts#L388) throws and `withFxaUser` [returns `503`](../../../src/app/api/utils/withFxaUser.ts#L227) with `Retry-After: 300`. A failed lookup never returns a partial or empty `200`, so Firefox keeps the breaches it already holds.
 
 |                                | "Legacy" auth           | "New" auth              |
 | ------------------------------ | ----------------------- | ----------------------- |
@@ -53,11 +57,11 @@ sequenceDiagram
         FE->>BE: GET /user/breaches + access token [3]
         BE->>FxA: Is this token valid? [4]
         FxA-->>BE: Yes, FxA uid + scopes
-        Note over BE: Has Monitor scope?<br/>Under rate limit?<br/>Find subscriber by FxA uid
-        BE-->>FE: 200, user's breaches,<br/>or 403, no-monitor-account [5],<br/>or 429, rate-limited [6]
+        Note over BE: Has Monitor scope?<br/>Under rate limit?<br/>Find subscriber by FxA uid<br/>FirefoxApi flag on?
+        BE-->>FE: 200, user's breaches,<br/>or 403, no-monitor-account [5],<br/>or 429, rate-limited [6],<br/>or 503, unavailable [7]
     end
 
-    Note over FE,BE: [1] GET /v1/account/attached_clients, which Desktop already fetches, or the newer /attached_oauth_clients. Includes Monitor's client_id only while it holds a refresh token. On FxA error, Firefox treats Monitor as not connected<br/>[2] POST /v1/oauth/token, scope apps/monitor. Firefox caches the token<br/>[3] Bearer header. On 401 Firefox silently gets a new token, retries once<br/>[4] POST /v1/introspect<br/>[5] Rare, no subscriber for this FxA uid. Firefox shows sign up, no retry<br/>[6] Firefox waits Retry-After seconds
+    Note over FE,BE: [1] GET /v1/account/attached_clients, which Desktop already fetches, or the newer /attached_oauth_clients. Includes Monitor's client_id only while it holds a refresh token. On FxA error, Firefox treats Monitor as not connected<br/>[2] POST /v1/oauth/token, scope apps/monitor. Firefox caches the token<br/>[3] Bearer header. On 401 Firefox silently gets a new token, retries once<br/>[4] POST /v1/introspect<br/>[5] Rare, no subscriber for this FxA uid. Firefox shows sign up, no retry<br/>[6] Firefox waits Retry-After seconds<br/>[7] Flag off, or HIBP down. Firefox keeps its breaches, waits Retry-After if sent, else its next poll
 ```
 
 ### 1c. Not signed in
