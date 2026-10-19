@@ -32,6 +32,7 @@ vi.mock("../../../db/redis/client", () => ({
 
 vi.mock("../../../utils/metrics", () => ({
   incFirefoxApiAuth: vi.fn(),
+  incFirefoxApiHandlerResponse: vi.fn(),
   incFirefoxApiRateLimit: vi.fn(),
 }));
 
@@ -50,6 +51,7 @@ import { redisClient } from "../../../db/redis/client";
 import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 import {
   incFirefoxApiAuth,
+  incFirefoxApiHandlerResponse,
   incFirefoxApiRateLimit,
 } from "../../../utils/metrics";
 import { FXA_MONITOR_SCOPE } from "../../../constants";
@@ -286,6 +288,8 @@ describe("withFxaUser", () => {
       expect(Sentry.captureException).toHaveBeenCalledWith(new Error("boom"), {
         tags: { endpoint: ENDPOINT, outcome: "lookup-error" },
       });
+      // Before the handler, so the auth counter has it
+      expect(incFirefoxApiHandlerResponse).not.toHaveBeenCalled();
     });
 
     it("returns 500 without a lookup error when the handler throws", async () => {
@@ -306,6 +310,11 @@ describe("withFxaUser", () => {
       expect(Sentry.captureException).toHaveBeenCalledWith(new Error("boom"), {
         tags: { endpoint: ENDPOINT },
       });
+      expect(incFirefoxApiHandlerResponse).toHaveBeenCalledWith(
+        ENDPOINT,
+        500,
+        CLIENT_ID,
+      );
     });
   });
 
@@ -333,6 +342,11 @@ describe("withFxaUser", () => {
         },
         fingerprint: ["firefox-api-hibp-unavailable"],
       });
+      expect(incFirefoxApiHandlerResponse).toHaveBeenCalledWith(
+        ENDPOINT,
+        503,
+        CLIENT_ID,
+      );
     });
   });
 
@@ -530,6 +544,7 @@ describe("withFxaUser", () => {
         CLIENT_ID,
       );
       expect(Sentry.captureException).not.toHaveBeenCalled();
+      expect(incFirefoxApiHandlerResponse).not.toHaveBeenCalled();
     });
 
     it("checks the allow list with the primary email", async () => {
@@ -559,6 +574,28 @@ describe("withFxaUser", () => {
     expect(incFirefoxApiAuth).toHaveBeenCalledWith(
       "success",
       ENDPOINT,
+      CLIENT_ID,
+    );
+    expect(incFirefoxApiHandlerResponse).toHaveBeenCalledWith(
+      ENDPOINT,
+      200,
+      CLIENT_ID,
+    );
+  });
+
+  it("counts the status the handler returns", async () => {
+    mockIntrospection();
+    vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+    handler.mockResolvedValueOnce(
+      NextResponse.json({ ok: false }, { status: 400 }),
+    );
+
+    const res = await gated(authed());
+
+    expect(res.status).toBe(400);
+    expect(incFirefoxApiHandlerResponse).toHaveBeenCalledWith(
+      ENDPOINT,
+      400,
       CLIENT_ID,
     );
   });

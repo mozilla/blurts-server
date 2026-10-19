@@ -16,6 +16,7 @@ import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 import { redisClient } from "../../../db/redis/client";
 import {
   incFirefoxApiAuth,
+  incFirefoxApiHandlerResponse,
   incFirefoxApiRateLimit,
   type FirefoxApiEndpoint,
 } from "../../../utils/metrics";
@@ -192,6 +193,7 @@ export function withFxaUser(
     }
 
     let subscriber: FxaSubscriber | undefined;
+    let handlerCalled = false;
     try {
       subscriber = await getSubscriberByFxaUid(sub);
       if (!subscriber) {
@@ -215,8 +217,11 @@ export function withFxaUser(
       }
 
       incFirefoxApiAuth("success", endpoint, client_id);
+      handlerCalled = true;
       // Await, so handler errors land below
-      return await handler(req, { subscriber });
+      const response = await handler(req, { subscriber });
+      incFirefoxApiHandlerResponse(endpoint, response.status, client_id);
+      return response;
     } catch (error) {
       // e.g. HIBP is down; the client retries later
       if (error instanceof UpstreamUnavailableError) {
@@ -230,6 +235,7 @@ export function withFxaUser(
           },
           fingerprint: [`firefox-api-${error.upstream}-unavailable`],
         });
+        incFirefoxApiHandlerResponse(endpoint, 503, client_id);
         return errorResponse(
           "unavailable",
           "Monitor is temporarily unavailable.",
@@ -249,6 +255,9 @@ export function withFxaUser(
           ...(lookupFailed ? { outcome: "lookup-error" } : {}),
         },
       });
+      if (handlerCalled) {
+        incFirefoxApiHandlerResponse(endpoint, 500, client_id);
+      }
       return errorResponse(
         "internal-error",
         "Monitor could not complete this request.",

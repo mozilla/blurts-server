@@ -17,6 +17,7 @@ type MetricsState = {
   firefoxApiAuthTotal: Counter<Attributes>;
   firefoxApiRateLimitTotal: Counter<Attributes>;
   hibpRangeSearchTotal: Counter<Attributes>;
+  firefoxApiHandlerResponseTotal: Counter<Attributes>;
 };
 
 let metricsState: MetricsState | undefined;
@@ -67,6 +68,11 @@ export function getOrInitMetrics(): MetricsState {
     description: "Strict HIBP range searches, by outcome",
   });
 
+  const firefoxApiHandlerResponseTotal = meter.createCounter(
+    "firefox_api_handler_response_total",
+    { description: "Firefox API route handler responses, by status" },
+  );
+
   const state: MetricsState = {
     hibpNotifyRequestFailuresTotal,
     hibpNotifyRequestsTotal,
@@ -75,6 +81,7 @@ export function getOrInitMetrics(): MetricsState {
     firefoxApiAuthTotal,
     firefoxApiRateLimitTotal,
     hibpRangeSearchTotal,
+    firefoxApiHandlerResponseTotal,
   };
   return state;
 }
@@ -166,6 +173,19 @@ export function incFirefoxApiRateLimit(
   getOrInitMetrics().firefoxApiRateLimitTotal.add(1, {
     outcome,
     endpoint,
+    ...(clientId ? { client_id: clientId } : {}),
+  });
+}
+
+/** Increment Firefox API handler response metric */
+export function incFirefoxApiHandlerResponse(
+  endpoint: FirefoxApiEndpoint,
+  statusCode: number,
+  clientId?: string,
+) {
+  getOrInitMetrics().firefoxApiHandlerResponseTotal.add(1, {
+    endpoint,
+    status_code: statusCode,
     ...(clientId ? { client_id: clientId } : {}),
   });
 }

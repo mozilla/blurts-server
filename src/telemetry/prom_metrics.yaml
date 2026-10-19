@@ -95,3 +95,23 @@ firefox_api:
       The "/api/firefox/v1" endpoints, via withFxaUser
     # Panel and alerting: MNTOR-5348
     alert_policy: []
+  firefox_api_handler_response_total:
+    description: |
+      Metric to instrument Firefox API route handler responses. Counts
+      only requests that passed auth, the rate limit and the flag, as those
+      have their own counters.
+    type: counter
+    labels:
+      - name: endpoint
+        description: |
+          Firefox API path from openapi.yml, e.g. "/user/breaches"
+      - name: status_code
+        description: |
+          HTTP status sent, e.g. 200, 400, 500, or 503 (upstream down)
+      - name: client_id
+        description: |
+          FxA OAuth client id, when FxA returned one
+    scope: |
+      The "/api/firefox/v1" endpoints, via withFxaUser
+    # Panel and alerting: MNTOR-5348
+    alert_policy: []
