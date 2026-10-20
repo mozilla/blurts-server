@@ -6,15 +6,11 @@ import { NextResponse } from "next/server";
 import { withFxaUser } from "../../../../utils/withFxaUser";
 import { errorResponse } from "../../../../utils/firefoxApiError";
 import { getFirefoxUserBreaches } from "../../../../../functions/server/getFirefoxUserBreaches";
+import { logger } from "../../../../../functions/server/logging";
+import { incFirefoxApiUnknownParam } from "../../../../../../utils/metrics";
 
 /** What's wrong with the params, if anything */
 function findParamError(params: URLSearchParams): string | undefined {
-  for (const name of params.keys()) {
-    if (name !== "domain") {
-      return `Unknown query parameter: ${name}.`;
-    }
-  }
-
   const domains = params.getAll("domain");
   if (domains.length > 1) return "domain must appear only once.";
   if (domains[0] === "") return "domain must not be empty.";
@@ -24,8 +20,22 @@ function findParamError(params: URLSearchParams): string | undefined {
 /** Breaches affecting this user, per openapi.yml */
 export const GET = withFxaUser(
   "/user/breaches",
-  async (req, { subscriber }) => {
+  async (req, { subscriber, clientId }) => {
     const params = req.nextUrl.searchParams;
+    // Ignore, so new Firefox params don't break us
+    const unknownParams = [...new Set(params.keys())].filter(
+      (name) => name !== "domain",
+    );
+    if (unknownParams.length > 0) {
+      incFirefoxApiUnknownParam("/user/breaches", clientId);
+      // Names only; values could hold data we don't want to track
+      logger.info("firefox_api_unknown_params", {
+        endpoint: "/user/breaches",
+        clientId,
+        unknownParams,
+      });
+    }
+
     const paramError = findParamError(params);
     if (paramError) {
       return errorResponse("invalid-request", paramError);

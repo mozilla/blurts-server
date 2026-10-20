@@ -128,7 +128,7 @@ export function withFxaUser(
   endpoint: FirefoxApiEndpoint,
   handler: (
     req: NextRequest,
-    ctx: { subscriber: FxaSubscriber },
+    ctx: { subscriber: FxaSubscriber; clientId?: string },
   ) => Promise<Response>,
 ) {
   return async (req: NextRequest): Promise<Response> => {
@@ -219,7 +219,10 @@ export function withFxaUser(
       incFirefoxApiAuth("success", endpoint, client_id);
       handlerCalled = true;
       // Await, so handler errors land below
-      const response = await handler(req, { subscriber });
+      const response = await handler(req, {
+        subscriber,
+        clientId: client_id,
+      });
       incFirefoxApiHandlerResponse(endpoint, response.status, client_id);
       return response;
     } catch (error) {

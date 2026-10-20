@@ -569,7 +569,10 @@ describe("withFxaUser", () => {
     expect(res.status).toBe(200);
     expect(introspectToken).toHaveBeenCalledWith(TOKEN);
     expect(getSubscriberByFxaUid).toHaveBeenCalledWith("uid-a");
-    expect(handler).toHaveBeenCalledWith(req, { subscriber });
+    expect(handler).toHaveBeenCalledWith(req, {
+      subscriber,
+      clientId: CLIENT_ID,
+    });
     expect(incFirefoxApiAuth).toHaveBeenCalledTimes(1);
     expect(incFirefoxApiAuth).toHaveBeenCalledWith(
       "success",

@@ -115,3 +115,21 @@ firefox_api:
       The "/api/firefox/v1" endpoints, via withFxaUser
     # Panel and alerting: MNTOR-5348
     alert_policy: []
+  firefox_api_unknown_param_total:
+    description: |
+      Metric to instrument Firefox API requests carrying query params the
+      endpoint ignores. A rise means a client sends something new. Param
+      names are logged as "firefox_api_unknown_params", not labelled, to
+      bound cardinality.
+    type: counter
+    labels:
+      - name: endpoint
+        description: |
+          Firefox API path from openapi.yml, e.g. "/user/breaches"
+      - name: client_id
+        description: |
+          FxA OAuth client id, when FxA returned one
+    scope: |
+      The "/api/firefox/v1" endpoints that take query params
+    # Panel and alerting: MNTOR-5348
+    alert_policy: []

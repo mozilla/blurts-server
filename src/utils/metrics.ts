@@ -18,6 +18,7 @@ type MetricsState = {
   firefoxApiRateLimitTotal: Counter<Attributes>;
   hibpRangeSearchTotal: Counter<Attributes>;
   firefoxApiHandlerResponseTotal: Counter<Attributes>;
+  firefoxApiUnknownParamTotal: Counter<Attributes>;
 };
 
 let metricsState: MetricsState | undefined;
@@ -73,6 +74,11 @@ export function getOrInitMetrics(): MetricsState {
     { description: "Firefox API route handler responses, by status" },
   );
 
+  const firefoxApiUnknownParamTotal = meter.createCounter(
+    "firefox_api_unknown_param_total",
+    { description: "Firefox API requests with unknown query params" },
+  );
+
   const state: MetricsState = {
     hibpNotifyRequestFailuresTotal,
     hibpNotifyRequestsTotal,
@@ -82,6 +88,7 @@ export function getOrInitMetrics(): MetricsState {
     firefoxApiRateLimitTotal,
     hibpRangeSearchTotal,
     firefoxApiHandlerResponseTotal,
+    firefoxApiUnknownParamTotal,
   };
   return state;
 }
@@ -186,6 +193,17 @@ export function incFirefoxApiHandlerResponse(
   getOrInitMetrics().firefoxApiHandlerResponseTotal.add(1, {
     endpoint,
     status_code: statusCode,
+    ...(clientId ? { client_id: clientId } : {}),
+  });
+}
+
+/** Increment Firefox API unknown param metric */
+export function incFirefoxApiUnknownParam(
+  endpoint: FirefoxApiEndpoint,
+  clientId?: string,
+) {
+  getOrInitMetrics().firefoxApiUnknownParamTotal.add(1, {
+    endpoint,
     ...(clientId ? { client_id: clientId } : {}),
   });
 }

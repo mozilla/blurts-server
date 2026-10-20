@@ -9,6 +9,7 @@ import { NextRequest } from "next/server";
 import type { FxaSubscriber } from "../../../../utils/withFxaUser";
 
 const subscriber = { id: 7 } as FxaSubscriber;
+const CLIENT_ID = "firefox-desktop";
 
 // Skip auth; withFxaUser has its own tests
 vi.mock("../../../../utils/withFxaUser", () => ({
@@ -17,11 +18,19 @@ vi.mock("../../../../utils/withFxaUser", () => ({
       _endpoint: string,
       handler: (
         req: NextRequest,
-        ctx: { subscriber: FxaSubscriber },
+        ctx: { subscriber: FxaSubscriber; clientId?: string },
       ) => Promise<Response>,
     ) =>
     (req: NextRequest) =>
-      handler(req, { subscriber }),
+      handler(req, { subscriber, clientId: CLIENT_ID }),
+}));
+
+vi.mock("../../../../../../utils/metrics", () => ({
+  incFirefoxApiUnknownParam: vi.fn(),
+}));
+
+vi.mock("../../../../../functions/server/logging", () => ({
+  logger: { info: vi.fn() },
 }));
 
 vi.mock("../../../../../functions/server/getFirefoxUserBreaches", () => ({
@@ -30,6 +39,8 @@ vi.mock("../../../../../functions/server/getFirefoxUserBreaches", () => ({
 
 import { getFirefoxUserBreaches } from "../../../../../functions/server/getFirefoxUserBreaches";
 import { UpstreamUnavailableError } from "../../../../../../utils/error";
+import { incFirefoxApiUnknownParam } from "../../../../../../utils/metrics";
+import { logger } from "../../../../../functions/server/logging";
 import { GET } from "./route";
 
 const BREACHES = [
@@ -47,6 +58,7 @@ function get(query = "") {
 }
 
 beforeEach(() => {
+  vi.clearAllMocks();
   vi.mocked(getFirefoxUserBreaches).mockResolvedValue(BREACHES);
 });
 
@@ -74,6 +86,33 @@ describe("GET /user/breaches", () => {
     );
   });
 
+  it("ignores unknown params, counting and logging their names", async () => {
+    const res = await get("?domain=adobe.com&foo=secret&bar=1&foo=2");
+
+    expect(res.status).toBe(200);
+    expect(getFirefoxUserBreaches).toHaveBeenCalledWith(
+      subscriber,
+      "adobe.com",
+    );
+    expect(incFirefoxApiUnknownParam).toHaveBeenCalledTimes(1);
+    expect(incFirefoxApiUnknownParam).toHaveBeenCalledWith(
+      "/user/breaches",
+      CLIENT_ID,
+    );
+    expect(logger.info).toHaveBeenCalledWith("firefox_api_unknown_params", {
+      endpoint: "/user/breaches",
+      clientId: CLIENT_ID,
+      unknownParams: ["foo", "bar"],
+    });
+  });
+
+  it("records nothing without unknown params", async () => {
+    await get("?domain=adobe.com");
+
+    expect(incFirefoxApiUnknownParam).not.toHaveBeenCalled();
+    expect(logger.info).not.toHaveBeenCalled();
+  });
+
   it("lets a HIBP failure reach withFxaUser", async () => {
     vi.mocked(getFirefoxUserBreaches).mockRejectedValue(
       new UpstreamUnavailableError("hibp", "timeout"),
@@ -90,7 +129,6 @@ describe("GET /user/breaches", () => {
         "?domain=a.com&domain=b.com",
         "domain must appear only once.",
       ],
-      ["an unknown param", "?foo=1", "Unknown query parameter: foo."],
     ])("for %s", async (_label, query, message) => {
       const res = await get(query);
 

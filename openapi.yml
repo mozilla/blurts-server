@@ -208,6 +208,8 @@ paths:
 
         **Cadence.** Poll no more than hourly, and once a day is enough. Breaches reach HIBP weeks or months after the incident, so polling harder gains nothing. Each account gets an hourly request budget, shared by both endpoints, and we answer the rest with a `429`.
 
+        **Unknown parameters.** We ignore query parameters we do not recognise, so adding one never breaks a request.
+
       parameters:
         - name: domain
           in: query
@@ -253,7 +255,7 @@ paths:
                   summary: No breaches found
                   value: []
         "400":
-          description: A query parameter failed validation, for example an empty or repeated `domain`, or a parameter this endpoint does not accept.
+          description: A query parameter failed validation, for example an empty or repeated `domain`.
           content:
             application/json:
               schema:
