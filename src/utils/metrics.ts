@@ -16,6 +16,9 @@ type MetricsState = {
   kanonRequestFailuresTotal: Counter<Attributes>;
   firefoxApiAuthTotal: Counter<Attributes>;
   firefoxApiRateLimitTotal: Counter<Attributes>;
+  hibpRangeSearchTotal: Counter<Attributes>;
+  firefoxApiHandlerResponseTotal: Counter<Attributes>;
+  firefoxApiUnknownParamTotal: Counter<Attributes>;
 };
 
 let metricsState: MetricsState | undefined;
@@ -62,6 +65,20 @@ export function getOrInitMetrics(): MetricsState {
     { description: "Firefox API rate limit checks, by outcome" },
   );
 
+  const hibpRangeSearchTotal = meter.createCounter("hibp_range_search_total", {
+    description: "Strict HIBP range searches, by outcome",
+  });
+
+  const firefoxApiHandlerResponseTotal = meter.createCounter(
+    "firefox_api_handler_response_total",
+    { description: "Firefox API route handler responses, by status" },
+  );
+
+  const firefoxApiUnknownParamTotal = meter.createCounter(
+    "firefox_api_unknown_param_total",
+    { description: "Firefox API requests with unknown query params" },
+  );
+
   const state: MetricsState = {
     hibpNotifyRequestFailuresTotal,
     hibpNotifyRequestsTotal,
@@ -69,6 +86,9 @@ export function getOrInitMetrics(): MetricsState {
     kanonRequestFailuresTotal,
     firefoxApiAuthTotal,
     firefoxApiRateLimitTotal,
+    hibpRangeSearchTotal,
+    firefoxApiHandlerResponseTotal,
+    firefoxApiUnknownParamTotal,
   };
   return state;
 }
@@ -117,6 +137,8 @@ export type FirefoxApiAuthOutcome =
   | "missing-scope"
   // No subscriber for the FxA uid
   | "no-subscriber"
+  // FirefoxApi flag off for this user
+  | "flag-off"
   // FxA unreachable, timed out, non-2xx, or malformed
   | "introspection-error"
   // Subscriber lookup threw, e.g. DB down
@@ -159,6 +181,58 @@ export function incFirefoxApiRateLimit(
     outcome,
     endpoint,
     ...(clientId ? { client_id: clientId } : {}),
+  });
+}
+
+/** Increment Firefox API handler response metric */
+export function incFirefoxApiHandlerResponse(
+  endpoint: FirefoxApiEndpoint,
+  statusCode: number,
+  clientId?: string,
+) {
+  getOrInitMetrics().firefoxApiHandlerResponseTotal.add(1, {
+    endpoint,
+    status_code: statusCode,
+    ...(clientId ? { client_id: clientId } : {}),
+  });
+}
+
+/** Increment Firefox API unknown param metric */
+export function incFirefoxApiUnknownParam(
+  endpoint: FirefoxApiEndpoint,
+  clientId?: string,
+) {
+  getOrInitMetrics().firefoxApiUnknownParamTotal.add(1, {
+    endpoint,
+    ...(clientId ? { client_id: clientId } : {}),
+  });
+}
+
+/** Result of one searchHibpRange call */
+export type HibpRangeSearchOutcome =
+  // HIBP lists breaches for this hash
+  | "match"
+  // Prefix known, this hash is not
+  | "no-match"
+  // 404, no hash has this prefix
+  | "not-found"
+  // Non-2xx, see status_code
+  | "http-error"
+  // No answer within the timeout
+  | "timeout"
+  // DNS, TLS, or connection failure
+  | "network-error"
+  // Not JSON, or not an array
+  | "invalid-body";
+
+/** Increment HIBP range search metric */
+export function incHibpRangeSearch(
+  outcome: HibpRangeSearchOutcome,
+  statusCode?: number,
+) {
+  getOrInitMetrics().hibpRangeSearchTotal.add(1, {
+    outcome,
+    ...(statusCode ? { status_code: statusCode } : {}),
   });
 }
 /* c8 ignore end */

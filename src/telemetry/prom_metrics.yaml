@@ -31,6 +31,31 @@ hibp:
           Trigger when the aggregate failure rate is greater than
           20 req/sec.
 
+  hibp_range_search_total:
+    description: |
+      Metric to instrument strict HIBP range searches (searchHibpRange)
+    type: counter
+    labels:
+      - name: outcome
+        description: |
+          Any of "match", "no-match", "not-found" (404), "http-error",
+          "timeout", "network-error", "invalid-body"
+      - name: status_code
+        description: |
+          HTTP status HIBP sent. Set on "http-error" and "invalid-body"
+    scope: |
+      The Firefox API, via searchHibpRange
+    # Panel and alerting: MNTOR-5348
+    alert_policy:
+      - severity_level: S2
+        trigger_condition: |
+          Any "invalid-body" for 10 minutes. HIBP, or something in
+          front of it, changed what it sends.
+      - severity_level: S2
+        trigger_condition: |
+          "http-error", "timeout" and "network-error" together exceed
+          5% of searches for 15 minutes.
+
 firefox_api:
   firefox_api_auth_total:
     description: |
@@ -40,7 +65,7 @@ firefox_api:
       - name: outcome
         description: |
           Any of "success", "missing-header", "inactive", "missing-scope",
-          "no-subscriber", "introspection-error", "lookup-error"
+          "no-subscriber", "flag-off", "introspection-error", "lookup-error"
       - name: endpoint
         description: |
           Firefox API path from openapi.yml, e.g. "/user/breaches"
@@ -68,5 +93,43 @@ firefox_api:
           FxA OAuth client id
     scope: |
       The "/api/firefox/v1" endpoints, via withFxaUser
+    # Panel and alerting: MNTOR-5348
+    alert_policy: []
+  firefox_api_handler_response_total:
+    description: |
+      Metric to instrument Firefox API route handler responses. Counts
+      only requests that passed auth, the rate limit and the flag, as those
+      have their own counters.
+    type: counter
+    labels:
+      - name: endpoint
+        description: |
+          Firefox API path from openapi.yml, e.g. "/user/breaches"
+      - name: status_code
+        description: |
+          HTTP status sent, e.g. 200, 400, 500, or 503 (upstream down)
+      - name: client_id
+        description: |
+          FxA OAuth client id, when FxA returned one
+    scope: |
+      The "/api/firefox/v1" endpoints, via withFxaUser
+    # Panel and alerting: MNTOR-5348
+    alert_policy: []
+  firefox_api_unknown_param_total:
+    description: |
+      Metric to instrument Firefox API requests carrying query params the
+      endpoint ignores. A rise means a client sends something new. Param
+      names are logged as "firefox_api_unknown_params", not labelled, to
+      bound cardinality.
+    type: counter
+    labels:
+      - name: endpoint
+        description: |
+          Firefox API path from openapi.yml, e.g. "/user/breaches"
+      - name: client_id
+        description: |
+          FxA OAuth client id, when FxA returned one
+    scope: |
+      The "/api/firefox/v1" endpoints that take query params
     # Panel and alerting: MNTOR-5348
     alert_policy: []

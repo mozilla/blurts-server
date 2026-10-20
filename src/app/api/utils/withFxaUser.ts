@@ -2,21 +2,25 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import * as Sentry from "@sentry/nextjs";
 import { bearerToken } from "./bearerToken";
+import { errorResponse } from "./firefoxApiError";
 import {
   FxaIntrospectError,
   introspectToken,
   type FxaIntrospection,
 } from "../../../utils/fxa";
 import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
+import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 import { redisClient } from "../../../db/redis/client";
 import {
   incFirefoxApiAuth,
+  incFirefoxApiHandlerResponse,
   incFirefoxApiRateLimit,
   type FirefoxApiEndpoint,
 } from "../../../utils/metrics";
+import { UpstreamUnavailableError } from "../../../utils/error";
 import { FXA_MONITOR_SCOPE } from "../../../constants";
 import { config } from "../../../config";
 
@@ -37,36 +41,11 @@ function readToken(req: NextRequest): string | undefined {
   }
 }
 
-/** HTTP status for each openapi.yml error code which defines the contract
- *  that we the backend have made with the frontend. */
-const ERROR_STATUS = {
-  "token-invalid": 401,
-  "missing-scope": 403,
-  "no-monitor-account": 403,
-  "rate-limited": 429,
-  "internal-error": 500,
-  unavailable: 503,
-} as const;
-
-/** Seconds a client waits after a 503 */
-const UNAVAILABLE_RETRY_AFTER_SECONDS = 2;
+/** Seconds a client waits after an upstream fails */
+const UPSTREAM_RETRY_AFTER_SECONDS = 300;
 
 /** One hour, per FIREFOX_API_RATE_LIMIT_PER_HOUR */
 const RATE_LIMIT_WINDOW_SECONDS = 60 * 60;
-
-/** Error body per openapi.yml's Error schema */
-function errorResponse(
-  code: keyof typeof ERROR_STATUS,
-  message: string,
-  retryAfterSeconds?: number,
-) {
-  const status = ERROR_STATUS[code];
-  const headers: Record<string, string> = {};
-  // RFC 6750 requires it on a 401
-  if (status === 401) headers["WWW-Authenticate"] = "Bearer";
-  if (retryAfterSeconds) headers["Retry-After"] = String(retryAfterSeconds);
-  return NextResponse.json({ code, message }, { status, headers });
-}
 
 /** Seconds to wait, 0 when allowed */
 async function rateLimitRetryAfter(
@@ -146,7 +125,7 @@ export function withFxaUser(
   endpoint: FirefoxApiEndpoint,
   handler: (
     req: NextRequest,
-    ctx: { subscriber: FxaSubscriber },
+    ctx: { subscriber: FxaSubscriber; clientId?: string },
   ) => Promise<Response>,
 ) {
   return async (req: NextRequest): Promise<Response> => {
@@ -179,7 +158,7 @@ export function withFxaUser(
       return errorResponse(
         "unavailable",
         "Monitor is temporarily unavailable.",
-        UNAVAILABLE_RETRY_AFTER_SECONDS,
+        UPSTREAM_RETRY_AFTER_SECONDS,
       );
     }
 
@@ -211,6 +190,7 @@ export function withFxaUser(
     }
 
     let subscriber: FxaSubscriber | undefined;
+    let handlerCalled = false;
     try {
       subscriber = await getSubscriberByFxaUid(sub);
       if (!subscriber) {
@@ -221,10 +201,48 @@ export function withFxaUser(
         );
       }
 
+      // Off until launch; allow list lets testers in
+      const flags = await getEnabledFeatureFlags({
+        email: subscriber.primary_email,
+      });
+      if (!flags.includes("FirefoxApi")) {
+        incFirefoxApiAuth("flag-off", endpoint, client_id);
+        return errorResponse(
+          "unavailable",
+          "Monitor is temporarily unavailable.",
+        );
+      }
+
       incFirefoxApiAuth("success", endpoint, client_id);
+      handlerCalled = true;
       // Await, so handler errors land below
-      return await handler(req, { subscriber });
+      const response = await handler(req, {
+        subscriber,
+        clientId: client_id,
+      });
+      incFirefoxApiHandlerResponse(endpoint, response.status, client_id);
+      return response;
     } catch (error) {
+      // e.g. HIBP is down; the client retries later
+      if (error instanceof UpstreamUnavailableError) {
+        Sentry.captureException(error, {
+          tags: {
+            outcome: "upstream-unavailable",
+            upstream: error.upstream,
+            reason: error.reason,
+            endpoint,
+            ...(error.status ? { httpStatus: error.status } : {}),
+          },
+          fingerprint: [`firefox-api-${error.upstream}-unavailable`],
+        });
+        incFirefoxApiHandlerResponse(endpoint, 503, client_id);
+        return errorResponse(
+          "unavailable",
+          "Monitor is temporarily unavailable.",
+          UPSTREAM_RETRY_AFTER_SECONDS,
+        );
+      }
+
       // No subscriber yet means lookup failed
       const lookupFailed = !subscriber;
       if (lookupFailed) {
@@ -237,6 +255,9 @@ export function withFxaUser(
           ...(lookupFailed ? { outcome: "lookup-error" } : {}),
         },
       });
+      if (handlerCalled) {
+        incFirefoxApiHandlerResponse(endpoint, 500, client_id);
+      }
       return errorResponse(
         "internal-error",
         "Monitor could not complete this request.",

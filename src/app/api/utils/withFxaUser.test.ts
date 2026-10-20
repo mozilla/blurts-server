@@ -22,12 +22,17 @@ vi.mock("../../../db/tables/subscribers", () => ({
   getSubscriberByFxaUid: vi.fn(),
 }));
 
+vi.mock("../../../db/tables/featureFlags", () => ({
+  getEnabledFeatureFlags: vi.fn(),
+}));
+
 vi.mock("../../../db/redis/client", () => ({
   redisClient: vi.fn(),
 }));
 
 vi.mock("../../../utils/metrics", () => ({
   incFirefoxApiAuth: vi.fn(),
+  incFirefoxApiHandlerResponse: vi.fn(),
   incFirefoxApiRateLimit: vi.fn(),
 }));
 
@@ -43,12 +48,15 @@ import {
 } from "../../../utils/fxa";
 import { getSubscriberByFxaUid } from "../../../db/tables/subscribers";
 import { redisClient } from "../../../db/redis/client";
+import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 import {
   incFirefoxApiAuth,
+  incFirefoxApiHandlerResponse,
   incFirefoxApiRateLimit,
 } from "../../../utils/metrics";
 import { FXA_MONITOR_SCOPE } from "../../../constants";
 import { config } from "../../../config";
+import { UpstreamUnavailableError } from "../../../utils/error";
 import { withFxaUser, type FxaSubscriber } from "./withFxaUser";
 
 const ENDPOINT = "/user/breaches";
@@ -58,7 +66,11 @@ const CLIENT_ID = "5882386c6d801776";
 // 2, so one request reuses the window
 const RATE_LIMIT = 2;
 
-const subscriber = { id: 1, fxa_uid: "uid-a" } as FxaSubscriber;
+const subscriber = {
+  id: 1,
+  fxa_uid: "uid-a",
+  primary_email: "a@example.com",
+} as FxaSubscriber;
 
 const validIntrospection: FxaIntrospection = {
   active: true,
@@ -99,6 +111,8 @@ beforeEach(async () => {
   await redis.flushall();
   vi.mocked(redisClient).mockReturnValue(redis as never);
   setRateLimit(RATE_LIMIT);
+  // Most tests are past launch
+  vi.mocked(getEnabledFeatureFlags).mockResolvedValue(["FirefoxApi"]);
 });
 
 describe("withFxaUser", () => {
@@ -194,7 +208,7 @@ describe("withFxaUser", () => {
 
         expect(res.status).toBe(503);
         expect(await res.json()).toMatchObject({ code: "unavailable" });
-        expect(res.headers.get("Retry-After")).toBe("2");
+        expect(res.headers.get("Retry-After")).toBe("300");
         expect(incFirefoxApiAuth).toHaveBeenCalledWith(
           "introspection-error",
           ENDPOINT,
@@ -247,7 +261,7 @@ describe("withFxaUser", () => {
 
       expect(res.status).toBe(503);
       expect(await res.json()).toMatchObject({ code: "unavailable" });
-      expect(res.headers.get("Retry-After")).toBe("2");
+      expect(res.headers.get("Retry-After")).toBe("300");
       expect(Sentry.captureException).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -274,6 +288,8 @@ describe("withFxaUser", () => {
       expect(Sentry.captureException).toHaveBeenCalledWith(new Error("boom"), {
         tags: { endpoint: ENDPOINT, outcome: "lookup-error" },
       });
+      // Before the handler, so the auth counter has it
+      expect(incFirefoxApiHandlerResponse).not.toHaveBeenCalled();
     });
 
     it("returns 500 without a lookup error when the handler throws", async () => {
@@ -294,6 +310,43 @@ describe("withFxaUser", () => {
       expect(Sentry.captureException).toHaveBeenCalledWith(new Error("boom"), {
         tags: { endpoint: ENDPOINT },
       });
+      expect(incFirefoxApiHandlerResponse).toHaveBeenCalledWith(
+        ENDPOINT,
+        500,
+        CLIENT_ID,
+      );
+    });
+  });
+
+  describe("upstream failure", () => {
+    it("returns 503 with Retry-After 300 when the handler's upstream fails", async () => {
+      mockIntrospection();
+      vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+      const error = new UpstreamUnavailableError("hibp", "http-error", {
+        status: 502,
+      });
+      handler.mockRejectedValueOnce(error);
+
+      const res = await gated(authed());
+
+      expect(res.status).toBe(503);
+      expect(res.headers.get("Retry-After")).toBe("300");
+      expect(await res.json()).toMatchObject({ code: "unavailable" });
+      expect(Sentry.captureException).toHaveBeenCalledWith(error, {
+        tags: {
+          outcome: "upstream-unavailable",
+          upstream: "hibp",
+          reason: "http-error",
+          endpoint: ENDPOINT,
+          httpStatus: 502,
+        },
+        fingerprint: ["firefox-api-hibp-unavailable"],
+      });
+      expect(incFirefoxApiHandlerResponse).toHaveBeenCalledWith(
+        ENDPOINT,
+        503,
+        CLIENT_ID,
+      );
     });
   });
 
@@ -472,6 +525,40 @@ describe("withFxaUser", () => {
     });
   });
 
+  describe("FirefoxApi flag", () => {
+    it("returns 503, without Retry-After, when the flag is off", async () => {
+      mockIntrospection();
+      vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+      vi.mocked(getEnabledFeatureFlags).mockResolvedValue([]);
+
+      const res = await gated(authed());
+
+      expect(res.status).toBe(503);
+      expect(res.headers.get("Retry-After")).toBeNull();
+      expect(await res.json()).toMatchObject({ code: "unavailable" });
+      expect(handler).not.toHaveBeenCalled();
+      expect(incFirefoxApiAuth).toHaveBeenCalledTimes(1);
+      expect(incFirefoxApiAuth).toHaveBeenCalledWith(
+        "flag-off",
+        ENDPOINT,
+        CLIENT_ID,
+      );
+      expect(Sentry.captureException).not.toHaveBeenCalled();
+      expect(incFirefoxApiHandlerResponse).not.toHaveBeenCalled();
+    });
+
+    it("checks the allow list with the primary email", async () => {
+      mockIntrospection();
+      vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+
+      await gated(authed());
+
+      expect(getEnabledFeatureFlags).toHaveBeenCalledWith({
+        email: "a@example.com",
+      });
+    });
+  });
+
   it("passes the subscriber to the handler and counts success once", async () => {
     mockIntrospection();
     vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
@@ -482,11 +569,36 @@ describe("withFxaUser", () => {
     expect(res.status).toBe(200);
     expect(introspectToken).toHaveBeenCalledWith(TOKEN);
     expect(getSubscriberByFxaUid).toHaveBeenCalledWith("uid-a");
-    expect(handler).toHaveBeenCalledWith(req, { subscriber });
+    expect(handler).toHaveBeenCalledWith(req, {
+      subscriber,
+      clientId: CLIENT_ID,
+    });
     expect(incFirefoxApiAuth).toHaveBeenCalledTimes(1);
     expect(incFirefoxApiAuth).toHaveBeenCalledWith(
       "success",
       ENDPOINT,
+      CLIENT_ID,
+    );
+    expect(incFirefoxApiHandlerResponse).toHaveBeenCalledWith(
+      ENDPOINT,
+      200,
+      CLIENT_ID,
+    );
+  });
+
+  it("counts the status the handler returns", async () => {
+    mockIntrospection();
+    vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+    handler.mockResolvedValueOnce(
+      NextResponse.json({ ok: false }, { status: 400 }),
+    );
+
+    const res = await gated(authed());
+
+    expect(res.status).toBe(400);
+    expect(incFirefoxApiHandlerResponse).toHaveBeenCalledWith(
+      ENDPOINT,
+      400,
       CLIENT_ID,
     );
   });
