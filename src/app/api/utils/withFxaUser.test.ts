@@ -208,7 +208,7 @@ describe("withFxaUser", () => {
 
         expect(res.status).toBe(503);
         expect(await res.json()).toMatchObject({ code: "unavailable" });
-        expect(res.headers.get("Retry-After")).toBe("2");
+        expect(res.headers.get("Retry-After")).toBe("300");
         expect(incFirefoxApiAuth).toHaveBeenCalledWith(
           "introspection-error",
           ENDPOINT,
@@ -261,7 +261,7 @@ describe("withFxaUser", () => {
 
       expect(res.status).toBe(503);
       expect(await res.json()).toMatchObject({ code: "unavailable" });
-      expect(res.headers.get("Retry-After")).toBe("2");
+      expect(res.headers.get("Retry-After")).toBe("300");
       expect(Sentry.captureException).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({

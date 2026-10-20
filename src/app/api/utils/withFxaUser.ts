@@ -41,9 +41,6 @@ function readToken(req: NextRequest): string | undefined {
   }
 }
 
-/** Seconds to wait after FxA fails */
-const UNAVAILABLE_RETRY_AFTER_SECONDS = 2;
-
 /** Seconds a client waits after an upstream fails */
 const UPSTREAM_RETRY_AFTER_SECONDS = 300;
 
@@ -161,7 +158,7 @@ export function withFxaUser(
       return errorResponse(
         "unavailable",
         "Monitor is temporarily unavailable.",
-        UNAVAILABLE_RETRY_AFTER_SECONDS,
+        UPSTREAM_RETRY_AFTER_SECONDS,
       );
     }
 
