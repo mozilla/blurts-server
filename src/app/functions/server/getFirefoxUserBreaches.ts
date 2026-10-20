@@ -7,7 +7,7 @@ import type { HibpLikeDbBreach } from "../../../utils/hibp";
 import {
   getAffectingBreaches,
   getResolutionsByEmail,
-  isServedDataClass,
+  getServedDataClasses,
   type BreachResolutions,
 } from "./firefoxApiBreaches";
 
@@ -31,9 +31,8 @@ function getResolvedDataClasses(
 ): string[] {
   const resolved = resolutions?.[breach.Id]?.resolutionsChecked ?? [];
 
-  return resolved.filter(
-    (dataClass) =>
-      isServedDataClass(dataClass) && breach.DataClasses.includes(dataClass),
+  return getServedDataClasses(breach).filter((dataClass) =>
+    resolved.includes(dataClass),
   );
 }
 

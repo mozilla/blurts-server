@@ -13,21 +13,20 @@ import {
 import { getSha1 } from "../../../utils/fxa";
 
 /** The only data classes the Firefox API serves */
-export const SERVED_DATA_CLASSES = ["passwords", "email-addresses"] as const;
+const SERVED_DATA_CLASSES = ["passwords", "email-addresses"] as const;
 
-/** A data class Firefox can resolve */
-export type ServedDataClass = (typeof SERVED_DATA_CLASSES)[number];
-
-/** Whether Firefox can resolve this data class */
-export function isServedDataClass(value: unknown): value is ServedDataClass {
-  return SERVED_DATA_CLASSES.includes(value as ServedDataClass);
+/** Served data classes this breach leaked */
+export function getServedDataClasses(breach: HibpLikeDbBreach) {
+  return SERVED_DATA_CLASSES.filter((dataClass) =>
+    breach.DataClasses.includes(dataClass),
+  );
 }
 
 /** Breach id to resolutions, for one email */
 export type BreachResolutions = Record<number, BreachResolutionChecked>;
 
 /** Email to its breach resolutions */
-export type ResolutionsByEmail = Record<string, BreachResolutions>;
+type ResolutionsByEmail = Record<string, BreachResolutions>;
 
 /**
  * This user's resolutions, keyed by email.
@@ -70,8 +69,7 @@ async function getVerifiedEmails(subscriber: SubscriberRow): Promise<string[]> {
 
 /** Breaches the Firefox API may return */
 function isServable(breach: HibpLikeDbBreach): boolean {
-  if (breach.IsSensitive) return false;
-  return breach.DataClasses.some(isServedDataClass);
+  return !breach.IsSensitive && getServedDataClasses(breach).length > 0;
 }
 
 /**

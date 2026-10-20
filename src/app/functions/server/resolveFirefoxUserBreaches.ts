@@ -6,8 +6,7 @@ import type { SubscriberRow } from "knex/types/tables";
 import {
   getAffectingBreaches,
   getResolutionsByEmail,
-  SERVED_DATA_CLASSES,
-  type ServedDataClass,
+  getServedDataClasses,
 } from "./firefoxApiBreaches";
 import { setBreachResolution } from "../../../db/tables/subscribers";
 import {
@@ -16,25 +15,23 @@ import {
 } from "../../../utils/metrics";
 
 /**
- * Marks each named breach resolved, for every affected email,
- * across every data class it leaked that we serve.
- * Skips names that match no affecting breach.
+ * Marks named breaches resolved, every data class.
+ * Skips names matching no affecting breach.
  * Throws UpstreamUnavailableError if HIBP fails.
  */
 export async function resolveFirefoxUserBreaches(
   subscriber: SubscriberRow,
   breachNames: Set<string>,
 ): Promise<void> {
-  // Only these breaches can be resolved
+  // Also validates names, finds emails to update
   const matched = (await getAffectingBreaches(subscriber)).filter(
     ({ breach }) => breachNames.has(breach.Name),
   );
 
   const resolutions = structuredClone(getResolutionsByEmail(subscriber));
-  const outcomes: Array<[FirefoxApiResolutionOutcome, ServedDataClass]> = [];
+  const outcomes: Array<[FirefoxApiResolutionOutcome, string]> = [];
   for (const { breach, emails } of matched) {
-    for (const dataClass of SERVED_DATA_CLASSES) {
-      if (!breach.DataClasses.includes(dataClass)) continue;
+    for (const dataClass of getServedDataClasses(breach)) {
       let resolvedAny = false;
       for (const email of emails) {
         resolutions[email] ??= {};

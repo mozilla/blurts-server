@@ -8,9 +8,6 @@ import { errorResponse } from "../../../../../utils/firefoxApiError";
 import { recordUnknownParams } from "../../../../../utils/recordUnknownParams";
 import { resolveFirefoxUserBreaches } from "../../../../../../functions/server/resolveFirefoxUserBreaches";
 
-/** Keys a BreachResolution entry may carry */
-const KNOWN_KEYS = ["breachId"];
-
 /** Whether this is a plain JSON object */
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -58,7 +55,7 @@ export const POST = withFxaUser(
       "/user/breaches/resolutions",
       "body",
       Array.isArray(body) ? body.filter(isObject).flatMap(Object.keys) : [],
-      KNOWN_KEYS,
+      ["breachId"],
       clientId,
     );
 
