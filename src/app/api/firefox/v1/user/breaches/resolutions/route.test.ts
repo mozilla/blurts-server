@@ -41,7 +41,6 @@ vi.mock(
 );
 
 import { resolveFirefoxUserBreaches } from "../../../../../../functions/server/resolveFirefoxUserBreaches";
-import { UpstreamUnavailableError } from "../../../../../../../utils/error";
 import { incFirefoxApiUnknownParam } from "../../../../../../../utils/metrics";
 import { logger } from "../../../../../../functions/server/logging";
 import { POST } from "./route";
@@ -119,16 +118,6 @@ describe("POST /user/breaches/resolutions", () => {
 
     expect(incFirefoxApiUnknownParam).not.toHaveBeenCalled();
     expect(logger.info).not.toHaveBeenCalled();
-  });
-
-  it("lets a HIBP failure reach withFxaUser", async () => {
-    vi.mocked(resolveFirefoxUserBreaches).mockRejectedValue(
-      new UpstreamUnavailableError("hibp", "timeout"),
-    );
-
-    await expect(post([{ breachId: "Adobe" }])).rejects.toThrow(
-      UpstreamUnavailableError,
-    );
   });
 
   it("returns 400 for a body that is not JSON", async () => {

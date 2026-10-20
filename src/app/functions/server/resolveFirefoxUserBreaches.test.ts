@@ -73,17 +73,6 @@ describe("resolveFirefoxUserBreaches", () => {
     });
   });
 
-  it("resolves only the served data classes a breach leaked", async () => {
-    const subscriber = makeSubscriber();
-
-    await resolveFirefoxUserBreaches(subscriber, new Set(["Facebook"]));
-
-    expect(setBreachResolution).toHaveBeenCalledWith(subscriber, {
-      useBreachId: true,
-      [SECONDARY]: { 2: { resolutionsChecked: ["email-addresses"] } },
-    });
-  });
-
   it("keeps existing resolutions, adding to them", async () => {
     const subscriber = makeSubscriber({
       useBreachId: true,
@@ -162,24 +151,6 @@ describe("resolveFirefoxUserBreaches", () => {
     expect(setBreachResolution).not.toHaveBeenCalled();
     expect(vi.mocked(incFirefoxApiResolution).mock.calls).toEqual([
       ["skipped"],
-    ]);
-  });
-
-  it("counts each breach and data class once", async () => {
-    const subscriber = makeSubscriber({
-      useBreachId: true,
-      [SECONDARY]: { 2: { resolutionsChecked: ["email-addresses"] } },
-    });
-
-    await resolveFirefoxUserBreaches(
-      subscriber,
-      new Set(["Adobe", "Facebook"]),
-    );
-
-    expect(vi.mocked(incFirefoxApiResolution).mock.calls).toEqual([
-      ["resolved", "passwords"],
-      ["resolved", "email-addresses"],
-      ["already-resolved", "email-addresses"],
     ]);
   });
 

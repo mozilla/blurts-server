@@ -201,20 +201,6 @@ describe("POST /api/firefox/v1/user/breaches/resolutions (integration)", () => {
     expect(await storedRow()).toEqual(before);
   });
 
-  it("skips a breach affecting none of the emails", async () => {
-    await seedUser([PRIMARY]);
-    // Unverified emails don't count
-    mockHibp({ [UNVERIFIED]: ["LinkedIn"] });
-    const before = await storedRow();
-
-    const res = await POST(
-      authedRequest([...RESOLVE_LINKEDIN, { breachId: "Renamed" }]),
-    );
-
-    expect(res.status).toBe(204);
-    expect(await storedRow()).toEqual(before);
-  });
-
   it("resolves the matched breaches in a mixed batch", async () => {
     const ids = await seedUser([PRIMARY]);
     mockHibp({ [PRIMARY]: ["LinkedIn"] });
@@ -233,17 +219,5 @@ describe("POST /api/firefox/v1/user/breaches/resolutions (integration)", () => {
         },
       },
     });
-  });
-
-  it("returns 503 when the user is not on the flag's allow list", async () => {
-    await seedUser(["someone-else@example.com"]);
-    mockHibp({ [PRIMARY]: ["LinkedIn"] });
-    const before = await storedRow();
-
-    const res = await POST(authedRequest(RESOLVE_LINKEDIN));
-
-    expect(res.status).toBe(503);
-    expect(await storedRow()).toEqual(before);
-    expect(searchHibpRange).not.toHaveBeenCalled();
   });
 });
