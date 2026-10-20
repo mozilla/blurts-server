@@ -9,7 +9,7 @@ import { NextRequest } from "next/server";
 import type { FxaSubscriber } from "../../../../utils/withFxaUser";
 
 const subscriber = { id: 7 } as FxaSubscriber;
-const CLIENT_ID = "firefox-desktop";
+const CLIENT_ID = "a1b2c3d4e5f6a7b8";
 
 // Skip auth; withFxaUser has its own tests
 vi.mock("../../../../utils/withFxaUser", () => ({
