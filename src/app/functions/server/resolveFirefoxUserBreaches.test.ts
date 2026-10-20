@@ -107,6 +107,22 @@ describe("resolveFirefoxUserBreaches", () => {
     });
   });
 
+  it("adds to a legacy entry with no resolutionsChecked", async () => {
+    // Pre-2023 rows stored only isResolved
+    const subscriber = makeSubscriber({
+      [SECONDARY]: { 2: { isResolved: true } },
+    } as unknown as SubscriberRow["breach_resolution"]);
+
+    await resolveFirefoxUserBreaches(subscriber, new Set(["Facebook"]));
+
+    expect(setBreachResolution).toHaveBeenCalledWith(subscriber, {
+      useBreachId: true,
+      [SECONDARY]: {
+        2: { isResolved: true, resolutionsChecked: ["email-addresses"] },
+      },
+    });
+  });
+
   it("does not mutate the subscriber's resolutions", async () => {
     const subscriber = makeSubscriber({
       useBreachId: true,

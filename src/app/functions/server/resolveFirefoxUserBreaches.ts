@@ -39,7 +39,9 @@ export async function resolveFirefoxUserBreaches(
       for (const email of emails) {
         resolutions[email] ??= {};
         resolutions[email][breach.Id] ??= { resolutionsChecked: [] };
-        const checked = resolutions[email][breach.Id].resolutionsChecked;
+        // Legacy entries may lack it
+        const checked = (resolutions[email][breach.Id].resolutionsChecked ??=
+          []);
         if (!checked.includes(dataClass)) {
           checked.push(dataClass);
           resolvedAny = true;
