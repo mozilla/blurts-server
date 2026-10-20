@@ -46,14 +46,14 @@ async function getVerifiedEmails(subscriber: SubscriberRow): Promise<string[]> {
     }
   }
 
-  // Lowercase to stored spelling, first one wins
-  const byLowerCase = new Map<string, string>();
-  for (const email of verified) {
-    if (!byLowerCase.has(email.toLowerCase())) {
-      byLowerCase.set(email.toLowerCase(), email);
-    }
-  }
-  return [...byLowerCase.values()];
+  // Case-insensitive dedupe
+  const seen = new Set<string>();
+  return verified.filter((email) => {
+    const key = email.toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 /** Breaches the Firefox API may return */
