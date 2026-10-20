@@ -161,7 +161,7 @@ components:
             code: internal-error
             message: Monitor could not complete this request.
     ServiceUnavailable:
-      description: Monitor is unavailable, or FxA could not verify the token. Safe to retry, after the interval in `Retry-After` when it is present.
+      description: Monitor is unavailable, or FxA could not verify the token. Safe to retry, after the interval in `Retry-After` when it is present, otherwise on your next scheduled poll.
       headers:
         Retry-After:
           required: false
@@ -274,7 +274,7 @@ paths:
 
         Idempotent per `breachId`. Repeated entries merge, and order does not matter.
 
-        Atomic: every matched breach updates, or none does.
+        Atomic: one write covers every matched breach, so a request never applies halfway.
 
       requestBody:
         required: true
@@ -315,7 +315,7 @@ paths:
           $ref: "#/components/responses/TooManyRequests"
         "500":
           $ref: "#/components/responses/InternalError"
-          description: Something failed on our side. Treat the batch as not applied and retry it, repeats are safe.
+          description: Something failed on our side. The batch may or may not be applied, so retry it, repeats are safe.
         "503":
           $ref: "#/components/responses/ServiceUnavailable"
-          description: Monitor is unavailable, or FxA could not verify the token. Treat the batch as not applied and retry it, after the interval in `Retry-After` when it is present. Repeats are safe.
+          description: FxA could not verify the token, we could not check this user against HIBP, or Monitor is unavailable. Nothing was written. Retry after the interval in `Retry-After` when it is present, otherwise later. Repeats are safe.
