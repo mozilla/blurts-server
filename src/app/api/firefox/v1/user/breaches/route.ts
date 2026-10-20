@@ -6,8 +6,7 @@ import { NextResponse } from "next/server";
 import { withFxaUser } from "../../../../utils/withFxaUser";
 import { errorResponse } from "../../../../utils/firefoxApiError";
 import { getFirefoxUserBreaches } from "../../../../../functions/server/getFirefoxUserBreaches";
-import { logger } from "../../../../../functions/server/logging";
-import { incFirefoxApiUnknownParam } from "../../../../../../utils/metrics";
+import { recordUnknownParams } from "../../../../utils/recordUnknownParams";
 
 /** What's wrong with the params, if anything */
 function findParamError(params: URLSearchParams): string | undefined {
@@ -22,19 +21,13 @@ export const GET = withFxaUser(
   "/user/breaches",
   async (req, { subscriber, clientId }) => {
     const params = req.nextUrl.searchParams;
-    // Ignore, so new Firefox params don't break us
-    const unknownParams = [...new Set(params.keys())].filter(
-      (name) => name !== "domain",
+    recordUnknownParams(
+      "/user/breaches",
+      "query",
+      params.keys(),
+      ["domain"],
+      clientId,
     );
-    if (unknownParams.length > 0) {
-      incFirefoxApiUnknownParam("/user/breaches", clientId);
-      // Names only; values could hold data we don't want to track
-      logger.info("firefox_api_unknown_params", {
-        endpoint: "/user/breaches",
-        clientId,
-        unknownParams,
-      });
-    }
 
     const paramError = findParamError(params);
     if (paramError) {

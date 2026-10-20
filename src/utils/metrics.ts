@@ -19,6 +19,7 @@ type MetricsState = {
   hibpRangeSearchTotal: Counter<Attributes>;
   firefoxApiHandlerResponseTotal: Counter<Attributes>;
   firefoxApiUnknownParamTotal: Counter<Attributes>;
+  firefoxApiResolutionTotal: Counter<Attributes>;
 };
 
 let metricsState: MetricsState | undefined;
@@ -76,7 +77,12 @@ export function getOrInitMetrics(): MetricsState {
 
   const firefoxApiUnknownParamTotal = meter.createCounter(
     "firefox_api_unknown_param_total",
-    { description: "Firefox API requests with unknown query params" },
+    { description: "Firefox API requests with unknown params" },
+  );
+
+  const firefoxApiResolutionTotal = meter.createCounter(
+    "firefox_api_resolution_total",
+    { description: "Firefox API breach resolutions, by data class" },
   );
 
   const state: MetricsState = {
@@ -89,6 +95,7 @@ export function getOrInitMetrics(): MetricsState {
     hibpRangeSearchTotal,
     firefoxApiHandlerResponseTotal,
     firefoxApiUnknownParamTotal,
+    firefoxApiResolutionTotal,
   };
   return state;
 }
@@ -197,14 +204,39 @@ export function incFirefoxApiHandlerResponse(
   });
 }
 
+/** Where an ignored param was sent */
+export type FirefoxApiParamLocation = "query" | "body";
+
 /** Increment Firefox API unknown param metric */
 export function incFirefoxApiUnknownParam(
   endpoint: FirefoxApiEndpoint,
+  location: FirefoxApiParamLocation,
   clientId?: string,
 ) {
   getOrInitMetrics().firefoxApiUnknownParamTotal.add(1, {
     endpoint,
+    location,
     ...(clientId ? { client_id: clientId } : {}),
+  });
+}
+
+/** Result of one resolved breach entry */
+export type FirefoxApiResolutionOutcome =
+  // Newly resolved for an affected email
+  | "resolved"
+  // Every affected email had it already
+  | "already-resolved"
+  // Breach name matched nothing affecting
+  | "skipped";
+
+/** Increment Firefox API resolution metric */
+export function incFirefoxApiResolution(
+  outcome: FirefoxApiResolutionOutcome,
+  dataClass?: string,
+) {
+  getOrInitMetrics().firefoxApiResolutionTotal.add(1, {
+    outcome,
+    ...(dataClass ? { data_class: dataClass } : {}),
   });
 }
 
