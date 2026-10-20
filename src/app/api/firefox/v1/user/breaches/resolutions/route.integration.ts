@@ -215,6 +215,26 @@ describe("POST /api/firefox/v1/user/breaches/resolutions (integration)", () => {
     expect(await storedRow()).toEqual(before);
   });
 
+  it("resolves the matched breaches in a mixed batch", async () => {
+    const ids = await seedUser([PRIMARY]);
+    mockHibp({ [PRIMARY]: ["LinkedIn"] });
+
+    const res = await POST(
+      authedRequest([{ breachId: "Renamed" }, { breachId: "LinkedIn" }]),
+    );
+
+    expect(res.status).toBe(204);
+    expect((await storedRow())?.breach_resolution).toEqual({
+      useBreachId: true,
+      [PRIMARY]: {
+        [ids.Adobe]: { resolutionsChecked: ["passwords"] },
+        [ids.LinkedIn]: {
+          resolutionsChecked: ["passwords", "email-addresses"],
+        },
+      },
+    });
+  });
+
   it("returns 503 when the user is not on the flag's allow list", async () => {
     await seedUser(["someone-else@example.com"]);
     mockHibp({ [PRIMARY]: ["LinkedIn"] });

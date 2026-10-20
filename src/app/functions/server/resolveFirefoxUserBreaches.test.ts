@@ -146,10 +146,9 @@ describe("resolveFirefoxUserBreaches", () => {
     await resolveFirefoxUserBreaches(subscriber, new Set(["Facebook"]));
 
     expect(setBreachResolution).not.toHaveBeenCalled();
-    expect(incFirefoxApiResolution).toHaveBeenCalledWith(
-      "already-resolved",
-      "email-addresses",
-    );
+    expect(vi.mocked(incFirefoxApiResolution).mock.calls).toEqual([
+      ["already-resolved", "email-addresses"],
+    ]);
   });
 
   it("skips breaches that affect no email, resolving the rest", async () => {
