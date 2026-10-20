@@ -6,7 +6,6 @@ import { logger } from "../../functions/server/logging";
 import {
   incFirefoxApiUnknownParam,
   type FirefoxApiEndpoint,
-  type FirefoxApiParamLocation,
 } from "../../../utils/metrics";
 
 /**
@@ -15,7 +14,6 @@ import {
  */
 export function recordUnknownParams(
   endpoint: FirefoxApiEndpoint,
-  location: FirefoxApiParamLocation,
   names: Iterable<string>,
   knownNames: string[],
   clientId?: string,
@@ -24,12 +22,11 @@ export function recordUnknownParams(
     (name) => !knownNames.includes(name),
   );
   if (unknownParams.length === 0) return;
-  incFirefoxApiUnknownParam(endpoint, location, clientId);
+  incFirefoxApiUnknownParam(endpoint, clientId);
 
   // Names only, as values could hold data we don't want to track
   logger.info("firefox_api_unknown_params", {
     endpoint,
-    location,
     clientId,
     unknownParams,
   });

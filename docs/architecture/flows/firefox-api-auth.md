@@ -26,7 +26,7 @@ After the scope check, [`checkRateLimit`](../../../src/app/api/utils/withFxaUser
 
 After the subscriber lookup, the [`FirefoxApi` feature flag](../../../src/app/api/utils/withFxaUser.ts#L204) gates both endpoints until launch. It's on for a subscriber when the flag is enabled, or when their primary email is in its allow list, both set at `/admin/feature-flags`. When it's off, Monitor returns `503` without `Retry-After`.
 
-If FxA fails to introspect the token, or HIBP fails while answering ([`searchHibpRange`](../../../src/utils/hibp.ts#L388) throws), `withFxaUser` [returns `503`](../../../src/app/api/utils/withFxaUser.ts#L227) with `Retry-After: 300`. A failed lookup never returns a partial or empty `200`, so Firefox keeps the breaches it already holds. `POST /user/breaches/resolutions` checks the same HIBP lookup before it writes, so a `503` there means nothing was written.
+If FxA fails to introspect the token, or HIBP fails while answering ([`searchHibpRange`](../../../src/utils/hibp.ts#L388) throws), `withFxaUser` [returns `503`](../../../src/app/api/utils/withFxaUser.ts#L227) with `Retry-After: 300`. A failed lookup never returns a partial or empty `200`, so Firefox keeps the breaches it already holds.
 
 |                                | "Legacy" auth           | "New" auth              |
 | ------------------------------ | ----------------------- | ----------------------- |

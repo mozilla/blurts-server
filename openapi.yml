@@ -161,7 +161,7 @@ components:
             code: internal-error
             message: Monitor could not complete this request.
     ServiceUnavailable:
-      description: Monitor is unavailable, or FxA could not verify the token. Safe to retry, after the interval in `Retry-After` when it is present, otherwise on your next scheduled poll.
+      description: Monitor is unavailable, or FxA could not verify the token. Safe to retry, after the interval in `Retry-After` when it is present.
       headers:
         Retry-After:
           required: false

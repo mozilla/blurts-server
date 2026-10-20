@@ -126,9 +126,6 @@ firefox_api:
       - name: endpoint
         description: |
           Firefox API path from openapi.yml, e.g. "/user/breaches"
-      - name: location
-        description: |
-          "query" or "body"
       - name: client_id
         description: |
           FxA OAuth client id, when FxA returned one

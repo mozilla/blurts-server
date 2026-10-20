@@ -123,20 +123,6 @@ describe("resolveFirefoxUserBreaches", () => {
     });
   });
 
-  it("does not mutate the subscriber's resolutions", async () => {
-    const subscriber = makeSubscriber({
-      useBreachId: true,
-      [PRIMARY]: { 1: { resolutionsChecked: ["email-addresses"] } },
-    });
-
-    await resolveFirefoxUserBreaches(subscriber, new Set(["Adobe"]));
-
-    expect(subscriber.breach_resolution).toEqual({
-      useBreachId: true,
-      [PRIMARY]: { 1: { resolutionsChecked: ["email-addresses"] } },
-    });
-  });
-
   it("skips the write when everything is already resolved", async () => {
     const subscriber = makeSubscriber({
       useBreachId: true,

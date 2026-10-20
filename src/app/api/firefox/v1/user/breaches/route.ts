@@ -21,13 +21,7 @@ export const GET = withFxaUser(
   "/user/breaches",
   async (req, { subscriber, clientId }) => {
     const params = req.nextUrl.searchParams;
-    recordUnknownParams(
-      "/user/breaches",
-      "query",
-      params.keys(),
-      ["domain"],
-      clientId,
-    );
+    recordUnknownParams("/user/breaches", params.keys(), ["domain"], clientId);
 
     const paramError = findParamError(params);
     if (paramError) {

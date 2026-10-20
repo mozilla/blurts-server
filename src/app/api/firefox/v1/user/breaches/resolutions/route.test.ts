@@ -105,31 +105,12 @@ describe("POST /user/breaches/resolutions", () => {
     expect(incFirefoxApiUnknownParam).toHaveBeenCalledTimes(1);
     expect(incFirefoxApiUnknownParam).toHaveBeenCalledWith(
       "/user/breaches/resolutions",
-      "body",
       CLIENT_ID,
     );
     expect(logger.info).toHaveBeenCalledWith("firefox_api_unknown_params", {
       endpoint: "/user/breaches/resolutions",
-      location: "body",
       clientId: CLIENT_ID,
       unknownParams: ["dataClasses", "v"],
-    });
-  });
-
-  it("ignores unknown query params, counting and logging their names", async () => {
-    const res = await post([{ breachId: "Adobe" }], "?foo=secret&foo=2");
-
-    expect(res.status).toBe(204);
-    expect(incFirefoxApiUnknownParam).toHaveBeenCalledWith(
-      "/user/breaches/resolutions",
-      "query",
-      CLIENT_ID,
-    );
-    expect(logger.info).toHaveBeenCalledWith("firefox_api_unknown_params", {
-      endpoint: "/user/breaches/resolutions",
-      location: "query",
-      clientId: CLIENT_ID,
-      unknownParams: ["foo"],
     });
   });
 

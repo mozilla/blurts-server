@@ -28,7 +28,7 @@ export async function resolveFirefoxUserBreaches(
     ({ breach }) => breachNames.has(breach.Name),
   );
 
-  const resolutions = structuredClone(getResolutionsByEmail(subscriber));
+  const resolutions = getResolutionsByEmail(subscriber);
   const outcomes: Array<[FirefoxApiResolutionOutcome, string]> = [];
   for (const { breach, emails } of matched) {
     for (const dataClass of getServedDataClasses(breach)) {

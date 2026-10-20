@@ -37,14 +37,6 @@ function parseBreachNames(body: unknown): Set<string> | string {
 export const POST = withFxaUser(
   "/user/breaches/resolutions",
   async (req, { subscriber, clientId }) => {
-    recordUnknownParams(
-      "/user/breaches/resolutions",
-      "query",
-      req.nextUrl.searchParams.keys(),
-      [],
-      clientId,
-    );
-
     let body: unknown;
     try {
       body = await req.json();
@@ -53,7 +45,6 @@ export const POST = withFxaUser(
     }
     recordUnknownParams(
       "/user/breaches/resolutions",
-      "body",
       Array.isArray(body) ? body.filter(isObject).flatMap(Object.keys) : [],
       ["breachId"],
       clientId,

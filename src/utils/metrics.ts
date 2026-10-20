@@ -204,18 +204,13 @@ export function incFirefoxApiHandlerResponse(
   });
 }
 
-/** Where an ignored param was sent */
-export type FirefoxApiParamLocation = "query" | "body";
-
 /** Increment Firefox API unknown param metric */
 export function incFirefoxApiUnknownParam(
   endpoint: FirefoxApiEndpoint,
-  location: FirefoxApiParamLocation,
   clientId?: string,
 ) {
   getOrInitMetrics().firefoxApiUnknownParamTotal.add(1, {
     endpoint,
-    location,
     ...(clientId ? { client_id: clientId } : {}),
   });
 }
