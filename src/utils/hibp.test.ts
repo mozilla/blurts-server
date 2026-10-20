@@ -225,7 +225,7 @@ describe("searchHibpRange", () => {
     return error as UpstreamUnavailableError;
   }
 
-  // Real HIBP, not the local mock
+  // Take the non-mock path. Actual fetching is stubbed
   beforeEach(() => {
     vi.stubEnv("HIBP_KANON_API_ROOT", "https://hibp.example");
   });
