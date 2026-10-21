@@ -140,8 +140,7 @@ describe("resolveFirefoxUserBreaches", () => {
     });
     expect(vi.mocked(incFirefoxApiResolution).mock.calls).toEqual([
       ["resolved", "email-addresses"],
-      ["skipped"],
-      ["skipped"],
+      ["skipped", undefined, 2],
     ]);
   });
 
@@ -150,7 +149,7 @@ describe("resolveFirefoxUserBreaches", () => {
 
     expect(setBreachResolution).not.toHaveBeenCalled();
     expect(vi.mocked(incFirefoxApiResolution).mock.calls).toEqual([
-      ["skipped"],
+      ["skipped", undefined, 1],
     ]);
   });
 

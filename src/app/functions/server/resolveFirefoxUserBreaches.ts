@@ -61,7 +61,8 @@ export async function resolveFirefoxUserBreaches(
   for (const [outcome, dataClass] of outcomes) {
     incFirefoxApiResolution(outcome, dataClass);
   }
-  for (let i = matched.length; i < breachNames.size; i++) {
-    incFirefoxApiResolution("skipped");
+  const skipped = breachNames.size - matched.length;
+  if (skipped > 0) {
+    incFirefoxApiResolution("skipped", undefined, skipped);
   }
 }

@@ -228,8 +228,9 @@ export type FirefoxApiResolutionOutcome =
 export function incFirefoxApiResolution(
   outcome: FirefoxApiResolutionOutcome,
   dataClass?: string,
+  by = 1,
 ) {
-  getOrInitMetrics().firefoxApiResolutionTotal.add(1, {
+  getOrInitMetrics().firefoxApiResolutionTotal.add(by, {
     outcome,
     ...(dataClass ? { data_class: dataClass } : {}),
   });
