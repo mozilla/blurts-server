@@ -117,10 +117,10 @@ firefox_api:
     alert_policy: []
   firefox_api_unknown_param_total:
     description: |
-      Metric to instrument Firefox API requests carrying query params the
-      endpoint ignores. A rise means a client sends something new. Param
-      names are logged as "firefox_api_unknown_params", not labelled, to
-      bound cardinality.
+      Metric to instrument Firefox API requests carrying query params or
+      body keys the endpoint ignores. A rise means a client sends
+      something new. Names are logged as "firefox_api_unknown_params",
+      not labelled, to bound cardinality.
     type: counter
     labels:
       - name: endpoint
@@ -130,6 +130,25 @@ firefox_api:
         description: |
           FxA OAuth client id, when FxA returned one
     scope: |
-      The "/api/firefox/v1" endpoints that take query params
+      The "/api/firefox/v1" endpoints
+    # Panel and alerting: MNTOR-5348
+    alert_policy: []
+  firefox_api_resolution_total:
+    description: |
+      Metric to instrument breaches Firefox marks resolved. Counted once
+      per breach and served data class, after the write succeeds, and
+      once per skipped breach name. A rise in "skipped" means Firefox
+      holds breach names we no longer serve, e.g. after a HIBP rename.
+    type: counter
+    labels:
+      - name: outcome
+        description: |
+          "resolved" (newly, for an affected email), "already-resolved",
+          or "skipped" (matched no breach affecting the user)
+      - name: data_class
+        description: |
+          "passwords" or "email-addresses". Not set when "skipped"
+    scope: |
+      The "/api/firefox/v1/user/breaches/resolutions" endpoint
     # Panel and alerting: MNTOR-5348
     alert_policy: []
