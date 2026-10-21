@@ -45,7 +45,6 @@ hibp:
           HTTP status HIBP sent. Set on "http-error" and "invalid-body"
     scope: |
       The Firefox API, via searchHibpRange
-    # Panel and alerting: MNTOR-5348
     alert_policy:
       - severity_level: S2
         trigger_condition: |
@@ -74,8 +73,16 @@ firefox_api:
           FxA OAuth client id. Set only when the token is active.
     scope: |
       The "/api/firefox/v1" endpoints, via withFxaUser
-    # Panel and alerting: MNTOR-5348
-    alert_policy: []
+    alert_policy:
+      - severity_level: S2
+        trigger_condition: |
+          "introspection-error" and "lookup-error" together exceed 5% of
+          auth attempts for 15 minutes, with at least 50 attempts.
+      - severity_level: S2
+        trigger_condition: |
+          "inactive", "missing-scope" and "missing-header" together exceed
+          20% of auth attempts for 30 minutes, with at least 50 attempts.
+          FxA or Firefox likely changed how tokens are issued or sent.
   firefox_api_rate_limit_total:
     description: |
       Metric to instrument Firefox API rate limiting
@@ -93,8 +100,14 @@ firefox_api:
           FxA OAuth client id
     scope: |
       The "/api/firefox/v1" endpoints, via withFxaUser
-    # Panel and alerting: MNTOR-5348
-    alert_policy: []
+    alert_policy:
+      - severity_level: S3
+        trigger_condition: |
+          Any "redis-error" for 10 minutes. The limiter is failing open.
+      - severity_level: S3
+        trigger_condition: |
+          "limited" exceeds 5% of checks for 30 minutes, with at least
+          50 checks.
   firefox_api_handler_response_total:
     description: |
       Metric to instrument Firefox API route handler responses. Counts
@@ -113,8 +126,11 @@ firefox_api:
           FxA OAuth client id, when FxA returned one
     scope: |
       The "/api/firefox/v1" endpoints, via withFxaUser
-    # Panel and alerting: MNTOR-5348
-    alert_policy: []
+    alert_policy:
+      - severity_level: S2
+        trigger_condition: |
+          5xx responses exceed 5% of responses for 15 minutes, with at
+          least 50 responses.
   firefox_api_request_duration_seconds:
     description: |
       Metric to instrument Firefox API request duration, auth and
@@ -129,8 +145,10 @@ firefox_api:
           HTTP status sent, e.g. 200, 401, 429, 500, or 503
     scope: |
       The "/api/firefox/v1" endpoints, via withFxaUser
-    # Panel and alerting: MNTOR-5348
-    alert_policy: []
+    alert_policy:
+      - severity_level: S3
+        trigger_condition: |
+          p95 exceeds 2.5s for 15 minutes, with at least 50 requests.
   firefox_api_unknown_param_total:
     description: |
       Metric to instrument Firefox API requests carrying query params or
@@ -147,7 +165,7 @@ firefox_api:
           FxA OAuth client id, when FxA returned one
     scope: |
       The "/api/firefox/v1" endpoints
-    # Panel and alerting: MNTOR-5348
+    # No alerting
     alert_policy: []
   firefox_api_resolution_total:
     description: |
@@ -166,5 +184,8 @@ firefox_api:
           "passwords" or "email-addresses". Not set when "skipped"
     scope: |
       The "/api/firefox/v1/user/breaches/resolutions" endpoint
-    # Panel and alerting: MNTOR-5348
-    alert_policy: []
+    alert_policy:
+      - severity_level: S3
+        trigger_condition: |
+          "skipped" exceeds 20% of resolutions for 1 hour, with at least
+          50 resolutions.
