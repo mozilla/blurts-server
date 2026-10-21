@@ -24,6 +24,10 @@ vi.mock("./loadNextHeaders", () => ({
   loadNextHeaders: loadNextHeadersMock,
 }));
 
+vi.mock("next/headers", () => {
+  throw new Error("import failed");
+});
+
 vi.mock("uuid", () => ({
   v5: vi.fn(() => "11111111-2222-3333-4444-555555555555"),
 }));
@@ -128,10 +132,6 @@ describe("getExperimentationId", () => {
   });
 
   it("logs info and returns undefined if next/headers throws", async () => {
-    vi.mock("next/headers", () => {
-      throw new Error("import failed");
-    });
-
     const { getExperimentationIdFromUserSession } =
       await import("./getExperimentationId");
 
