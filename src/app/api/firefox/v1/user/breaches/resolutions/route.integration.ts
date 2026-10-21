@@ -41,6 +41,7 @@ vi.mock("../../../../../../functions/server/logging", () => ({
 
 import { introspectToken, getSha1 } from "../../../../../../../utils/fxa";
 import { searchHibpRange } from "../../../../../../../utils/hibp";
+import { UpstreamUnavailableError } from "../../../../../../../utils/error";
 import { POST } from "./route";
 
 const conn = createDbConnection();
@@ -219,5 +220,34 @@ describe("POST /api/firefox/v1/user/breaches/resolutions (integration)", () => {
         },
       },
     });
+  });
+
+  it("adds to a partially resolved breach", async () => {
+    const ids = await seedUser([PRIMARY]);
+    mockHibp({ [PRIMARY]: ["Adobe"] });
+
+    const res = await POST(authedRequest([{ breachId: "Adobe" }]));
+
+    expect(res.status).toBe(204);
+    expect((await storedRow())?.breach_resolution).toEqual({
+      useBreachId: true,
+      [PRIMARY]: {
+        [ids.Adobe]: { resolutionsChecked: ["passwords", "email-addresses"] },
+      },
+    });
+  });
+
+  it("returns 503 and writes nothing when HIBP fails", async () => {
+    await seedUser([PRIMARY]);
+    vi.mocked(searchHibpRange).mockRejectedValue(
+      new UpstreamUnavailableError("hibp", "timeout"),
+    );
+    const before = await storedRow();
+
+    const res = await POST(authedRequest(RESOLVE_LINKEDIN));
+
+    expect(res.status).toBe(503);
+    expect(res.headers.get("Retry-After")).toBe("300");
+    expect(await storedRow()).toEqual(before);
   });
 });
