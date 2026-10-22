@@ -18,6 +18,7 @@ import {
   incFirefoxApiAuth,
   incFirefoxApiHandlerResponse,
   incFirefoxApiRateLimit,
+  recordFirefoxApiDuration,
   type FirefoxApiEndpoint,
 } from "../../../utils/metrics";
 import { UpstreamUnavailableError } from "../../../utils/error";
@@ -128,7 +129,7 @@ export function withFxaUser(
     ctx: { subscriber: FxaSubscriber; clientId?: string },
   ) => Promise<Response>,
 ) {
-  return async (req: NextRequest): Promise<Response> => {
+  const gate = async (req: NextRequest): Promise<Response> => {
     const token = readToken(req);
     if (!token) {
       incFirefoxApiAuth("missing-header", endpoint);
@@ -263,5 +264,13 @@ export function withFxaUser(
         "Monitor could not complete this request.",
       );
     }
+  };
+
+  return async (req: NextRequest): Promise<Response> => {
+    const start = performance.now();
+    const response = await gate(req);
+    const seconds = (performance.now() - start) / 1000;
+    recordFirefoxApiDuration(endpoint, response.status, seconds);
+    return response;
   };
 }
