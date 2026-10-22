@@ -293,6 +293,25 @@ describe("withFxaUser", () => {
       expect(incFirefoxApiHandlerResponse).not.toHaveBeenCalled();
     });
 
+    it("counts a flag lookup throw as a lookup error", async () => {
+      mockIntrospection();
+      vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+      vi.mocked(getEnabledFeatureFlags).mockRejectedValue(new Error("boom"));
+
+      const res = await gated(authed());
+
+      expect(res.status).toBe(500);
+      expect(incFirefoxApiAuth).toHaveBeenCalledWith(
+        "lookup-error",
+        ENDPOINT,
+        CLIENT_ID,
+      );
+      expect(Sentry.captureException).toHaveBeenCalledWith(new Error("boom"), {
+        tags: { endpoint: ENDPOINT, outcome: "lookup-error" },
+      });
+      expect(handler).not.toHaveBeenCalled();
+    });
+
     it("returns 500 without a lookup error when the handler throws", async () => {
       mockIntrospection();
       vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);

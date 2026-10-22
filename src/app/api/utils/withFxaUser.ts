@@ -262,8 +262,8 @@ export function withFxaUser(
         );
       }
 
-      // No subscriber yet means lookup failed
-      const lookupFailed = !subscriber;
+      // Handler not reached, so lookup failed
+      const lookupFailed = !handlerCalled;
       if (lookupFailed) {
         incFirefoxApiAuth("lookup-error", endpoint, client_id);
       }
