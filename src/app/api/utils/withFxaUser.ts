@@ -22,6 +22,7 @@ import {
   type FirefoxApiEndpoint,
 } from "../../../utils/metrics";
 import { UpstreamUnavailableError } from "../../../utils/error";
+import { logger } from "../../functions/server/logging";
 import { FXA_MONITOR_SCOPE } from "../../../constants";
 import { config } from "../../../config";
 
@@ -40,6 +41,23 @@ function readToken(req: NextRequest): string | undefined {
   } catch {
     return undefined;
   }
+}
+
+/** Sends to Sentry, and logs it */
+function reportError(
+  error: unknown,
+  tags: Record<string, string | number>,
+  fingerprint?: string[],
+) {
+  Sentry.captureException(error, { tags, fingerprint });
+  const err = error instanceof Error ? error : undefined;
+  // winston drops non-enumerable Error props
+  logger.error("firefox_api_error", {
+    ...tags,
+    errorClass: err?.name ?? typeof error,
+    errorMessage: err?.message ?? String(error),
+    stack: err?.stack,
+  });
 }
 
 /** Seconds a client waits after an upstream fails */
@@ -106,10 +124,9 @@ async function checkRateLimit(
     return retryAfterSeconds;
   } catch (error) {
     // Fail open, like the breaches cache
-    Sentry.captureException(error, {
-      tags: { outcome: "redis-error", endpoint },
-      fingerprint: ["firefox-api-rate-limit-redis"],
-    });
+    reportError(error, { outcome: "redis-error", endpoint }, [
+      "firefox-api-rate-limit-redis",
+    ]);
     incFirefoxApiRateLimit("redis-error", endpoint, clientId);
     return 0;
   }
@@ -145,16 +162,17 @@ export function withFxaUser(
       }
     } catch (error) {
       // Error carries no token or sub
-      Sentry.captureException(error, {
-        tags: {
+      reportError(
+        error,
+        {
           outcome: "introspection-error",
           endpoint,
           ...(error instanceof FxaIntrospectError
             ? { httpStatus: error.status }
             : {}),
         },
-        fingerprint: ["firefox-api-fxa-introspect"],
-      });
+        ["firefox-api-fxa-introspect"],
+      );
       incFirefoxApiAuth("introspection-error", endpoint);
       return errorResponse(
         "unavailable",
@@ -226,16 +244,17 @@ export function withFxaUser(
     } catch (error) {
       // e.g. HIBP is down; the client retries later
       if (error instanceof UpstreamUnavailableError) {
-        Sentry.captureException(error, {
-          tags: {
+        reportError(
+          error,
+          {
             outcome: "upstream-unavailable",
             upstream: error.upstream,
             reason: error.reason,
             endpoint,
             ...(error.status ? { httpStatus: error.status } : {}),
           },
-          fingerprint: [`firefox-api-${error.upstream}-unavailable`],
-        });
+          [`firefox-api-${error.upstream}-unavailable`],
+        );
         incFirefoxApiHandlerResponse(endpoint, 503, client_id);
         return errorResponse(
           "unavailable",
@@ -244,21 +263,20 @@ export function withFxaUser(
         );
       }
 
-      // No subscriber yet means lookup failed
-      const lookupFailed = !subscriber;
+      // Handler not reached, so lookup failed
+      const lookupFailed = !handlerCalled;
       if (lookupFailed) {
         incFirefoxApiAuth("lookup-error", endpoint, client_id);
       }
-      // openapi.yml promises a JSON body
-      Sentry.captureException(error, {
-        tags: {
-          endpoint,
-          ...(lookupFailed ? { outcome: "lookup-error" } : {}),
-        },
+      // Unknown bugs; group by stack trace
+      reportError(error, {
+        endpoint,
+        outcome: lookupFailed ? "lookup-error" : "handler-error",
       });
       if (handlerCalled) {
         incFirefoxApiHandlerResponse(endpoint, 500, client_id);
       }
+      // openapi.yml promises a JSON body
       return errorResponse(
         "internal-error",
         "Monitor could not complete this request.",

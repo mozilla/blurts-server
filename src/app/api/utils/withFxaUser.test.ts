@@ -59,6 +59,7 @@ import {
 import { FXA_MONITOR_SCOPE } from "../../../constants";
 import { config } from "../../../config";
 import { UpstreamUnavailableError } from "../../../utils/error";
+import { logger } from "../../functions/server/logging";
 import { withFxaUser, type FxaSubscriber } from "./withFxaUser";
 
 const ENDPOINT = "/user/breaches";
@@ -294,6 +295,25 @@ describe("withFxaUser", () => {
       expect(incFirefoxApiHandlerResponse).not.toHaveBeenCalled();
     });
 
+    it("counts a flag lookup throw as a lookup error", async () => {
+      mockIntrospection();
+      vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+      vi.mocked(getEnabledFeatureFlags).mockRejectedValue(new Error("boom"));
+
+      const res = await gated(authed());
+
+      expect(res.status).toBe(500);
+      expect(incFirefoxApiAuth).toHaveBeenCalledWith(
+        "lookup-error",
+        ENDPOINT,
+        CLIENT_ID,
+      );
+      expect(Sentry.captureException).toHaveBeenCalledWith(new Error("boom"), {
+        tags: { endpoint: ENDPOINT, outcome: "lookup-error" },
+      });
+      expect(handler).not.toHaveBeenCalled();
+    });
+
     it("returns 500 without a lookup error when the handler throws", async () => {
       mockIntrospection();
       vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
@@ -310,13 +330,30 @@ describe("withFxaUser", () => {
         CLIENT_ID,
       );
       expect(Sentry.captureException).toHaveBeenCalledWith(new Error("boom"), {
-        tags: { endpoint: ENDPOINT },
+        tags: { endpoint: ENDPOINT, outcome: "handler-error" },
       });
       expect(incFirefoxApiHandlerResponse).toHaveBeenCalledWith(
         ENDPOINT,
         500,
         CLIENT_ID,
       );
+    });
+  });
+
+  it("logs the error message and stack", async () => {
+    mockIntrospection();
+    vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+    const error = new TypeError("boom");
+    handler.mockRejectedValueOnce(error);
+
+    await gated(authed());
+
+    expect(logger.error).toHaveBeenCalledExactlyOnceWith("firefox_api_error", {
+      endpoint: ENDPOINT,
+      outcome: "handler-error",
+      errorClass: "TypeError",
+      errorMessage: "boom",
+      stack: error.stack,
     });
   });
 
