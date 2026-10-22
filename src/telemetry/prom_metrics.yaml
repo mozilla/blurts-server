@@ -115,6 +115,22 @@ firefox_api:
       The "/api/firefox/v1" endpoints, via withFxaUser
     # Panel and alerting: MNTOR-5348
     alert_policy: []
+  firefox_api_request_duration_seconds:
+    description: |
+      Metric to instrument Firefox API request duration, auth and
+      rate limit included, so 401 and 429 answers are timed too
+    type: histogram
+    labels:
+      - name: endpoint
+        description: |
+          Firefox API path from openapi.yml, e.g. "/user/breaches"
+      - name: status_code
+        description: |
+          HTTP status sent, e.g. 200, 401, 429, 500, or 503
+    scope: |
+      The "/api/firefox/v1" endpoints, via withFxaUser
+    # Panel and alerting: MNTOR-5348
+    alert_policy: []
   firefox_api_unknown_param_total:
     description: |
       Metric to instrument Firefox API requests carrying query params or

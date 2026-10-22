@@ -34,6 +34,7 @@ vi.mock("../../../utils/metrics", () => ({
   incFirefoxApiAuth: vi.fn(),
   incFirefoxApiHandlerResponse: vi.fn(),
   incFirefoxApiRateLimit: vi.fn(),
+  recordFirefoxApiDuration: vi.fn(),
 }));
 
 vi.mock("@sentry/nextjs", () => ({
@@ -53,6 +54,7 @@ import {
   incFirefoxApiAuth,
   incFirefoxApiHandlerResponse,
   incFirefoxApiRateLimit,
+  recordFirefoxApiDuration,
 } from "../../../utils/metrics";
 import { FXA_MONITOR_SCOPE } from "../../../constants";
 import { config } from "../../../config";
@@ -638,5 +640,30 @@ describe("withFxaUser", () => {
       400,
       CLIENT_ID,
     );
+  });
+
+  describe("duration metric", () => {
+    it("records a success", async () => {
+      mockIntrospection();
+      vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+
+      await gated(authed());
+
+      expect(recordFirefoxApiDuration).toHaveBeenCalledExactlyOnceWith(
+        ENDPOINT,
+        200,
+        expect.any(Number),
+      );
+    });
+
+    it("records an auth failure", async () => {
+      await gated(makeRequest());
+
+      expect(recordFirefoxApiDuration).toHaveBeenCalledExactlyOnceWith(
+        ENDPOINT,
+        401,
+        expect.any(Number),
+      );
+    });
   });
 });

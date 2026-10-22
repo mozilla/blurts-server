@@ -4,7 +4,7 @@
 
 export const runtime = "nodejs";
 
-import { Attributes, Counter, metrics } from "@opentelemetry/api";
+import { Attributes, Counter, Histogram, metrics } from "@opentelemetry/api";
 import { config as appConfig } from "../config";
 
 // This is primarily a config file with very minimal logic
@@ -20,6 +20,7 @@ type MetricsState = {
   firefoxApiHandlerResponseTotal: Counter<Attributes>;
   firefoxApiUnknownParamTotal: Counter<Attributes>;
   firefoxApiResolutionTotal: Counter<Attributes>;
+  firefoxApiRequestDuration: Histogram<Attributes>;
 };
 
 let metricsState: MetricsState | undefined;
@@ -85,6 +86,20 @@ export function getOrInitMetrics(): MetricsState {
     { description: "Firefox API breach resolutions, by data class" },
   );
 
+  const firefoxApiRequestDuration = meter.createHistogram(
+    "firefox_api_request_duration_seconds",
+    {
+      description: "Firefox API request duration, auth included",
+      unit: "s",
+      advice: {
+        // 5s per upstream timeout, two upstreams
+        explicitBucketBoundaries: [
+          0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2.5, 5, 7.5, 10,
+        ],
+      },
+    },
+  );
+
   const state: MetricsState = {
     hibpNotifyRequestFailuresTotal,
     hibpNotifyRequestsTotal,
@@ -96,6 +111,7 @@ export function getOrInitMetrics(): MetricsState {
     firefoxApiHandlerResponseTotal,
     firefoxApiUnknownParamTotal,
     firefoxApiResolutionTotal,
+    firefoxApiRequestDuration,
   };
   return state;
 }
@@ -212,6 +228,18 @@ export function incFirefoxApiUnknownParam(
   getOrInitMetrics().firefoxApiUnknownParamTotal.add(1, {
     endpoint,
     ...(clientId ? { client_id: clientId } : {}),
+  });
+}
+
+/** Record Firefox API request duration metric */
+export function recordFirefoxApiDuration(
+  endpoint: FirefoxApiEndpoint,
+  statusCode: number,
+  seconds: number,
+) {
+  getOrInitMetrics().firefoxApiRequestDuration.record(seconds, {
+    endpoint,
+    status_code: statusCode,
   });
 }
 
