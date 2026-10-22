@@ -57,6 +57,7 @@ import {
 import { FXA_MONITOR_SCOPE } from "../../../constants";
 import { config } from "../../../config";
 import { UpstreamUnavailableError } from "../../../utils/error";
+import { logger } from "../../functions/server/logging";
 import { withFxaUser, type FxaSubscriber } from "./withFxaUser";
 
 const ENDPOINT = "/user/breaches";
@@ -308,13 +309,30 @@ describe("withFxaUser", () => {
         CLIENT_ID,
       );
       expect(Sentry.captureException).toHaveBeenCalledWith(new Error("boom"), {
-        tags: { endpoint: ENDPOINT },
+        tags: { endpoint: ENDPOINT, outcome: "handler-error" },
       });
       expect(incFirefoxApiHandlerResponse).toHaveBeenCalledWith(
         ENDPOINT,
         500,
         CLIENT_ID,
       );
+    });
+  });
+
+  it("logs the error message and stack", async () => {
+    mockIntrospection();
+    vi.mocked(getSubscriberByFxaUid).mockResolvedValue(subscriber);
+    const error = new TypeError("boom");
+    handler.mockRejectedValueOnce(error);
+
+    await gated(authed());
+
+    expect(logger.error).toHaveBeenCalledExactlyOnceWith("firefox_api_error", {
+      endpoint: ENDPOINT,
+      outcome: "handler-error",
+      errorClass: "TypeError",
+      errorMessage: "boom",
+      stack: error.stack,
     });
   });
 
