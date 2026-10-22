@@ -53,7 +53,7 @@ hibp:
       - severity_level: S2
         trigger_condition: |
           "http-error", "timeout" and "network-error" together exceed
-          5% of searches for 15 minutes.
+          20% of searches for 15 minutes, with at least 100 searches.
 
 firefox_api:
   firefox_api_auth_total:
@@ -76,12 +76,12 @@ firefox_api:
     alert_policy:
       - severity_level: S2
         trigger_condition: |
-          "introspection-error" and "lookup-error" together exceed 5% of
-          auth attempts for 15 minutes, with at least 50 attempts.
+          "introspection-error" and "lookup-error" together exceed 25% of
+          auth attempts for 15 minutes, with at least 100 attempts.
       - severity_level: S2
         trigger_condition: |
           "inactive", "missing-scope" and "missing-header" together exceed
-          20% of auth attempts for 30 minutes, with at least 50 attempts.
+          50% of auth attempts for 1 hour, with at least 100 attempts.
           FxA or Firefox likely changed how tokens are issued or sent.
   firefox_api_rate_limit_total:
     description: |
@@ -103,11 +103,8 @@ firefox_api:
     alert_policy:
       - severity_level: S3
         trigger_condition: |
-          Any "redis-error" for 10 minutes. The limiter is failing open.
-      - severity_level: S3
-        trigger_condition: |
-          "limited" exceeds 5% of checks for 30 minutes, with at least
-          50 checks.
+          "limited" exceeds 25% of checks for 1 hour, with at least
+          100 checks.
   firefox_api_handler_response_total:
     description: |
       Metric to instrument Firefox API route handler responses. Counts
@@ -129,8 +126,8 @@ firefox_api:
     alert_policy:
       - severity_level: S2
         trigger_condition: |
-          5xx responses exceed 5% of responses for 15 minutes, with at
-          least 50 responses.
+          5xx responses exceed 10% of responses for 15 minutes, with at
+          least 100 responses.
   firefox_api_request_duration_seconds:
     description: |
       Metric to instrument Firefox API request duration, auth and
@@ -148,7 +145,7 @@ firefox_api:
     alert_policy:
       - severity_level: S3
         trigger_condition: |
-          p95 exceeds 2.5s for 15 minutes, with at least 50 requests.
+          p95 exceeds 5s for 30 minutes, with at least 100 requests.
   firefox_api_unknown_param_total:
     description: |
       Metric to instrument Firefox API requests carrying query params or
@@ -184,8 +181,5 @@ firefox_api:
           "passwords" or "email-addresses". Not set when "skipped"
     scope: |
       The "/api/firefox/v1/user/breaches/resolutions" endpoint
-    alert_policy:
-      - severity_level: S3
-        trigger_condition: |
-          "skipped" exceeds 20% of resolutions for 1 hour, with at least
-          50 resolutions.
+    # No alerting
+    alert_policy: []
