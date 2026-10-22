@@ -78,11 +78,11 @@ firefox_api:
         trigger_condition: |
           "introspection-error" and "lookup-error" together exceed 25% of
           auth attempts for 15 minutes, with at least 100 attempts.
-      - severity_level: S2
+      - severity_level: S3
         trigger_condition: |
-          "inactive", "missing-scope" and "missing-header" together exceed
-          50% of auth attempts for 1 hour, with at least 100 attempts.
-          FxA or Firefox likely changed how tokens are issued or sent.
+          "inactive" and "missing-scope" together exceed 50% of attempts
+          carrying a token for 1 hour, with at least 100 attempts. FxA or
+          Firefox likely changed how tokens are issued.
   firefox_api_rate_limit_total:
     description: |
       Metric to instrument Firefox API rate limiting
