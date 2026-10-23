@@ -2,9 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-
-# Breach Data Classes
-
 academic-records = Ακαδημαϊκά αρχεία
 account-balances = Υπόλοιπα λογαριασμών
 address-book-contacts = Επαφές ευρετηρίου
@@ -181,7 +178,7 @@ vehicle-identification-numbers-vins = Αριθμοί αναγνώρισης οχ
 vehicle-registration-plates = Πινακίδες κυκλοφορίας οχημάτων
 vip-statuses = Καταστάσεις VIP
 warranty-claims = Αξιώσεις εγγύησης
-website-activity = Δραστηριότητα ιστοσελίδας
+website-activity = Δραστηριότητα ιστοτόπων
 work-habits = Εργασιακές συνήθειες
 years-of-birth = Έτη γεννήσεων
 years-of-professional-experience = Έτη επαγγελματικής πείρας
