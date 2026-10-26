@@ -14,7 +14,7 @@ on:
 
 jobs:
   sbom:
-    uses: mozilla/ssdlc-actions/.github/workflows/ssdlc-sbom.yml@3ff69ae8733c81c53a7fb058610e7fe728482e7f
+    uses: mozilla/ssdlc-actions/.github/workflows/ssdlc-sbom.yml@dea789d28210f84655a41be4ac02c384e1aac72a
     with:
       sbom_name: ${{ github.event.release.tag_name || github.sha }}
     permissions:
