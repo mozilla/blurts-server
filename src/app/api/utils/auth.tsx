@@ -47,12 +47,7 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   authorization: {
     url: config.oauthAuthorizationUri,
     params: {
-      // Monitor scope lets Firefox query our API
-      scope: [
-        "profile",
-        "https://identity.mozilla.com/account/subscriptions",
-        FXA_MONITOR_SCOPE,
-      ].join(" "),
+      scope: `profile https://identity.mozilla.com/account/subscriptions ${FXA_MONITOR_SCOPE}`,
       access_type: "offline",
       action: "email",
       prompt: "login",
