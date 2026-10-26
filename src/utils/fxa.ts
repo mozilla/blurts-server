@@ -43,6 +43,7 @@ async function destroyOAuthToken(
       "Content-Type": "application/json",
     },
     body: JSON.stringify(tokenBody),
+    signal: AbortSignal.timeout(config.fxaIntrospectTimeoutMs),
   };
 
   try {

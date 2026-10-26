@@ -170,6 +170,21 @@ describe("revokeOAuthTokens", () => {
     );
   });
 
+  it("times out each destroy after the configured timeout", async () => {
+    const timeoutSpy = vi.spyOn(AbortSignal, "timeout");
+    const fetchMock = vi
+      .fn()
+      .mockImplementation(() => Promise.resolve(jsonResponse({})));
+    vi.stubGlobal("fetch", fetchMock);
+
+    await revokeOAuthTokens(subscriber, "account-delete");
+
+    expect(timeoutSpy).toHaveBeenCalledWith(config.fxaIntrospectTimeoutMs);
+    expect(fetchMock.mock.calls[0][1].signal).toBe(
+      timeoutSpy.mock.results[0].value,
+    );
+  });
+
   it("returns false and counts a failure when fetch throws", async () => {
     stubFetch(new TypeError("fetch failed"));
 
