@@ -199,10 +199,13 @@ export async function POST(request: NextRequest) {
         }
 
         // MNTOR-1932: Change password should revoke sessions
-        await revokeOAuthTokens({
-          fxa_access_token: accessToken,
-          fxa_refresh_token: refreshToken,
-        });
+        await revokeOAuthTokens(
+          {
+            fxa_access_token: accessToken,
+            fxa_refresh_token: refreshToken,
+          },
+          "password-change",
+        );
 
         return NextResponse.json(
           { success: true, message: "session_revoked" },

@@ -21,6 +21,7 @@ type MetricsState = {
   firefoxApiUnknownParamTotal: Counter<Attributes>;
   firefoxApiResolutionTotal: Counter<Attributes>;
   firefoxApiRequestDuration: Histogram<Attributes>;
+  fxaTokenRevokeTotal: Counter<Attributes>;
 };
 
 let metricsState: MetricsState | undefined;
@@ -100,6 +101,10 @@ export function getOrInitMetrics(): MetricsState {
     },
   );
 
+  const fxaTokenRevokeTotal = meter.createCounter("fxa_token_revoke_total", {
+    description: "FxA token revocations, by reason and outcome",
+  });
+
   const state: MetricsState = {
     hibpNotifyRequestFailuresTotal,
     hibpNotifyRequestsTotal,
@@ -112,6 +117,7 @@ export function getOrInitMetrics(): MetricsState {
     firefoxApiUnknownParamTotal,
     firefoxApiResolutionTotal,
     firefoxApiRequestDuration,
+    fxaTokenRevokeTotal,
   };
   return state;
 }
@@ -290,5 +296,22 @@ export function incHibpRangeSearch(
     outcome,
     ...(statusCode ? { status_code: statusCode } : {}),
   });
+}
+/** Why we revoke a subscriber's FxA tokens */
+export type FxaTokenRevokeReason = "account-delete" | "password-change";
+
+/** Result of one revokeOAuthTokens call */
+export type FxaTokenRevokeOutcome =
+  // Both tokens destroyed
+  | "success"
+  // FxA call failed or returned non-2xx
+  | "failure";
+
+/** Increment FxA token revoke metric */
+export function incFxaTokenRevoke(
+  reason: FxaTokenRevokeReason,
+  outcome: FxaTokenRevokeOutcome,
+) {
+  getOrInitMetrics().fxaTokenRevokeTotal.add(1, { reason, outcome });
 }
 /* c8 ignore end */

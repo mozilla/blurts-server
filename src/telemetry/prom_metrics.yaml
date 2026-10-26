@@ -183,3 +183,25 @@ firefox_api:
       The "/api/firefox/v1/user/breaches/resolutions" endpoint
     # No alerting
     alert_policy: []
+
+fxa:
+  fxa_token_revoke_total:
+    description: |
+      Metric to instrument FxA token revocations (revokeOAuthTokens). A
+      rise in "failure" for "account-delete" means deleted users still
+      show Monitor as connected in FxA, so Firefox gets 403
+      no-monitor-account.
+    type: counter
+    labels:
+      - name: reason
+        description: |
+          "account-delete" (settings delete) or "password-change" (FxA
+          password change event)
+      - name: outcome
+        description: |
+          "success" or "failure" (FxA error, unreachable, or no
+          stored token)
+    scope: |
+      Settings account deletion and the "/api/v1/fxa-rp-events" endpoint
+    # No alerting
+    alert_policy: []

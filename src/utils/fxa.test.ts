@@ -10,6 +10,10 @@ vi.mock("../app/functions/server/logging", () => ({
   logger: { info: vi.fn(), error: vi.fn() },
 }));
 
+vi.mock("./metrics", () => ({
+  incFxaTokenRevoke: vi.fn(),
+}));
+
 // Distinct hosts, so the URL test can tell them apart
 vi.mock("../config", async (importOriginal) => {
   const { config } = await importOriginal<typeof import("../config")>();
@@ -23,7 +27,9 @@ vi.mock("../config", async (importOriginal) => {
 });
 
 import { config } from "../config";
-import { FxaIntrospectError, introspectToken } from "./fxa";
+import { logger } from "../app/functions/server/logging";
+import { incFxaTokenRevoke } from "./metrics";
+import { FxaIntrospectError, introspectToken, revokeOAuthTokens } from "./fxa";
 
 const TOKEN = "fxa-access-token";
 
@@ -42,6 +48,7 @@ function jsonResponse(body: unknown, status = 200) {
 
 afterEach(() => {
   vi.unstubAllGlobals();
+  vi.clearAllMocks();
 });
 
 describe("introspectToken", () => {
@@ -117,5 +124,59 @@ describe("introspectToken", () => {
     stubFetch(new Response("<html>bad gateway</html>", { status: 200 }));
 
     await expect(introspectToken(TOKEN)).rejects.toThrow(SyntaxError);
+  });
+});
+
+describe("revokeOAuthTokens", () => {
+  const subscriber = { fxa_access_token: "at", fxa_refresh_token: "rt" };
+
+  it("destroys the refresh token, then the access token", async () => {
+    const fetchMock = vi
+      .fn()
+      .mockImplementation(() => Promise.resolve(jsonResponse({})));
+    vi.stubGlobal("fetch", fetchMock);
+
+    await expect(revokeOAuthTokens(subscriber, "account-delete")).resolves.toBe(
+      true,
+    );
+
+    expect(fetchMock.mock.calls[0][0]).toBe(
+      "https://oauth.example/v1/oauth/destroy",
+    );
+    const bodies = fetchMock.mock.calls.map(([, init]) =>
+      JSON.parse(init.body),
+    );
+    expect(bodies).toMatchObject([
+      { token: "rt", token_type_hint: "refresh_token" },
+      { token: "at", token_type_hint: "access_token" },
+    ]);
+    expect(incFxaTokenRevoke).toHaveBeenCalledWith("account-delete", "success");
+  });
+
+  it("returns false and counts a failure on non-2xx", async () => {
+    stubFetch(jsonResponse({ code: 400, errno: 108 }, 400));
+
+    await expect(
+      revokeOAuthTokens(subscriber, "password-change"),
+    ).resolves.toBe(false);
+
+    expect(logger.error).toHaveBeenCalledWith(
+      "revoke_oauth_token",
+      expect.objectContaining({ message: '{"code":400,"errno":108}' }),
+    );
+    expect(incFxaTokenRevoke).toHaveBeenCalledWith(
+      "password-change",
+      "failure",
+    );
+  });
+
+  it("returns false and counts a failure when fetch throws", async () => {
+    stubFetch(new TypeError("fetch failed"));
+
+    await expect(revokeOAuthTokens(subscriber, "account-delete")).resolves.toBe(
+      false,
+    );
+
+    expect(incFxaTokenRevoke).toHaveBeenCalledWith("account-delete", "failure");
   });
 });
