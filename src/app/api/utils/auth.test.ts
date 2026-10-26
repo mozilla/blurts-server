@@ -7,15 +7,7 @@
 import { describe, it, expect, vi } from "vitest";
 import type { OAuthConfig } from "next-auth/providers/oauth";
 
-vi.mock("../../../db/tables/subscribers", () => ({}));
-vi.mock("../../../db/tables/emailAddresses", () => ({}));
-vi.mock("../../../db/tables/email_subscriptions", () => ({}));
-vi.mock("../../functions/server/getBreaches", () => ({}));
-vi.mock("../../../utils/hibp", () => ({}));
-vi.mock("../../../utils/email", () => ({}));
 vi.mock("../../functions/l10n/serverComponents", () => ({}));
-vi.mock("../../../emails/renderEmail", () => ({}));
-vi.mock("../../../emails/templates/signupReport/SignupReportEmail", () => ({}));
 
 import { authOptions } from "./auth";
 import { FXA_MONITOR_SCOPE } from "../../../constants";
