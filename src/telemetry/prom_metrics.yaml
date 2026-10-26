@@ -199,8 +199,7 @@ fxa:
           password change event)
       - name: outcome
         description: |
-          "success" or "failure" (FxA error, unreachable, or no
-          stored token)
+          "success" or "failure" (FxA error, unreachable, or timed out)
     scope: |
       Settings account deletion and the "/api/v1/fxa-rp-events" endpoint
     # No alerting

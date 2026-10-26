@@ -297,6 +297,7 @@ export function incHibpRangeSearch(
     ...(statusCode ? { status_code: statusCode } : {}),
   });
 }
+
 /** Why we revoke a subscriber's FxA tokens */
 export type FxaTokenRevokeReason = "account-delete" | "password-change";
 
