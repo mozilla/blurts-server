@@ -56,6 +56,13 @@ interface ProfileChangeEvent {
   email?: string;
 }
 
+interface DeleteUserEvent {
+  // Why FxA deleted the account: "user", "admin", "inactivity" or "unverified".
+  // Optional: FxA may omit the reason for other internal causes.
+  // https://mozilla.github.io/ecosystem-platform/reference/account-events
+  reason?: string;
+}
+
 interface SubscriptionStateChangeEvent {
   capabilities: [string];
   isActive: boolean;
@@ -68,7 +75,7 @@ interface FxaJwtPayload {
     [FXA_PROFILE_CHANGE_EVENT]: ProfileChangeEvent;
     [FXA_PASSWORD_CHANGE_EVENT]: PasswordChangeEvent;
     [FXA_SUBSCRIPTION_STATE_CHANGE_EVENT]: SubscriptionStateChangeEvent;
-    [FXA_DELETE_USER_EVENT]: null;
+    [FXA_DELETE_USER_EVENT]: DeleteUserEvent | null;
   };
 }
 
@@ -127,7 +134,14 @@ export async function POST(request: NextRequest) {
   for (const event in decodedJWT.events) {
     switch (event) {
       case FXA_DELETE_USER_EVENT: {
+        const reason =
+          (decodedJWT.events[event] as DeleteUserEvent | null)?.reason ??
+          "unknown";
         await deleteAccount(subscriber);
+        logger.info("fxa_delete_user", {
+          subscriber_id: subscriber.id,
+          reason,
+        });
         break;
       }
       case FXA_PROFILE_CHANGE_EVENT: {

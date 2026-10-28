@@ -25,6 +25,9 @@ vi.mock("../../../../app/functions/server/glean", () => ({
 vi.mock("../../../../app/functions/server/deleteAccount", () => ({
   deleteAccount: vi.fn(),
 }));
+vi.mock("../../../../app/functions/server/logging", () => ({
+  logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
+}));
 
 // Defer variable with closure to register and hoist mock,
 // but populate data when available
@@ -143,5 +146,58 @@ describe("fxa-rp-events", async () => {
         expect(res.status).toBe(401);
       },
     );
+  });
+  describe("delete-user", () => {
+    it.each([
+      {
+        n: "the FxA reason",
+        payload: { reason: "inactivity" },
+        expected: "inactivity",
+      },
+      {
+        n: "unknown when the reason is missing",
+        payload: {},
+        expected: "unknown",
+      },
+      {
+        n: "unknown when the payload is null",
+        payload: null,
+        expected: "unknown",
+      },
+    ])("deletes the account and logs $n", async ({ payload, expected }) => {
+      const { POST } =
+        await import("../../../../app/api/v1/fxa-rp-events/route");
+      const { deleteAccount } =
+        await import("../../../../app/functions/server/deleteAccount");
+      const { logger } =
+        await import("../../../../app/functions/server/logging");
+
+      const token = await new jose.SignJWT({
+        sub: "fxa-uid-123",
+        events: {
+          "https://schemas.accounts.firefox.com/event/delete-user": payload,
+        },
+      })
+        .setProtectedHeader({ alg: "RS256", kid })
+        .setIssuer(config.fxaIssuer)
+        .setAudience(config.oauthClientId)
+        .setIssuedAt()
+        .setExpirationTime("5m")
+        .sign(privateKey);
+
+      const req = {
+        headers: { authorization: `Bearer ${token}` },
+      } as unknown as NextRequest;
+      const res = await POST(req);
+
+      expect(res.status).toBe(200);
+      expect(deleteAccount).toHaveBeenCalledWith(
+        expect.objectContaining({ id: 12345 }),
+      );
+      expect(logger.info).toHaveBeenCalledWith("fxa_delete_user", {
+        subscriber_id: 12345,
+        reason: expected,
+      });
+    });
   });
 });
