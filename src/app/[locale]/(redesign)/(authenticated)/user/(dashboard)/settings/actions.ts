@@ -25,6 +25,7 @@ import { logger } from "../../../../../../functions/server/logging";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
 import { deleteAccount } from "../../../../../../functions/server/deleteAccount";
+import { revokeOAuthTokens } from "../../../../../../../utils/fxa";
 import { cookies } from "next/headers";
 import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
 
@@ -196,6 +197,14 @@ export async function onDeleteAccount() {
       errorMessage: `User tried to delete their account, but we could not find it.`,
     };
   }
+  // Revoke first, deleting drops the tokens
+  await revokeOAuthTokens(
+    {
+      fxa_access_token: subscriber.fxa_access_token ?? "",
+      fxa_refresh_token: subscriber.fxa_refresh_token ?? "",
+    },
+    "account-delete",
+  );
   await deleteAccount(subscriber);
 
   // Tell the front page to display an "account deleted" notification:

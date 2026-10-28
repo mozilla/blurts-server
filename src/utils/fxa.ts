@@ -6,6 +6,7 @@ import crypto from "crypto";
 import { URL } from "url";
 import { logger } from "../app/functions/server/logging";
 import { config } from "../config";
+import { FxaTokenRevokeReason, incFxaTokenRevoke } from "./metrics";
 
 /**
  * @see https://mozilla.github.io/ecosystem-platform/api#tag/Oauth/operation/postOauthDestroy
@@ -42,12 +43,13 @@ async function destroyOAuthToken(
       "Content-Type": "application/json",
     },
     body: JSON.stringify(tokenBody),
+    signal: AbortSignal.timeout(config.fxaIntrospectTimeoutMs),
   };
 
   try {
     const response = await fetch(tokenUrl, tokenOptions);
     const responseJson = await response.json();
-    if (!response.ok) throw new Error(responseJson);
+    if (!response.ok) throw new Error(JSON.stringify(responseJson));
     logger.info("destroy_oauth_token_success");
   } catch (e) {
     if (e instanceof Error) {
@@ -63,20 +65,21 @@ async function destroyOAuthToken(
 
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-async function revokeOAuthTokens(subscriber: {
-  fxa_access_token: string;
-  fxa_refresh_token: string;
-}) {
+async function revokeOAuthTokens(
+  subscriber: { fxa_access_token: string; fxa_refresh_token: string },
+  reason: FxaTokenRevokeReason,
+) {
   try {
-    await destroyOAuthToken({
-      token: subscriber.fxa_access_token,
-      token_type_hint: "access_token",
-    });
     await destroyOAuthToken({
       token: subscriber.fxa_refresh_token,
       token_type_hint: "refresh_token",
     });
+    await destroyOAuthToken({
+      token: subscriber.fxa_access_token,
+      token_type_hint: "access_token",
+    });
     logger.info("revoke_oauth_token_success");
+    incFxaTokenRevoke(reason, "success");
     return true;
   } catch (e) {
     if (e instanceof Error) {
@@ -85,6 +88,7 @@ async function revokeOAuthTokens(subscriber: {
         message: e.message,
       });
     }
+    incFxaTokenRevoke(reason, "failure");
     return false;
   }
 }

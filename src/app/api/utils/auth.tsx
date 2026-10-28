@@ -277,7 +277,10 @@ export const authOptions: AuthOptions = {
         ) {
           // If the access token has expired, try to refresh it
           if (!dbFxATokens?.fxa_refresh_token) {
-            logger.error("no_fxa_refresh_token", { dbFxATokens });
+            logger.error("no_fxa_refresh_token", {
+              subscriber_id: token.subscriber.id,
+              has_access_token: Boolean(dbFxATokens?.fxa_access_token),
+            });
             session.error = "RefreshAccessTokenError";
             return session;
           }

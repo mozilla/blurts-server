@@ -61,7 +61,7 @@ sequenceDiagram
         BE-->>FE: 200, user's breaches,<br/>or 403, no-monitor-account [5],<br/>or 429, rate-limited [6],<br/>or 503, unavailable [7]
     end
 
-    Note over FE,BE: [1] GET /v1/account/attached_clients, which Desktop already fetches, or the newer /attached_oauth_clients. Includes Monitor's client_id only while it holds a refresh token. On FxA error, Firefox treats Monitor as not connected<br/>[2] POST /v1/oauth/token, scope apps/monitor. Firefox caches the token<br/>[3] Bearer header. On 401 Firefox silently gets a new token, retries once<br/>[4] POST /v1/introspect<br/>[5] Rare, no subscriber for this FxA uid. Firefox shows sign up, no retry<br/>[6] Firefox waits Retry-After seconds<br/>[7] Flag off, FxA down, or HIBP down. Firefox keeps its breaches, waits Retry-After if sent, else its next poll
+    Note over FE,BE: [1] GET /v1/account/attached_clients, which Desktop already fetches, or the newer /attached_oauth_clients. Includes Monitor's client_id only while it holds a refresh token. On FxA error, Firefox treats Monitor as not connected<br/>[2] POST /v1/oauth/token, scope apps/monitor. Firefox caches the token<br/>[3] Bearer header. On 401 Firefox silently gets a new token, retries once<br/>[4] POST /v1/introspect<br/>[5] Rare, no subscriber for this FxA uid. Deleting the account in Monitor settings revokes its FxA tokens, so [1] stops listing Monitor. Firefox shows sign up, no retry<br/>[6] Firefox waits Retry-After seconds<br/>[7] Flag off, FxA down, or HIBP down. Firefox keeps its breaches, waits Retry-After if sent, else its next poll
 ```
 
 ### 1c. Not signed in
