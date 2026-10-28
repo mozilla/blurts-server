@@ -40,6 +40,7 @@ vi.mock("../../../../utils/jwks", () => ({
 
 // Replace implementations
 import { getSubscriberByFxaUid } from "../../../../db/tables/subscribers";
+import { revokeOAuthTokens } from "../../../../utils/fxa";
 vi.mocked(getSubscriberByFxaUid).mockResolvedValue({
   id: 12345,
   primary_email: "test@example.com",
@@ -89,6 +90,10 @@ describe("fxa-rp-events", async () => {
       } as unknown as NextRequest;
       const res = await POST(req);
       expect(res.status).toBe(200);
+      expect(revokeOAuthTokens).toHaveBeenCalledWith(
+        { fxa_access_token: "at", fxa_refresh_token: "rt" },
+        "password-change",
+      );
     });
   });
   describe("sad path", () => {
