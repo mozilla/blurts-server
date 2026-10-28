@@ -33,7 +33,7 @@ import { SignupReportEmail } from "../../../emails/templates/signupReport/Signup
 import { config } from "../../../config";
 import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
 import { createEmailSubscription } from "../../../db/tables/email_subscriptions";
-import { BREACH_ALERT_LIST_ID } from "../../../constants";
+import { BREACH_ALERT_LIST_ID, FXA_MONITOR_SCOPE } from "../../../constants";
 import { captureException } from "@sentry/core";
 
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
@@ -47,7 +47,7 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   authorization: {
     url: config.oauthAuthorizationUri,
     params: {
-      scope: "profile https://identity.mozilla.com/account/subscriptions",
+      scope: `profile https://identity.mozilla.com/account/subscriptions ${FXA_MONITOR_SCOPE}`,
       access_type: "offline",
       action: "email",
       prompt: "login",

@@ -2,7 +2,7 @@
 
 How Firefox authenticates to Monitor's Firefox API (`/api/firefox/v1`, see [`openapi.yml`](../../../openapi.yml)). Firefox sends an FxA access token carrying the `https://identity.mozilla.com/apps/monitor` scope, and Monitor introspects it with FxA on every request.
 
-"Legacy" and "New" FxA auth differ only in how Firefox learns whether the user is connected to Monitor. "Legacy" holds a session token, which can mint any scope, so Firefox first checks the account's attached OAuth clients for a Monitor refresh token. "New" holds a refresh token, and FxA's token endpoint returns 403 for the Monitor scope if the user hasn't authorized Monitor. For Monitor web users, this needs [MNTOR-5389](https://mozilla-hub.atlassian.net/browse/MNTOR-5389) (request the Monitor scope) and [FXA-14086](https://mozilla-hub.atlassian.net/browse/FXA-14086) (authorization table backfill). Monitor's side is the same.
+"Legacy" and "New" FxA auth differ only in how Firefox learns whether the user is connected to Monitor. "Legacy" holds a session token, which can mint any scope, so Firefox first checks the account's attached OAuth clients for a Monitor refresh token. "New" holds a refresh token, and FxA's token endpoint returns 403 for the Monitor scope if the user hasn't authorized Monitor. Monitor web sign-in [requests the Monitor scope](../../../src/app/api/utils/auth.tsx#L50), so FxA records the authorization. Users who last signed in before that need [FXA-14086](https://mozilla-hub.atlassian.net/browse/FXA-14086) (authorization table backfill). Monitor's side is the same.
 
 Today Desktop uses "Legacy" and Mobile uses "New". Desktop should switch to "New" by the end of Q4 2026.
 
