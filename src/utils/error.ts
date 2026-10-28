@@ -89,6 +89,26 @@ class TooManyRequestsError extends Error {
   }
 }
 
+/** A service we depend on failed */
+class UpstreamUnavailableError extends Error {
+  public readonly status?: number;
+
+  /**
+   * @param upstream The service that failed
+   * @param reason How it failed, e.g. "timeout"
+   * @param options status: HTTP status, when it sent one
+   */
+  constructor(
+    public readonly upstream: "hibp",
+    public readonly reason: string,
+    options: ErrorOptions & { status?: number } = {},
+  ) {
+    super(`${upstream} is unavailable: ${reason}`, options);
+    this.name = "UpstreamUnavailableError";
+    this.status = options.status;
+  }
+}
+
 export {
   BadRequestError,
   UnauthorizedError,
@@ -96,4 +116,5 @@ export {
   MethodNotAllowedError,
   ConflictError,
   TooManyRequestsError,
+  UpstreamUnavailableError,
 };

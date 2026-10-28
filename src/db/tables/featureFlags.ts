@@ -56,6 +56,8 @@ export async function getDeletedFeatureFlags() {
 export const featureFlagNames = [
   "SidebarNavigationRedesign",
   "DisableLandingToDashboardRedirect",
+  // Gates /api/firefox/v1 until launch
+  "FirefoxApi",
 ] as const;
 
 export const adminOnlyFlags: FeatureFlagName[] = [

@@ -64,6 +64,13 @@ export const config = {
   oauthClientSecret: getEnvString("OAUTH_CLIENT_SECRET"),
   oauthProfileUri: getEnvString("OAUTH_PROFILE_URI"),
   oauthAccountUri: getEnvString("OAUTH_ACCOUNT_URI"),
+  fxaIntrospectTimeoutMs: getEnvInt("FXA_INTROSPECT_TIMEOUT_MS", {
+    fallbackValue: 5000,
+  }),
+  // Per FxA uid; 0 disables
+  firefoxApiRateLimitPerHour: getEnvInt("FIREFOX_API_RATE_LIMIT_PER_HOUR", {
+    fallbackValue: 60,
+  }),
   nextAuthSecret: getEnvString("NEXTAUTH_SECRET"),
   fxaSettingsUrl: getEnvString("FXA_SETTINGS_URL"),
   // https://mozilla.github.io/ecosystem-platform/reference/tokens#claims-within-a-jwt-access-token

@@ -4,9 +4,16 @@
 
 // @vitest-environment node
 
-import { vi, describe, it, expect, beforeEach } from "vitest";
+import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
 import type { BreachRow } from "knex/types/tables";
-import { isValidBearer, formatDataClass, getAllBreachesFromDb } from "./hibp";
+import {
+  isValidBearer,
+  formatDataClass,
+  getAllBreachesFromDb,
+  searchHibpRange,
+} from "./hibp";
+import { incHibpRangeSearch, incKanonFailure } from "./metrics";
+import { UpstreamUnavailableError } from "./error";
 import { getAllBreaches } from "../db/tables/breaches";
 import { redisClient } from "../db/redis/client";
 import { logger } from "../app/functions/server/logging";
@@ -21,6 +28,11 @@ vi.mock("../db/redis/client", () => ({
   redisClient: vi.fn(),
   REDIS_ALL_BREACHES_KEY: "breaches",
   BREACHES_EXPIRY_SECONDS: 43200,
+}));
+vi.mock("./metrics", () => ({
+  incHibpRangeSearch: vi.fn(),
+  incKanonFailure: vi.fn(),
+  incKanonRequest: vi.fn(),
 }));
 vi.mock("../app/functions/server/logging", async () => {
   const { mockLogger } = await import("../test/helpers/mockLogger");
@@ -166,5 +178,157 @@ describe("getAllBreachesFromDb", () => {
       "set_breaches_in_redis_failed",
       expect.anything(),
     );
+  });
+});
+
+describe("searchHibpRange", () => {
+  // SHA-1 of "password"
+  const SHA1 = "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8";
+  const SUFFIX = "E4C9B93F3F0682250B6CF8331B7EE68FD8";
+  const OTHER_SUFFIX = "0000000000000000000000000000000000";
+
+  /** fetch answers with this status and raw body */
+  function mockHibpRaw(status: number, body: string) {
+    const fetchMock = vi.fn(async () => new Response(body, { status }));
+    vi.stubGlobal("fetch", fetchMock);
+    return fetchMock;
+  }
+
+  /** fetch answers with this status and JSON body */
+  function mockHibp(status: number, body: unknown) {
+    return mockHibpRaw(status, JSON.stringify(body));
+  }
+
+  /** fetch throws this error */
+  function mockFetchThrows(error: Error) {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => {
+        throw error;
+      }),
+    );
+  }
+
+  /** Counted once, with this outcome */
+  function expectOutcome(outcome: string, statusCode?: number) {
+    expect(incHibpRangeSearch).toHaveBeenCalledTimes(1);
+    const [calledOutcome, calledStatus] =
+      vi.mocked(incHibpRangeSearch).mock.calls[0];
+    expect(calledOutcome).toBe(outcome);
+    expect(calledStatus).toBe(statusCode);
+  }
+
+  /** Thrown error, for asserting on */
+  async function searchError() {
+    const error = await searchHibpRange(SHA1).catch((e) => e);
+    expect(error).toBeInstanceOf(UpstreamUnavailableError);
+    return error as UpstreamUnavailableError;
+  }
+
+  // Take the non-mock path. Actual fetching is stubbed
+  beforeEach(() => {
+    vi.stubEnv("HIBP_KANON_API_ROOT", "https://hibp.example");
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.unstubAllEnvs();
+  });
+
+  it("sends only the 6 character prefix", async () => {
+    const fetchMock = mockHibp(200, []);
+
+    await searchHibpRange(SHA1);
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      expect.stringMatching(/\/range\/search\/5BAA61$/),
+      expect.anything(),
+    );
+  });
+
+  it("returns the breaches for this hash only", async () => {
+    mockHibp(200, [
+      { hashSuffix: OTHER_SUFFIX, websites: ["Other"] },
+      { hashSuffix: SUFFIX, websites: ["Adobe", "LinkedIn"] },
+    ]);
+
+    expect(await searchHibpRange(SHA1)).toEqual(["Adobe", "LinkedIn"]);
+    expectOutcome("match");
+  });
+
+  it("returns nothing when no suffix matches", async () => {
+    mockHibp(200, [{ hashSuffix: OTHER_SUFFIX, websites: ["Other"] }]);
+
+    expect(await searchHibpRange(SHA1)).toEqual([]);
+    expectOutcome("no-match");
+  });
+
+  it("treats a 404 as no matches", async () => {
+    mockHibpRaw(404, "");
+
+    expect(await searchHibpRange(SHA1)).toEqual([]);
+    expectOutcome("not-found");
+    expect(incKanonFailure).not.toHaveBeenCalled();
+  });
+
+  it("uses the first entry from the mock endpoint", async () => {
+    vi.stubEnv("HIBP_KANON_API_ROOT", "http://localhost/api/mock/hibp");
+    mockHibp(200, [{ hashSuffix: OTHER_SUFFIX, websites: ["Adobe"] }]);
+
+    expect(await searchHibpRange(SHA1)).toEqual(["Adobe"]);
+    expectOutcome("match");
+  });
+
+  describe("throws UpstreamUnavailableError", () => {
+    it("on a 5xx", async () => {
+      mockHibp(503, {});
+
+      const error = await searchError();
+
+      expect(error).toMatchObject({
+        upstream: "hibp",
+        reason: "http-error",
+        status: 503,
+      });
+      expectOutcome("http-error", 503);
+      expect(incKanonFailure).toHaveBeenCalledWith(503);
+    });
+
+    it("on a 429, without retrying", async () => {
+      const fetchMock = mockHibp(429, {});
+
+      await searchError();
+
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+      expectOutcome("http-error", 429);
+    });
+
+    it("on a timeout", async () => {
+      mockFetchThrows(new DOMException("timed out", "TimeoutError"));
+
+      expect(await searchError()).toMatchObject({ reason: "timeout" });
+      expectOutcome("timeout");
+    });
+
+    it("on a network error", async () => {
+      mockFetchThrows(new TypeError("fetch failed"));
+
+      expect(await searchError()).toMatchObject({ reason: "network-error" });
+      expectOutcome("network-error");
+    });
+
+    it("on a body that is not JSON", async () => {
+      mockHibpRaw(200, "<html>");
+
+      expect(await searchError()).toMatchObject({ reason: "invalid-body" });
+      expectOutcome("invalid-body", 200);
+    });
+
+    it("on JSON that is not an array", async () => {
+      mockHibp(200, { hashSuffix: SUFFIX });
+
+      expect(await searchError()).toMatchObject({ reason: "invalid-body" });
+      expectOutcome("invalid-body", 200);
+    });
   });
 });
