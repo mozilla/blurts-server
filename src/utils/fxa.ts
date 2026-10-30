@@ -279,7 +279,7 @@ async function introspectToken(token: string): Promise<FxaIntrospection> {
 
 // TODO: Add unit test when changing this code:
 /* c8 ignore next 3 */
-function getSha1(email: crypto.BinaryLike) {
+function getSha1(email: string) {
   return crypto.createHash("sha1").update(email).digest("hex");
 }
 

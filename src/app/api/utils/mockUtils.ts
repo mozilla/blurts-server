@@ -2,12 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { BinaryLike } from "crypto";
 import { getSha1 } from "../../../utils/fxa";
 import { logger } from "../../functions/server/logging";
 
 export function emailHashPrefix(email: string) {
-  return getSha1(email as BinaryLike)
+  return getSha1(email)
     .slice(0, 6)
     .toUpperCase();
 }
