@@ -30,7 +30,6 @@ import RelayLogo from "./images/relay-logo.svg";
 import VpnLogo from "./images/vpn.svg";
 import FxDesktopLogo from "./images/fx-logo.svg";
 import FxMobileLogo from "./images/fx-mobile.png";
-import SoloLogo from "./images/solo-logo.svg";
 import { useL10n } from "../../../hooks/l10n";
 import { BentoIcon } from "../../server/Icons";
 import { gaEvent } from "../../../functions/client/gaEvent";
@@ -73,15 +72,6 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
     title: l10n.getString("toolbar-app-picker-product-fx-mobile"),
     gaLabel: "fx-mobile",
     imgSrc: FxMobileLogo,
-  },
-  solo: {
-    id: "solo",
-    url: `https://soloist.ai/?utm_source=${encodeURIComponent(
-      referringHost,
-    )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
-    title: l10n.getString("toolbar-app-picker-product-solo"),
-    gaLabel: "solo",
-    imgSrc: SoloLogo,
   },
 });
 
