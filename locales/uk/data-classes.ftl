@@ -2,9 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-
-# Breach Data Classes
-
 account-balances = Залишки на рахунках
 address-book-contacts = Контакти адресної книги
 age-groups = Вікові групи
@@ -47,9 +44,12 @@ delivery-instructions = Інструкція з доставлення
 device-information = Інформація про пристрої
 device-serial-numbers = Серійні номери пристрою
 device-usage-tracking-data = Дані стеження використання пристроїв
+disabilities = Відомості про інвалідність
+display-names = Показувані імена
 drinking-habits = Вживання алкоголю
 driver-s-licenses = Посвідчення водія
 drug-habits = Вживання ліків та наркотичних речовин
+earnings = Прибутки
 eating-habits = Звички харчування
 education-levels = Рівні освіти
 email-addresses = Адреси електронної пошти
@@ -65,7 +65,7 @@ financial-investments = Фінансові інвестиції
 financial-transactions = Фінансові операції
 fitness-levels = Рівень фізичної підготовки
 flights-taken = Здійснені польоти
-genders = Статеві приналежності
+genders = Дані про стать
 geographic-locations = Географічні розташування
 government-issued-ids = Посвідчення видані державою
 health-insurance-information = Інформація про страхування здоров'я
@@ -79,7 +79,7 @@ imsi-numbers = IMSI-номери
 income-levels = Рівень доходів
 instant-messenger-identities = Ідентифікатори програм обміну миттєвими повідомленнями
 ip-addresses = IP-адреси
-job-applications = Вакансії
+job-applications = Заявки на працевлаштування
 job-titles = Назви посад
 # This string refers to vehicle license plates.
 licence-plates = Номерні знаки
@@ -89,7 +89,7 @@ loan-information = Інформація про кредит
 login-histories = Історії входу
 loyalty-program-details = Подробиці програми лояльності
 mac-addresses = MAC-адреси
-marital-statuses = Сімейне положення
+marital-statuses = Сімейний стан
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
 mnemonic-phrases = Мнемонічні фрази
 mothers-maiden-names = Дівочі прізвища матерів

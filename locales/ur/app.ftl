@@ -24,9 +24,6 @@ compromised-data = سمجھوتہ ہوا ڈیٹا:
 # Link title
 more-about-this-breach = اس خلاف ورزی کے بارے میں مزید
 delayed-reporting-headline = اس خلاف ورزی کی رپورٹ دینے میں اتنا وقت کیوں لگا؟
-
-##
-
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = جائزہ

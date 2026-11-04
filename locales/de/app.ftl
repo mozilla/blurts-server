@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -49,9 +48,6 @@ sensitive-sites-copy =
 what-data = Welche Daten wurden kompromittiert:
 delayed-reporting-headline = Warum hat es so lange gedauert, bis dieses Leck gemeldet wurde?
 delayed-reporting-copy = Es kann manchmal Monate oder Jahre dauern, bis offengelegte Daten aus einem Datenleck im Dark Web auftauchen. Lecks werden, sobald sie entdeckt und verifiziert wurden, zu unserer Datenbank hinzugefügt.
-
-##
-
 what-is-a-website-breach = Was ist ein Website-Datenleck?
 website-breach-blurb = Ein Datenleak einer Website liegt vor, wenn Cyber-Kriminelle persönliche Daten aus Online-Konten stehlen, kopieren oder offenlegen. Das passiert meist dann, wenn Hacker eine Schwachstelle in der Sicherheit der Website finden. Es kann aber auch vorkommen, dass Kontoinformationen versehentlich geleakt werden.
 what-is-data-agg = Was ist ein Daten-Aggregator?

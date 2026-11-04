@@ -44,9 +44,6 @@ delayed-reporting-copy =
     Det kan nogle gange tage måneder eller år, før data involveret 
     i datalæk dukker op på websteder, der bruges af kriminelle. Datalæk bliver føjet til
     vores database, så snart de opdages og er blevet verificeret.
-
-##
-
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Oversigt

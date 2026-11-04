@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -47,9 +46,6 @@ delayed-reporting-copy =
     Terkadang butuh waktu berbulan-bulan atau bertahun-tahun untuk identitas terungkap
     dalam kebocoran data untuk muncul di web gelap. Pembobolan ditambahkan ke basis data kami
     segera setelah ditemukan dan diverifikasi.
-
-##
-
 what-is-a-website-breach = Apa itu pembobolan situs web?
 website-breach-blurb = Kebocoran data situs web terjadi ketika penjahat siber mencuri, menyalin, atau mengungkap informasi pribadi dari akun daring. Biasanya ini merupakan hasil peretas yang menemukan titik lemah dalam keamanan situs web. Pembobolan juga dapat terjadi ketika informasi akun bocor secara tidak sengaja.
 what-is-data-agg = Apa itu agregator data?

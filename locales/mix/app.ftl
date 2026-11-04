@@ -23,9 +23,6 @@ user-verify-token-error = tsiniñu'un token.
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Datos comprometidos:
 what-data = Qué datos fueron comprometidos:
-
-##
-
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Kunche'e ntia

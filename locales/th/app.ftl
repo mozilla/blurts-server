@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -51,9 +50,6 @@ delayed-reporting-copy =
     บางครั้งอาจใช้เวลาหลายเดือนหรือหลายปีกว่าข้อมูลประจำตัวที่ถูกเปิดเผย
     ในการละเมิดของข้อมูลจะปรากฏบนเว็บมืด การละเมิดจะถูกเพิ่มในฐานข้อมูลของเรา
     ทันทีที่ถูกค้นพบและยืนยัน
-
-##
-
 what-is-a-website-breach = การละเมิดเว็บไซต์คืออะไร?
 website-breach-blurb = การละเมิดข้อมูลบนเว็บไซต์เกิดขึ้นเมื่ออาชญากรไซเบอร์ขโมย คัดลอก หรือเปิดเผยข้อมูลส่วนตัวจากบัญชีออนไลน์ต่างๆ ซึ่งมักเป็นผลจากการที่แฮกเกอร์พบจุดอ่อนในความปลอดภัยของเว็บไซต์ การละเมิดยังสามารถเกิดขึ้นได้เมื่อข้อมูลบัญชีรั่วไหลโดยไม่ได้ตั้งใจ
 # This is a section headline on the breach detail page that appears above

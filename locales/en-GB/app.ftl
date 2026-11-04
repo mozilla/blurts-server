@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -51,9 +50,6 @@ delayed-reporting-copy =
     It can sometimes take months or years for credentials exposed 
     in a data breach to appear on the dark web. Breaches get added to our database as 
     soon as they have been discovered and verified.
-
-##
-
 what-is-a-website-breach = What is a web site breach?
 website-breach-blurb = A web site data breach happens when cyber criminals steal, copy, or expose personal information from online accounts. It’s usually a result of hackers finding a weak spot in the web site’s security. Breaches can also happen when account information gets leaked by accident.
 what-is-data-agg = What is a data aggregator?

@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -44,9 +43,6 @@ sensitive-sites-copy = { -product-name } 仅会在验证邮箱地址后，才显
 what-data = 泄露的数据：
 delayed-reporting-headline = 为什么要这么久才公开这些事件？
 delayed-reporting-copy = 有的时候，数据外泄后可能要几个月甚至几年，您的登录信息才会出现在暗网上。当我们发现外泄的数据并确认无误后，就会加入数据库。
-
-##
-
 what-is-a-website-breach = 网站数据外泄事件是什么？
 website-breach-blurb = 当网络犯罪分子从网络账户窃取、复制、暴露个人信息时，就会发生网站数据外泄事件。这通常是因为黑客发现了网站安全环节的薄弱点，但也可能是由于账户信息意外泄漏所致。
 what-is-data-agg = 数据聚合商是什么？

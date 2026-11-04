@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -51,9 +50,6 @@ delayed-reporting-copy =
     Det kan ibland ta några månader eller år för uppgifter
     i ett dataintrång att synas på dark web. Intrång läggs till i vår databas så
     snart som de har upptäckts och verifierats.
-
-##
-
 what-is-a-website-breach = Vad är ett webbplatsintrång?
 website-breach-blurb = Ett intrång mot webbplatsen händer när cyberkriminella stjäl, kopierar eller avslöjar personuppgifter från onlinekonton. Det är oftast ett resultat av att hackare hittar en svag punkt i webbplatsens säkerhet. Intrånget kan också ske när kontouppgifter läckas av misstag.
 what-is-data-agg = Vad är en datainsamlare?

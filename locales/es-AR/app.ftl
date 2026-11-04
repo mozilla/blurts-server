@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -50,9 +49,6 @@ delayed-reporting-headline = ¿Por qué se tardó tanto en informar esta filtrac
 delayed-reporting-copy =
     A veces pueden pasar meses o años antes de que las credenciales que se expusieron
     en una violación de datos aparezcan en la web oscura. Las violaciones se añaden a nuestra base de datos en cuanto se descubren y verifican.
-
-##
-
 what-is-a-website-breach = ¿Qué es una filtración de un sitio web?
 website-breach-blurb = Una filtración de datos de un sitio web sucede cuando los cibercriminales roban, copian o exponen información personal de cuentas en línea. Es usualmente el resultado de hackers buscando puntos débiles en la seguridad de los sitios. Las filtraciones también suceden cuando la información de las cuentas se filtra por accidente.
 what-is-data-agg = ¿Qué es un agregador de datos?

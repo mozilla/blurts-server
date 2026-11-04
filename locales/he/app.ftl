@@ -38,9 +38,6 @@ user-verify-token-error = נדרש אסימון אימות.
 compromised-data = מידע שנחשף:
 # Link title
 more-about-this-breach = עוד על הדליפה הזו
-
-##
-
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = סקירה כוללת

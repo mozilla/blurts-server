@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -44,9 +43,6 @@ sensitive-sites-copy = { -product-name } 僅會在電子郵件信箱驗證後，
 what-data = 洩漏了哪些資料：
 delayed-reporting-headline = 為什麼要這麼久才公開這些事件？
 delayed-reporting-copy = 有的時候，資料外洩後可能要花幾個月甚至幾年，您的登入資訊才會出現在暗網上。當我們發現外洩的資料並確認無誤後，就會加入資料庫。
-
-##
-
 what-is-a-website-breach = 網站資料外洩事件是什麼？
 website-breach-blurb = 當網路罪犯竊取、複製或公開網路帳號中的個人資料時，就是網站資料外洩事件。會發生這樣的事情通常是駭客想要找出網站在安全性上的弱點，也可能是帳號資訊被不小心洩漏出去。
 what-is-data-agg = 「資料收集器」是什麼？

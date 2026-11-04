@@ -38,9 +38,6 @@ more-about-this-breach = Ugar ɣef trewla-a
 what-data = Acu-ten yisefka ittuḥazen:
 delayed-reporting-headline = Acuɣer yewwi aṭas n wakud akken ad tettwammel tarewela-a n yisefka?
 delayed-reporting-copy = Ayagi daɣen yezmer ad yawi ddeqs n wagguren neɣ iseggasen akken isulayen ittuḥazen deg trewla n yisefka ad banen deg darkweb. Tirewliwin ad ttwarnunt ɣer taffa-nneɣ n yisefka akken kan ad ttwafent daɣen ad ttwasneqdent.
-
-##
-
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Agzul
