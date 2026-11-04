@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -50,9 +49,6 @@ delayed-reporting-headline = ¿Por qué se tardó tanto en informar de esta filt
 delayed-reporting-copy =
     A veces pueden pasar meses o años antes de que las credenciales que se expusieron
     en una filtración de datos aparezcan en la web oscura. Las filtraciones se añaden a nuestra base de datos en cuanto se descubren y verifican.
-
-##
-
 what-is-a-website-breach = ¿Qué es una filtración web?
 website-breach-blurb = Una filtración web se da cuando los criminales informáticos roban, copian o exponen información personal de cuentas digitales. Suelen ser el resultado de piratas informáticos que encuentran puntos débiles en la seguridad de esas páginas, aunque también puede ser que se filtre información de la cuenta por accidente.
 # This is a section headline on the breach detail page that appears above

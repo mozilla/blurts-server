@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -48,9 +47,6 @@ sensitive-sites-copy =
 what-data = Ç’të dhëna u komprometuan:
 delayed-reporting-headline = Pse u desh kaq shumë kohë për njoftimin e këtij cenimi?
 delayed-reporting-copy = Ndonjëherë mund të hajë muaj ose vite që kredenciale të ekspozuara në një shkelje të dhënash të shfaqen në web-in e errët. Shkeljet shtohen te baza jonë e të dhënave sapo të jenë zbuluar dhe verifikuar.
-
-##
-
 what-is-a-website-breach = Ç’është një shkelje sajti?
 website-breach-blurb = Një shkelje të dhënash sajti ndodh kur keqbërës kibernetikë vjedhin, kopjojnë ose ekspozojnë të dhëna personale prej llogarish internetore. Zakonisht është rrjedhojë e gjetjes nga ana e hacker-ave të një pike të dobët në sigurinë e sajtit. Shkelje mund të ndodhin edhe kur të dhëna të një llogarie rrjedhin aksidentalisht.
 # This is a section headline on the breach detail page that appears above

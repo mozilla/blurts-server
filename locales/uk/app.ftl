@@ -44,9 +44,6 @@ delayed-reporting-copy =
     Інколи від моменту витоку даних до його виявлення можуть пройти місяці 
     чи навіть роки. Витоки даних додаються до нашої бази даних одразу 
     після їх виявлення та підтвердження.
-
-##
-
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Огляд

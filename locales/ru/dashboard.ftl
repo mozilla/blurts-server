@@ -2,9 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-
-# Chart summarizing total exposures
-
 # The number inside <nr> will be displayed in a large font,
 # the label inside <label> will be shown underneath, in a smaller font.
 # Variables:
@@ -41,7 +38,7 @@ modal-active-number-of-exposures-part-one-all =
        *[many] Эта диаграмма показывает общее число раз, когда мы нашли каждый тип раскрытых данных во всех утечках данных до { $limit } адресов электронной почты, которые вы сейчас отслеживаете.
     }
 modal-active-number-of-exposures-part-two = Например, если у вас есть 10 утечек вашего номера телефона, это может значить, что один номер телефона утёк на 10 различных сайтах, или это может значить, что 2 разных номера телефона утекли на 5 разных сайтах.
-modal-active-number-of-exposures-part-three-all = Как только они будут решены, они будут добавлены к вашему общему числу зафиксированных утечек на странице Исправленные.
+modal-active-number-of-exposures-part-three-all = Как только они будут решены, они будут добавлены к вашему общему числу зафиксированных утечек на странице «Исправленные».
 modal-fixed-number-of-exposures-title = О вашем количестве исправленных утечек
 modal-fixed-number-of-exposures-all = Эта диаграмма показывает общее число утечек данных, которые были исправлены для всех адресов электронной почты, которые вы сейчас отслеживаете. Как только утечки будут отмечены как исправленные, они будут добавлены к общему количеству здесь.
 modal-cta-ok = OK
@@ -51,7 +48,7 @@ close-modal-alt = Закрыть окно
 progress-card-heres-what-we-fixed-headline-all = Вот что вы исправили
 progress-card-manually-fixed-headline = Исправлено вручную
 dashboard-tab-label-action-needed = Требуется действие
-dashboard-tab-label-fixed = Исправлено
+dashboard-tab-label-fixed = Исправленные
 dashboard-exposures-all-fixed-label = Здесь всё исправлено!
 dashboard-exposures-area-headline = Посмотреть все сайты, с которых утекла ваша информация
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
@@ -123,9 +120,6 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
        *[many] Отличная работа, все { $exposures_resolved_num } утечек ваших данных устранены! Мы продолжим отслеживать и предупредим вас о любых новых утечках.
     }
 dashboard-top-banner-monitor-more-cta = Отслеживайте больше адресов электронной почты
-
-# About Exposure Indicators Modal
-
 modal-exposure-status-description-all = Мы ищем раскрытие данных во всех известных утечках данных. Ваши утечки будут иметь один из следующих статусов:
 modal-exposure-indicator-title = Статусы утечек
 modal-exposure-indicator-action-needed = Для завершения действия от вас необходимы дополнительные или ручные действия.

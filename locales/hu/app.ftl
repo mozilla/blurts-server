@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -51,9 +50,6 @@ delayed-reporting-copy =
     Néha hónapokra vagy évekre is szükség lehet, amíg az adatvédelmi incidensekben
     kikerült adatok megjelennek a sötét weben. Az adatvédelmi incidensek akkor kerülnek
     az adatbázisunkba, ha felfedezték és megerősítették őket.
-
-##
-
 what-is-a-website-breach = Mi az a webhelyen történt adatvédelmi incidens?
 website-breach-blurb = Webhelyet érintő adatvédelmi incidens akkor történik, ha számítógépes bűnözők ellopják, lemásolják vagy nyilvánosságra hozzák az online fiókok személyes adatait. Ez általában annak a következménye, hogy a hackerek gyenge pontot találnak a webhely biztonságában. Adatvédelmi incidensek akkor is előfordulhatnak, ha a fiókadatok véletlenül szivárognak ki.
 what-is-data-agg = Mi egy adatgyűjtő?

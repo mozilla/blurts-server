@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -46,9 +45,6 @@ delayed-reporting-headline = Bu ihlalin bildirilmesi neden bu kadar uzun sürdü
 delayed-reporting-copy =
     Ele geçirilen bilgilerin dark web'de gün yüzüne çıkması bazen aylar veya yıllar sürebilir. 
     İhlaller keşfedildikten ve doğrulandıktan hemen sonra veritabanımıza eklenir.
-
-##
-
 what-is-a-website-breach = Web sitesi ihlali nedir?
 website-breach-blurb = Siber suçlular çevrimiçi hesaplardan kişisel bilgileri çaldığında, kopyaladığında veya ifşa ettiğinde web sitesinde veri ihlali meydana gelir. Genellikle hacker'ların web sitesinin güvenliğinde zayıf bir nokta bulması sonucunda oluşur. Hesap bilgileri kazayla sızdırıldığında da ihlaller meydana gelebilir.
 what-is-data-agg = Veri toplayıcı nedir?

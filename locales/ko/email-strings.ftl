@@ -85,8 +85,24 @@ email-breach-alert-all-next-steps-button-dashboard = 대시보드로 가기
 
 ## Breach alert redesigned strings
 
+# $company-name is the name of the company/site that was breached.
+email-breach-alert-all-hero-heading-1 = { $company-name } 데이터 유출 세부 정보
+# $company-name is the name of the company/site that was breached.
+# $breach-date is the date of the breach.
+email-breach-alert-all-lead-1 = { -brand-mozilla-monitor }가 { $breach-date }에 발생한 { $company-name } 데이터 유출에서 당신의 정보를 발견했습니다. 본 알림은 <link_to_settings>정보 유출 알림</link_to_settings>에 가입하였기 때문에 발송되었습니다.
+email-breach-alert-all-source-title-1 = 침해 세부 정보
 email-breach-alert-company = 회사:
+email-breach-alert-date-of-breach = 유출일:
+email-breach-alert-info-exposed = 노출된 정보:
 email-breach-alert-next-steps = 다음 단계
+email-breach-alert-next-steps-description = { -brand-mozilla-monitor } 대시보드에 <sign_in_link>로그인</sign_in_link>하세요. 문제를 해결하는 데 필요한 단계를 안내해 드리겠습니다.
+email-breach-alert-all-next-steps-button-resolve-breach-on-dashboard = 대시보드에서 유출 해결
 email-breach-alert-faqs-title = 자주 묻는 질문
 email-breach-alert-faq-qn-1 = 왜 이 화면이 나왔나요?
+email-breach-alert-faq-ans-1 = 데이터 유출 알림을 신청하였습니다. 설정에서 언제든지 <link_to_settings>설정을 변경</link_to_settings>할 수 있습니다.
+email-breach-alert-faq-qn-2 = 왜 제가 모르는 기업이나 사이트가 있나요?
+email-breach-alert-faq-ans-2 = 소유권이나 이름이 변경되었을 수 있고, 오래된 계정 또는 사용자를 위해 생성된 계정과 관련이 있거나, 노출된 개인정보 목록을 구매할 때 유래된 것일 수 있습니다.
+email-breach-alert-faq-qn-3 = 데이터 유출 알림이 무엇인가요?
+email-breach-alert-faq-ans-3 = 모니터링 중인 개인 정보가 허가 없이 노출, 도난, 복사될 때 { -brand-mozilla-monitor }가 전송하는 알림입니다.
 email-breach-alert-faq-qn-4 = { -brand-mozilla-monitor }는 무엇인가요?
+email-breach-alert-faq-ans-4 = 사용자의 온라인 계정이 데이터 유출에 연루된 경우 이를 알려주는 무료 데이터 유출 알림 서비스입니다.

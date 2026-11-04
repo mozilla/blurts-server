@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -51,9 +50,6 @@ delayed-reporting-copy =
     Det kan nokre gongar ta månadar eller år før data involverte 
     i ein datalekkasje dukkar opp på nettstadar som vert brukte av kriminelle (kjent som det mørke nettet eller dark web). Datalekkasjar blir lagt til i databasen vår 
     så snart dei er oppdaga og stadfesta.
-
-##
-
 what-is-a-website-breach = Kva er ein nettstadlekkasje?
 website-breach-blurb = Ein nettstad-datalekkasje kan skyldast cyber-kriminelle som stel, kopierer eller eksponerer personleg informasjon frå kontoar på nettet. Det er vanlegvis eit resultat av at hackarar finn eit svakt punkt i sikkerheita til nettstaden. Datalekkasje kan også skje når kontoinformasjon blir leken ved eit uhell.
 what-is-data-agg = Kva er ein datainnsamlar?

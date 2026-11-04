@@ -21,8 +21,8 @@ email-footer-support-content-plain =
     { $support_link }
 # Variables:
 #   $hibp_link (string) - URL to Have I Been Pwned, e.g. "https://haveibeenpwned.com".
-email-footer-source-hibp-plain = Данные об утечке данных предоставлены { -brand-HIBP }: { $hibp_link }
-email-footer-source-hibp = Данные об утечке данных предоставлены <hibp-link>{ -brand-HIBP }</hibp-link>
+email-footer-source-hibp-plain = Данные об утечке данных предоставлены { -brand-HIBP(case: "instrumental") }: { $hibp_link }
+email-footer-source-hibp = Данные об утечке данных предоставлены <hibp-link>{ -brand-HIBP(case: "instrumental") }</hibp-link>
 email-footer-logo-mozilla-alt = { -brand-mozilla }
 email-footer-meta-privacy-notice = Приватность
 email-unsubscribe-link = <link_to_unsub>Отписаться</link_to_unsub>
@@ -41,7 +41,7 @@ email-link-expires = Срок действия этой ссылки истек�
 ##
 
 # Subject line of email
-email-subject-found-breaches = { -product-name } нашел вашу информацию в этих утечках
+email-subject-found-breaches = { -product-name } нашёл вашу информацию в этих утечках
 # Subject line of email
 email-subject-no-breaches = { -product-name } не обнаружил известных утечек
 # Subject line of email
@@ -55,7 +55,7 @@ fxm-warns-you-no-breaches =
 # Have I Been Pwned attribution
 # Variables:
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
-email-2022-hibp-attribution = Данные об утечке данных предоставлены <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+email-2022-hibp-attribution = Данные об утечке данных предоставлены <a { $hibp-link-attr }>{ -brand-HIBP(case: "instrumental") }</a>
 
 ## Verification email
 
