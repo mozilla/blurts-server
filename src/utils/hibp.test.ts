@@ -12,7 +12,11 @@ import {
   getAllBreachesFromDb,
   searchHibpRange,
 } from "./hibp";
-import { incHibpRangeSearch, incKanonFailure } from "./metrics";
+import {
+  incBreachesCacheFallback,
+  incHibpRangeSearch,
+  incKanonFailure,
+} from "./metrics";
 import { UpstreamUnavailableError } from "./error";
 import { getAllBreaches } from "../db/tables/breaches";
 import { redisClient } from "../db/redis/client";
@@ -30,6 +34,7 @@ vi.mock("../db/redis/client", () => ({
   BREACHES_EXPIRY_SECONDS: 43200,
 }));
 vi.mock("./metrics", () => ({
+  incBreachesCacheFallback: vi.fn(),
   incHibpRangeSearch: vi.fn(),
   incKanonFailure: vi.fn(),
   incKanonRequest: vi.fn(),
@@ -98,6 +103,7 @@ describe("getAllBreachesFromDb", () => {
 
   beforeEach(() => {
     vi.mocked(getAllBreaches).mockReset();
+    vi.mocked(incBreachesCacheFallback).mockClear();
   });
 
   it("serves the cached breaches when Redis answers", async () => {
@@ -107,6 +113,7 @@ describe("getAllBreachesFromDb", () => {
 
     expect(breaches).toHaveLength(1);
     expect(getAllBreaches).not.toHaveBeenCalled();
+    expect(incBreachesCacheFallback).not.toHaveBeenCalled();
   });
 
   it("reads Postgres and refills the cache on a miss", async () => {
@@ -117,6 +124,8 @@ describe("getAllBreachesFromDb", () => {
 
     expect(breaches).toHaveLength(1);
     expect(client.set).toHaveBeenCalledTimes(1);
+    // A plain cache miss is not a fault.
+    expect(incBreachesCacheFallback).not.toHaveBeenCalled();
   });
 
   it("reads Postgres when the Redis read fails", async () => {
@@ -130,6 +139,7 @@ describe("getAllBreachesFromDb", () => {
     expect(breaches).toHaveLength(1);
     expect(breaches[0].Name).toBe(breachRow.name);
     expect(getAllBreaches).toHaveBeenCalledTimes(1);
+    expect(incBreachesCacheFallback).toHaveBeenCalledWith("get-all-breaches");
   });
 
   it("does not try to refill a faulted Redis", async () => {

@@ -22,6 +22,8 @@ type MetricsState = {
   firefoxApiResolutionTotal: Counter<Attributes>;
   firefoxApiRequestDuration: Histogram<Attributes>;
   fxaTokenRevokeTotal: Counter<Attributes>;
+  redisClientCreatedTotal: Counter<Attributes>;
+  breachesCacheFallbackTotal: Counter<Attributes>;
 };
 
 let metricsState: MetricsState | undefined;
@@ -105,6 +107,22 @@ export function getOrInitMetrics(): MetricsState {
     description: "FxA token revocations, by reason and outcome",
   });
 
+  const redisClientCreatedTotal = meter.createCounter(
+    "redis_client_created_total",
+    {
+      description:
+        "Redis clients created; one per process start, so steady growth means the client is leaking",
+    },
+  );
+
+  const breachesCacheFallbackTotal = meter.createCounter(
+    "breaches_cache_fallback_total",
+    {
+      description:
+        "Breach cache reads that failed and fell back to Postgres, by source",
+    },
+  );
+
   const state: MetricsState = {
     hibpNotifyRequestFailuresTotal,
     hibpNotifyRequestsTotal,
@@ -118,6 +136,8 @@ export function getOrInitMetrics(): MetricsState {
     firefoxApiResolutionTotal,
     firefoxApiRequestDuration,
     fxaTokenRevokeTotal,
+    redisClientCreatedTotal,
+    breachesCacheFallbackTotal,
   };
   return state;
 }
@@ -314,5 +334,20 @@ export function incFxaTokenRevoke(
   outcome: FxaTokenRevokeOutcome,
 ) {
   getOrInitMetrics().fxaTokenRevokeTotal.add(1, { reason, outcome });
+}
+
+/** Increment Redis client created metric */
+export function incRedisClientCreated() {
+  getOrInitMetrics().redisClientCreatedTotal.add(1);
+}
+
+/** Code path whose breach cache read fell back to Postgres */
+export type BreachesCacheFallbackSource =
+  // getAllBreachesFromDb in src/utils/hibp.ts
+  "get-all-breaches";
+
+/** Increment breaches cache fallback metric */
+export function incBreachesCacheFallback(source: BreachesCacheFallbackSource) {
+  getOrInitMetrics().breachesCacheFallbackTotal.add(1, { source });
 }
 /* c8 ignore end */
