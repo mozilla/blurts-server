@@ -26,4 +26,4 @@ else
 fi
 
 echo "Lint nimbus.yaml"
-$TARGET_PATH/nimbus-cli fml -- validate config/nimbus.yaml
+$TARGET_PATH/nimbus-cli fml validate config/nimbus.yaml
