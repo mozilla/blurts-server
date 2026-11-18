@@ -14,6 +14,9 @@ vi.mock("../../app/functions/server/logging", async () => {
 vi.mock("./util", () => ({
   createRedisInstance: vi.fn(),
 }));
+vi.mock("../../utils/metrics", () => ({
+  incRedisClientCreated: vi.fn(),
+}));
 
 /**
  * Import a fresh copy of the client module.
@@ -35,11 +38,13 @@ async function loadClient() {
   vi.resetModules();
   const { createRedisInstance } = await import("./util");
   const { logger } = await import("../../app/functions/server/logging");
+  const { incRedisClientCreated } = await import("../../utils/metrics");
   const { redisClient } = await import("./client");
   return {
     redisClient,
     createRedisInstance: vi.mocked(createRedisInstance),
     logger,
+    incRedisClientCreated: vi.mocked(incRedisClientCreated),
   };
 }
 
@@ -113,6 +118,17 @@ describe("redisClient", () => {
     expect(logger.info).toHaveBeenCalledWith("redis_client_created", {
       mock: false,
     });
+  });
+
+  it("counts its creation once, agreeing with the log", async () => {
+    process.env.REDIS_URL = "redis://redis.invalid:6379";
+    const { redisClient, createRedisInstance, incRedisClientCreated } =
+      await loadClient();
+    createRedisInstance.mockReturnValue({} as unknown as Redis);
+
+    Array.from({ length: 100 }, () => redisClient());
+
+    expect(incRedisClientCreated).toHaveBeenCalledTimes(1);
   });
 
   it("reuses the mock client too", async () => {

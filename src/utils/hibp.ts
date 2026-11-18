@@ -19,6 +19,7 @@ import {
 } from "../db/redis/client.ts";
 import { config } from "../config.ts";
 import {
+  incBreachesCacheFallback,
   incHibpRangeSearch,
   incKanonFailure,
   incKanonRequest,
@@ -301,6 +302,8 @@ async function getAllBreachesFromDb(): Promise<HibpLikeDbBreach[]> {
     logger.error("get_breaches_from_redis_failed", {
       exception: "Failed to read breaches from redis: " + (e as string),
     });
+    // The earliest app-side sign of Redis failing.
+    incBreachesCacheFallback("get-all-breaches");
   }
 
   if (cached.length > 0) {

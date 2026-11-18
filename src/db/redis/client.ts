@@ -4,6 +4,7 @@
 
 import { createRedisInstance } from "./util";
 import { logger } from "../../app/functions/server/logging";
+import { incRedisClientCreated } from "../../utils/metrics";
 import type { Redis } from "ioredis";
 import MockRedis from "ioredis-mock";
 
@@ -22,5 +23,7 @@ export const redisClient = () => {
   singleton = useMock ? new MockRedis() : createRedisInstance();
   // One line per process, so prod logs prove the reuse.
   logger.info("redis_client_created", { mock: useMock });
+  // Should only rise on deploys; steady growth means a leak (counter that keeps rising with no deploy, scaling or restart, means the code is creating new clients again)
+  incRedisClientCreated();
   return singleton;
 };
