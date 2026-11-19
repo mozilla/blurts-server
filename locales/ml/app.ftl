@@ -33,9 +33,6 @@ user-verify-token-error = വെരിഫിക്കേഷൻ ടോക്ക�
 compromised-data = അപഹരിക്കപ്പെട്ട വിവരങ്ങള്‍:
 # Link title
 more-about-this-breach = ഈ വിവരചോര്‍ച്ചയെക്കുറിച്ചു് കൂടുതൽ അറിയുക
-
-##
-
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = അവലോകനം

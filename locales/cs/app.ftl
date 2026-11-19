@@ -111,7 +111,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -136,9 +135,6 @@ sensitive-sites-copy =
 what-data = Jaké údaje byly vyzrazeny:
 delayed-reporting-headline = Proč nahlášení tohoto úniku trvalo tak dlouho?
 delayed-reporting-copy = Občas to může trvat měsíce či roky, než se přihlašovací údaje vyzrazené v úniku dat objeví na temném Webu. Úniky jsou přidány do naší databáze, jakmile byly odhaleny a potvrzeny.
-
-##
-
 what-is-a-website-breach = Co je únik dat z webových stránek?
 website-breach-blurb = Únik dat z webových stránek se odehraje, když kyberzločinci odcizí, zkopírují nebo zveřejní osobní údaje z internetových účtů. Zpravidla je to výsledkem činnosti hackerů, kteří nalezli slabé místo v zabezpečení webu. K úniku osobních údajů z účtu však také může dojít nedopatřením.
 what-is-data-agg = Co je to agregátor dat?
@@ -232,9 +228,9 @@ main-nav-link-faq-tooltip = Často kladené otázky
 
 user-menu-trigger-label = Otevřít uživatelskou nabídku
 user-menu-trigger-tooltip = Profil
-user-menu-manage-fxa-label = Spravovat { -brand-mozilla-account(case: "acc", capitalization: "lower") }
+user-menu-manage-fxa-label = Spravovat { -brand-mozilla-account(capitalization: "lower", case: "acc") }
 user-menu-settings-label = Nastavení
-user-menu-settings-tooltip = Upravit { -brand-mozilla-monitor(case: "acc", capitalization: "lower") }
+user-menu-settings-tooltip = Upravit { -brand-mozilla-monitor(capitalization: "lower", case: "acc") }
 user-menu-help-label = Nápověda a podpora
 user-menu-help-tooltip = Získat pomoc s používáním { -brand-mozilla-monitor(case: "gen") }
 user-menu-signout-label = Odhlásit se

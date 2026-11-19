@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -51,9 +50,6 @@ delayed-reporting-copy =
     It kin somtiden moannen of jierren duorje eardat de oanmeldgegevens dy’t yn in datalek
     foar komme op it dark web ferskine. Datalekken wurde, sa gau as se ûntdekt binne en
     ferifiearre, oan ús database tafoege.
-
-##
-
 what-is-a-website-breach = Wat is in websitedatalek?
 website-breach-blurb = In datalek fan in website bart, wannear cyberkriminelen persoanlike gegevens út online-accounts stelle, kopiearje of bleatlizze. Dat bart it meast, wannear hackers in swak plak yn de befeiliging fan de website fine. It kin lykwols ek barre as accountynformaasje by fersin lekt wurdt.
 what-is-data-agg = Wat is in gegevenssamler?

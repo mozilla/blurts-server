@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Monitor rech Mozilla
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -44,9 +43,6 @@ sensitive-sites-copy = { -product-name } Xew kuq0alajisaj taq kemb'i'aj ke ut'iq
 what-data = Jachike taq juq'attzij xkib'an k'amq'ab':
 delayed-reporting-headline = ¿Jasche naj kuk'am uwoktzijob'exik we retztaqan?
 delayed-reporting-copy = K'or kuk'am jampa' ik' on jampa junab' are chi kk'utuk uk'axk'olil rech q'alajisab'al pa jun retztaqan rech uq'eqal web'. Le taq retztaqan aninaqil ke'eya' pa le mulib'al juq'attzij are taq ke'eriqitajik chi'l ke'eq'atutajik.
-
-##
-
 what-is-a-website-breach = ¿Jas uwach ri' jun retztaqan rech uk'olib'al web'?
 website-breach-blurb = Kxajtaj jun retztaqan rech juq'attzij rech uk'olib'al web' are taq le ekemelaq'omab' ke'elaq'anik, on kkelesaj uwach on kkiya' winaqilal q'alajisanem pa taq kemb'i'aj rech nimk'atz, Are wa' jun uwachinem kech taq e b'ank'ax are taq kkiriq jun uk'olib'al web' le man k'o ta uchuq'ab'. Le taq retztaqan xuquje' kxajtajik are taq kq'alajisax  le q'alajisanem le man chub'anik taj.
 # This is a section headline on the breach detail page that appears above

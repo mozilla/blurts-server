@@ -87,7 +87,6 @@
        *[nom] Mozilla Monitor
     }
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -113,9 +112,6 @@ delayed-reporting-headline = Prečo nahlásenie tohto úniku trvalo tak dlho?
 delayed-reporting-copy =
     Niekedy môže trvať mesiace či roky, než sa prihlasovacie údaje vyzradené v úniku 
     objavia na dark webe. Úniky sú pridávané do našej databázy hneď, akonáhle sú odhalené a potvrdené.
-
-##
-
 what-is-a-website-breach = Čo je únik údajov z webovej stránky?
 website-breach-blurb = Únik údajov z webovej stránky sa odohrá, keď kybernetickí zločinci odcudzia, skopírujú alebo zverejnia osobné údaje z internetových účtov. Spravidla je to výsledkom činnosti hackerov, ktorí našli slabé miesto v zabezpečení webu. K úniku osobných údajov z účtov však môže dôjsť aj nedopatrením.
 what-is-data-agg = Čo je agregátor údajov?
@@ -209,9 +205,9 @@ main-nav-link-faq-tooltip = Často kladené otázky
 
 user-menu-trigger-label = Otvoriť ponuku používateľa
 user-menu-trigger-tooltip = Profil
-user-menu-manage-fxa-label = Spravovať { -brand-mozilla-account(case: "acc", capitalization: "lower") }
+user-menu-manage-fxa-label = Spravovať { -brand-mozilla-account(capitalization: "lower", case: "acc") }
 user-menu-settings-label = Nastavenia
-user-menu-settings-tooltip = Upraviť { -brand-mozilla-monitor(case: "acc", capitalization: "lower") }
+user-menu-settings-tooltip = Upraviť { -brand-mozilla-monitor(capitalization: "lower", case: "acc") }
 user-menu-help-label = Pomoc a podpora
 user-menu-help-tooltip = Získať pomoc pri používaní { -brand-mozilla-monitor(case: "gen") }
 user-menu-signout-label = Odhlásiť sa
