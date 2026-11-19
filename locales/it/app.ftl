@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -44,9 +43,6 @@ sensitive-sites-copy = { -product-name } rivela gli account associati con questo
 what-data = Quali dati sono stati compromessi:
 delayed-reporting-headline = Perché ci è voluto così tanto tempo per segnalare questa violazione?
 delayed-reporting-copy = A volte possono volerci mesi o anni prima che le credenziali compromesse in una violazione di dati compaiano nel “dark web”. Le violazioni sono aggiunte al nostro database appena vengono scoperte e verificate.
-
-##
-
 what-is-a-website-breach = Che cos’è una violazione di dati?
 website-breach-blurb = La violazione di dati di un sito web si verifica quando criminali informatici rubano, copiano o espongono informazioni personali dagli account online. Di solito è il risultato del lavoro di hacker che riescono a individuare un punto debole nella sicurezza del sito web. Una violazione può verificarsi anche quando le informazioni sull’account vengono lasciate trapelare per errore.
 what-is-data-agg = Che cos’è un aggregatore di dati?

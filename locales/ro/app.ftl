@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -48,9 +47,6 @@ sensitive-sites-copy =
 what-data = Ce date au fost compromise:
 delayed-reporting-headline = De ce a durat atât de mult să se raporteze această încălcare a securității datelor?
 delayed-reporting-copy = Uneori, poate dura luni sau ani ca datele de autentificare expuse într-o încălcare a securității datelor să apară pe dark web. Încălcările securității datelor sunt adăugate în baza noastră de date imediat ce sunt descoperite și verificate.
-
-##
-
 what-is-a-website-breach = Ce este o încălcare a securității datelor în cazul unui site web?
 website-breach-blurb = O încălcare a securității datelor în cazul unui site web apare când infractorii cibernetici fură, copiază sau expun informații cu caracter personal din conturi online. Este de obicei rezultatul identificării de către hackeri a unui punct slab în securitatea site-ului web. Încălcările pot apărea și la divulgarea accidentală a datelor aferente conturilor.
 what-is-data-agg = Ce sunt agregatoarele de date?

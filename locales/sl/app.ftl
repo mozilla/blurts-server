@@ -69,7 +69,6 @@
         [orodnik] Monitorjem Plus
        *[imenovalnik] Monitor Plus
     }
--brand-solo-ai = Solo AI
 
 ##
 
@@ -93,9 +92,6 @@ delayed-reporting-copy =
     Včasih traja mesece ali leta, da pride do izpostavitve prijavnih podatkov 
     v primeru kraje podatkov. Kraje podatkov se dodajo v našo bazo 
     takoj ko so odkrite in preverjene.
-
-##
-
 what-is-a-website-breach = Kaj je kraja podatkov spletne strani?
 website-breach-blurb = Do kraje podatkov spletne strani pride, ko spletni napadalci ukradejo, kopirajo ali razkrijejo osebne podatke spletnih računov. Običajno je rezultat tega, da hekerji odkrijejo šibko točko varnosti spletne strani. Kraje se lahko zgodijo tudi, če se podatki o računu na spletu pojavijo po naključju.
 what-is-data-agg = Kaj je zbiralnik podatkov?
