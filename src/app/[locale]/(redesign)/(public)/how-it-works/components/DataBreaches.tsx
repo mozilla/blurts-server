@@ -5,7 +5,7 @@
 "use client";
 
 import Image from "next/image";
-import { signIn } from "next-auth/react";
+import { signInToFxa } from "../../../../../functions/client/signInToFxa";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 import { Resolve } from "../images";
 import styles from "../HowItWorksView.module.scss";
@@ -39,7 +39,7 @@ export const DataBreaches = () => {
               href="/user/dashboard"
               variant="primary"
               onPress={() => {
-                void signIn("fxa");
+                signInToFxa("fxa");
               }}
               event={{
                 module: "ctaButton",
@@ -113,7 +113,7 @@ export const DataBreaches = () => {
           href="/user/dashboard"
           variant="primary"
           onPress={() => {
-            void signIn("fxa");
+            signInToFxa("fxa");
           }}
           event={{
             module: "ctaButton",
