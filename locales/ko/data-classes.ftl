@@ -2,9 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-
-# Breach Data Classes
-
+academic-records = 학적 사항
 account-balances = 계좌 잔고
 address-book-contacts = 주소록 연락처
 age-groups = 연령대
@@ -37,10 +35,13 @@ comments = 댓글
 company-names = 회사명
 credit-card-cvv = 신용카드 CVV
 credit-cards = 신용카드
+credit-scores = 신용점수
 credit-status-information = 신용정보
+cryptocurrency-wallet-addresses = 암호화폐 지갑 주소
 cryptocurrency-wallet-hashes = 암호화폐 지갑 해시
 customer-feedback = 고객 피드백
 customer-interactions = 고객 상호작용
+customer-service-comments = 고객 서비스 의견
 dates-of-birth = 생년월일
 deceased-date = 사망일자
 deceased-statuses = 사망 여부
@@ -50,9 +51,12 @@ delivery-instructions = 배송 안내
 device-information = 기기 정보
 device-serial-numbers = 기기 일련 번호
 device-usage-tracking-data = 기기 사용 추적 데이터
+disabilities = 장애
+display-names = 표시 이름
 drinking-habits = 술버릇
 driver-s-licenses = 운전 면허증
 drug-habits = 마약중독
+earnings = 수익
 eating-habits = 식습관
 education-levels = 교육 수준
 email-addresses = 이메일 주소
@@ -68,6 +72,7 @@ financial-investments = 금융 투자
 financial-transactions = 금융거래 내역
 fitness-levels = 피트니스 수준
 flights-taken = 탑승한 항공편
+forum-posts = 포럼 게시물
 genders = 성별
 geographic-locations = 지리적 위치
 government-issued-ids = 정부가 발급한 신분증
@@ -86,6 +91,7 @@ iq-levels = IQ 지수
 job-applications = 입사 지원서
 job-titles = 직위
 language-preferences = 언어 설정
+latitude-and-longitude-pairs = 위도 및 경도 쌍
 # This string refers to vehicle license plates.
 licence-plates = 번호판
 living-costs = 생활비
@@ -111,6 +117,7 @@ other-data-class = 기타
 parenting-plans = 육아 계획
 partial-credit-card-data = 신용카드 데이터 일부
 partial-dates-of-birth = 생년월일 일부
+partial-government-issued-ids = 정부가 발급한 신분증 중 일부
 partial-phone-numbers = 부분 전화번호
 passport-numbers = 여권 번호
 password-hints = 비밀번호 힌트
@@ -151,10 +158,12 @@ sms-messages = SMS 메시지
 social-connections = 사회적 연결
 social-media-profiles = 소셜 미디어 프로필
 social-security-numbers = 사회 보장 번호
+socioeconomic-levels = 사회 경제적 수준
 spoken-languages = 음성 언어
 spouses-names = 배우자 이름
 support-tickets = 지원 티켓
 survey-results = 조사 결과
+tattoo-status = 문신 상태
 taxation-records = 과세 기록
 telecommunications-carrier = 통신 사업자
 time-zones = 시간대
@@ -168,6 +177,7 @@ vehicle-details = 차량 세부 정보
 vehicle-identification-numbers-vins = 차량 식별 번호(VIN)
 vehicle-registration-plates = 자동차 등록 번호
 vip-statuses = VIP 상태
+warranty-claims = 보증 요구
 website-activity = 웹사이트 활동
 work-habits = 업무 습관
 years-of-birth = 출생년도
