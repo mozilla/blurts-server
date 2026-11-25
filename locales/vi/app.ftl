@@ -23,7 +23,6 @@
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-solo-ai = Solo AI
 
 ##
 
@@ -51,9 +50,6 @@ delayed-reporting-copy =
     Đôi khi có thể mất vài tháng hoặc vài năm để thông tin đăng nhập trong một
     rò rỉ dữ liệu để xuất hiện trên dark web. Dữ liệu rò rỉ sẽ được thêm vào cơ sở
     dữ liệu của chúng tôi ngay khi chúng được phát hiện và xác minh.
-
-##
-
 what-is-a-website-breach = Trang web bị rò rỉ là gì?
 website-breach-blurb = Rò rỉ dữ liệu trang web xảy ra khi tội phạm mạng ăn cắp, sao chép hoặc tiết lộ thông tin cá nhân từ tài khoản trực tuyến. Nó thường là kết quả của tin tặc tìm thấy một điểm yếu trong bảo mật của trang web. Rò rỉ dữ liệu cũng có thể xảy ra khi thông tin tài khoản bị rò rỉ do lỗi kỹ thuật.
 what-is-data-agg = Tập hợp dữ liệu là gì?

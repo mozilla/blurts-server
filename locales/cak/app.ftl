@@ -36,9 +36,6 @@ delayed-reporting-copy =
     K'o re' nik'o k'ïy ik' o juna' chuwäch ri wujil xek'ut
     pa jun kitz'ilanem tzij niwachin pa jun q'equ'm ajk'amaya'l. Yetz'aqatisäx ri taq tz'ilanem pan rucholxe'el qatzij
     toq ye'ilitäj chuqa' yenik'öx.
-
-##
-
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Chijun rutzijoxkil
